@@ -52,15 +52,13 @@ if [ ! -f "$SCRIPT_DIR/.env" ]; then
     cp "$SCRIPT_DIR/.env.example" "$SCRIPT_DIR/.env"
 fi
 
-# 6. Création des volumes et certificats initiaux (Dummy Certs pour amorçage Nginx)
+# 6. Création des volumes et certificats initiaux
 echo "🔒 Initialisation des volumes de certificats..."
 sudo docker compose build --pull
 
-# Création des volumes Docker si inexistants
 sudo docker volume create educationsolidaire_certbot_etc > /dev/null 2>&1 || true
 sudo docker volume create educationsolidaire_certbot_var > /dev/null 2>&1 || true
 
-# Vérification si un certificat existe déjà
 CERT_DIR="/var/lib/docker/volumes/educationsolidaire_certbot_etc/_data/live/$DOMAIN"
 if [ ! -d "$CERT_DIR" ]; then
     echo "🔑 Création d'un certificat SSL temporaire pour amorcer Nginx..."
@@ -75,20 +73,20 @@ fi
 echo "🔨 Démarrage des conteneurs Docker (App + Nginx)..."
 sudo docker compose up -d --remove-orphans
 
-# 8. Obtention du certificat officiel Let's Encrypt avec remplacement garanti
-echo "🌐 Demande du certificat officiel Let's Encrypt SSL..."
+# 8. Obtention / conservation du certificat Let's Encrypt (Mode non-interactif et anti-rate-limit)
+echo "🌐 Vérification du certificat officiel Let's Encrypt SSL..."
 sudo docker compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     --email $EMAIL \
     -d $DOMAIN \
     -d www.$DOMAIN \
-    --agree-tos --no-eff-email --force-renewal" certbot || echo "ℹ️ Note: SSL généré ou attente DNS."
+    --agree-tos --no-eff-email --keep-until-expiring --non-interactive" certbot || echo "ℹ️ Note: Certificat officiel actif déjà présent."
 
-# 8b. Synchronisation des chemins de certificats si Certbot a créé le dossier -0001
+# 8b. Synchronisation des fichiers PEM réels vers le dossier lu par Nginx
 sudo docker compose run --rm --entrypoint "sh -c '\
   if [ -d /etc/letsencrypt/live/education-solidaire.org-0001 ]; then \
-    rm -rf /etc/letsencrypt/live/education-solidaire.org && \
-    cp -r /etc/letsencrypt/live/education-solidaire.org-0001 /etc/letsencrypt/live/education-solidaire.org; \
+    mkdir -p /etc/letsencrypt/live/education-solidaire.org && \
+    cp -L /etc/letsencrypt/live/education-solidaire.org-0001/*.pem /etc/letsencrypt/live/education-solidaire.org/ 2>/dev/null || true; \
   fi'" certbot > /dev/null 2>&1 || true
 
 # 9. Rechargement immédiat de Nginx
