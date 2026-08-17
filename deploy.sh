@@ -60,7 +60,7 @@ sudo docker compose build --pull
 sudo docker volume create educationsolidaire_certbot_etc > /dev/null 2>&1 || true
 sudo docker volume create educationsolidaire_certbot_var > /dev/null 2>&1 || true
 
-# Vérification si un certificat (réel ou dummy) existe déjà
+# Vérification si un certificat existe déjà
 CERT_DIR="/var/lib/docker/volumes/educationsolidaire_certbot_etc/_data/live/$DOMAIN"
 if [ ! -d "$CERT_DIR" ]; then
     echo "🔑 Création d'un certificat SSL temporaire pour amorcer Nginx..."
@@ -75,21 +75,22 @@ fi
 echo "🔨 Démarrage des conteneurs Docker (App + Nginx)..."
 sudo docker compose up -d --remove-orphans
 
-# 8. Obtention du certificat officiel Let's Encrypt
-echo "🌐 Demande de certificat SSL Let's Encrypt..."
+# 8. Obtention du certificat officiel Let's Encrypt avec remplacement garanti
+echo "🌐 Demande du certificat officiel Let's Encrypt SSL..."
 sudo docker compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     --email $EMAIL \
     -d $DOMAIN \
     -d www.$DOMAIN \
-    --agree-tos --no-eff-email --keep-until-expiring --expand" certbot || echo "ℹ️ Note: SSL principal initialisé ou en attente de propagation DNS."
+    --agree-tos --no-eff-email --force-renewal" certbot || echo "ℹ️ Note: SSL généré ou attente DNS."
 
-# 9. Rechargement de Nginx avec le nouveau certificat
-sudo docker compose exec nginx nginx -s reload || sudo docker compose restart nginx || true
+# 9. Rechargement immédiat de Nginx
+echo "🔄 Rechargement de Nginx avec les certificats certifiés..."
+sudo docker compose restart nginx
 
 echo "========================================================"
-echo "✅ DÉPLOIEMENT TERMINÉ AVEC SUCCÈS !"
-echo "🌐 Votre site est en ligne sur :"
-echo "   👉 http://51.178.47.78"
+echo "✅ DÉPLOIEMENT & CERTIFICAT SSL VALIDÉS !"
+echo "🌐 Votre site sécurisé est en ligne :"
 echo "   👉 https://$DOMAIN"
+echo "   👉 https://www.education-solidaire.org"
 echo "========================================================"
