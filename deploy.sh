@@ -1,70 +1,68 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # UNISSON — Association Éducation Solidaire
-# Script de Déploiement Automatisé pour VPS Ubuntu OVH (vps-ffd2e750)
+# Script de Déploiement Automatisé pour VPS Ubuntu OVH (vps-ffd2e750 - 51.178.47.78)
 # ==============================================================================
 
 set -e
 
 DOMAIN="education-solidaire.org"
 EMAIL="contact@educationsolidaire.fr"
-APP_DIR="/opt/unisson"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "$SCRIPT_DIR"
 
 echo "========================================================"
 echo "🚀 Déploiement UNISSON — Association Éducation Solidaire"
+echo "🌐 Serveur VPS OVH : 51.178.47.78 (vps-ffd2e750)"
 echo "========================================================"
 
-# 1. Vérification des prérequis Docker & Docker Compose
+# 1. Vérification et installation de Docker si nécessaire
 if ! command -v docker &> /dev/null; then
-    echo "❌ Docker n'est pas installé. Installation en cours..."
+    echo "📦 Installation de Docker..."
     curl -fsSL https://get.docker.com -o get-docker.sh
-    sh get-docker.sh
-    usermod -aG docker $USER
+    sudo sh get-docker.sh
+    sudo usermod -aG docker $USER
+    rm -f get-docker.sh
 fi
 
-if ! command -v docker compose &> /dev/null; then
-    echo "❌ Docker Compose plugin n'est pas installé. Installation..."
-    apt-get update && apt-get install -y docker-compose-plugin
+# 2. Vérification de Docker Compose
+if ! docker compose version &> /dev/null; then
+    echo "📦 Installation du plugin Docker Compose..."
+    sudo apt-get update && sudo apt-get install -y docker-compose-plugin
 fi
 
-# 2. Préparation du répertoire de déploiement
-mkdir -p "$APP_DIR"
-mkdir -p "$APP_DIR/data"
-mkdir -p "$APP_DIR/nginx"
+# 3. Préparation des répertoires de données
+mkdir -p "$SCRIPT_DIR/data"
 
-# 3. Vérification du fichier .env
-if [ ! -f "$APP_DIR/.env" ]; then
-    echo "⚠️ Aucun fichier .env trouvé. Copie depuis .env.example..."
-    cp .env.example "$APP_DIR/.env"
-    echo "❗ Veuillez éditer $APP_DIR/.env avec vos clés HelloAsso de production."
+# 4. Préparation du fichier .env
+if [ ! -f "$SCRIPT_DIR/.env" ]; then
+    echo "⚙️ Création du fichier .env à partir de .env.example..."
+    cp "$SCRIPT_DIR/.env.example" "$SCRIPT_DIR/.env"
 fi
 
-# 4. Initialisation du premier certificat Let's Encrypt si inexistant
-if [ ! -d "/var/lib/docker/volumes/unisson_certbot_etc/_data/live/$DOMAIN" ]; then
-    echo "🔒 Initialisation du certificat SSL Let's Encrypt..."
-    docker compose run --rm --entrypoint "\
-      certbot certonly --webroot -w /var/www/certbot \
-        --email $EMAIL \
-        -d $DOMAIN \
-        -d www.$DOMAIN \
-        -d education-solidaire.fr \
-        -d www.education-solidaire.fr \
-        -d education-solidaire.eu \
-        -d www.education-solidaire.eu \
-        --agree-tos --no-eff-email --force-renewal" certbot || true
-fi
+# 5. Build et lancement des conteneurs
+echo "🔨 Construction et lancement des services Docker..."
+sudo docker compose build --pull
+sudo docker compose up -d --remove-orphans
 
-# 5. Build et démarrage des conteneurs
-echo "📦 Construction et lancement des conteneurs Docker..."
-docker compose build --pull
-docker compose up -d --remove-orphans
+# 6. Initialisation SSL Let's Encrypt si le domaine est propagé
+echo "🔒 Vérification des certificats SSL..."
+sudo docker compose run --rm --entrypoint "\
+  certbot certonly --webroot -w /var/www/certbot \
+    --email $EMAIL \
+    -d $DOMAIN \
+    -d www.$DOMAIN \
+    -d education-solidaire.fr \
+    -d www.education-solidaire.fr \
+    -d education-solidaire.eu \
+    -d www.education-solidaire.eu \
+    --agree-tos --no-eff-email --keep-until-expiring" certbot || echo "ℹ️ Note: SSL initialisé ou en attente de propagation DNS."
 
-# 6. Vérification de santé du service
-echo "🩺 Vérification du statut des services..."
-sleep 5
-docker compose ps
+# 7. Redémarrage de Nginx pour recharger les configurations
+sudo docker compose restart nginx || true
 
 echo "========================================================"
-echo "✅ Déploiement terminé avec succès !"
-echo "🌐 URL Canonique : https://$DOMAIN"
+echo "✅ DÉPLOIEMENT TERMINÉ !"
+echo "🌐 Application accessible sur http://51.178.47.78 et https://$DOMAIN"
 echo "========================================================"
