@@ -32,16 +32,13 @@ if ! docker compose version &> /dev/null; then
     sudo apt-get update && sudo apt-get install -y docker-compose-plugin
 fi
 
-# 3. Libération du port 80/443 si un service hôte (Apache/Nginx) tourne déjà
-echo "🔍 Vérification de la disponibilité du port 80..."
+# 3. Libération du port 80/443 si un service hôte tourne
+echo "🔍 Vérification et libération des ports 80/443..."
 if systemctl is-active --quiet apache2 2>/dev/null; then
-    echo "⚠️ Apache2 actif sur le port 80. Arrêt et désactivation pour laisser la place à Docker Nginx..."
     sudo systemctl stop apache2 || true
     sudo systemctl disable apache2 || true
 fi
-
 if systemctl is-active --quiet nginx 2>/dev/null; then
-    echo "⚠️ Nginx hôte actif sur le port 80. Arrêt et désactivation pour laisser la place à Docker Nginx..."
     sudo systemctl stop nginx || true
     sudo systemctl disable nginx || true
 fi
@@ -51,32 +48,48 @@ mkdir -p "$SCRIPT_DIR/data"
 
 # 5. Préparation du fichier .env
 if [ ! -f "$SCRIPT_DIR/.env" ]; then
-    echo "⚙️ Création du fichier .env à partir de .env.example..."
+    echo "⚙️ Création du fichier .env..."
     cp "$SCRIPT_DIR/.env.example" "$SCRIPT_DIR/.env"
 fi
 
-# 6. Build et lancement des conteneurs
-echo "🔨 Construction et lancement des services Docker..."
+# 6. Création des volumes et certificats initiaux (Dummy Certs pour amorçage Nginx)
+echo "🔒 Initialisation des volumes de certificats..."
 sudo docker compose build --pull
+
+# Création des volumes Docker si inexistants
+sudo docker volume create educationsolidaire_certbot_etc > /dev/null 2>&1 || true
+sudo docker volume create educationsolidaire_certbot_var > /dev/null 2>&1 || true
+
+# Vérification si un certificat (réel ou dummy) existe déjà
+CERT_DIR="/var/lib/docker/volumes/educationsolidaire_certbot_etc/_data/live/$DOMAIN"
+if [ ! -d "$CERT_DIR" ]; then
+    echo "🔑 Création d'un certificat SSL temporaire pour amorcer Nginx..."
+    sudo mkdir -p "$CERT_DIR"
+    sudo openssl req -x509 -nodes -newkey rsa:2048 -days 1 \
+        -keyout "$CERT_DIR/privkey.pem" \
+        -out "$CERT_DIR/fullchain.pem" \
+        -subj "/CN=localhost" > /dev/null 2>&1 || true
+fi
+
+# 7. Démarrage des conteneurs
+echo "🔨 Démarrage des conteneurs Docker (App + Nginx)..."
 sudo docker compose up -d --remove-orphans
 
-# 7. Initialisation SSL Let's Encrypt si le domaine est propagé
-echo "🔒 Vérification des certificats SSL..."
+# 8. Obtention du certificat officiel Let's Encrypt
+echo "🌐 Demande de certificat SSL Let's Encrypt..."
 sudo docker compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     --email $EMAIL \
     -d $DOMAIN \
     -d www.$DOMAIN \
-    -d education-solidaire.fr \
-    -d www.education-solidaire.fr \
-    -d education-solidaire.eu \
-    -d www.education-solidaire.eu \
-    --agree-tos --no-eff-email --keep-until-expiring" certbot || echo "ℹ️ Note: SSL initialisé ou en attente de propagation DNS."
+    --agree-tos --no-eff-email --keep-until-expiring --expand" certbot || echo "ℹ️ Note: SSL principal initialisé ou en attente de propagation DNS."
 
-# 8. Redémarrage de Nginx pour recharger les configurations
-sudo docker compose restart nginx || true
+# 9. Rechargement de Nginx avec le nouveau certificat
+sudo docker compose exec nginx nginx -s reload || sudo docker compose restart nginx || true
 
 echo "========================================================"
 echo "✅ DÉPLOIEMENT TERMINÉ AVEC SUCCÈS !"
-echo "🌐 Application en ligne sur http://51.178.47.78 et https://$DOMAIN"
+echo "🌐 Votre site est en ligne sur :"
+echo "   👉 http://51.178.47.78"
+echo "   👉 https://$DOMAIN"
 echo "========================================================"
