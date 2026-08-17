@@ -7,7 +7,7 @@
 set -e
 
 DOMAIN="education-solidaire.org"
-EMAIL="contact@educationsolidaire.fr"
+EMAIL="contact@education-solidaire.org"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "$SCRIPT_DIR"

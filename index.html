@@ -1731,7 +1731,7 @@
                     <div><i class="fa-solid fa-id-card" style="color:var(--uni-lilac); width: 18px;"></i> SIREN : <strong>108 606 260</strong></div>
                     <div><i class="fa-solid fa-file-contract" style="color:var(--uni-lilac); width: 18px;"></i> RNA : <strong>W922023505</strong></div>
                     <div><i class="fa-solid fa-location-dot" style="color:var(--uni-lilac); width: 18px;"></i> 45, rue Henri Barbusse, 92230 Gennevilliers</div>
-                    <div style="margin-top: 0.3rem;"><i class="fa-solid fa-envelope" style="color:var(--uni-lilac); width: 18px;"></i> <a href="mailto:contact@educationsolidaire.fr" style="color: #fff; font-weight: 600; text-decoration: none;">contact@educationsolidaire.fr</a></div>
+                    <div style="margin-top: 0.3rem;"><i class="fa-solid fa-envelope" style="color:var(--uni-lilac); width: 18px;"></i> <a href="mailto:contact@education-solidaire.org" style="color: #fff; font-weight: 600; text-decoration: none;">contact@education-solidaire.org</a></div>
                 </div>
             </div>
             <div class="footer-col">
@@ -1895,9 +1895,9 @@
                 }
             } catch (err) {
                 // Fallback Mailto immédiat si coupure réseau
-                const subject = encodeURIComponent("[URGENCE 48H/15J] " + emergencyType + " - " + location);
+                const subject = encodeURIComponent("[URGENCE SOCIALE] " + emergencyType + " - " + location);
                 const body = encodeURIComponent("Signalement d'urgence reçu :\n\nDemandeur : " + name + "\nTéléphone : " + phone + "\nCommune : " + location + "\nType : " + emergencyType + "\n\nDétails :\n" + message);
-                window.location.href = "mailto:contact@educationsolidaire.fr?subject=" + subject + "&body=" + body;
+                window.location.href = "mailto:contact@education-solidaire.org?subject=" + subject + "&body=" + body;
                 showToast("Alerte d'urgence transmise via messagerie de secours.");
             } finally {
                 btn.disabled = false;
