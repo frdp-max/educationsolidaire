@@ -683,15 +683,34 @@
             color: var(--uni-text-dark);
         }
 
-        .form-group input, .form-group select, .form-group textarea {
-            padding: 0.8rem 0.9rem;
-            border: 1px solid #e2e8f0;
+        .form-group input, .form-group select {
+            padding: 0.85rem 1rem;
+            min-height: 48px;
+            border: 1.5px solid #e2e8f0;
             border-radius: var(--radius-sm);
             font-family: inherit;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--uni-text-dark);
             background-color: #fff;
             transition: var(--transition-smooth);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .form-group textarea {
+            padding: 0.95rem 1rem;
+            min-height: 140px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--uni-text-dark);
+            background-color: #fff;
+            transition: var(--transition-smooth);
+            width: 100%;
+            max-width: 100%;
+            resize: vertical;
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
@@ -1401,7 +1420,7 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#missions">Nos Actions</a></li>
-                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> Urgence 48h-15j</a></li>
+                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> Urgence & Mise à l'Abri</a></li>
                 <li><a href="#tarifs">Rejoindre / Adhérer</a></li>
                 <li><a href="#dons">Fonds d'Urgence</a></li>
                 <li><button onclick="openCheckoutModal('Adhésion & Soutien', 25, 'general')" class="btn-portal"><i class="fa-solid fa-shield-heart"></i> Adhérer en ligne</button></li>
@@ -1491,12 +1510,12 @@
             </div>
         </div>
 
-        <!-- PROTOCOLE D'URGENCE & PREMIER SECOURS SOCIAL (48h à 15j) -->
+        <!-- PROTOCOLE D'URGENCE & PREMIER SECOURS SOCIAL -->
         <div id="urgence" class="emergency-block">
             <div class="emergency-header">
                 <div class="emergency-info">
-                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Dispositif de Premier Secours Social : Mise à l'Abri (48h à 15j)</h3>
-                    <p>Mise à l'abri immédiate à l'hôtel avec prise en charge des repas pendant <strong>2 jours minimum</strong> pour apaiser la crise. Articulation rapide avec les services sociaux (CCAS, AP-HP, Cochin, Hôtel-Dieu...) et accompagnement bénévole <strong>jusqu'à 15 jours maximum</strong>.</p>
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Dispositif de Premier Secours Social : Mise à l'Abri d'Urgence</h3>
+                    <p>Mise à l'abri immédiate à l'hôtel avec prise en charge des repas pour apaiser la crise aiguë. Articulation rapide avec les services sociaux (CCAS, AP-HP, Cochin, Hôtel-Dieu...) et accompagnement personnalisé selon chaque situation.</p>
                     <div class="emergency-pills">
                         <span class="emergency-pill"><i class="fa-solid fa-check"></i> Hébergement hôtel sécurisé</span>
                         <span class="emergency-pill"><i class="fa-solid fa-check"></i> Repas de crise</span>
@@ -1524,7 +1543,7 @@
                         <label for="em_type">Type de situation de crise *</label>
                         <select id="em_type" required>
                             <option value="Rupture / Conflit familial critique">Rupture / Conflit familial critique</option>
-                            <option value="Besoin d'hébergement d'urgence (Mise à l'abri hôtel 48h-15j)">Besoin d'hébergement d'urgence (Mise à l'abri hôtel 48h-15j)</option>
+                            <option value="Besoin d'hébergement d'urgence (Mise à l'abri temporaire)">Besoin d'hébergement d'urgence (Mise à l'abri temporaire)</option>
                             <option value="Femme victime de violences intrafamiliales">Femme victime de violences intrafamiliales</option>
                             <option value="Jeune isolé en détresse">Jeune isolé en détresse</option>
                             <option value="Autre urgence sociale">Autre urgence sociale</option>
@@ -1537,7 +1556,7 @@
                 </div>
                 <div class="form-group" style="margin-bottom: 1.5rem;">
                     <label for="em_msg">Précisions sur la situation (Composition familiale, enfants en bas âge, urgence vitale) *</label>
-                    <textarea id="em_msg" rows="3" placeholder="Décrivez succinctement la situation, le nombre de personnes et les besoins immédiats..." required></textarea>
+                    <textarea id="em_msg" rows="5" placeholder="Décrivez la situation, le nombre de personnes concernées et les besoins immédiats pour nous permettre d'intervenir au plus vite..." required></textarea>
                 </div>
                 <div class="emergency-actions">
                     <button type="submit" id="btnSubmitEmergency" class="btn-emergency">
