@@ -32,21 +32,35 @@ if ! docker compose version &> /dev/null; then
     sudo apt-get update && sudo apt-get install -y docker-compose-plugin
 fi
 
-# 3. Préparation des répertoires de données
+# 3. Libération du port 80/443 si un service hôte (Apache/Nginx) tourne déjà
+echo "🔍 Vérification de la disponibilité du port 80..."
+if systemctl is-active --quiet apache2 2>/dev/null; then
+    echo "⚠️ Apache2 actif sur le port 80. Arrêt et désactivation pour laisser la place à Docker Nginx..."
+    sudo systemctl stop apache2 || true
+    sudo systemctl disable apache2 || true
+fi
+
+if systemctl is-active --quiet nginx 2>/dev/null; then
+    echo "⚠️ Nginx hôte actif sur le port 80. Arrêt et désactivation pour laisser la place à Docker Nginx..."
+    sudo systemctl stop nginx || true
+    sudo systemctl disable nginx || true
+fi
+
+# 4. Préparation des répertoires de données
 mkdir -p "$SCRIPT_DIR/data"
 
-# 4. Préparation du fichier .env
+# 5. Préparation du fichier .env
 if [ ! -f "$SCRIPT_DIR/.env" ]; then
     echo "⚙️ Création du fichier .env à partir de .env.example..."
     cp "$SCRIPT_DIR/.env.example" "$SCRIPT_DIR/.env"
 fi
 
-# 5. Build et lancement des conteneurs
+# 6. Build et lancement des conteneurs
 echo "🔨 Construction et lancement des services Docker..."
 sudo docker compose build --pull
 sudo docker compose up -d --remove-orphans
 
-# 6. Initialisation SSL Let's Encrypt si le domaine est propagé
+# 7. Initialisation SSL Let's Encrypt si le domaine est propagé
 echo "🔒 Vérification des certificats SSL..."
 sudo docker compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
@@ -59,10 +73,10 @@ sudo docker compose run --rm --entrypoint "\
     -d www.education-solidaire.eu \
     --agree-tos --no-eff-email --keep-until-expiring" certbot || echo "ℹ️ Note: SSL initialisé ou en attente de propagation DNS."
 
-# 7. Redémarrage de Nginx pour recharger les configurations
+# 8. Redémarrage de Nginx pour recharger les configurations
 sudo docker compose restart nginx || true
 
 echo "========================================================"
-echo "✅ DÉPLOIEMENT TERMINÉ !"
-echo "🌐 Application accessible sur http://51.178.47.78 et https://$DOMAIN"
+echo "✅ DÉPLOIEMENT TERMINÉ AVEC SUCCÈS !"
+echo "🌐 Application en ligne sur http://51.178.47.78 et https://$DOMAIN"
 echo "========================================================"
