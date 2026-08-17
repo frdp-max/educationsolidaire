@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité & RGPD | UNISSON — Association Éducation Solidaire</title>
+    <meta name="description" content="Politique de protection des données personnelles et RGPD de l'association EDUCATION SOLIDAIRE (UNISSON) - SIREN 108 606 260.">
+    <link rel="icon" type="image/png" href="/logo.png">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --uni-deep-purple: #350b52;
+            --uni-purple-mid: #6d28d9;
+            --uni-lilac: #a855f7;
+            --uni-lilac-light: #f3e8ff;
+            --uni-bg-light: #faf8fc;
+            --uni-text-dark: #1e112a;
+            --uni-text-muted: #645873;
+            --uni-alert: #e11d48;
+            --border-smooth: rgba(109, 40, 217, 0.08);
+            --shadow-card: 0 10px 25px -4px rgba(53, 11, 82, 0.06);
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-pill: 9999px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', 'Inter', sans-serif;
+            background-color: var(--uni-bg-light);
+            color: var(--uni-text-dark);
+            line-height: 1.7;
+        }
+        h1, h2, h3, h4, .brand-title { font-family: 'Montserrat', sans-serif; }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--uni-lilac-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.85rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .brand-logo-img { height: 48px; width: auto; object-fit: contain; }
+        .brand-title { font-size: 1.45rem; font-weight: 900; color: var(--uni-deep-purple); }
+        .brand-subtitle { font-size: 0.65rem; font-weight: 700; color: var(--uni-purple-mid); text-transform: uppercase; }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--uni-lilac-light);
+            color: var(--uni-purple-mid);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+        .btn-back:hover { background: var(--uni-purple-mid); color: #fff; }
+
+        .legal-hero {
+            background: linear-gradient(135deg, var(--uni-deep-purple) 0%, #4a1575 100%);
+            color: #ffffff;
+            padding: 4rem 2rem 5rem 2rem;
+            text-align: center;
+        }
+        .legal-hero h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 0.8rem; }
+        .legal-hero p { color: var(--uni-lilac-light); font-size: 1.05rem; }
+
+        .content-container {
+            max-width: 1000px;
+            margin: -3rem auto 6rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .legal-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-smooth);
+        }
+
+        .legal-section { margin-bottom: 2.5rem; }
+        .legal-section:last-child { margin-bottom: 0; }
+        .legal-section h2 {
+            color: var(--uni-deep-purple);
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid var(--uni-lilac-light);
+            padding-bottom: 0.5rem;
+        }
+        .legal-section p, .legal-section li {
+            color: var(--uni-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        .legal-section ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+
+        .alert-box {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-left: 4px solid var(--uni-alert);
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+            margin: 1rem 0;
+            color: #881337;
+            font-size: 0.92rem;
+        }
+
+        footer {
+            background-color: var(--uni-deep-purple);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.88rem;
+            border-top: 3px solid var(--uni-lilac);
+        }
+        footer a { color: var(--uni-lilac-light); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="brand-block">
+                <img src="/logo.png" alt="UNISSON Logo" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">UNISSON</span>
+                    <span class="brand-subtitle">Association Éducation Solidaire</span>
+                </div>
+            </a>
+            <a href="/" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Retour au site</a>
+        </div>
+    </header>
+
+    <div class="legal-hero">
+        <h1>Politique de Confidentialité & RGPD</h1>
+        <p>Engagement de protection de vos données personnelles et secret de l'aide sociale</p>
+    </div>
+
+    <main class="content-container">
+        <div class="legal-card">
+            
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-shield-cat"></i> 1. Préambule & Responsable du Traitement</h2>
+                <p>L'association <strong>EDUCATION SOLIDAIRE</strong> (UNISSON), immatriculée au SIREN sous le numéro <strong>108 606 260</strong> (RNA W922023505), s'engage à protéger la vie privée de ses usagers, bénéficiaires, adhérents et donateurs conformément au Règlement Général sur la Protection des Données (RGPD - Règlement UE 2016/679) et à la Loi Informatique et Libertés.</p>
+                <p><strong>Responsable du traitement :</strong> Association Éducation Solidaire, 45 rue Henri Barbusse, 92230 Gennevilliers — Email : <code>contact@educationsolidaire.fr</code>.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-database"></i> 2. Données Collectées & Finalités</h2>
+                <p>Nous collectons et traitons des données selon les cas d'usage stricts suivants :</p>
+                
+                <div class="alert-box">
+                    <strong><i class="fa-solid fa-lock"></i> Données relatives aux Signalements d'Urgence Sociale & Mise à l'Abri (48h-15j) :</strong><br>
+                    Les informations recueillies via le formulaire d'urgence (nom/anonymat, téléphone, commune, composition familiale, type de crise, violences intrafamiliales) sont <strong>strictement confidentielles</strong> et traitées sous le sceau du secret associatif et de l'assistance sociale. Elles sont exclusivement transmises à notre équipe d'astreinte et, le cas échéant, aux services sociaux d'urgence (CCAS, AP-HP, Samu Social).
+                </div>
+
+                <ul>
+                    <li><strong>Adhésions & Cotisations associatives :</strong> Prénom, nom, email, commune, code postal. Finalité : tenue du registre légal des membres, convocation aux Assemblées Générales, délivrance des attestations d'adhésion.</li>
+                    <li><strong>Dons & Soutien au Fonds d'Urgence :</strong> Informations de contact et montants. Finalité : émission des reçus de don et suivi comptable obligatoire.</li>
+                    <li><strong>Paiement sécurisé :</strong> Les données bancaires (numéro de carte, cryptogramme) sont directement et exclusivement traitées par la passerelle agréée <strong>HelloAsso</strong> et ne transitent jamais sur nos serveurs.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> 3. Durée de Conservation des Données</h2>
+                <ul>
+                    <li><strong>Dossiers d'urgence sociale & mise à l'abri :</strong> Conservés pendant la durée de la prise en charge (48h à 15 jours) puis archivés pour une durée maximale de 6 mois à des fins de statistiques anonymisées auprès des financeurs publics (Région, Département, CCAS), sauf obligation légale contraire.</li>
+                    <li><strong>Adhésions et cotisations :</strong> Conservées pendant la durée de l'adhésion augmentée de 3 ans.</li>
+                    <li><strong>Documents comptables & reçus de dons :</strong> Conservés pendant 10 ans (obligation légale du Code de commerce et Code général des impôts).</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-user-shield"></i> 4. Vos Droits Informatique & Libertés</h2>
+                <p>Conformément au RGPD, vous disposez des droits suivants sur vos données personnelles :</p>
+                <ul>
+                    <li>Droit d'accès et d'obtention d'une copie de vos données</li>
+                    <li>Droit de rectification de données inexactes ou incomplètes</li>
+                    <li>Droit à l'effacement (« droit à l'oubli »)</li>
+                    <li>Droit à la limitation du traitement et droit d'opposition</li>
+                </ul>
+                <p>Pour exercer l'un de ces droits, adressez votre demande accompagnée d'un justificatif d'identité par email à : <strong><a href="mailto:contact@educationsolidaire.fr" style="color: var(--uni-purple-mid);">contact@educationsolidaire.fr</a></strong> ou par courrier postal au siège de l'association (45 rue Henri Barbusse, 92230 Gennevilliers).</p>
+                <p>Vous disposez également du droit d'introduire une réclamation auprès de la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés - <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-cookie-bite"></i> 5. Cookies & Traceurs</h2>
+                <p>Le présent site n'utilise <strong>aucun cookie publicitaire</strong> ni traceur commercial tiers. Seuls des cookies strictement techniques nécessaires au fonctionnement de la session et de la sécurité du site peuvent être déposés.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 UNISSON — Association Éducation Solidaire (SIREN 108 606 260). Tous droits réservés.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="/">Accueil</a> • 
+            <a href="/mentions-legales">Mentions Légales</a> • 
+            <a href="/politique-confidentialite">Politique de Confidentialité</a> • 
+            <a href="/conditions-generales">Conditions Générales</a> • 
+            <a href="/statuts">Statuts de l'Association</a>
+        </p>
+    </footer>
+
+</body>
+</html>

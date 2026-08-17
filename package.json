@@ -1,0 +1,30 @@
+{
+  "name": "unisson-education-solidaire",
+  "version": "1.0.0",
+  "description": "Plateforme web officielle UNISSON — Association Éducation Solidaire (ESS / ESUS) avec intégration HelloAsso v5",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "unisson",
+    "education-solidaire",
+    "ess",
+    "esus",
+    "helloasso",
+    "mediation",
+    "urgence-sociale"
+  ],
+  "author": "UNISSON — Association Éducation Solidaire",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
+  }
+}

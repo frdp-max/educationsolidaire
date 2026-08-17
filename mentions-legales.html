@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales | UNISSON — Association Éducation Solidaire</title>
+    <meta name="description" content="Mentions légales de l'association EDUCATION SOLIDAIRE (UNISSON) - SIREN 108 606 260 - RNA W922023505 - 45 rue Henri Barbusse, 92230 Gennevilliers.">
+    <link rel="icon" type="image/png" href="/logo.png">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --uni-deep-purple: #350b52;
+            --uni-purple-mid: #6d28d9;
+            --uni-lilac: #a855f7;
+            --uni-lilac-light: #f3e8ff;
+            --uni-bg-light: #faf8fc;
+            --uni-text-dark: #1e112a;
+            --uni-text-muted: #645873;
+            --border-smooth: rgba(109, 40, 217, 0.08);
+            --shadow-card: 0 10px 25px -4px rgba(53, 11, 82, 0.06);
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-pill: 9999px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', 'Inter', sans-serif;
+            background-color: var(--uni-bg-light);
+            color: var(--uni-text-dark);
+            line-height: 1.7;
+        }
+        h1, h2, h3, h4, .brand-title { font-family: 'Montserrat', sans-serif; }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--uni-lilac-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.85rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .brand-logo-img { height: 48px; width: auto; object-fit: contain; }
+        .brand-title { font-size: 1.45rem; font-weight: 900; color: var(--uni-deep-purple); }
+        .brand-subtitle { font-size: 0.65rem; font-weight: 700; color: var(--uni-purple-mid); text-transform: uppercase; }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--uni-lilac-light);
+            color: var(--uni-purple-mid);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+        .btn-back:hover { background: var(--uni-purple-mid); color: #fff; }
+
+        .legal-hero {
+            background: linear-gradient(135deg, var(--uni-deep-purple) 0%, #4a1575 100%);
+            color: #ffffff;
+            padding: 4rem 2rem 5rem 2rem;
+            text-align: center;
+        }
+        .legal-hero h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 0.8rem; }
+        .legal-hero p { color: var(--uni-lilac-light); font-size: 1.05rem; }
+
+        .content-container {
+            max-width: 1000px;
+            margin: -3rem auto 6rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .legal-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-smooth);
+            margin-bottom: 2rem;
+        }
+
+        .legal-section { margin-bottom: 2.5rem; }
+        .legal-section:last-child { margin-bottom: 0; }
+        .legal-section h2 {
+            color: var(--uni-deep-purple);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid var(--uni-lilac-light);
+            padding-bottom: 0.5rem;
+        }
+        .legal-section p, .legal-section li {
+            color: var(--uni-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        .legal-section ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+        }
+        .info-table th, .info-table td {
+            padding: 0.8rem 1rem;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+        .info-table th {
+            background-color: var(--uni-lilac-light);
+            color: var(--uni-deep-purple);
+            width: 35%;
+            font-weight: 700;
+        }
+
+        footer {
+            background-color: var(--uni-deep-purple);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.88rem;
+            border-top: 3px solid var(--uni-lilac);
+        }
+        footer a { color: var(--uni-lilac-light); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="brand-block">
+                <img src="/logo.png" alt="UNISSON Logo" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">UNISSON</span>
+                    <span class="brand-subtitle">Association Éducation Solidaire</span>
+                </div>
+            </a>
+            <a href="/" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Retour au site</a>
+        </div>
+    </header>
+
+    <div class="legal-hero">
+        <h1>Mentions Légales</h1>
+        <p>Informations réglementaires et administratives conformes à la loi française</p>
+    </div>
+
+    <main class="content-container">
+        <div class="legal-card">
+            
+            <!-- Section 1 : Éditeur du site -->
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-building-columns"></i> 1. Éditeur de la Plateforme</h2>
+                <p>Le présent site web accessible à l'adresse <strong>https://education-solidaire.org</strong> (ainsi que les alias <code>education-solidaire.fr</code> et <code>education-solidaire.eu</code>) est édité par l'association régie par la loi du 1er juillet 1901 :</p>
+                
+                <table class="info-table">
+                    <tr>
+                        <th>Dénomination officielle</th>
+                        <td><strong>EDUCATION SOLIDAIRE</strong> (Marque d'usage : <em>UNISSON — Association Éducation Solidaire</em>)</td>
+                    </tr>
+                    <tr>
+                        <th>Forme juridique</th>
+                        <td>Association déclarée (Loi du 1er juillet 1901)</td>
+                    </tr>
+                    <tr>
+                        <th>Numéro SIREN</th>
+                        <td><strong>108 606 260</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Numéro SIRET (Siège)</th>
+                        <td><strong>108 606 260 00017</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Numéro RNA</th>
+                        <td><strong>W922023505</strong> (Déclarée en Préfecture le 11/07/2026)</td>
+                    </tr>
+                    <tr>
+                        <th>Code APE / NAF</th>
+                        <td><strong>88.99B</strong> — Action sociale sans hébergement n.c.a.</td>
+                    </tr>
+                    <tr>
+                        <th>TVA Intracommunautaire</th>
+                        <td>FR60108606260</td>
+                    </tr>
+                    <tr>
+                        <th>Siège Social</th>
+                        <td><strong>45, rue Henri Barbusse, 92230 Gennevilliers, France</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Courriel de contact</th>
+                        <td><a href="mailto:contact@educationsolidaire.fr">contact@educationsolidaire.fr</a></td>
+                    </tr>
+                    <tr>
+                        <th>Cadre ESS & Agrément</th>
+                        <td>Structure de l'Économie Sociale et Solidaire (ESS) conforme aux critères de l'agrément ESUS (Loi n° 2014-856 du 31 juillet 2014)</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 2 : Direction de la publication -->
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-user-tie"></i> 2. Direction de la Publication & Bureau</h2>
+                <p><strong>Directeur de la publication :</strong> Sabri TOUJANI, en qualité de Président de l'Association.</p>
+                <p><strong>Secrétaire & Trésorier :</strong> Tahar BENHALIMA.</p>
+                <p><strong>Gouvernance démocratique :</strong> "1 membre = 1 voix", gestion désintéressée, lucrativité strictement limitée et réserves impartageables.</p>
+            </section>
+
+            <!-- Section 3 : Hébergement -->
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-server"></i> 3. Hébergement de la Plateforme</h2>
+                <p>Le site est hébergé sur les infrastructures sécurisées de :</p>
+                <p>
+                    <strong>OVHcloud SAS</strong><br>
+                    2, rue Kellermann, 59100 Roubaix, France<br>
+                    Téléphone : 1007 (France) / +33 9 72 10 10 07<br>
+                    Site web : <a href="https://www.ovhcloud.com" target="_blank" rel="noopener">www.ovhcloud.com</a>
+                </p>
+            </section>
+
+            <!-- Section 4 : Passerelle de Paiement Sécurisé -->
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-shield-halved"></i> 4. Encaissement des Adhésions & Dons</h2>
+                <p>Les transactions financières, cotisations associatives et dons libres sont traités via l'intermédiaire de paiement agréé pour le secteur associatif :</p>
+                <p>
+                    <strong>HelloAsso SAS</strong><br>
+                    Société par actions simplifiée, immatriculée au RCS de Bordeaux sous le numéro 510 918 644<br>
+                    Siège : 34, rue de Cracovie, 33520 Bruges, France<br>
+                    Paiements 100% chiffrés SSL 256 bits, conforme aux normes PCI-DSS et agréé DSP2.
+                </p>
+            </section>
+
+            <!-- Section 5 : Propriété intellectuelle -->
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-copyright"></i> 5. Propriété Intellectuelle</h2>
+                <p>L'ensemble des éléments figurant sur le présent site (logo UNISSON, textes, chartes graphiques, photographies, icônes) est protégé par le Code de la propriété intellectuelle. Toute reproduction, représentation ou diffusion, en tout ou partie, sans l'autorisation expresse et écrite de l'Association Éducation Solidaire est strictement interdite.</p>
+            </section>
+
+            <!-- Section 6 : Données & Registre Pappers -->
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-link"></i> 6. Transparence & Registres Publics</h2>
+                <p>Les données administratives officielles de l'association sont consultables publiquement sur le registre des entreprises :</p>
+                <p>
+                    👉 <a href="https://www.pappers.fr/entreprise/education-solidaire-108606260" target="_blank" rel="noopener" style="color: var(--uni-purple-mid); font-weight: 700;">Consulter la fiche officielle sur Pappers.fr (SIREN 108 606 260) <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 UNISSON — Association Éducation Solidaire (SIREN 108 606 260). Tous droits réservés.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="/">Accueil</a> • 
+            <a href="/mentions-legales">Mentions Légales</a> • 
+            <a href="/politique-confidentialite">Politique de Confidentialité</a> • 
+            <a href="/conditions-generales">Conditions Générales</a> • 
+            <a href="/statuts">Statuts de l'Association</a>
+        </p>
+    </footer>
+
+</body>
+</html>

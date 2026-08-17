@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNISSON — Association Éducation Solidaire | ESS & ESUS Île-de-France</title>
+    
+    <!-- Meta SEO & Social Sharing -->
+    <meta name="description" content="UNISSON - Association Éducation Solidaire (ESS & ESUS) : Médiation intrafamiliale et scolaire, permanence d'écoute 7j/7 et premier secours social d'urgence (mise à l'abri hôtel 48h à 15j) en Île-de-France.">
+    <meta name="keywords" content="UNISSON, éducation solidaire, médiation familiale, urgence sociale, mise à l'abri, 48h 15 jours, violences intrafamiliales, Gennevilliers, Île-de-France, ESS, ESUS, HelloAsso">
+    <meta property="og:title" content="UNISSON — Association Éducation Solidaire">
+    <meta property="og:description" content="Agir à l'unisson pour les familles, les jeunes vulnérables et la solidarité d'urgence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://education-solidaire.org">
+    
+    <!-- Favicon & App Icon -->
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="apple-touch-icon" href="/logo.png">
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+           PALETTE CHROMATIQUE ADOUCIE & TOKENS DE DESIGN UNISSON
+           ========================================================================== */
+        :root {
+            --uni-deep-purple: #350b52;    /* Violet profond raffiné (structure) */
+            --uni-purple-mid: #6d28d9;     /* Violet moderne doux (actions principales) */
+            --uni-purple-light: #8b5cf6;   /* Violet clair doux (accents & interactions) */
+            --uni-lilac: #a855f7;          /* Lilas pastel lumineux (highlights) */
+            --uni-lilac-light: #f3e8ff;    /* Lavande douce (badges / surfaces secondaires) */
+            --uni-lilac-tint: #faf5ff;     /* Teinte lavande ultra-douce */
+            --uni-bg-light: #faf8fc;       /* Fond soyeux doux et reposant */
+            --uni-surface-card: #ffffff;   /* Surface des cartes */
+            
+            --uni-text-dark: #1e112a;      /* Texte principal contrasté mais adouci */
+            --uni-text-muted: #645873;     /* Texte secondaire équilibré */
+            --uni-text-light: #948b9f;     /* Texte discret */
+            
+            --uni-alert: #e11d48;          /* Teinte d'urgence adoucie (rose rubis / corail chaud) */
+            --uni-alert-light: #fff1f2;    /* Fond alerte doux */
+            --uni-alert-border: #fecdd3;   /* Bordure alerte subtile */
+            --uni-alert-text: #9f1239;     /* Texte alerte lisible */
+            
+            --uni-success: #16a34a;        /* Vert succès */
+            --uni-success-light: #f0fdf4;  /* Fond succès doux */
+            
+            --border-smooth: rgba(109, 40, 217, 0.08);
+            --border-hover: rgba(168, 85, 247, 0.3);
+            
+            --shadow-subtle: 0 4px 16px -2px rgba(53, 11, 82, 0.04);
+            --shadow-card: 0 10px 25px -4px rgba(53, 11, 82, 0.06), 0 4px 10px -2px rgba(168, 85, 247, 0.03);
+            --shadow-wow: 0 18px 32px -6px rgba(53, 11, 82, 0.09), 0 8px 16px -4px rgba(168, 85, 247, 0.05);
+            
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-pill: 9999px;
+            
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--uni-bg-light);
+            color: var(--uni-text-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, .brand-title, .stat-number, .tarif-price {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Halo d'ambiance doux */
+        .ambient-glow {
+            position: absolute;
+            width: 750px;
+            height: 750px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.09) 0%, rgba(250, 248, 252, 0) 70%);
+            top: -150px;
+            right: -150px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .ambient-glow-left {
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(109, 40, 217, 0.06) 0%, rgba(250, 248, 252, 0) 70%);
+            top: 700px;
+            left: -180px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- BANDEAU D'ÉTAT URL (Retour de paiement) --- */
+        .status-banner {
+            display: none;
+            padding: 0.85rem 2rem;
+            text-align: center;
+            font-size: 0.92rem;
+            font-weight: 600;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            animation: slideDown 0.3s ease;
+        }
+        .status-banner.success {
+            display: flex;
+            background-color: var(--uni-success-light);
+            color: var(--uni-success);
+            border-bottom: 1px solid #bbf7d0;
+        }
+        .status-banner.canceled {
+            display: flex;
+            background-color: #fffbeb;
+            color: #b45309;
+            border-bottom: 1px solid #fde68a;
+        }
+
+        /* --- TOP BAR ÉLÉGANTE --- */
+        .top-bar {
+            background-color: var(--uni-deep-purple);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 0.65rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.02em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.88);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .top-bar a:hover {
+            color: var(--uni-lilac);
+        }
+
+        .badge-hotline {
+            background: var(--uni-alert);
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* --- NAVIGATION STICKY GLASSMORPHISM --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--uni-lilac-light);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.85rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            filter: drop-shadow(0 2px 5px rgba(53, 11, 82, 0.12));
+            transition: transform 0.3s ease;
+        }
+
+        .brand-block:hover .brand-logo-img {
+            transform: scale(1.04);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--uni-deep-purple);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .brand-subtitle {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--uni-purple-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+            margin-top: 0.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--uni-text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0.4rem 0;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--uni-purple-mid), var(--uni-lilac));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--uni-purple-mid);
+        }
+
+        .btn-portal {
+            background: linear-gradient(135deg, var(--uni-purple-mid), var(--uni-deep-purple));
+            color: #ffffff !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700 !important;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(109, 40, 217, 0.22);
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            text-decoration: none;
+        }
+
+        .btn-portal:hover {
+            opacity: 0.96;
+            box-shadow: 0 8px 20px rgba(109, 40, 217, 0.32);
+            transform: translateY(-2px);
+        }
+
+        .burger-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--uni-deep-purple);
+            cursor: pointer;
+            padding: 0.4rem;
+        }
+
+        /* --- HERO BANNER ATMOSPHÉRIQUE ADOUCI --- */
+        .hero {
+            background: radial-gradient(circle at 85% 30%, rgba(53, 11, 82, 0.92) 0%, rgba(30, 17, 42, 0.96) 100%), 
+                        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: #ffffff;
+            padding: 6.5rem 2rem 10.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: linear-gradient(to top, var(--uni-bg-light), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge-ess {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            color: var(--uni-lilac-light);
+            padding: 0.45rem 1.1rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.6rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: 3.3rem;
+            font-weight: 800;
+            max-width: 900px;
+            line-height: 1.16;
+            margin-bottom: 1.4rem;
+            letter-spacing: -0.03em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero p {
+            font-size: 1.18rem;
+            max-width: 720px;
+            margin-bottom: 2.6rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- STATS BAR HARMONIEUSE --- */
+        .stats-bar {
+            max-width: 1200px;
+            margin: -6.5rem auto 3.5rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-wow);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            padding: 2.2rem;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--uni-deep-purple);
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--uni-text-muted);
+            font-weight: 600;
+            margin-top: 0.35rem;
+        }
+
+        /* --- KIOSQUE D'ACCÈS RAPIDE --- */
+        .quick-access {
+            max-width: 1200px;
+            margin: 2rem auto 5rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .access-card {
+            background: var(--uni-surface-card);
+            padding: 2.6rem 2.2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-smooth);
+            text-decoration: none;
+            color: var(--uni-text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .access-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--uni-purple-mid), var(--uni-lilac));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .access-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-wow);
+            border-color: var(--border-hover);
+        }
+
+        .access-card:hover::before {
+            opacity: 1;
+        }
+
+        .access-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: var(--uni-lilac-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--uni-purple-mid);
+            font-size: 1.65rem;
+            margin-bottom: 1.4rem;
+            transition: var(--transition-smooth);
+        }
+
+        .access-card:hover .access-icon {
+            background: var(--uni-deep-purple);
+            color: #ffffff;
+            transform: scale(1.06);
+        }
+
+        .access-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--uni-deep-purple);
+        }
+
+        .access-card p {
+            font-size: 0.9rem;
+            color: var(--uni-text-muted);
+            font-weight: 400;
+            line-height: 1.55;
+        }
+
+        /* --- CONTENEUR GLOBAL ET EN-TÊTES --- */
+        .container {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--uni-purple-mid);
+            font-weight: 700;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--uni-deep-purple);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.22;
+        }
+
+        .section-header p {
+            color: var(--uni-text-muted);
+            font-size: 1.05rem;
+            margin-top: 0.5rem;
+            max-width: 780px;
+        }
+
+        /* --- GRILLE SERVICES --- */
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.2rem;
+        }
+
+        .card-service {
+            background: var(--uni-surface-card);
+            border: 1px solid var(--border-smooth);
+            border-radius: var(--radius-lg);
+            padding: 2.6rem 2.2rem;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .card-service:hover {
+            box-shadow: var(--shadow-card);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .card-service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            background: var(--uni-lilac-light);
+            color: var(--uni-purple-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .card-service h3 {
+            font-size: 1.25rem;
+            color: var(--uni-deep-purple);
+            margin-bottom: 0.85rem;
+            font-weight: 700;
+        }
+
+        .card-service p {
+            color: var(--uni-text-muted);
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* --- PROTOCOLE D'URGENCE SOCIALE ADOUCI --- */
+        .emergency-block {
+            background: linear-gradient(135deg, #fff7f7 0%, #ffffff 100%);
+            border: 1px solid var(--uni-alert-border);
+            border-left: 5px solid var(--uni-alert);
+            border-radius: var(--radius-lg);
+            padding: 3.2rem;
+            margin: 6rem 0;
+            box-shadow: 0 10px 25px -4px rgba(225, 29, 72, 0.06);
+            position: relative;
+        }
+
+        .emergency-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+        }
+
+        .emergency-info h3 {
+            color: var(--uni-alert-text);
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .emergency-info p {
+            color: #881337;
+            font-size: 0.98rem;
+            max-width: 850px;
+            line-height: 1.6;
+        }
+
+        .emergency-pills {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.1rem;
+        }
+
+        .emergency-pill {
+            background: #ffe4e6;
+            color: var(--uni-alert-text);
+            padding: 0.35rem 0.85rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Formulaire d'urgence */
+        .emergency-form {
+            background: #ffffff;
+            border: 1px solid var(--uni-alert-border);
+            border-radius: var(--radius-md);
+            padding: 2.2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.03);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.4rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--uni-text-dark);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 0.8rem 0.9rem;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: var(--uni-text-dark);
+            background-color: #fff;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--uni-purple-mid);
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+        }
+
+        .btn-emergency {
+            background-color: var(--uni-alert);
+            color: #ffffff;
+            padding: 0.9rem 2rem;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.25);
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .btn-emergency:hover {
+            background-color: #be123c;
+            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.35);
+            transform: translateY(-2px);
+        }
+
+        /* --- GRILLE DES TARIFS ADHÉSIONS (4 FORMULES) --- */
+        .grid-tarifs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .card-tarif {
+            background: var(--uni-surface-card);
+            border: 1px solid var(--border-smooth);
+            border-radius: var(--radius-lg);
+            padding: 2.8rem 2.2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .card-tarif.highlight {
+            border: 2px solid var(--uni-lilac);
+            box-shadow: var(--shadow-card);
+            transform: scale(1.02);
+            background: linear-gradient(180deg, #ffffff 0%, var(--uni-lilac-tint) 100%);
+        }
+
+        .card-tarif:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-card);
+        }
+        .card-tarif.highlight:hover {
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: var(--shadow-wow);
+        }
+
+        .tarif-badge {
+            background: var(--uni-lilac-light);
+            color: var(--uni-purple-mid);
+            padding: 0.35rem 0.9rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 0 auto 1.2rem auto;
+            letter-spacing: 0.05em;
+        }
+
+        .card-tarif h4 {
+            font-size: 1.25rem;
+            color: var(--uni-deep-purple);
+            font-weight: 700;
+        }
+
+        .tarif-price {
+            font-size: 2.7rem;
+            font-weight: 800;
+            color: var(--uni-deep-purple);
+            margin: 1.1rem 0;
+            letter-spacing: -0.03em;
+        }
+
+        .tarif-price span {
+            font-size: 0.92rem;
+            color: var(--uni-text-muted);
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        .tarif-desc {
+            color: var(--uni-text-muted);
+            font-size: 0.88rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            min-height: 75px;
+            line-height: 1.55;
+        }
+
+        .btn-tarif {
+            display: block;
+            width: 100%;
+            background-color: var(--uni-deep-purple);
+            color: #ffffff;
+            padding: 0.85rem;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .card-tarif.highlight .btn-tarif {
+            background: linear-gradient(135deg, var(--uni-purple-mid), var(--uni-deep-purple));
+            box-shadow: 0 4px 14px rgba(109, 40, 217, 0.22);
+        }
+
+        .btn-tarif:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTION DONS & FONDS D'URGENCE --- */
+        .donation-section {
+            background: linear-gradient(135deg, #f7f0fc 0%, #faf5ff 100%);
+            border: 1px solid var(--uni-lilac-light);
+            border-radius: var(--radius-lg);
+            padding: 3.5rem 3rem;
+            margin: 5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .donation-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .donation-info h3 {
+            font-size: 1.8rem;
+            color: var(--uni-deep-purple);
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+
+        .donation-info p {
+            color: var(--uni-text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .donation-widget {
+            flex: 1;
+            min-width: 320px;
+            background: #ffffff;
+            padding: 2.2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(109, 40, 217, 0.06);
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.6rem;
+            margin: 1.2rem 0;
+        }
+
+        .btn-amount {
+            padding: 0.75rem 0.5rem;
+            border: 1.5px solid var(--uni-lilac-light);
+            background: #ffffff;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            color: var(--uni-purple-mid);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-amount.active, .btn-amount:hover {
+            background: var(--uni-deep-purple);
+            color: #ffffff;
+            border-color: var(--uni-deep-purple);
+        }
+
+        /* --- MODALE DE PAIEMENT CHECKOUT HELLOASSO --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 17, 42, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            max-width: 580px;
+            width: 100%;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: var(--shadow-wow);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--uni-text-light);
+            cursor: pointer;
+            padding: 0.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--uni-alert);
+        }
+
+        .modal-content h3 {
+            color: var(--uni-deep-purple);
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-content p {
+            color: var(--uni-text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1.8rem;
+        }
+
+        /* --- PIED DE PAGE (FOOTER) HARMONIEUX & GRID 4 COLONNES PARFAITE --- */
+        footer {
+            background: linear-gradient(180deg, #2b0844 0%, #1a042c 100%);
+            color: #ffffff;
+            padding: 5rem 2rem 3rem 2rem;
+            margin-top: 8rem;
+            font-size: 0.92rem;
+            border-top: 3px solid var(--uni-purple-light);
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1.05fr 1.15fr;
+            gap: 2.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3.5rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.05rem;
+            margin-bottom: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #f3e8ff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.85rem;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.78);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            max-width: 1240px;
+            margin: 2.2rem auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.82rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--uni-deep-purple);
+            color: #ffffff;
+            padding: 1.1rem 1.6rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-wow);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            gap: 0.9rem;
+            border-left: 4px solid var(--uni-lilac);
+            max-width: 420px;
+        }
+
+        .toast.show {
+            display: flex;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(80px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE POLISH --- */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero { padding: 5rem 2rem 8rem 2rem; }
+            .stats-bar { margin-top: -4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                padding: 1.8rem;
+                border-bottom: 2px solid var(--uni-lilac-light);
+                box-shadow: var(--shadow-card);
+                gap: 1.2rem;
+            }
+            .nav-links.mobile-open {
+                display: flex;
+            }
+            .burger-menu { display: block; }
+            .top-bar { display: none; }
+            .emergency-block { padding: 2rem 1.5rem; }
+            .donation-section { padding: 2rem 1.5rem; }
+            .card-tarif.highlight { transform: scale(1); }
+            .card-tarif.highlight:hover { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-left"></div>
+
+    <!-- URL STATUS BANNER (Retour de transaction HelloAsso) -->
+    <div id="statusBanner" class="status-banner">
+        <i id="statusIcon" class="fa-solid fa-circle-check"></i>
+        <span id="statusMessage"></span>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check" style="color: var(--uni-lilac); font-size: 1.3rem;"></i>
+        <span id="toast-message">Opération effectuée avec succès.</span>
+    </div>
+
+    <!-- TOP BAR D'ACCÈS RAPIDE -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <i class="fa-solid fa-hand-holding-heart" style="color: var(--uni-lilac);"></i>
+            <span><strong>UNISSON</strong> — Association d'intérêt général & d'utilité sociale (Île-de-France)</span>
+            <span class="badge-hotline">Permanence 7j/7</span>
+        </div>
+        <div>
+            <a href="#missions"><i class="fa-solid fa-layer-group"></i> Missions</a>
+            <a href="#tarifs"><i class="fa-solid fa-id-card"></i> Adhésions & Bénévolat</a>
+            <a href="#urgence" style="color: #fda4af;"><i class="fa-solid fa-phone-volume"></i> Urgence Sociale</a>
+        </div>
+    </div>
+
+    <!-- STICKY NAVBAR GLASSMORPHISM -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-block" title="Accueil UNISSON">
+                <img src="/logo.png" alt="UNISSON — Association Éducation Solidaire" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">UNISSON</span>
+                    <span class="brand-subtitle">Association Éducation Solidaire</span>
+                </div>
+            </a>
+
+            <button class="burger-menu" id="burgerBtn" aria-label="Ouvrir le menu de navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#missions">Nos Actions</a></li>
+                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> Urgence 48h-15j</a></li>
+                <li><a href="#tarifs">Rejoindre / Adhérer</a></li>
+                <li><a href="#dons">Fonds d'Urgence</a></li>
+                <li><button onclick="openCheckoutModal('Adhésion & Soutien', 25, 'general')" class="btn-portal"><i class="fa-solid fa-shield-heart"></i> Adhérer en ligne</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge-ess"><i class="fa-solid fa-shield-heart"></i> Structure ESS & Agrément ESUS (Loi 2014)</div>
+            <h1>Agir à l'unisson pour les familles et la jeunesse vulnérable.</h1>
+            <p>Médiation familiale de proximité, écoute active 7j/7 et premier secours social d'urgence (mise à l'abri temporaire et repas de 48h à 15 jours) en relais avec les services sociaux (CCAS, AP-HP, Cochin, Hôtel-Dieu).</p>
+            <div class="hero-cta-group">
+                <a href="#tarifs" class="btn-portal" style="padding: 0.95rem 2.4rem; font-size: 1rem;"><i class="fa-solid fa-user-plus"></i> Adhérer ou Devenir Bénévole</a>
+                <a href="#urgence" class="btn-emergency" style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);"><i class="fa-solid fa-phone-volume"></i> Permanence d'urgence 7j/7</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAROMÈTRE D'IMPACT STATS -->
+    <div class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">48h à 15j</span>
+                <span class="stat-label">Mise à l'abri d'urgence & repas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">7j / 7</span>
+                <span class="stat-label">Permanence d'écoute & accueil</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2H / 2F</span>
+                <span class="stat-label">Équipe mixte d'intervention terrain</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Non-lucratif & réserves impartageables</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- KIOSQUE D'ACCÈS RAPIDE -->
+    <div class="quick-access">
+        <a href="#missions" class="access-card">
+            <div class="access-icon"><i class="fa-solid fa-people-arrows"></i></div>
+            <h3>Médiation Éducative</h3>
+            <p>Désamorcer les crises intrafamiliales et prévenir le décrochage scolaire.</p>
+        </a>
+        <a href="#urgence" class="access-card">
+            <div class="access-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-hotel"></i></div>
+            <h3>Premier Secours Social</h3>
+            <p>Mise à l'abri d'urgence 48h à 15 jours avec repas et suivi social personnalisé.</p>
+        </a>
+        <a href="#tarifs" class="access-card">
+            <div class="access-icon"><i class="fa-solid fa-user-group"></i></div>
+            <h3>Équipe Terrain Mixte</h3>
+            <p>Astreintes bénévoles paritaires & adhésions solidaires à partir de 5 €/an.</p>
+        </a>
+    </div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        
+        <!-- SECTION MISSIONS D'UTILITÉ SOCIALE -->
+        <div id="missions" class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-hand-holding-heart"></i> Article 3 des Statuts</span>
+            <h2>Missions d'Utilité Sociale & Leviers d'Action</h2>
+            <p>UNISSON intervient à l'échelle métropolitaine et régionale pour protéger les personnes vulnérables, restaurer le dialogue familial et garantir un premier secours en situation critique.</p>
+        </div>
+        
+        <div class="grid-services">
+            <div class="card-service">
+                <div class="card-service-icon"><i class="fa-solid fa-comments"></i></div>
+                <h3>Médiation Intrafamiliale & Scolaire</h3>
+                <p>Accompagnement bienveillant des parents et des enfants pour désamorcer les conflits, rétablir la communication au sein du foyer et prévenir les ruptures scolaires ou éducatives.</p>
+            </div>
+            <div class="card-service">
+                <div class="card-service-icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>Permanence 7j/7 & Écoute Active</h3>
+                <p>Ligne d'écoute et accueil inconditionnel 7 jours sur 7. Soutien moral immédiat, orientation personnalisée et articulation directe avec les services médico-sociaux et hospitaliers.</p>
+            </div>
+            <div class="card-service">
+                <div class="card-service-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Femmes Victimes de Violences</h3>
+                <p>Prise en charge protectrice, mise en sécurité immédiate et accompagnement vers les réseaux spécialisés, associations partenaires et structures médicales et juridiques adaptées.</p>
+            </div>
+        </div>
+
+        <!-- PROTOCOLE D'URGENCE & PREMIER SECOURS SOCIAL (48h à 15j) -->
+        <div id="urgence" class="emergency-block">
+            <div class="emergency-header">
+                <div class="emergency-info">
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Dispositif de Premier Secours Social : Mise à l'Abri (48h à 15j)</h3>
+                    <p>Mise à l'abri immédiate à l'hôtel avec prise en charge des repas pendant <strong>2 jours minimum</strong> pour apaiser la crise. Articulation rapide avec les services sociaux (CCAS, AP-HP, Cochin, Hôtel-Dieu...) et accompagnement bénévole <strong>jusqu'à 15 jours maximum</strong>.</p>
+                    <div class="emergency-pills">
+                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Hébergement hôtel sécurisé</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Repas de crise</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Équipe d'astreinte 2H/2F</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Relais CCAS & AP-HP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulaire opérationnel d'urgence connecté -->
+            <form class="emergency-form" id="emergencyForm" onsubmit="handleEmergencySubmit(event)">
+                <h4 style="color: var(--uni-alert-text); margin-bottom: 1.2rem; font-size: 1.18rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-paper-plane"></i> Formulaire de Signalement & Demande de Prise en Charge d'Urgence
+                </h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="em_name">Nom & Prénom (ou Anonyme) *</label>
+                        <input type="text" id="em_name" placeholder="Ex: M. Dupont" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="em_phone">Numéro de téléphone d'urgence *</label>
+                        <input type="tel" id="em_phone" placeholder="06 00 00 00 00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="em_type">Type de situation de crise *</label>
+                        <select id="em_type" required>
+                            <option value="Rupture / Conflit familial critique">Rupture / Conflit familial critique</option>
+                            <option value="Besoin d'hébergement d'urgence (Mise à l'abri hôtel 48h-15j)">Besoin d'hébergement d'urgence (Mise à l'abri hôtel 48h-15j)</option>
+                            <option value="Femme victime de violences intrafamiliales">Femme victime de violences intrafamiliales</option>
+                            <option value="Jeune isolé en détresse">Jeune isolé en détresse</option>
+                            <option value="Autre urgence sociale">Autre urgence sociale</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="em_loc">Commune / Département (Île-de-France) *</label>
+                        <input type="text" id="em_loc" placeholder="Ex: Gennevilliers, 92 / Paris..." required>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="em_msg">Précisions sur la situation (Composition familiale, enfants en bas âge, urgence vitale) *</label>
+                    <textarea id="em_msg" rows="3" placeholder="Décrivez succinctement la situation, le nombre de personnes et les besoins immédiats..." required></textarea>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                    <button type="submit" id="btnSubmitEmergency" class="btn-emergency">
+                        <i class="fa-solid fa-bell"></i> Transmettre l'alerte à l'astreinte UNISSON
+                    </button>
+                    <a href="tel:0600000000" class="btn-portal" style="background: var(--uni-deep-purple); font-size: 0.9rem;">
+                        <i class="fa-solid fa-phone"></i> Ligne directe permanence
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- TARIFS & ADHÉSIONS (4 FORMULES) -->
+        <div id="tarifs" class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-coins"></i> Cotisations Annuelles</span>
+            <h2>Grille des Adhésions & Engagement Solidaire</h2>
+            <p>Participez à la gouvernance démocratique ("1 membre = 1 voix"), rejoignez nos équipes de terrain ou soutenez financièrement les prises en charge de crise.</p>
+        </div>
+
+        <div class="grid-tarifs">
+            <!-- Formule 1 -->
+            <div class="card-tarif">
+                <div>
+                    <span class="tarif-badge">Sur le terrain</span>
+                    <h4>Bénévole Actif</h4>
+                    <div class="tarif-price">10 € <span>/ an</span></div>
+                    <p class="tarif-desc">Équipe d'intervention mixte (astreintes terrain paritaires), assurance responsabilité civile incluse, droit de vote à l'AG.</p>
+                </div>
+                <button onclick="openCheckoutModal('Bénévole Actif - Équipe Mixte', 10, 'benevole')" class="btn-tarif">
+                    <i class="fa-solid fa-user-check"></i> Rejoindre l'équipe
+                </button>
+            </div>
+
+            <!-- Formule 2 -->
+            <div class="card-tarif">
+                <div>
+                    <span class="tarif-badge">Accessibilité</span>
+                    <h4>Cotisation Solidaire</h4>
+                    <div class="tarif-price">5 € <span>/ an</span></div>
+                    <p class="tarif-desc">Accès universel et inconditionnel aux permanences d'écoute, ateliers et soutien éducatif pour personnes et jeunes à faibles revenus.</p>
+                </div>
+                <button onclick="openCheckoutModal('Cotisation Solidaire', 5, 'solidaire')" class="btn-tarif">
+                    <i class="fa-solid fa-heart"></i> Adhérer solidairement
+                </button>
+            </div>
+            
+            <!-- Formule 3 (Highlight) -->
+            <div class="card-tarif highlight">
+                <div>
+                    <span class="tarif-badge" style="background: var(--uni-purple-mid); color: #ffffff;">Formule Recommandée</span>
+                    <h4>Pass Famille / Duo</h4>
+                    <div class="tarif-price">25 € <span>/ an</span></div>
+                    <p class="tarif-desc">Couverture complète pour l'ensemble du foyer familial. Accès prioritaire aux cycles de médiation et aux sorties éducatives.</p>
+                </div>
+                <button onclick="openCheckoutModal('Pass Famille / Duo', 25, 'famille')" class="btn-tarif">
+                    <i class="fa-solid fa-star"></i> Choisir le Pass Famille
+                </button>
+            </div>
+            
+            <!-- Formule 4 -->
+            <div class="card-tarif">
+                <div>
+                    <span class="tarif-badge">Fonds d'Urgence</span>
+                    <h4>Membre Bienfaiteur</h4>
+                    <div class="tarif-price">50 € <span>/ an</span></div>
+                    <p class="tarif-desc">Finance directement 1 nuitée d'hôtel de secours et les repas de crise pour une famille ou une personne en détresse aiguë.</p>
+                </div>
+                <button onclick="openCheckoutModal('Membre Bienfaiteur - Fonds d\'Urgence', 50, 'bienfaiteur')" class="btn-tarif">
+                    <i class="fa-solid fa-shield-heart"></i> Devenir Bienfaiteur
+                </button>
+            </div>
+        </div>
+
+        <!-- SECTION DONS & FONDS D'URGENCE LIBRE -->
+        <div id="dons" class="donation-section">
+            <div class="donation-info">
+                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar"></i> Don Libre ou Récurrent</span>
+                <h3>Abondement du Fonds de Premier Secours Social</h3>
+                <p>Chaque don est intégralement affecté aux frais d'hébergement d'urgence (hôtels partenaires) et aux paniers repas pour les familles et femmes mises à l'abri (48h à 15j).</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                    <i class="fa-solid fa-lock" style="color: var(--uni-purple-mid); font-size: 1.3rem;"></i>
+                    <span style="font-size: 0.88rem; color: var(--uni-text-muted);">Paiement 100% sécurisé via HelloAsso • Déduction fiscale ESS</span>
+                </div>
+            </div>
+
+            <div class="donation-widget">
+                <h4 style="color: var(--uni-deep-purple); font-size: 1.15rem; margin-bottom: 0.5rem;">Montant du don libre</h4>
+                <div class="donation-amounts">
+                    <button class="btn-amount" onclick="selectDonationAmount(15, this)">15 €</button>
+                    <button class="btn-amount active" onclick="selectDonationAmount(30, this)">30 €</button>
+                    <button class="btn-amount" onclick="selectDonationAmount(60, this)">60 €</button>
+                    <button class="btn-amount" onclick="selectDonationAmount(100, this)">100 €</button>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.2rem;">
+                    <label for="customDonation">Ou montant personnalisé (€)</label>
+                    <input type="number" id="customDonation" value="30" min="1" oninput="handleCustomAmount(this.value)">
+                </div>
+                <button onclick="triggerDonationCheckout()" class="btn-portal" style="width: 100%; justify-content: center; font-size: 1rem;">
+                    <i class="fa-solid fa-heart"></i> Faire ce don au Fonds d'Urgence
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODALE CHECKOUT / HELLOASSO -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="modalTitle">Formule d'Adhésion</h3>
+            <p id="modalSubtitle">Cotisation annuelle associative sécurisée via HelloAsso</p>
+            
+            <form id="membershipForm" onsubmit="handleMembershipSubmit(event)">
+                <input type="hidden" id="mem_formula_type" value="general">
+                <input type="hidden" id="mem_raw_amount" value="25">
+                
+                <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <label for="mem_firstname">Prénom *</label>
+                        <input type="text" id="mem_firstname" placeholder="Ex: Jean" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mem_lastname">Nom *</label>
+                        <input type="text" id="mem_lastname" placeholder="Ex: Dupont" required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label for="mem_email">Adresse e-mail (reçu & attestation) *</label>
+                    <input type="email" id="mem_email" placeholder="votre.email@exemple.fr" required>
+                </div>
+
+                <div class="form-grid" style="grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <label for="mem_city">Ville (Optionnel)</label>
+                        <input type="text" id="mem_city" placeholder="Ex: Gennevilliers">
+                    </div>
+                    <div class="form-group">
+                        <label for="mem_zip">Code Postal</label>
+                        <input type="text" id="mem_zip" placeholder="92230">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Montant à régler</label>
+                    <input type="text" id="mem_amount_display" readonly style="background: #f8fafc; font-weight: 800; font-size: 1.1rem; color: var(--uni-deep-purple);">
+                </div>
+
+                <button type="submit" id="btnSubmitCheckout" class="btn-portal" style="width: 100%; justify-content: center; padding: 0.95rem;">
+                    <i class="fa-solid fa-lock"></i> Procéder au règlement sécurisé HelloAsso
+                </button>
+                <div style="text-align: center; margin-top: 0.8rem; font-size: 0.8rem; color: var(--uni-text-muted);">
+                    <i class="fa-solid fa-shield"></i> Chiffrement SSL 256 bits • Sans frais bancaires pour l'association
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER INSTITUTIONNEL -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;">
+                    <img src="/logo.png" alt="UNISSON Logo" style="height: 48px; width: auto; background: #ffffff; padding: 4px 6px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    <div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; line-height: 1;">UNISSON</div>
+                        <div style="font-size: 0.65rem; font-weight: 700; color: var(--uni-lilac); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem;">Association Éducation Solidaire</div>
+                    </div>
+                </div>
+                <p style="color: rgba(255,255,255,0.85); margin-bottom: 1rem; font-weight: 300; font-size: 0.88rem; line-height: 1.6;">Régie par la loi du 1er juillet 1901. Structure de l'Économie Sociale et Solidaire (ESS) et agrément ESUS (Loi 2014).</p>
+                <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.84rem; color: rgba(255,255,255,0.85);">
+                    <div><i class="fa-solid fa-id-card" style="color:var(--uni-lilac); width: 18px;"></i> SIREN : <strong>108 606 260</strong></div>
+                    <div><i class="fa-solid fa-file-contract" style="color:var(--uni-lilac); width: 18px;"></i> RNA : <strong>W922023505</strong></div>
+                    <div><i class="fa-solid fa-location-dot" style="color:var(--uni-lilac); width: 18px;"></i> 45, rue Henri Barbusse, 92230 Gennevilliers</div>
+                    <div style="margin-top: 0.3rem;"><i class="fa-solid fa-envelope" style="color:var(--uni-lilac); width: 18px;"></i> <a href="mailto:contact@educationsolidaire.fr" style="color: #fff; font-weight: 600; text-decoration: none;">contact@educationsolidaire.fr</a></div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services & Actions</h4>
+                <ul>
+                    <li><a href="#missions">Médiation intrafamiliale et scolaire</a></li>
+                    <li><a href="#urgence">Premier Secours Social & Mise à l'abri (48h-15j)</a></li>
+                    <li><a href="#urgence">Protection des femmes victimes de violences</a></li>
+                    <li><a href="#tarifs">Astreintes terrain paritaires (Équipe 2H/2F)</a></li>
+                    <li><a href="#dons">Fonds d'Urgence Sociale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Gouvernance & Réseau</h4>
+                <ul>
+                    <li><a href="/statuts">Bureau : Sabri TOUJANI & Tahar BENHALIMA</a></li>
+                    <li><a href="#">Services Sociaux Hospitaliers (AP-HP, Cochin, Hôtel-Dieu)</a></li>
+                    <li><a href="#">Collectivités Territoriales & CCAS</a></li>
+                    <li><a href="#">Conseils Départementaux & Région Île-de-France</a></li>
+                    <li><a href="https://www.helloasso.com" target="_blank" rel="noopener">HelloAsso — Passerelle agréée</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Cadre Légal & Registres</h4>
+                <ul>
+                    <li><a href="/mentions-legales"><i class="fa-solid fa-scale-balanced" style="color: var(--uni-lilac);"></i> Mentions Légales</a></li>
+                    <li><a href="/politique-confidentialite"><i class="fa-solid fa-user-shield" style="color: var(--uni-lilac);"></i> Politique de Confidentialité & RGPD</a></li>
+                    <li><a href="/conditions-generales"><i class="fa-solid fa-file-lines" style="color: var(--uni-lilac);"></i> Conditions Générales (CGA)</a></li>
+                    <li><a href="/statuts"><i class="fa-solid fa-building-columns" style="color: var(--uni-lilac);"></i> Statuts & Agrément ESUS</a></li>
+                    <li><a href="https://www.pappers.fr/entreprise/education-solidaire-108606260" target="_blank" rel="noopener" style="color: #f3e8ff; font-weight: 600;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Fiche Légale Pappers (108 606 260)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UNISSON — Association Éducation Solidaire (SIREN 108 606 260 • RNA W922023505). Tous droits réservés.</p>
+            <p>Gouvernance démocratique "1 membre = 1 voix" • Lucrativité limitée & Réserves impartageables</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT OPÉRATIONNEL & INTÉGRATION API -->
+    <script>
+        // Menu Mobile Toggle
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navLinks = document.getElementById('navLinks');
+        burgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-open');
+        });
+
+        // Gestion des paramètres de retour HelloAsso dans l'URL
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const checkoutStatus = urlParams.get('checkout');
+            const banner = document.getElementById('statusBanner');
+            const statusMsg = document.getElementById('statusMessage');
+            const statusIcon = document.getElementById('statusIcon');
+
+            if (checkoutStatus === 'success') {
+                banner.className = 'status-banner success';
+                statusIcon.className = 'fa-solid fa-circle-check';
+                statusMsg.innerText = 'Merci pour votre soutien ! Votre adhésion ou don HelloAsso a été validé avec succès.';
+                showToast('Votre règlement HelloAsso a bien été confirmé.');
+            } else if (checkoutStatus === 'canceled') {
+                banner.className = 'status-banner canceled';
+                statusIcon.className = 'fa-solid fa-triangle-exclamation';
+                statusMsg.innerText = 'Le règlement HelloAsso a été interrompu. Vous pouvez réessayer à tout moment.';
+            } else if (checkoutStatus === 'error') {
+                banner.className = 'status-banner canceled';
+                statusIcon.className = 'fa-solid fa-circle-xmark';
+                statusMsg.innerText = 'Une erreur est survenue lors du paiement. Veuillez renouveler votre démarche.';
+            }
+        });
+
+        // Helper Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        // Modale d'adhésion & Checkout
+        let currentCheckoutFormula = 'general';
+        let currentCheckoutAmount = 25;
+
+        function openCheckoutModal(title, priceInEuros, formulaType = 'general') {
+            currentCheckoutFormula = formulaType;
+            currentCheckoutAmount = priceInEuros;
+
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an';
+            document.getElementById('mem_formula_type').value = formulaType;
+            document.getElementById('mem_raw_amount').value = priceInEuros;
+            document.getElementById('mem_amount_display').value = priceInEuros + ' € (Règlement sécurisé HelloAsso)';
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('checkoutModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Gestion du widget Don Libre
+        let selectedDonationAmount = 30;
+
+        function selectDonationAmount(amount, btnElement) {
+            selectedDonationAmount = amount;
+            document.getElementById('customDonation').value = amount;
+            document.querySelectorAll('.btn-amount').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+        }
+
+        function handleCustomAmount(val) {
+            const parsed = parseFloat(val);
+            if (parsed > 0) {
+                selectedDonationAmount = parsed;
+                document.querySelectorAll('.btn-amount').forEach(b => b.classList.remove('active'));
+            }
+        }
+
+        function triggerDonationCheckout() {
+            openCheckoutModal('Fonds de Premier Secours Social', selectedDonationAmount, 'donation');
+        }
+
+        // Soumission Formulaire d'urgence (Connecté à /api/emergency/alert)
+        async function handleEmergencySubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmitEmergency');
+            const originalText = btn.innerHTML;
+
+            const name = document.getElementById('em_name').value;
+            const phone = document.getElementById('em_phone').value;
+            const emergencyType = document.getElementById('em_type').value;
+            const location = document.getElementById('em_loc').value;
+            const message = document.getElementById('em_msg').value;
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission immédiate...';
+
+            try {
+                const response = await fetch('/api/emergency/alert', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone, emergencyType, location, message }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    showToast('🚨 Alerte transmise (Réf: ' + data.alertId + '). L\'astreinte prend en charge votre demande.');
+                    document.getElementById('emergencyForm').reset();
+                } else {
+                    throw new Error(data.error || 'Erreur serveur');
+                }
+            } catch (err) {
+                // Fallback Mailto immédiat si coupure réseau
+                const subject = encodeURIComponent("[URGENCE 48H/15J] " + emergencyType + " - " + location);
+                const body = encodeURIComponent("Signalement d'urgence reçu :\n\nDemandeur : " + name + "\nTéléphone : " + phone + "\nCommune : " + location + "\nType : " + emergencyType + "\n\nDétails :\n" + message);
+                window.location.href = "mailto:contact@educationsolidaire.fr?subject=" + subject + "&body=" + body;
+                showToast("Alerte d'urgence transmise via messagerie de secours.");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+
+        // Soumission Adhésion / Checkout HelloAsso
+        async function handleMembershipSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmitCheckout');
+            const originalText = btn.innerHTML;
+
+            const firstName = document.getElementById('mem_firstname').value;
+            const lastName = document.getElementById('mem_lastname').value;
+            const email = document.getElementById('mem_email').value;
+            const city = document.getElementById('mem_city').value;
+            const zipCode = document.getElementById('mem_zip').value;
+            const formula = document.getElementById('modalTitle').innerText;
+            const amount = parseFloat(document.getElementById('mem_raw_amount').value);
+            const isDonation = document.getElementById('mem_formula_type').value === 'donation';
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Connexion sécurisée HelloAsso...';
+
+            try {
+                const response = await fetch('/api/helloasso/checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount,
+                        title: formula,
+                        name: `${firstName} ${lastName}`,
+                        email,
+                        city,
+                        zipCode,
+                        isDonation,
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.redirectUrl) {
+                    showToast('Redirection vers la passerelle sécurisée HelloAsso...');
+                    setTimeout(() => {
+                        window.location.href = data.redirectUrl;
+                    }, 800);
+                } else {
+                    throw new Error(data.error || 'Erreur initialisation');
+                }
+            } catch (err) {
+                console.warn('Fallback redirection directe:', err);
+                showToast('Redirection vers la page de campagne associative HelloAsso...');
+                setTimeout(() => {
+                    window.open('https://www.helloasso.com', '_blank');
+                    closeModal();
+                }, 1000);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+    </script>
+</body>
+</html>
