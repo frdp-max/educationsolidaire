@@ -84,6 +84,13 @@ sudo docker compose run --rm --entrypoint "\
     -d www.$DOMAIN \
     --agree-tos --no-eff-email --force-renewal" certbot || echo "ℹ️ Note: SSL généré ou attente DNS."
 
+# 8b. Synchronisation des chemins de certificats si Certbot a créé le dossier -0001
+sudo docker compose run --rm --entrypoint "sh -c '\
+  if [ -d /etc/letsencrypt/live/education-solidaire.org-0001 ]; then \
+    rm -rf /etc/letsencrypt/live/education-solidaire.org && \
+    cp -r /etc/letsencrypt/live/education-solidaire.org-0001 /etc/letsencrypt/live/education-solidaire.org; \
+  fi'" certbot > /dev/null 2>&1 || true
+
 # 9. Rechargement immédiat de Nginx
 echo "🔄 Rechargement de Nginx avec les certificats certifiés..."
 sudo docker compose restart nginx
