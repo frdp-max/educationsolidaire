@@ -73,7 +73,7 @@ fi
 echo "🔨 Démarrage des conteneurs Docker (App + Nginx)..."
 sudo docker compose up -d --remove-orphans
 
-# 8. Obtention / conservation du certificat Let's Encrypt (Mode non-interactif et anti-rate-limit)
+# 8. Obtention / conservation du certificat Let's Encrypt
 echo "🌐 Vérification du certificat officiel Let's Encrypt SSL..."
 sudo docker compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
@@ -82,12 +82,18 @@ sudo docker compose run --rm --entrypoint "\
     -d www.$DOMAIN \
     --agree-tos --no-eff-email --keep-until-expiring --non-interactive" certbot || echo "ℹ️ Note: Certificat officiel actif déjà présent."
 
-# 8b. Synchronisation des fichiers PEM réels vers le dossier lu par Nginx
-sudo docker compose run --rm --entrypoint "sh -c '\
-  if [ -d /etc/letsencrypt/live/education-solidaire.org-0001 ]; then \
-    mkdir -p /etc/letsencrypt/live/education-solidaire.org && \
-    cp -L /etc/letsencrypt/live/education-solidaire.org-0001/*.pem /etc/letsencrypt/live/education-solidaire.org/ 2>/dev/null || true; \
-  fi'" certbot > /dev/null 2>&1 || true
+# 8b. Synchronisation automatique du certificat Let's Encrypt authentique
+sudo docker compose run --rm --entrypoint "sh -c '
+  mkdir -p /etc/letsencrypt/live/education-solidaire.org
+  for f in \$(find /etc/letsencrypt/archive/ -name \"fullchain*.pem\" 2>/dev/null); do
+    if openssl x509 -in \$f -noout -issuer 2>/dev/null | grep -iq \"Let\"; then
+      cp -f \$f /etc/letsencrypt/live/education-solidaire.org/fullchain.pem
+      KEY_FILE=\$(echo \$f | sed \"s/fullchain/privkey/\")
+      cp -f \$KEY_FILE /etc/letsencrypt/live/education-solidaire.org/privkey.pem
+    fi
+  done
+  chmod 644 /etc/letsencrypt/live/education-solidaire.org/*.pem 2>/dev/null || true
+'" certbot > /dev/null 2>&1 || true
 
 # 9. Rechargement immédiat de Nginx
 echo "🔄 Rechargement de Nginx avec les certificats certifiés..."
