@@ -9,7 +9,8 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const ALERTS_FILE = path.join(__dirname, '../data/emergency_alerts.json');
+const ALERTS_FILE = process.env.EMERGENCY_ALERTS_FILE
+  || path.join(__dirname, '../data/emergency_alerts.json');
 
 // Assurer l'existence du dossier data
 async function ensureDataDir() {

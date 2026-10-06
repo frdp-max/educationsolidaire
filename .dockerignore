@@ -1,0 +1,19 @@
+# Ne jamais embarquer de secrets, de données personnelles ni de documents internes dans l'image
+.env
+.env.*
+data/
+node_modules/
+.git/
+.gitignore
+.claude/
+test/
+temp_dir/
+*.log
+*.docx
+~$*
+UNISSON_Feuille_de_route_operationnelle.*
+README.md
+CLAUDE.md
+deploy.sh
+docker-compose.yml
+nginx/

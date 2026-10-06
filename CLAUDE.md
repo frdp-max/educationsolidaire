@@ -42,9 +42,12 @@
 ├── docker-compose.yml           # Définition des services conteneurisés (app, nginx, certbot)
 ├── Dockerfile                   # Build de l'application Node.js
 ├── server/
-│   ├── index.js                 # Serveur Express, middlewares de sécurité et routes
+│   ├── index.js                 # Point d'entrée (dotenv + démarrage du serveur)
+│   ├── app.js                   # App Express : CSP, routes API, liste blanche des fichiers publics (PUBLIC_FILES)
+│   ├── validation.js            # Validation des entrées (urgence, checkout en euros → centimes), comparaison sûre
 │   ├── helloasso.js             # Client API HelloAsso v5 (auth token + checkout)
 │   └── emergency.js             # Gestionnaire des signalements et alertes d'urgence
+├── test/                        # Tests node:test (validation, routes, fichiers non exposés)
 └── package.json                 # Dépendances et scripts npm
 ```
 
@@ -94,7 +97,8 @@ git pull && bash deploy.sh
 ## 5. Règles & Bonnes Pratiques pour Claude Code
 
 1. **Sécurité stricte** : Ne jamais commiter de secrets, tokens ou clés privées dans git. Utiliser exclusivement les variables d'environnement (`.env`).
-2. **Politique de Sécurité du Contenu (CSP)** : Toute nouvelle ressource externe (script, CDN, iframe) doit être déclarée dans la configuration `helmet` de `server/index.js`.
+2. **Politique de Sécurité du Contenu (CSP)** : Toute nouvelle ressource externe (script, CDN, iframe) doit être déclarée dans la configuration `helmet` de `server/app.js`.
+   **Fichiers publics** : seuls les fichiers listés dans `PUBLIC_FILES` (`server/app.js`) sont servis. Tout nouvel asset public doit y être ajouté.
 3. **Rétrocompatibilité des routes** : Conserver impérativement les routes d'alias `/mentions-legales`, `/politique-confidentialite`, `/conditions-generales`, `/statuts`, `/flyer-a3`, `/flyer-a5`.
 4. **Précision juridique et éthique** :
    - Mentionner systématiquement les informations légales exactes (SIREN 108 606 260, RNA W922023505, art. 200 CGI pour la déduction 66%).
