@@ -122,3 +122,48 @@ test('la CSP autorise les gestionnaires inline du site (onclick)', async () => {
   assert.match(csp, /script-src-attr 'unsafe-inline'/);
   assert.doesNotMatch(csp, /img-src[^;]*http:/);
 });
+
+test('webhook HelloAsso : secret dans l\'URL (compte association)', async () => {
+  process.env.HELLOASSO_WEBHOOK_SECRET = 'secret-webhook-de-test';
+  try {
+    const payload = { eventType: 'Form', data: { id: 1 } };
+    assert.equal((await post('/api/helloasso/webhook', payload)).status, 401);
+    assert.equal((await post('/api/helloasso/webhook?secret=mauvais', payload)).status, 401);
+    assert.equal((await post('/api/helloasso/webhook?secret=secret-webhook-de-test', payload)).status, 200);
+  } finally {
+    delete process.env.HELLOASSO_WEBHOOK_SECRET;
+  }
+});
+
+test('webhook HelloAsso : signature HMAC x-ha-signature (compte partenaire)', async () => {
+  const { createHmac } = await import('crypto');
+  process.env.HELLOASSO_WEBHOOK_SIGNATURE_KEY = 'cle-signature-de-test';
+  try {
+    const body = JSON.stringify({ eventType: 'Form', data: { id: 2 } });
+    const sign = (b) => createHmac('sha256', 'cle-signature-de-test').update(b).digest('hex');
+    const send = (signature, b = body) => fetch(`${base}/api/helloasso/webhook`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...(signature ? { 'x-ha-signature': signature } : {}) },
+      body: b,
+    });
+
+    assert.equal((await send(null)).status, 401);
+    assert.equal((await send('00'.repeat(32))).status, 401);
+    // Corps modifié après signature
+    assert.equal((await send(sign(body), body.replace('2', '3'))).status, 401);
+    assert.equal((await send(sign(body))).status, 200);
+  } finally {
+    delete process.env.HELLOASSO_WEBHOOK_SIGNATURE_KEY;
+  }
+});
+
+test('webhook HelloAsso : sans secret configuré, acquitté (compatibilité)', async () => {
+  const originalWarn = console.warn;
+  console.warn = () => {};
+  try {
+    const res = await post('/api/helloasso/webhook', { eventType: 'Payment', data: { id: 123 } });
+    assert.equal(res.status, 200);
+  } finally {
+    console.warn = originalWarn;
+  }
+});

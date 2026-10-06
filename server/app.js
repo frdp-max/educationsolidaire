@@ -10,7 +10,7 @@ import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { createCheckoutIntent } from './helloasso.js';
+import { createCheckoutIntent, verifyWebhookSignature, fetchNotifiedResource } from './helloasso.js';
 import { saveEmergencyAlert, getEmergencyAlerts } from './emergency.js';
 import { validateEmergencyAlert, validateCheckout, safeCompare } from './validation.js';
 
@@ -74,10 +74,18 @@ app.use(helmet({
 
 // L'API n'est appelée que par le site lui-même : CORS restreint à l'origine officielle
 app.use(cors({ origin: process.env.PUBLIC_URL || 'https://education-solidaire.org' }));
-app.use(express.json({ limit: '20kb' }));
+app.use(express.json({
+  limit: '20kb',
+  // Corps brut conservé pour vérifier la signature HMAC des webhooks HelloAsso
+  verify: (req, res, buf) => {
+    if (req.originalUrl.startsWith('/api/helloasso/webhook')) req.rawBody = buf;
+  },
+}));
 app.use(express.urlencoded({ extended: false, limit: '20kb' }));
+// Journal d'accès au format combined, sans le secret éventuel de l'URL du webhook
+morgan.token('safe-url', (req) => (req.originalUrl || req.url).replace(/([?&](?:secret|token)=)[^&]*/gi, '$1***'));
 if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('combined'));
+  app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :safe-url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
 }
 
 /* -------------------------------------------------------------
@@ -151,17 +159,66 @@ app.post('/api/helloasso/checkout', async (req, res) => {
 });
 
 /**
+ * Authentifie une notification HelloAsso.
+ * 1. Comptes partenaires : signature HMAC (en-tête x-ha-signature, HELLOASSO_WEBHOOK_SIGNATURE_KEY)
+ * 2. Associations : secret dans l'URL déclarée chez HelloAsso (?secret=…, HELLOASSO_WEBHOOK_SECRET)
+ * Sans aucune des deux variables, la notification est acceptée (compatibilité) mais jamais crue sur parole :
+ * le paiement est toujours relu auprès de l'API HelloAsso.
+ */
+function authenticateHelloAssoWebhook(req) {
+  const signatureKey = process.env.HELLOASSO_WEBHOOK_SIGNATURE_KEY;
+  if (signatureKey) {
+    return verifyWebhookSignature(req.rawBody, req.get('x-ha-signature'), signatureKey);
+  }
+  const secret = process.env.HELLOASSO_WEBHOOK_SECRET;
+  if (secret) {
+    return safeCompare(req.query.secret, secret);
+  }
+  return true;
+}
+
+/**
+ * Relit le paiement ou la commande notifiés auprès de l'API HelloAsso et journalise le résultat.
+ */
+async function confirmHelloAssoEvent(eventType, data) {
+  if (!process.env.HELLOASSO_CLIENT_ID || !process.env.HELLOASSO_CLIENT_SECRET) {
+    console.warn(`[HelloAsso Webhook] ${eventType} ${data.id} non vérifié : clés API HelloAsso absentes.`);
+    return null;
+  }
+  try {
+    const resource = await fetchNotifiedResource(eventType, data.id);
+    const amount = eventType === 'Payment' ? resource.amount : resource.amount?.total;
+    const state = eventType === 'Payment' ? resource.state : (resource.payments || []).map((p) => p.state).join(',');
+    console.log(`[HelloAsso Webhook] ${eventType} ${data.id} confirmé par l'API : ${(amount ?? 0) / 100} €, état ${state || 'n/a'}.`);
+    return resource;
+  } catch (error) {
+    console.error(`[HelloAsso Webhook] ${eventType} ${data.id} introuvable via l'API, notification ignorée :`, error.message);
+    return null;
+  }
+}
+
+/**
  * Webhook HelloAsso pour écouter les paiements et adhésions confirmées
  */
 app.post('/api/helloasso/webhook', (req, res) => {
+  if (!authenticateHelloAssoWebhook(req)) {
+    console.warn(`[HelloAsso Webhook] Notification rejetée (authentification invalide) depuis ${req.ip}.`);
+    return res.status(401).json({ error: 'Notification non authentifiée.' });
+  }
+
   const event = req.body || {};
   const eventType = event.eventType || event.type;
+  const id = event.data?.id;
 
   // Pas de journalisation du contenu complet : il contient les données personnelles des payeurs
-  console.log(`[HelloAsso Webhook] Événement reçu : ${eventType || 'inconnu'} (id: ${event.data?.id ?? 'n/a'})`);
+  console.log(`[HelloAsso Webhook] Événement reçu : ${eventType || 'inconnu'} (id: ${id ?? 'n/a'})`);
 
-  // Répondre 200 OK pour acquitter le webhook
+  // Acquittement immédiat (HelloAsso relance tant qu'il ne reçoit pas de 200), vérification ensuite
   res.status(200).json({ received: true });
+
+  if ((eventType === 'Order' || eventType === 'Payment') && /^\d{1,20}$/.test(String(id ?? ''))) {
+    confirmHelloAssoEvent(eventType, event.data);
+  }
 });
 
 /**

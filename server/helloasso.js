@@ -3,6 +3,8 @@
  * Service d'intégration API HelloAsso v5 (OAuth2 Client Credentials)
  */
 
+import crypto from 'crypto';
+
 let cachedToken = null;
 let tokenExpiresAt = 0;
 
@@ -169,4 +171,41 @@ export async function getCheckoutIntentStatus(checkoutIntentId) {
   }
 
   return await response.json();
+}
+
+/**
+ * Vérifie la signature HMAC-SHA256 d'une notification HelloAsso (en-tête x-ha-signature).
+ * Fonctionnalité réservée aux comptes partenaires HelloAsso.
+ * @param {Buffer|string} rawBody - Corps brut de la requête
+ * @param {string} signature - Valeur de l'en-tête x-ha-signature (hex)
+ * @param {string} signatureKey - Clé fournie par HelloAsso à la configuration de l'URL
+ */
+export function verifyWebhookSignature(rawBody, signature, signatureKey) {
+  if (!rawBody || typeof signature !== 'string' || !signatureKey) return false;
+  const expected = crypto.createHmac('sha256', signatureKey).update(rawBody).digest('hex');
+  const provided = signature.trim().toLowerCase();
+  if (provided.length !== expected.length) return false;
+  return crypto.timingSafeEqual(Buffer.from(provided), Buffer.from(expected));
+}
+
+/**
+ * Relit auprès de l'API HelloAsso l'objet annoncé par une notification,
+ * pour ne jamais se fier au seul contenu du webhook.
+ * @param {'Payment'|'Order'} eventType
+ * @param {number|string} id
+ */
+export async function fetchNotifiedResource(eventType, id) {
+  const safeId = encodeURIComponent(String(id));
+  const resource = eventType === 'Payment' ? 'payments' : 'orders';
+  const token = await getAccessToken();
+
+  const response = await fetch(`${getHelloAssoBaseUrl()}/v5/${resource}/${safeId}`, {
+    headers: { 'Authorization': `Bearer ${token}` },
+    signal: AbortSignal.timeout(10000),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Lecture ${resource}/${safeId} impossible (${response.status})`);
+  }
+  return response.json();
 }

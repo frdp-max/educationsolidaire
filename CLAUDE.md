@@ -45,8 +45,9 @@
 │   ├── index.js                 # Point d'entrée (dotenv + démarrage du serveur)
 │   ├── app.js                   # App Express : CSP, routes API, liste blanche des fichiers publics (PUBLIC_FILES)
 │   ├── validation.js            # Validation des entrées (urgence, checkout en euros → centimes), comparaison sûre
-│   ├── helloasso.js             # Client API HelloAsso v5 (auth token + checkout)
-│   └── emergency.js             # Gestionnaire des signalements et alertes d'urgence
+│   ├── helloasso.js             # Client API HelloAsso v5 (auth token, checkout, signature & relecture des webhooks)
+│   ├── emergency.js             # Gestionnaire des signalements et alertes d'urgence
+│   └── notify.js                # Notifications d'astreinte : email Brevo + webhook Discord/Slack
 ├── test/                        # Tests node:test (validation, routes, fichiers non exposés)
 └── package.json                 # Dépendances et scripts npm
 ```

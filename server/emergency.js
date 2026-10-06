@@ -7,6 +7,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import { notifyEmergency } from './notify.js';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ALERTS_FILE = process.env.EMERGENCY_ALERTS_FILE
@@ -65,20 +67,8 @@ export async function saveEmergencyAlert(alertData) {
     console.error('Erreur écriture fichier alertes:', err);
   }
 
-  // Si un webhook d'astreinte (Discord, Slack ou SMS relay) est configuré
-  if (process.env.EMERGENCY_WEBHOOK_URL) {
-    try {
-      await fetch(process.env.EMERGENCY_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content: `🚨 **ALERTE URGENCE UNISSON (${alertEntry.id})**\n- **Type:** ${alertEntry.emergencyType}\n- **Demandeur:** ${alertEntry.name} (${alertEntry.phone})\n- **Commune:** ${alertEntry.location}\n- **Détails:** ${alertEntry.message}`,
-        }),
-      });
-    } catch (e) {
-      console.error('Erreur notification webhook astreinte:', e.message);
-    }
-  }
+  // Notification de l'astreinte (Brevo + webhook) sans retarder la réponse à la personne
+  notifyEmergency(alertEntry);
 
   return alertEntry;
 }
