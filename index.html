@@ -848,6 +848,462 @@
             transform: translateY(-2px);
         }
 
+        /* --- BANDEAU D'APPEL AU DON PERMANENT (STICKY TOP BAR) --- */
+        .sticky-urgent-bar {
+            background: linear-gradient(135deg, #2a0845 0%, #43006d 50%, #6b1d9e 100%);
+            color: #ffffff;
+            padding: 0.65rem 1.5rem;
+            position: relative;
+            z-index: 1001;
+            border-bottom: 1px solid rgba(233, 213, 255, 0.25);
+            box-shadow: 0 4px 15px rgba(42, 8, 69, 0.25);
+        }
+
+        .urgent-bar-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .urgent-bar-text {
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .urgent-pulse-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            border-radius: 50%;
+            background-color: #ff4d4f;
+            box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.7);
+            animation: pulse-red 1.8s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(255, 77, 79, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 77, 79, 0);
+            }
+        }
+
+        .urgent-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-urgent-donate {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            color: #ffffff;
+            padding: 0.45rem 1.1rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 2px 8px rgba(225, 29, 72, 0.4);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .btn-urgent-donate:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.55);
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+        }
+
+        .btn-urgent-phone {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 0.45rem 0.95rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-urgent-phone:hover {
+            background: rgba(255, 255, 255, 0.28);
+            border-color: #ffffff;
+        }
+
+        /* --- NOUVEAUX PÔLES SOLIDAIRES DE PROXIMITÉ (CAFÉ & ÉPICERIE) --- */
+        .poles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin: 3.5rem 0 5rem 0;
+        }
+
+        .pole-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1.5px solid rgba(109, 40, 217, 0.12);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pole-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-wow);
+            border-color: var(--uni-purple-light);
+        }
+
+        .pole-banner {
+            padding: 2.2rem 2.2rem 1.8rem 2.2rem;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pole-card.cafe .pole-banner {
+            background: linear-gradient(135deg, #43006d 0%, #6b1d9e 70%, #8b5cf6 100%);
+        }
+
+        .pole-card.grocery .pole-banner {
+            background: linear-gradient(135deg, #065f46 0%, #059669 70%, #10b981 100%);
+        }
+
+        .pole-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .pole-banner h3 {
+            font-size: 1.65rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 0.6rem;
+        }
+
+        .pole-banner p {
+            font-size: 0.95rem;
+            opacity: 0.92;
+            line-height: 1.55;
+        }
+
+        .pole-body {
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            gap: 1.8rem;
+            background: #ffffff;
+        }
+
+        .pole-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .pole-feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .pole-feature-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+        }
+
+        .pole-card.cafe .pole-feature-icon {
+            background: #f3e8ff;
+            color: var(--uni-purple-mid);
+        }
+
+        .pole-card.grocery .pole-feature-icon {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        .pole-feature-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--uni-text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .pole-feature-content p {
+            font-size: 0.88rem;
+            color: var(--uni-text-muted);
+            line-height: 1.5;
+        }
+
+        .pole-cta-box {
+            padding-top: 1.2rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-pole-action {
+            width: 100%;
+            padding: 0.95rem 1.4rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .pole-card.cafe .btn-pole-action {
+            background: linear-gradient(135deg, var(--uni-purple-mid), var(--uni-deep-purple));
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(109, 40, 217, 0.25);
+        }
+
+        .pole-card.cafe .btn-pole-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(109, 40, 217, 0.35);
+        }
+
+        .pole-card.grocery .btn-pole-action {
+            background: linear-gradient(135deg, #059669, #065f46);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+        }
+
+        .pole-card.grocery .btn-pole-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(5, 150, 105, 0.35);
+        }
+
+        /* --- MODULE D'IMPACT DONS & TRANSPARENCE --- */
+        .impact-section {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1.5px solid var(--uni-lilac-light);
+            padding: 3.5rem 3rem;
+            margin: 5rem 0;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--uni-deep-purple), var(--uni-purple-mid), var(--uni-lilac), #e11d48);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0 2rem 0;
+        }
+
+        .impact-card {
+            background: var(--uni-bg-light);
+            border: 1.5px solid rgba(109, 40, 217, 0.1);
+            border-radius: var(--radius-md);
+            padding: 2.2rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+        }
+
+        .impact-card:hover, .impact-card.selected {
+            background: #ffffff;
+            border-color: var(--uni-purple-mid);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .impact-card.highlight {
+            border-color: #e11d48;
+            background: #fffafa;
+        }
+
+        .impact-badge-top {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e11d48;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 0.2rem 0.75rem;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(225, 29, 72, 0.3);
+        }
+
+        .impact-amount {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--uni-deep-purple);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .impact-net-cost {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #059669;
+            background: #ecfdf5;
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-pill);
+            display: inline-block;
+            margin-bottom: 1.2rem;
+        }
+
+        .impact-text {
+            font-size: 0.9rem;
+            color: var(--uni-text-dark);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            min-height: 65px;
+        }
+
+        .btn-impact-select {
+            background: var(--uni-deep-purple);
+            color: #ffffff;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.88rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+
+        .impact-card.highlight .btn-impact-select {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+        }
+
+        .impact-card:hover .btn-impact-select {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        .tax-calculator-bar {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            padding: 1.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .tax-calc-text {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .tax-calc-icon {
+            font-size: 2.2rem;
+            color: var(--uni-purple-mid);
+        }
+
+        .tax-calc-info h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--uni-deep-purple);
+            margin-bottom: 0.25rem;
+        }
+
+        .tax-calc-info p {
+            font-size: 0.88rem;
+            color: var(--uni-text-muted);
+            line-height: 1.5;
+        }
+
+        .tax-calc-form {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .tax-calc-input {
+            width: 140px;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid var(--uni-lilac-light);
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--uni-deep-purple);
+            background: #ffffff;
+        }
+
         /* --- SECTION DONS & FONDS D'URGENCE --- */
         .donation-section {
             background: linear-gradient(135deg, #f7f0fc 0%, #faf5ff 100%);
@@ -1109,10 +1565,34 @@
             .stats-bar { margin-top: -4.5rem; }
             .grid-services { grid-template-columns: repeat(2, 1fr); }
             .grid-tarifs { grid-template-columns: repeat(2, 1fr); }
+            .poles-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .impact-grid { grid-template-columns: repeat(2, 1fr); }
+            .impact-section { padding: 2.8rem 2rem; }
             .donation-section { padding: 2.8rem 2rem; }
         }
 
         @media (max-width: 768px) {
+            /* Bandeau permanent d'urgence mobile */
+            .urgent-bar-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.65rem;
+            }
+            .urgent-bar-text {
+                font-size: 0.8rem;
+                justify-content: center;
+                text-align: center;
+            }
+            .urgent-bar-actions {
+                width: 100%;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            .btn-urgent-donate, .btn-urgent-phone {
+                padding: 0.45rem 0.8rem;
+                font-size: 0.78rem;
+            }
+
             /* Navigation Mobile */
             .nav-container { padding: 0.75rem 1rem; }
             .brand-logo-img { height: 42px; }
@@ -1225,7 +1705,7 @@
                 border-radius: var(--radius-md);
             }
 
-            /* Bloc Urgence Sociale - CORRECTION MAJEURE ESPACE MOBILE */
+            /* Bloc Urgence Sociale */
             .emergency-block {
                 padding: 1.5rem 1rem;
                 margin: 3rem 0;
@@ -1280,6 +1760,57 @@
                 font-size: 0.92rem;
             }
 
+            /* Pôles Solidaires */
+            .poles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+                margin: 2rem 0 3.5rem 0;
+            }
+            .pole-banner {
+                padding: 1.8rem 1.4rem;
+            }
+            .pole-banner h3 {
+                font-size: 1.4rem;
+            }
+            .pole-body {
+                padding: 1.6rem 1.2rem;
+            }
+
+            /* Module d'Impact des Dons */
+            .impact-section {
+                padding: 2rem 1.2rem;
+                margin: 3.5rem 0;
+            }
+            .impact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .impact-amount {
+                font-size: 2rem;
+            }
+            .tax-calculator-bar {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                padding: 1.4rem 1.2rem;
+                gap: 1.2rem;
+            }
+            .tax-calc-text {
+                flex-direction: column;
+                text-align: center;
+            }
+            .tax-calc-form {
+                flex-direction: column;
+                width: 100%;
+            }
+            .tax-calc-form input {
+                width: 100%;
+            }
+            .tax-calc-form button {
+                width: 100%;
+                justify-content: center;
+            }
+
             /* Grille Tarifs */
             .grid-tarifs {
                 grid-template-columns: 1fr;
@@ -1327,20 +1858,6 @@
                 padding: 0.65rem 0.2rem;
                 font-size: 0.85rem;
             }
-            .custom-amount-wrapper {
-                flex-direction: column;
-                gap: 0.75rem;
-                width: 100%;
-            }
-            .custom-amount-wrapper input {
-                width: 100%;
-                max-width: 100%;
-                font-size: 16px;
-            }
-            .custom-amount-wrapper .btn-cta {
-                width: 100%;
-                justify-content: center;
-            }
 
             /* Modale Checkout */
             .modal-overlay {
@@ -1367,6 +1884,9 @@
             .stat-label { font-size: 0.72rem; }
             .emergency-block { padding: 1.25rem 0.75rem; }
             .emergency-form { padding: 1rem 0.65rem; }
+            .pole-banner { padding: 1.4rem 1rem; }
+            .pole-body { padding: 1.4rem 1rem; }
+            .impact-section { padding: 1.6rem 0.85rem; }
             .donation-section { padding: 1.4rem 0.75rem; }
             .donation-widget { padding: 1.2rem 0.75rem; }
         }
@@ -1389,6 +1909,24 @@
         <span id="toast-message">Opération effectuée avec succès.</span>
     </div>
 
+    <!-- BANDEAU PERMANENT D'APPEL AUX DONS & URGENCE HÉBERGEMENT -->
+    <div class="sticky-urgent-bar">
+        <div class="urgent-bar-content">
+            <div class="urgent-bar-text">
+                <span class="urgent-pulse-dot"></span>
+                <span><strong>Urgence Hébergement & Solidarité :</strong> Aidez-nous à mettre à l'abri les familles en détresse à Gennevilliers.</span>
+            </div>
+            <div class="urgent-bar-actions">
+                <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-urgent-donate">
+                    <i class="fa-solid fa-heart"></i> Faire un Don (Déduction 66 %)
+                </button>
+                <a href="tel:0600000000" class="btn-urgent-phone">
+                    <i class="fa-solid fa-phone"></i> Ligne d'Urgence 7j/7
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- TOP BAR D'ACCÈS RAPIDE -->
     <div class="top-bar">
         <div class="top-bar-left">
@@ -1398,6 +1936,7 @@
         </div>
         <div>
             <a href="#missions"><i class="fa-solid fa-layer-group"></i> Missions</a>
+            <a href="#poles-solidaires"><i class="fa-solid fa-store"></i> Café & Épicerie</a>
             <a href="#tarifs"><i class="fa-solid fa-id-card"></i> Adhésions & Bénévolat</a>
             <a href="#urgence" style="color: #fda4af;"><i class="fa-solid fa-phone-volume"></i> Urgence Sociale</a>
         </div>
@@ -1420,9 +1959,10 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#missions">Nos Actions</a></li>
-                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> Urgence & Mise à l'Abri</a></li>
-                <li><a href="#tarifs">Rejoindre / Adhérer</a></li>
-                <li><a href="#dons">Fonds d'Urgence</a></li>
+                <li><a href="#poles-solidaires" style="color: var(--uni-purple-mid); font-weight: 700;"><i class="fa-solid fa-store"></i> Café & Épicerie</a></li>
+                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> Urgence 7j/7</a></li>
+                <li><a href="#dons-impact" style="color: #be123c; font-weight: 700;"><i class="fa-solid fa-heart"></i> Faire un Don</a></li>
+                <li><a href="#tarifs">Adhérer</a></li>
                 <li><button onclick="openCheckoutModal('Adhésion & Soutien', 25, 'general')" class="btn-portal"><i class="fa-solid fa-shield-heart"></i> Adhérer en ligne</button></li>
             </ul>
         </div>
@@ -1433,10 +1973,14 @@
         <div class="hero-content">
             <div class="badge-ess"><i class="fa-solid fa-shield-heart"></i> Structure ESS & Agrément ESUS (Loi 2014)</div>
             <h1>Agir à l'unisson pour les familles et la jeunesse vulnérable.</h1>
-            <p>Médiation familiale de proximité, écoute active 7j/7 et premier secours social d'urgence (mise à l'abri temporaire et repas de 48h à 15 jours) en relais avec les services sociaux (CCAS, AP-HP, Cochin, Hôtel-Dieu).</p>
+            <p>Médiation familiale de proximité, Café Solidaire, Épicerie d'accès digne, permanence d'écoute 7j/7 et premier secours social d'urgence à Gennevilliers et en Île-de-France.</p>
             <div class="hero-cta-group">
-                <a href="#tarifs" class="btn-portal" style="padding: 0.95rem 2.4rem; font-size: 1rem;"><i class="fa-solid fa-user-plus"></i> Adhérer ou Devenir Bénévole</a>
-                <a href="#urgence" class="btn-emergency" style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);"><i class="fa-solid fa-phone-volume"></i> Permanence d'urgence 7j/7</a>
+                <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-portal" style="background: linear-gradient(135deg, #e11d48, #be123c); padding: 0.95rem 2.2rem; font-size: 1rem; border: none; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.35);">
+                    <i class="fa-solid fa-heart"></i> Soutenir les Familles (Don Déductible 66%)
+                </button>
+                <a href="#poles-solidaires" class="btn-portal" style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);">
+                    <i class="fa-solid fa-mug-hot"></i> Découvrir nos Lieux Solidaires
+                </a>
             </div>
         </div>
     </section>
@@ -1449,36 +1993,36 @@
                 <span class="stat-label">Mise à l'abri d'urgence & repas</span>
             </div>
             <div class="stat-item">
+                <span class="stat-number">2 Lieux</span>
+                <span class="stat-label">Café Solidaire & Épicerie à Gennevilliers</span>
+            </div>
+            <div class="stat-item">
                 <span class="stat-number">7j / 7</span>
-                <span class="stat-label">Permanence d'écoute & accueil</span>
+                <span class="stat-label">Permanence d'écoute & astreinte</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">2H / 2F</span>
-                <span class="stat-label">Équipe mixte d'intervention terrain</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Non-lucratif & réserves impartageables</span>
+                <span class="stat-number">66 %</span>
+                <span class="stat-label">Déduction fiscale sur vos dons</span>
             </div>
         </div>
     </div>
 
     <!-- KIOSQUE D'ACCÈS RAPIDE -->
     <div class="quick-access">
-        <a href="#missions" class="access-card">
-            <div class="access-icon"><i class="fa-solid fa-people-arrows"></i></div>
-            <h3>Médiation Éducative</h3>
-            <p>Désamorcer les crises intrafamiliales et prévenir le décrochage scolaire.</p>
+        <a href="#poles-solidaires" class="access-card">
+            <div class="access-icon" style="background: #f3e8ff; color: var(--uni-purple-mid);"><i class="fa-solid fa-mug-hot"></i></div>
+            <h3>Café & Salon de Thé Solidaire</h3>
+            <p>Boissons suspendues, accueil chaleureux et ateliers de parentalité au 45 rue Henri Barbusse.</p>
+        </a>
+        <a href="#poles-solidaires" class="access-card">
+            <div class="access-icon" style="background: #d1fae5; color: #059669;"><i class="fa-solid fa-basket-shopping"></i></div>
+            <h3>Épicerie Solidaire Digne</h3>
+            <p>Alimentation de qualité à tarif symbolique & paniers repas pour les familles mises à l'abri.</p>
         </a>
         <a href="#urgence" class="access-card">
             <div class="access-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-hotel"></i></div>
-            <h3>Premier Secours Social</h3>
-            <p>Mise à l'abri d'urgence 48h à 15 jours avec repas et suivi social personnalisé.</p>
-        </a>
-        <a href="#tarifs" class="access-card">
-            <div class="access-icon"><i class="fa-solid fa-user-group"></i></div>
-            <h3>Équipe Terrain Mixte</h3>
-            <p>Astreintes bénévoles paritaires & adhésions solidaires à partir de 5 €/an.</p>
+            <h3>Secours Social & Mise à l'Abri</h3>
+            <p>Hébergement d'urgence, soutien aux femmes victimes et médiation familiale 7j/7.</p>
         </a>
     </div>
 
@@ -1569,6 +2113,93 @@
             </form>
         </div>
 
+        <!-- NOUVELLE SECTION VITRINE : PÔLES SOLIDAIRES DE PROXIMITÉ (GENNEVILLIERS) -->
+        <div id="poles-solidaires" class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-store"></i> Économie Solidaire de Proximité</span>
+            <h2>Nos Pôles d'Accueil & de Solidarité à Gennevilliers</h2>
+            <p>Deux espaces tiers-lieux ouverts à toutes et tous au <strong>45, rue Henri Barbusse</strong> pour tisser du lien, rompre l'isolement, soutenir les familles et préserver la dignité de chacun.</p>
+        </div>
+
+        <div class="poles-grid">
+            <!-- PÔLE 1 : LE CAFÉ SOLIDAIRE -->
+            <div class="pole-card cafe">
+                <div class="pole-banner">
+                    <span class="pole-badge"><i class="fa-solid fa-mug-hot"></i> Tiers-Lieu Convivial & Écoute</span>
+                    <h3>Le Café Solidaire d'UNISSON</h3>
+                    <p>Un espace chaleureux et bienveillant pour se poser, partager un moment digne et désamorcer les tensions du quotidien.</p>
+                </div>
+                <div class="pole-body">
+                    <div class="pole-features">
+                        <div class="pole-feature-item">
+                            <div class="pole-feature-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+                            <div class="pole-feature-content">
+                                <h4>Le Concept du « Café & Thé Suspendu »</h4>
+                                <p>Offrez une boisson chaude d'avance : chaque café suspendu est redistribué gratuitement et anonymement à une personne en situation de précarité accueillie au tiers-lieu.</p>
+                            </div>
+                        </div>
+                        <div class="pole-feature-item">
+                            <div class="pole-feature-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                            <div class="pole-feature-content">
+                                <h4>Un Tiers-Lieu Apaisant & Écoute Informelle</h4>
+                                <p>Remplacer la froideur administrative par une tasse de thé et une écoute attentive. Un cadre propice pour apaiser les crises intrafamiliales et recréer du lien social.</p>
+                            </div>
+                        </div>
+                        <div class="pole-feature-item">
+                            <div class="pole-feature-icon"><i class="fa-solid fa-people-roof"></i></div>
+                            <div class="pole-feature-content">
+                                <h4>Ateliers Parentalité & Permanences</h4>
+                                <p>Cafés des parents, temps d'échanges éducatifs, permanence des bénévoles et médiateurs pour orienter les familles en difficulté.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pole-cta-box">
+                        <button onclick="openCheckoutModal('Café ou Thé Suspendu - Café Solidaire', 5, 'donation')" class="btn-pole-action">
+                            <i class="fa-solid fa-heart"></i> Offrir un Café ou Thé Suspendu (Don 5 €)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PÔLE 2 : L'ÉPICERIE SOLIDAIRE -->
+            <div class="pole-card grocery">
+                <div class="pole-banner">
+                    <span class="pole-badge"><i class="fa-solid fa-basket-shopping"></i> Accès Alimentaire Digne</span>
+                    <h3>L'Épicerie Solidaire de Proximité</h3>
+                    <p>Soutien alimentaire digne, lutte contre le gaspillage et approvisionnement direct des paniers de premier secours.</p>
+                </div>
+                <div class="pole-body">
+                    <div class="pole-features">
+                        <div class="pole-feature-item">
+                            <div class="pole-feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <div class="pole-feature-content">
+                                <h4>L'Accès Digne à Tarif Symbolique</h4>
+                                <p>Produits d'hygiène et denrées alimentaires de qualité accessibles aux familles orientées par les travailleurs sociaux à 10 % à 20 % de leur valeur marchande.</p>
+                            </div>
+                        </div>
+                        <div class="pole-feature-item">
+                            <div class="pole-feature-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                            <div class="pole-feature-content">
+                                <h4>Lien Direct avec le Secours d'Urgence</h4>
+                                <p>L'épicerie approvisionne directement les paniers-repas et kits d'urgence distribués aux femmes et familles mises à l'abri à l'hôtel lors des crises aiguës.</p>
+                            </div>
+                        </div>
+                        <div class="pole-feature-item">
+                            <div class="pole-feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <div class="pole-feature-content">
+                                <h4>Anti-Gaspillage & Équilibre Budgétaire</h4>
+                                <p>Valorisation des invendus de commerçants partenaires, ateliers de cuisine économique et conseils de gestion budgétaire bienveillants.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pole-cta-box">
+                        <button onclick="openCheckoutModal('Panier Repas de Secours - Épicerie Solidaire', 25, 'donation')" class="btn-pole-action">
+                            <i class="fa-solid fa-basket-shopping"></i> Financer un Panier Repas de Secours (25 €)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- TARIFS & ADHÉSIONS (4 FORMULES) -->
         <div id="tarifs" class="section-header">
             <span class="section-tag"><i class="fa-solid fa-coins"></i> Cotisations Annuelles</span>
@@ -1627,6 +2258,84 @@
                 <button onclick="openCheckoutModal('Membre Bienfaiteur - Fonds d\'Urgence', 50, 'bienfaiteur')" class="btn-tarif">
                     <i class="fa-solid fa-shield-heart"></i> Devenir Bienfaiteur
                 </button>
+            </div>
+        </div>
+
+        <!-- NOUVEAU MODULE D'IMPACT : APPEL AUX DONS & TRANSPARENCE FISCALE -->
+        <div id="dons-impact" class="impact-section">
+            <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 1rem auto;">
+                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar"></i> Transparence & Impact Concret</span>
+                <h2>Votre Générosité en Action</h2>
+                <p>Chaque don versé à UNISSON ouvre droit à une <strong>réduction d'impôt de 66 %</strong> (au titre des organismes d'intérêt général). Voici ce que permet concrètement votre soutien sur le terrain :</p>
+            </div>
+
+            <div class="impact-grid">
+                <!-- Carte 1 : 5€ -->
+                <div class="impact-card" onclick="openCheckoutModal('2 Boissons Suspendues - Café Solidaire', 5, 'donation')">
+                    <div>
+                        <div class="impact-amount">5 €</div>
+                        <span class="impact-net-cost"><i class="fa-solid fa-tag"></i> 1,70 € après déduction</span>
+                        <div class="impact-text">
+                            <strong>Offre 2 cafés ou thés suspendus</strong> au Café Solidaire pour offrir un accueil chaud et rompre l'isolement.
+                        </div>
+                    </div>
+                    <button class="btn-impact-select"><i class="fa-solid fa-mug-hot"></i> Donner 5 €</button>
+                </div>
+
+                <!-- Carte 2 : 25€ -->
+                <div class="impact-card" onclick="openCheckoutModal('Kit Hygiène & Panier de Secours', 25, 'donation')">
+                    <div>
+                        <div class="impact-amount">25 €</div>
+                        <span class="impact-net-cost"><i class="fa-solid fa-tag"></i> 8,50 € après déduction</span>
+                        <div class="impact-text">
+                            <strong>Finance 1 kit d'hygiène complet + 1 panier alimentaire de secours</strong> pour une famille en détresse via l'Épicerie.
+                        </div>
+                    </div>
+                    <button class="btn-impact-select"><i class="fa-solid fa-basket-shopping"></i> Donner 25 €</button>
+                </div>
+
+                <!-- Carte 3 : 50€ (Recommandé) -->
+                <div class="impact-card highlight selected" onclick="openCheckoutModal('1 Nuitée d\'Hôtel & Repas de Crise', 50, 'donation')">
+                    <span class="impact-badge-top"><i class="fa-solid fa-star"></i> Action Prioritaire</span>
+                    <div>
+                        <div class="impact-amount" style="color: #e11d48;">50 €</div>
+                        <span class="impact-net-cost" style="background: #fff1f2; color: #9f1239;"><i class="fa-solid fa-shield-heart"></i> 17,00 € après déduction</span>
+                        <div class="impact-text">
+                            <strong>Finance 1 nuitée d'hôtel de secours + repas chauds</strong> pour mettre à l'abri immédiatement une mère et son enfant à la rue.
+                        </div>
+                    </div>
+                    <button class="btn-impact-select"><i class="fa-solid fa-heart"></i> Donner 50 €</button>
+                </div>
+
+                <!-- Carte 4 : Montant Libre -->
+                <div class="impact-card" onclick="scrollToDonationWidget()">
+                    <div>
+                        <div class="impact-amount" style="font-size: 1.8rem; line-height: 1.3;">Montant Libre</div>
+                        <span class="impact-net-cost"><i class="fa-solid fa-hand-holding-heart"></i> Déductible à 66 %</span>
+                        <div class="impact-text">
+                            <strong>Versement direct au Fonds de Premier Secours Social</strong> pour les interventions d'urgence 7j/7.
+                        </div>
+                    </div>
+                    <button class="btn-impact-select" style="background: var(--uni-purple-mid);"><i class="fa-solid fa-pen"></i> Choisir mon don</button>
+                </div>
+            </div>
+
+            <!-- CALCULATEUR DE DÉDUCTION FISCALE INTERACTIF -->
+            <div class="tax-calculator-bar">
+                <div class="tax-calc-text">
+                    <div class="tax-calc-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <div class="tax-calc-info">
+                        <h4>Calculateur de Déduction Fiscale (66 %)</h4>
+                        <p id="taxCalcExplanation">Pour un don de <strong>50 €</strong>, votre déduction d'impôt est de <strong>33 €</strong>. Ce don ne vous coûte en réalité que <strong>17 €</strong>.</p>
+                    </div>
+                </div>
+                <div class="tax-calc-form">
+                    <label for="taxCalcInput" style="font-size: 0.88rem; font-weight: 700; color: var(--uni-deep-purple);">Montant :</label>
+                    <input type="number" id="taxCalcInput" class="tax-calc-input" value="50" min="1" oninput="calculateTaxReduction(this.value)">
+                    <button onclick="donateCalculatedAmount()" class="btn-portal" style="padding: 0.8rem 1.4rem; font-size: 0.92rem;">
+                        <i class="fa-solid fa-heart"></i> Valider ce don
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -1823,10 +2532,18 @@
             currentCheckoutAmount = priceInEuros;
 
             document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an';
+            
+            if (formulaType === 'donation') {
+                const netCost = (priceInEuros * 0.34).toFixed(2);
+                document.getElementById('modalSubtitle').innerHTML = 'Don de <strong>' + priceInEuros + ' €</strong> • <span style="color: #059669; font-weight:700;">Coût réel après déduction 66% : ' + netCost + ' €</span>';
+                document.getElementById('mem_amount_display').value = priceInEuros + ' € (Don Déductible HelloAsso)';
+            } else {
+                document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an';
+                document.getElementById('mem_amount_display').value = priceInEuros + ' € (Règlement sécurisé HelloAsso)';
+            }
+            
             document.getElementById('mem_formula_type').value = formulaType;
             document.getElementById('mem_raw_amount').value = priceInEuros;
-            document.getElementById('mem_amount_display').value = priceInEuros + ' € (Règlement sécurisé HelloAsso)';
             document.getElementById('checkoutModal').classList.add('active');
         }
 
@@ -1840,6 +2557,33 @@
                 closeModal();
             }
         };
+
+        // Calculateur Fiscal Interactif (66% de déduction)
+        function calculateTaxReduction(val) {
+            const amount = parseFloat(val);
+            const explanation = document.getElementById('taxCalcExplanation');
+            if (amount && amount > 0) {
+                const reduction = (amount * 0.66).toFixed(2);
+                const netCost = (amount * 0.34).toFixed(2);
+                explanation.innerHTML = 'Pour un don de <strong>' + amount + ' €</strong>, votre déduction d\'impôt est de <strong>' + reduction + ' €</strong>. Ce don ne vous coûte en réalité que <strong>' + netCost + ' €</strong>.';
+            } else {
+                explanation.innerText = 'Saisissez un montant pour calculer votre réduction fiscale de 66 %.';
+            }
+        }
+
+        function donateCalculatedAmount() {
+            const amount = parseFloat(document.getElementById('taxCalcInput').value) || 50;
+            openCheckoutModal('Fonds d\'Urgence Sociale & Solidarité', amount, 'donation');
+        }
+
+        function scrollToDonationWidget() {
+            const donsSection = document.getElementById('dons');
+            if (donsSection) {
+                donsSection.scrollIntoView({ behavior: 'smooth' });
+                const customInput = document.getElementById('customDonation');
+                if (customInput) customInput.focus();
+            }
+        }
 
         // Gestion du widget Don Libre
         let selectedDonationAmount = 30;
