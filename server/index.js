@@ -222,6 +222,11 @@ app.get('/statuts', (req, res) => {
   res.sendFile(path.join(rootDir, 'statuts.html'));
 });
 
+// Affiche & Flyer A3 officiel
+app.get('/flyer-a3', (req, res) => {
+  res.sendFile(path.join(rootDir, 'flyer-a3.html'));
+});
+
 // Fallback HTML pour toutes les autres routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(rootDir, 'index.html'));
