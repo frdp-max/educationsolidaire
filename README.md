@@ -1,6 +1,6 @@
 # 🌟 UNISSON — Association Éducation Solidaire
 
-Plateforme web officielle, API d'intégration **HelloAsso v5** et architecture de déploiement conteneurisée pour **UNISSON — Association Éducation Solidaire** (Loi 1901, ESS & Agrément ESUS).
+Plateforme web officielle, API d'intégration **HelloAsso v5** et architecture de déploiement conteneurisée pour **UNISSON — Association Éducation Solidaire** (Loi 1901, ESS).
 
 ---
 

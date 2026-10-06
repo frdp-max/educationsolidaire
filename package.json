@@ -1,7 +1,7 @@
 {
   "name": "unisson-education-solidaire",
   "version": "1.0.0",
-  "description": "Plateforme web officielle UNISSON — Association Éducation Solidaire (ESS / ESUS) avec intégration HelloAsso v5",
+  "description": "Plateforme web officielle UNISSON — Association Éducation Solidaire (ESS) avec intégration HelloAsso v5",
   "main": "server/index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,6 @@
     "unisson",
     "education-solidaire",
     "ess",
-    "esus",
     "helloasso",
     "mediation",
     "urgence-sociale"
