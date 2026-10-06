@@ -92,8 +92,9 @@ git pull && bash deploy.sh
 | Épicerie Green | `#059669` | Épicerie solidaire, dons écologiques/durables |
 
 - **Typographies** :
-  - Titres et accroches : `'Montserrat', sans-serif` (poids 700, 800, 900)
-  - Textes courants : `'Open Sans', sans-serif` (poids 400, 600, 700)
+  - Titres et accroches : `'Montserrat', sans-serif` (poids 700, 800 — pas de 900, pour un ton plus chaleureux)
+  - Textes courants : `'Atkinson Hyperlegible Next', sans-serif` (poids 400, 600, 700) — police conçue pour la lisibilité (malvoyance, faible littératie), cohérente avec le public accueilli
+  - Chargement unique via Google Fonts : `family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@500;600;700;800`
 
 ---
 

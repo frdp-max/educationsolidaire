@@ -51,7 +51,7 @@ export function buildEmergencyEmail(alert) {
   return {
     subject: `🚨 Urgence sociale ${alert.id} — ${alert.emergencyType} (${alert.location})`.slice(0, 250),
     htmlContent: `<!DOCTYPE html>
-<html lang="fr"><body style="margin:0;padding:24px;background:#faf5ff;font-family:'Open Sans',Arial,sans-serif;color:#1f2937">
+<html lang="fr"><body style="margin:0;padding:24px;background:#faf5ff;font-family:'Atkinson Hyperlegible Next',Arial,sans-serif;color:#1f2937">
   <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #f3e8ff">
     <div style="background:#d92d20;color:#fff;padding:16px 24px;font-family:Montserrat,Arial,sans-serif;font-weight:800;font-size:18px">
       Nouveau signalement d'urgence sociale
