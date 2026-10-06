@@ -36,6 +36,8 @@
 ├── flyer-a5.html                # Flyer/tract A5 (148 x 210 mm) print-ready
 ├── UNISSON_Affiche_A3.pdf       # Export PDF HD de l'affiche A3
 ├── UNISSON_Flyer_A5.pdf         # Export PDF HD du flyer A5
+├── infographie-a5.html          # Infographie A5 (parcours, impact des dons, numéros d'urgence) print-ready
+├── UNISSON_Infographie_A5.pdf   # Export PDF HD de l'infographie A5
 ├── flyer-visuel.jpg             # Visuel cinématographique d'illustration des 3 missions
 ├── logo.png                     # Logo officiel UNISSON
 ├── deploy.sh                    # Script de déploiement automatique sur le VPS
@@ -100,7 +102,7 @@ git pull && bash deploy.sh
 1. **Sécurité stricte** : Ne jamais commiter de secrets, tokens ou clés privées dans git. Utiliser exclusivement les variables d'environnement (`.env`).
 2. **Politique de Sécurité du Contenu (CSP)** : Toute nouvelle ressource externe (script, CDN, iframe) doit être déclarée dans la configuration `helmet` de `server/app.js`.
    **Fichiers publics** : seuls les fichiers listés dans `PUBLIC_FILES` (`server/app.js`) sont servis. Tout nouvel asset public doit y être ajouté.
-3. **Rétrocompatibilité des routes** : Conserver impérativement les routes d'alias `/mentions-legales`, `/politique-confidentialite`, `/conditions-generales`, `/statuts`, `/flyer-a3`, `/flyer-a5`.
+3. **Rétrocompatibilité des routes** : Conserver impérativement les routes d'alias `/mentions-legales`, `/politique-confidentialite`, `/conditions-generales`, `/statuts`, `/flyer-a3`, `/flyer-a5`, `/infographie-a5`.
 4. **Précision juridique et éthique** :
    - Mentionner systématiquement les informations légales exactes (SIREN 108 606 260, RNA W922023505, art. 200 CGI pour la déduction 66%).
    - Conserver un ton empreint d'empathie, de respect de la dignité humaine, sans misérabilisme.

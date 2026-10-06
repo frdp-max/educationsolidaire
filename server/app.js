@@ -30,12 +30,14 @@ export const PUBLIC_FILES = [
   'statuts.html',
   'flyer-a3.html',
   'flyer-a5.html',
+  'infographie-a5.html',
   'logo.png',
   'logo.jpg',
   'logo.jpeg',
   'flyer-visuel.jpg',
   'UNISSON_Affiche_A3.pdf',
   'UNISSON_Flyer_A5.pdf',
+  'UNISSON_Infographie_A5.pdf',
 ];
 
 // Routes d'alias historiques (à conserver impérativement)
@@ -46,6 +48,7 @@ const PAGE_ALIASES = {
   '/statuts': 'statuts.html',
   '/flyer-a3': 'flyer-a3.html',
   '/flyer-a5': 'flyer-a5.html',
+  '/infographie-a5': 'infographie-a5.html',
 };
 
 export const app = express();

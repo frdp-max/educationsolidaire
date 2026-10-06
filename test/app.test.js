@@ -36,7 +36,7 @@ const post = (url, body) => fetch(base + url, {
 
 test('les routes d\'alias historiques répondent', async () => {
   for (const route of ['/', '/mentions-legales', '/politique-confidentialite',
-    '/conditions-generales', '/statuts', '/flyer-a3', '/flyer-a5']) {
+    '/conditions-generales', '/statuts', '/flyer-a3', '/flyer-a5', '/infographie-a5']) {
     const res = await fetch(base + route);
     assert.equal(res.status, 200, route);
     assert.match(res.headers.get('content-type'), /text\/html/, route);
@@ -44,7 +44,7 @@ test('les routes d\'alias historiques répondent', async () => {
 });
 
 test('les ressources publiques sont servies', async () => {
-  for (const file of ['/logo.png', '/flyer-visuel.jpg', '/UNISSON_Flyer_A5.pdf']) {
+  for (const file of ['/logo.png', '/flyer-visuel.jpg', '/UNISSON_Flyer_A5.pdf', '/UNISSON_Infographie_A5.pdf']) {
     const res = await fetch(base + file);
     assert.equal(res.status, 200, file);
     assert.doesNotMatch(res.headers.get('content-type'), /text\/html/, file);
