@@ -210,13 +210,27 @@
         }
         .legal .nojet i { color: var(--green); }
 
+        .mission { position: relative; }
+        .mission .projet {
+            position: absolute; top: 2.40mm; right: 2.40mm;
+            background: var(--lavender); color: var(--royal); border: 0.20mm solid #d8b4fe;
+            border-radius: 3.00mm; padding: 0.50mm 1.50mm;
+            font: 800 1.35mm/1.2 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .05em;
+        }
         .todo { background: #fef08a; outline: .2mm dashed #ca8a04; }
 
         @media print {
             body { background: #fff; padding: 0; }
             .toolbar { display: none !important; }
             .page { box-shadow: none; width: 148mm; height: 210mm; }
-            .todo { background: none; outline: none; }
+            .mission { position: relative; }
+        .mission .projet {
+            position: absolute; top: 2.40mm; right: 2.40mm;
+            background: var(--lavender); color: var(--royal); border: 0.20mm solid #d8b4fe;
+            border-radius: 3.00mm; padding: 0.50mm 1.50mm;
+            font: 800 1.35mm/1.2 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .05em;
+        }
+        .todo { background: none; outline: none; }
         }
     </style>
 </head>
@@ -245,7 +259,7 @@
 
                 <div class="headline">
                     <h1>Personne ne devrait affronter <span>la crise seul.</span></h1>
-                    <p>Mise à l'abri d'urgence, café solidaire et épicerie solidaire : à Gennevilliers, nous accueillons, protégeons et accompagnons les familles et les jeunes en difficulté.</p>
+                    <p>Mise à l'abri d'urgence, repas, écoute et orientation : à Gennevilliers, nous accueillons, protégeons et accompagnons les familles et les jeunes en difficulté. Bientôt : un café et une épicerie solidaires.</p>
                 </div>
             </div>
         </section>
@@ -258,14 +272,16 @@
                 <p>Hébergement d'urgence à l'hôtel et repas pour les familles, les femmes victimes de violences et les jeunes en rupture. Relais CCAS.</p>
             </div>
             <div class="mission cafe">
+                <span class="projet">En projet</span>
                 <div class="ico"><i class="fa-solid fa-mug-hot"></i></div>
                 <h3>Le Café Solidaire</h3>
-                <p>Un lieu chaleureux pour se poser et être écouté. Offrez un « café suspendu » offert à une personne qui en a besoin.</p>
+                <p>Bientôt, un lieu chaleureux pour se poser et être écouté, avec le « café suspendu » : une boisson offerte à une personne qui en a besoin.</p>
             </div>
             <div class="mission epicerie">
+                <span class="projet">En projet</span>
                 <div class="ico"><i class="fa-solid fa-basket-shopping"></i></div>
                 <h3>L'Épicerie Solidaire</h3>
-                <p>Produits d'alimentation et d'hygiène à prix solidaire. Fournit les paniers repas d'urgence aux familles hébergées.</p>
+                <p>Bientôt, des produits alimentaires et d'hygiène à prix solidaire pour les familles orientées, et les paniers repas des personnes mises à l'abri.</p>
             </div>
         </section>
 
@@ -287,7 +303,7 @@
                     <div class="help-item">
                         <div class="k">S'engager</div>
                         <div class="t">Bénévolat</div>
-                        <div class="d">Accueil café, épicerie, astreintes en binôme.</div>
+                        <div class="d">Astreintes en binôme, et bientôt au café et à l'épicerie.</div>
                     </div>
                 </div>
             </div>

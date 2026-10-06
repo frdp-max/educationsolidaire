@@ -1890,6 +1890,14 @@
             .donation-section { padding: 1.4rem 0.75rem; }
             .donation-widget { padding: 1.2rem 0.75rem; }
         }
+        /* Badge « En projet » (Café & Épicerie en préparation) */
+        .badge-projet {
+            display: inline-flex; align-items: center; gap: .35rem;
+            background: #fff; color: var(--uni-purple-mid, #6b1d9e);
+            border: 1px solid #d8b4fe; border-radius: 999px;
+            padding: .2rem .65rem; margin-left: .35rem; vertical-align: middle;
+            font: 800 .68rem/1.4 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+        }
     </style>
 </head>
 <body>
@@ -1936,7 +1944,7 @@
         </div>
         <div>
             <a href="#missions"><i class="fa-solid fa-layer-group"></i> Missions</a>
-            <a href="#poles-solidaires"><i class="fa-solid fa-store"></i> Café & Épicerie</a>
+            <a href="#poles-solidaires"><i class="fa-solid fa-store"></i> Café & Épicerie (projets)</a>
             <a href="#tarifs"><i class="fa-solid fa-id-card"></i> Adhésions & Bénévolat</a>
             <a href="#urgence" style="color: #fda4af;"><i class="fa-solid fa-phone-volume"></i> Urgence Sociale</a>
         </div>
@@ -1959,7 +1967,7 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#missions">Nos Actions</a></li>
-                <li><a href="#poles-solidaires" style="color: var(--uni-purple-mid); font-weight: 700;"><i class="fa-solid fa-store"></i> Café & Épicerie</a></li>
+                <li><a href="#poles-solidaires" style="color: var(--uni-purple-mid); font-weight: 700;"><i class="fa-solid fa-store"></i> Nos projets</a></li>
                 <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> Urgence 7j/7</a></li>
                 <li><a href="#dons-impact" style="color: #be123c; font-weight: 700;"><i class="fa-solid fa-heart"></i> Faire un Don</a></li>
                 <li><a href="#tarifs">Adhérer</a></li>
@@ -1973,13 +1981,13 @@
         <div class="hero-content">
             <div class="badge-ess"><i class="fa-solid fa-shield-heart"></i> Structure ESS & Agrément ESUS (Loi 2014)</div>
             <h1>Agir à l'unisson pour les familles et la jeunesse vulnérable.</h1>
-            <p>Médiation familiale de proximité, Café Solidaire, Épicerie d'accès digne, permanence d'écoute 7j/7 et premier secours social d'urgence à Gennevilliers et en Île-de-France.</p>
+            <p>Médiation familiale de proximité, permanence d'écoute 7j/7 et premier secours social d'urgence à Gennevilliers et en Île-de-France. En projet : un Café Solidaire et une Épicerie d'accès digne.</p>
             <div class="hero-cta-group">
                 <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-portal" style="background: linear-gradient(135deg, #e11d48, #be123c); padding: 0.95rem 2.2rem; font-size: 1rem; border: none; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.35);">
                     <i class="fa-solid fa-heart"></i> Soutenir les Familles (Don Déductible 66%)
                 </button>
                 <a href="#poles-solidaires" class="btn-portal" style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);">
-                    <i class="fa-solid fa-mug-hot"></i> Découvrir nos Lieux Solidaires
+                    <i class="fa-solid fa-seedling"></i> Découvrir nos Projets Solidaires
                 </a>
             </div>
         </div>
@@ -1993,8 +2001,8 @@
                 <span class="stat-label">Mise à l'abri d'urgence & repas</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">2 Lieux</span>
-                <span class="stat-label">Café Solidaire & Épicerie à Gennevilliers</span>
+                <span class="stat-number">2 Projets</span>
+                <span class="stat-label">Café & Épicerie solidaires en préparation</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">7j / 7</span>
@@ -2011,13 +2019,13 @@
     <div class="quick-access">
         <a href="#poles-solidaires" class="access-card">
             <div class="access-icon" style="background: #f3e8ff; color: var(--uni-purple-mid);"><i class="fa-solid fa-mug-hot"></i></div>
-            <h3>Café & Salon de Thé Solidaire</h3>
-            <p>Boissons suspendues, accueil chaleureux et ateliers de parentalité au 45 rue Henri Barbusse.</p>
+            <h3>Café Solidaire <span class="badge-projet">En projet</span></h3>
+            <p>Bientôt : boissons suspendues, accueil chaleureux et ateliers de parentalité à Gennevilliers.</p>
         </a>
         <a href="#poles-solidaires" class="access-card">
             <div class="access-icon" style="background: #d1fae5; color: #059669;"><i class="fa-solid fa-basket-shopping"></i></div>
-            <h3>Épicerie Solidaire Digne</h3>
-            <p>Alimentation de qualité à tarif symbolique & paniers repas pour les familles mises à l'abri.</p>
+            <h3>Épicerie Solidaire <span class="badge-projet">En projet</span></h3>
+            <p>Bientôt : alimentation et hygiène de qualité à tarif solidaire pour les familles orientées.</p>
         </a>
         <a href="#urgence" class="access-card">
             <div class="access-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-hotel"></i></div>
@@ -2115,18 +2123,18 @@
 
         <!-- NOUVELLE SECTION VITRINE : PÔLES SOLIDAIRES DE PROXIMITÉ (GENNEVILLIERS) -->
         <div id="poles-solidaires" class="section-header">
-            <span class="section-tag"><i class="fa-solid fa-store"></i> Économie Solidaire de Proximité</span>
-            <h2>Nos Pôles d'Accueil & de Solidarité à Gennevilliers</h2>
-            <p>Deux espaces tiers-lieux ouverts à toutes et tous au <strong>45, rue Henri Barbusse</strong> pour tisser du lien, rompre l'isolement, soutenir les familles et préserver la dignité de chacun.</p>
+            <span class="section-tag"><i class="fa-solid fa-seedling"></i> Projets en préparation</span>
+            <h2>Nos Futurs Pôles d'Accueil & de Solidarité à Gennevilliers</h2>
+            <p>Nous préparons l'ouverture de <strong>deux tiers-lieux</strong> ouverts à toutes et tous, pour tisser du lien, rompre l'isolement, soutenir les familles et préserver la dignité de chacun. Ils ne sont pas encore ouverts : vos dons et votre engagement bénévole nous aident à les concrétiser.</p>
         </div>
 
         <div class="poles-grid">
             <!-- PÔLE 1 : LE CAFÉ SOLIDAIRE -->
             <div class="pole-card cafe">
                 <div class="pole-banner">
-                    <span class="pole-badge"><i class="fa-solid fa-mug-hot"></i> Tiers-Lieu Convivial & Écoute</span>
+                    <span class="pole-badge"><i class="fa-solid fa-seedling"></i> En projet · Tiers-Lieu Convivial & Écoute</span>
                     <h3>Le Café Solidaire d'UNISSON</h3>
-                    <p>Un espace chaleureux et bienveillant pour se poser, partager un moment digne et désamorcer les tensions du quotidien.</p>
+                    <p>Un futur espace chaleureux et bienveillant pour se poser, partager un moment digne et désamorcer les tensions du quotidien.</p>
                 </div>
                 <div class="pole-body">
                     <div class="pole-features">
@@ -2134,7 +2142,7 @@
                             <div class="pole-feature-icon"><i class="fa-solid fa-mug-saucer"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Le Concept du « Café & Thé Suspendu »</h4>
-                                <p>Offrez une boisson chaude d'avance : chaque café suspendu est redistribué gratuitement et anonymement à une personne en situation de précarité accueillie au tiers-lieu.</p>
+                                <p>Le principe : une boisson chaude payée d'avance, offerte gratuitement et anonymement à une personne en situation de précarité accueillie au tiers-lieu.</p>
                             </div>
                         </div>
                         <div class="pole-feature-item">
@@ -2148,13 +2156,13 @@
                             <div class="pole-feature-icon"><i class="fa-solid fa-people-roof"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Ateliers Parentalité & Permanences</h4>
-                                <p>Cafés des parents, temps d'échanges éducatifs, permanence des bénévoles et médiateurs pour orienter les familles en difficulté.</p>
+                                <p>Au programme : cafés des parents, temps d'échanges éducatifs, permanences de bénévoles et de médiateurs pour orienter les familles en difficulté.</p>
                             </div>
                         </div>
                     </div>
                     <div class="pole-cta-box">
-                        <button onclick="openCheckoutModal('Café ou Thé Suspendu - Café Solidaire', 5, 'donation')" class="btn-pole-action">
-                            <i class="fa-solid fa-heart"></i> Offrir un Café ou Thé Suspendu (Don 5 €)
+                        <button onclick="openCheckoutModal('Soutien au projet de Café Solidaire', 5, 'donation')" class="btn-pole-action">
+                            <i class="fa-solid fa-heart"></i> Soutenir le projet de Café Solidaire (dès 5 €)
                         </button>
                     </div>
                 </div>
@@ -2163,9 +2171,9 @@
             <!-- PÔLE 2 : L'ÉPICERIE SOLIDAIRE -->
             <div class="pole-card grocery">
                 <div class="pole-banner">
-                    <span class="pole-badge"><i class="fa-solid fa-basket-shopping"></i> Accès Alimentaire Digne</span>
+                    <span class="pole-badge"><i class="fa-solid fa-seedling"></i> En projet · Accès Alimentaire Digne</span>
                     <h3>L'Épicerie Solidaire de Proximité</h3>
-                    <p>Soutien alimentaire digne, lutte contre le gaspillage et approvisionnement direct des paniers de premier secours.</p>
+                    <p>Un futur lieu de soutien alimentaire digne, de lutte contre le gaspillage et d'approvisionnement des paniers de premier secours.</p>
                 </div>
                 <div class="pole-body">
                     <div class="pole-features">
@@ -2173,27 +2181,27 @@
                             <div class="pole-feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                             <div class="pole-feature-content">
                                 <h4>L'Accès Digne à Tarif Symbolique</h4>
-                                <p>Produits d'hygiène et denrées alimentaires de qualité accessibles aux familles orientées par les travailleurs sociaux à 10 % à 20 % de leur valeur marchande.</p>
+                                <p>Objectif : des produits d'hygiène et des denrées de qualité accessibles aux familles orientées par les travailleurs sociaux, à 10 % à 20 % de leur valeur marchande.</p>
                             </div>
                         </div>
                         <div class="pole-feature-item">
                             <div class="pole-feature-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Lien Direct avec le Secours d'Urgence</h4>
-                                <p>L'épicerie approvisionne directement les paniers-repas et kits d'urgence distribués aux femmes et familles mises à l'abri à l'hôtel lors des crises aiguës.</p>
+                                <p>À terme, l'épicerie approvisionnera les paniers-repas et kits d'urgence distribués aux femmes et familles mises à l'abri à l'hôtel lors des crises aiguës.</p>
                             </div>
                         </div>
                         <div class="pole-feature-item">
                             <div class="pole-feature-icon"><i class="fa-solid fa-leaf"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Anti-Gaspillage & Équilibre Budgétaire</h4>
-                                <p>Valorisation des invendus de commerçants partenaires, ateliers de cuisine économique et conseils de gestion budgétaire bienveillants.</p>
+                                <p>Prévus : valorisation des invendus de commerçants partenaires, ateliers de cuisine économique et conseils de gestion budgétaire bienveillants.</p>
                             </div>
                         </div>
                     </div>
                     <div class="pole-cta-box">
-                        <button onclick="openCheckoutModal('Panier Repas de Secours - Épicerie Solidaire', 25, 'donation')" class="btn-pole-action">
-                            <i class="fa-solid fa-basket-shopping"></i> Financer un Panier Repas de Secours (25 €)
+                        <button onclick="openCheckoutModal('Soutien au projet d\'Épicerie Solidaire', 25, 'donation')" class="btn-pole-action">
+                            <i class="fa-solid fa-basket-shopping"></i> Soutenir le projet d'Épicerie Solidaire (dès 25 €)
                         </button>
                     </div>
                 </div>
@@ -2271,12 +2279,12 @@
 
             <div class="impact-grid">
                 <!-- Carte 1 : 5€ -->
-                <div class="impact-card" onclick="openCheckoutModal('2 Boissons Suspendues - Café Solidaire', 5, 'donation')">
+                <div class="impact-card" onclick="openCheckoutModal('Soutien au projet de Café Solidaire', 5, 'donation')">
                     <div>
                         <div class="impact-amount">5 €</div>
                         <span class="impact-net-cost"><i class="fa-solid fa-tag"></i> 1,70 € après déduction</span>
                         <div class="impact-text">
-                            <strong>Offre 2 cafés ou thés suspendus</strong> au Café Solidaire pour offrir un accueil chaud et rompre l'isolement.
+                            <strong>Soutient la création du Café Solidaire</strong> (en projet), futur lieu d'accueil chaleureux pour rompre l'isolement.
                         </div>
                     </div>
                     <button class="btn-impact-select"><i class="fa-solid fa-mug-hot"></i> Donner 5 €</button>
@@ -2288,7 +2296,7 @@
                         <div class="impact-amount">25 €</div>
                         <span class="impact-net-cost"><i class="fa-solid fa-tag"></i> 8,50 € après déduction</span>
                         <div class="impact-text">
-                            <strong>Finance 1 kit d'hygiène complet + 1 panier alimentaire de secours</strong> pour une famille en détresse via l'Épicerie.
+                            <strong>Finance 1 kit d'hygiène complet + 1 panier alimentaire de secours</strong> pour une famille mise à l'abri.
                         </div>
                     </div>
                     <button class="btn-impact-select"><i class="fa-solid fa-basket-shopping"></i> Donner 25 €</button>
