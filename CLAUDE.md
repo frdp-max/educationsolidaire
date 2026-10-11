@@ -40,6 +40,8 @@
 ├── UNISSON_Flyer_A5.pdf         # Export PDF HD du flyer A5
 ├── infographie-a5.html          # Infographie A5 (parcours, impact des dons, numéros d'urgence) print-ready
 ├── UNISSON_Infographie_A5.pdf   # Export PDF HD de l'infographie A5
+├── cartes-visite.html           # Cartes de visite 85 x 55 mm du Bureau (recto nominatif + verso commun) — usage interne, non servi
+├── UNISSON_Cartes_Visite.pdf    # Export PDF des cartes (4 pages : Président R/V, Secrétaire-Trésorier R/V)
 ├── flyer-visuel.jpg             # Visuel cinématographique d'illustration des 3 missions
 ├── logo.png                     # Logo officiel UNISSON
 ├── deploy.sh                    # Script de déploiement automatique sur le VPS
