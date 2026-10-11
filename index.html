@@ -107,14 +107,15 @@
     </script>
 
     <!-- Favicon & App Icon -->
-    <link rel="icon" type="image/png" href="/logo.png">
-    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="icon" type="image/png" href="/logo-192.png">
+    <link rel="apple-touch-icon" href="/logo-192.png">
     
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css">
     
     <style>
         /* ==========================================================================
@@ -173,7 +174,7 @@
             background-color: var(--uni-bg-light);
             color: var(--uni-text-dark);
             line-height: 1.65;
-            overflow-x: hidden;
+            overflow-x: clip; /* « hidden » empêchait l'en-tête de rester collé (position: sticky) */
             -webkit-font-smoothing: antialiased;
         }
 
@@ -181,7 +182,17 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Halo d'ambiance doux */
+        /* Halo d'ambiance doux, découpé à la largeur de la page (sinon débordement horizontal) */
+        .ambient-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1400px;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
         .ambient-glow {
             position: absolute;
             width: 750px;
@@ -269,7 +280,7 @@
             padding: 0.2rem 0.6rem;
             border-radius: var(--radius-pill);
             font-weight: 700;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             letter-spacing: 0.04em;
         }
 
@@ -328,7 +339,7 @@
         }
 
         .brand-subtitle {
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--uni-purple-mid);
             text-transform: uppercase;
@@ -408,7 +419,7 @@
         /* --- HERO BANNER ATMOSPHÉRIQUE ADOUCI --- */
         .hero {
             background: radial-gradient(circle at 85% 30%, rgba(53, 11, 82, 0.92) 0%, rgba(30, 17, 42, 0.96) 100%), 
-                        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1280&q=70') center/cover no-repeat;
             color: #ffffff;
             padding: 6.5rem 2rem 10.5rem 2rem;
             position: relative;
@@ -1278,7 +1289,7 @@
             transform: translateX(-50%);
             background: #e11d48;
             color: #ffffff;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             font-weight: 800;
             padding: 0.2rem 0.75rem;
             border-radius: var(--radius-pill);
@@ -1579,6 +1590,32 @@
             gap: 0.45rem;
         }
 
+        .footer-brand { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+        .footer-logo {
+            height: 48px; width: auto;
+            background: #ffffff; padding: 4px 6px; border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .footer-brand-name {
+            font: 800 1.25rem/1 'Montserrat', sans-serif;
+            color: #ffffff; letter-spacing: 0.05em;
+        }
+        .footer-brand-sub {
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; margin-top: 0.2rem;
+            color: var(--uni-lilac-on-dark);
+        }
+        .footer-legal-intro {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1rem; font-size: 0.88rem; line-height: 1.6;
+        }
+        .footer-contact {
+            display: flex; flex-direction: column; gap: 0.45rem;
+            font-size: 0.875rem; color: rgba(255, 255, 255, 0.85);
+        }
+        .footer-col i, .top-bar-left i { color: var(--uni-lilac); }
+        .footer-contact i { width: 18px; }
+
         .footer-partners {
             display: flex;
             flex-direction: column;
@@ -1707,7 +1744,7 @@
             .nav-container { padding: 0.75rem 1rem; }
             .brand-logo-img { height: 42px; }
             .brand-title { font-size: 1.3rem; }
-            .brand-subtitle { font-size: 0.6rem; letter-spacing: 0.08em; }
+            .brand-subtitle { font-size: 0.75rem; letter-spacing: 0.03em; }
             
             .nav-links {
                 display: none;
@@ -1991,7 +2028,7 @@
             .stats-bar { padding: 0 0.75rem; }
             .stats-grid { padding: 1rem 0.6rem; gap: 0.6rem; }
             .stat-number { font-size: 1.5rem; }
-            .stat-label { font-size: 0.72rem; }
+            .stat-label { font-size: 0.75rem; }
             .emergency-block { padding: 1.25rem 0.75rem; }
             .emergency-form { padding: 1rem 0.65rem; }
             .pole-banner { padding: 1.4rem 1rem; }
@@ -2006,7 +2043,7 @@
             background: #fff1f2; color: var(--uni-alert, #d92d20);
             border: 1px solid #fecdd3; border-radius: 999px;
             padding: .2rem .65rem; margin-left: .35rem; vertical-align: middle;
-            font: 800 .68rem/1.4 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+            font: 800 .75rem/1.4 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .06em;
         }
         /* Encadré « En cas de danger » au-dessus du formulaire de contact */
         .emergency-warning {
@@ -2027,7 +2064,7 @@
             background: #fff; color: var(--uni-purple-mid, #6b1d9e);
             border: 1px solid #d8b4fe; border-radius: 999px;
             padding: .2rem .65rem; margin-left: .35rem; vertical-align: middle;
-            font: 800 .68rem/1.4 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+            font: 800 .75rem/1.4 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .06em;
         }
 
         /* ==========================================================================
@@ -2074,6 +2111,9 @@
         .faq-item p { margin: 0; color: var(--uni-text-dark); line-height: 1.65; }
         .faq-item a { color: var(--uni-purple-mid); font-weight: 700; }
 
+        /* Les ancres ne doivent pas passer sous l'en-tête fixe */
+        main [id] { scroll-margin-top: var(--header-offset, 100px); }
+
         /* Les halos décoratifs ne doivent pas élargir la page sur mobile */
         html { overflow-x: clip; }
 
@@ -2099,18 +2139,20 @@
 <body>
     <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-    <div class="ambient-glow"></div>
-    <div class="ambient-glow-left"></div>
+    <div class="ambient-layer" aria-hidden="true">
+        <div class="ambient-glow"></div>
+        <div class="ambient-glow-left"></div>
+    </div>
 
     <!-- URL STATUS BANNER (Retour de transaction HelloAsso) -->
-    <div id="statusBanner" class="status-banner">
+    <div id="statusBanner" class="status-banner" role="status">
         <i id="statusIcon" class="fa-solid fa-circle-check"></i>
         <span id="statusMessage"></span>
     </div>
 
     <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="toast">
-        <i class="fa-solid fa-circle-check" style="color: var(--uni-lilac); font-size: 1.3rem;"></i>
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check" aria-hidden="true" style="color: var(--uni-lilac); font-size: 1.3rem;"></i>
         <span id="toast-message">Opération effectuée avec succès.</span>
     </div>
 
@@ -2123,10 +2165,10 @@
             </div>
             <div class="urgent-bar-actions">
                 <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-urgent-donate">
-                    <i class="fa-solid fa-heart"></i> Faire un Don (Déduction 66 %)
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i> Faire un Don (Déduction 66 %)
                 </button>
                 <a href="tel:115" class="btn-urgent-phone">
-                    <i class="fa-solid fa-phone"></i> Urgence : appelez le 115
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i> Urgence : appelez le 115
                 </a>
             </div>
         </div>
@@ -2135,15 +2177,15 @@
     <!-- TOP BAR D'ACCÈS RAPIDE -->
     <div class="top-bar">
         <div class="top-bar-left">
-            <i class="fa-solid fa-hand-holding-heart" style="color: var(--uni-lilac);"></i>
+            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
             <span><strong>UNISSON</strong> — Association d'intérêt général & d'utilité sociale (Île-de-France)</span>
             <span class="badge-hotline">Association en lancement</span>
         </div>
         <div>
-            <a href="#missions"><i class="fa-solid fa-layer-group"></i> Missions</a>
-            <a href="#poles-solidaires"><i class="fa-solid fa-store"></i> Café & Épicerie (projets)</a>
-            <a href="#tarifs"><i class="fa-solid fa-id-card"></i> Adhésions & Bénévolat</a>
-            <a href="#urgence" style="color: #fda4af;"><i class="fa-solid fa-phone-volume"></i> Urgence Sociale</a>
+            <a href="#missions"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Missions</a>
+            <a href="#poles-solidaires"><i class="fa-solid fa-store" aria-hidden="true"></i> Café & Épicerie (projets)</a>
+            <a href="#tarifs"><i class="fa-solid fa-id-card" aria-hidden="true"></i> Adhésions & Bénévolat</a>
+            <a href="#urgence" style="color: #fda4af;"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Urgence Sociale</a>
         </div>
     </div>
 
@@ -2151,24 +2193,24 @@
     <header>
         <div class="nav-container">
             <a href="#" class="brand-block" title="Accueil UNISSON">
-                <img src="/logo.png" alt="UNISSON — Association Éducation Solidaire" class="brand-logo-img">
+                <img src="/logo-192.png" width="192" height="192" alt="UNISSON — Association Éducation Solidaire" class="brand-logo-img">
                 <div class="brand-text">
                     <span class="brand-title">UNISSON</span>
                     <span class="brand-subtitle">Association Éducation Solidaire</span>
                 </div>
             </a>
 
-            <button class="burger-menu" id="burgerBtn" aria-label="Ouvrir le menu de navigation">
-                <i class="fa-solid fa-bars"></i>
+            <button class="burger-menu" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false" aria-controls="navLinks">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#missions">Nos Actions</a></li>
-                <li><a href="#poles-solidaires" style="color: var(--uni-purple-mid); font-weight: 700;"><i class="fa-solid fa-store"></i> Nos projets</a></li>
-                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> En cas d'urgence</a></li>
-                <li><a href="#dons-impact" style="color: #be123c; font-weight: 700;"><i class="fa-solid fa-heart"></i> Faire un Don</a></li>
+                <li><a href="#poles-solidaires" style="color: var(--uni-purple-mid); font-weight: 700;"><i class="fa-solid fa-store" aria-hidden="true"></i> Nos projets</a></li>
+                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> En cas d'urgence</a></li>
+                <li><a href="#dons-impact" style="color: #be123c; font-weight: 700;"><i class="fa-solid fa-heart" aria-hidden="true"></i> Faire un Don</a></li>
                 <li><a href="#tarifs">Adhérer</a></li>
-                <li><button onclick="openCheckoutModal('Adhésion & Soutien', 25, 'general')" class="btn-portal"><i class="fa-solid fa-shield-heart"></i> Adhérer en ligne</button></li>
+                <li><button onclick="openCheckoutModal('Adhésion & Soutien', 25, 'general')" class="btn-portal"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Adhérer en ligne</button></li>
             </ul>
         </div>
     </header>
@@ -2176,15 +2218,15 @@
     <!-- HERO BANNER -->
     <section class="hero">
         <div class="hero-content">
-            <div class="badge-ess"><i class="fa-solid fa-shield-heart"></i> Association loi 1901 · Économie Sociale & Solidaire</div>
+            <div class="badge-ess"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Association loi 1901 · Économie Sociale & Solidaire</div>
             <h1>Agir à l'unisson pour les familles et la jeunesse vulnérable.</h1>
             <p>Jeune association de Gennevilliers, UNISSON se mobilise d'abord pour le premier secours social : mettre à l'abri et nourrir les familles et les jeunes en détresse. Viendront ensuite la médiation familiale, un Café Solidaire et une Épicerie d'accès digne.</p>
             <div class="hero-cta-group">
                 <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-portal" style="background: linear-gradient(135deg, #e11d48, #be123c); padding: 0.95rem 2.2rem; font-size: 1rem; border: none; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.35);">
-                    <i class="fa-solid fa-heart"></i> Soutenir les Familles (Don Déductible 66%)
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i> Soutenir les Familles (Don Déductible 66%)
                 </button>
                 <a href="#poles-solidaires" class="btn-portal" style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);">
-                    <i class="fa-solid fa-seedling"></i> Découvrir nos Projets Solidaires
+                    <i class="fa-solid fa-seedling" aria-hidden="true"></i> Découvrir nos Projets Solidaires
                 </a>
             </div>
         </div>
@@ -2215,17 +2257,17 @@
     <!-- KIOSQUE D'ACCÈS RAPIDE -->
     <div class="quick-access">
         <a href="#urgence" class="access-card">
-            <div class="access-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-hotel"></i></div>
+            <div class="access-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-hotel" aria-hidden="true"></i></div>
             <h3>Secours Social & Mise à l'Abri <span class="badge-prio">Priorité</span></h3>
             <p>Notre première priorité : hébergement d'urgence et repas pour les familles, les femmes victimes de violences et les jeunes en rupture.</p>
         </a>
         <a href="#poles-solidaires" class="access-card">
-            <div class="access-icon" style="background: #f3e8ff; color: var(--uni-purple-mid);"><i class="fa-solid fa-mug-hot"></i></div>
+            <div class="access-icon" style="background: #f3e8ff; color: var(--uni-purple-mid);"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i></div>
             <h3>Café Solidaire <span class="badge-projet">En projet</span></h3>
             <p>Bientôt : boissons suspendues, accueil chaleureux et ateliers de parentalité à Gennevilliers.</p>
         </a>
         <a href="#poles-solidaires" class="access-card">
-            <div class="access-icon" style="background: #d1fae5; color: #059669;"><i class="fa-solid fa-basket-shopping"></i></div>
+            <div class="access-icon" style="background: #d1fae5; color: #059669;"><i class="fa-solid fa-basket-shopping" aria-hidden="true"></i></div>
             <h3>Épicerie Solidaire <span class="badge-projet">En projet</span></h3>
             <p>Bientôt : alimentation et hygiène de qualité à tarif solidaire pour les familles orientées.</p>
         </a>
@@ -2236,24 +2278,24 @@
         
         <!-- SECTION MISSIONS D'UTILITÉ SOCIALE -->
         <div id="missions" class="section-header">
-            <span class="section-tag"><i class="fa-solid fa-hand-holding-heart"></i> Article 3 des Statuts</span>
+            <span class="section-tag"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Article 3 des Statuts</span>
             <h2>Missions d'Utilité Sociale & Leviers d'Action</h2>
             <p>UNISSON se construit pour protéger les personnes vulnérables, restaurer le dialogue familial et garantir un premier secours en situation critique. L'association vient d'être créée : ces missions sont en cours de lancement, en commençant par le secours social.</p>
         </div>
         
         <div class="grid-services">
             <div class="card-service">
-                <div class="card-service-icon"><i class="fa-solid fa-comments"></i></div>
+                <div class="card-service-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
                 <h3>Médiation Intrafamiliale & Scolaire</h3>
                 <p>Accompagnement bienveillant des parents et des enfants pour désamorcer les conflits, rétablir la communication au sein du foyer et prévenir les ruptures scolaires ou éducatives.</p>
             </div>
             <div class="card-service">
-                <div class="card-service-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="card-service-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
                 <h3>Écoute Active & Orientation</h3>
                 <p>Objectif : une écoute et un accueil inconditionnels, un soutien moral et une orientation personnalisée vers les services médico-sociaux et hospitaliers.</p>
             </div>
             <div class="card-service">
-                <div class="card-service-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="card-service-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
                 <h3>Femmes Victimes de Violences</h3>
                 <p>Objectif : mise en sécurité et accompagnement vers les réseaux spécialisés, associations partenaires et structures médicales et juridiques. En cas de danger, appelez dès maintenant le 3919 ou le 17.</p>
             </div>
@@ -2263,13 +2305,13 @@
         <div id="urgence" class="emergency-block">
             <div class="emergency-header">
                 <div class="emergency-info">
-                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Premier Secours Social : notre priorité</h3>
+                    <h3><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Premier Secours Social : notre priorité</h3>
                     <p>Nous mettons en place un dispositif de mise à l'abri temporaire à l'hôtel avec prise en charge des repas, en lien avec les services sociaux (CCAS, 115). <strong>Il n'est pas encore opérationnel</strong> : vos dons et votre engagement bénévole servent à le lancer.</p>
                     <div class="emergency-pills">
-                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Objectif : hébergement à l'hôtel</span>
-                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Repas de crise</span>
-                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Équipe bénévole mixte</span>
-                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Relais CCAS & 115</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag" aria-hidden="true"></i> Objectif : hébergement à l'hôtel</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag" aria-hidden="true"></i> Repas de crise</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag" aria-hidden="true"></i> Équipe bénévole mixte</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag" aria-hidden="true"></i> Relais CCAS & 115</span>
                     </div>
                 </div>
             </div>
@@ -2277,7 +2319,7 @@
             <!-- Formulaire de contact / signalement (pas d'intervention d'urgence tant que le dispositif n'est pas lancé) -->
             <form class="emergency-form" id="emergencyForm" onsubmit="handleEmergencySubmit(event)">
                 <div class="emergency-warning" role="alert">
-                    <strong><i class="fa-solid fa-circle-exclamation"></i> En cas de danger ou d'urgence, n'attendez pas notre réponse.</strong><br>
+                    <strong><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> En cas de danger ou d'urgence, n'attendez pas notre réponse.</strong><br>
                     L'association est en cours de lancement et ne peut pas encore intervenir en urgence. Appelez gratuitement, 24h/24 :
                     <div class="numbers">
                         <a href="tel:115"><b>115</b> Hébergement d'urgence</a>
@@ -2288,16 +2330,16 @@
                     </div>
                 </div>
                 <h4 style="color: var(--uni-alert-text); margin-bottom: 1.2rem; font-size: 1.18rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fa-solid fa-paper-plane"></i> Nous écrire ou nous signaler une situation
+                    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Nous écrire ou nous signaler une situation
                 </h4>
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="em_name">Nom & Prénom (ou Anonyme) *</label>
-                        <input type="text" id="em_name" placeholder="Ex: M. Dupont" required>
+                        <input type="text" id="em_name" autocomplete="name" placeholder="Ex: M. Dupont" required>
                     </div>
                     <div class="form-group">
                         <label for="em_phone">Numéro de téléphone *</label>
-                        <input type="tel" id="em_phone" placeholder="06 00 00 00 00" required>
+                        <input type="tel" id="em_phone" autocomplete="tel" placeholder="06 00 00 00 00" required>
                     </div>
                     <div class="form-group">
                         <label for="em_type">Type de situation *</label>
@@ -2311,7 +2353,7 @@
                     </div>
                     <div class="form-group">
                         <label for="em_loc">Commune / Département (Île-de-France) *</label>
-                        <input type="text" id="em_loc" placeholder="Ex: Gennevilliers, 92 / Paris..." required>
+                        <input type="text" id="em_loc" autocomplete="address-level2" placeholder="Ex: Gennevilliers, 92 / Paris..." required>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom: 1.5rem;">
@@ -2320,10 +2362,10 @@
                 </div>
                 <div class="emergency-actions">
                     <button type="submit" id="btnSubmitEmergency" class="btn-emergency">
-                        <i class="fa-solid fa-paper-plane"></i> Envoyer mon message
+                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Envoyer mon message
                     </button>
                     <a href="tel:115" class="btn-portal" style="background: var(--uni-deep-purple); font-size: 0.9rem;">
-                        <i class="fa-solid fa-phone"></i> Urgence : appeler le 115
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i> Urgence : appeler le 115
                     </a>
                 </div>
             </form>
@@ -2331,7 +2373,7 @@
 
         <!-- NOUVELLE SECTION VITRINE : PÔLES SOLIDAIRES DE PROXIMITÉ (GENNEVILLIERS) -->
         <div id="poles-solidaires" class="section-header">
-            <span class="section-tag"><i class="fa-solid fa-seedling"></i> Projets en préparation</span>
+            <span class="section-tag"><i class="fa-solid fa-seedling" aria-hidden="true"></i> Projets en préparation</span>
             <h2>Nos Futurs Pôles d'Accueil & de Solidarité à Gennevilliers</h2>
             <p>Nous préparons l'ouverture de <strong>deux tiers-lieux</strong> ouverts à toutes et tous, pour tisser du lien, rompre l'isolement, soutenir les familles et préserver la dignité de chacun. Ils ne sont pas encore ouverts : vos dons et votre engagement bénévole nous aident à les concrétiser.</p>
         </div>
@@ -2340,28 +2382,28 @@
             <!-- PÔLE 1 : LE CAFÉ SOLIDAIRE -->
             <div class="pole-card cafe">
                 <div class="pole-banner">
-                    <span class="pole-badge"><i class="fa-solid fa-seedling"></i> En projet · Tiers-Lieu Convivial & Écoute</span>
+                    <span class="pole-badge"><i class="fa-solid fa-seedling" aria-hidden="true"></i> En projet · Tiers-Lieu Convivial & Écoute</span>
                     <h3>Le Café Solidaire d'UNISSON</h3>
                     <p>Un futur espace chaleureux et bienveillant pour se poser, partager un moment digne et désamorcer les tensions du quotidien.</p>
                 </div>
                 <div class="pole-body">
                     <div class="pole-features">
                         <div class="pole-feature-item">
-                            <div class="pole-feature-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+                            <div class="pole-feature-icon"><i class="fa-solid fa-mug-saucer" aria-hidden="true"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Le Concept du « Café & Thé Suspendu »</h4>
                                 <p>Le principe : une boisson chaude payée d'avance, offerte gratuitement et anonymement à une personne en situation de précarité accueillie au tiers-lieu.</p>
                             </div>
                         </div>
                         <div class="pole-feature-item">
-                            <div class="pole-feature-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                            <div class="pole-feature-icon"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Un Tiers-Lieu Apaisant & Écoute Informelle</h4>
                                 <p>Remplacer la froideur administrative par une tasse de thé et une écoute attentive. Un cadre propice pour apaiser les crises intrafamiliales et recréer du lien social.</p>
                             </div>
                         </div>
                         <div class="pole-feature-item">
-                            <div class="pole-feature-icon"><i class="fa-solid fa-people-roof"></i></div>
+                            <div class="pole-feature-icon"><i class="fa-solid fa-people-roof" aria-hidden="true"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Ateliers Parentalité & Permanences</h4>
                                 <p>Au programme : cafés des parents, temps d'échanges éducatifs, permanences de bénévoles et de médiateurs pour orienter les familles en difficulté.</p>
@@ -2370,7 +2412,7 @@
                     </div>
                     <div class="pole-cta-box">
                         <button onclick="openCheckoutModal('Soutien au projet de Café Solidaire', 5, 'donation')" class="btn-pole-action">
-                            <i class="fa-solid fa-heart"></i> Soutenir le projet de Café Solidaire (dès 5 €)
+                            <i class="fa-solid fa-heart" aria-hidden="true"></i> Soutenir le projet de Café Solidaire (dès 5 €)
                         </button>
                     </div>
                 </div>
@@ -2379,28 +2421,28 @@
             <!-- PÔLE 2 : L'ÉPICERIE SOLIDAIRE -->
             <div class="pole-card grocery">
                 <div class="pole-banner">
-                    <span class="pole-badge"><i class="fa-solid fa-seedling"></i> En projet · Accès Alimentaire Digne</span>
+                    <span class="pole-badge"><i class="fa-solid fa-seedling" aria-hidden="true"></i> En projet · Accès Alimentaire Digne</span>
                     <h3>L'Épicerie Solidaire de Proximité</h3>
                     <p>Un futur lieu de soutien alimentaire digne, de lutte contre le gaspillage et d'approvisionnement des paniers de premier secours.</p>
                 </div>
                 <div class="pole-body">
                     <div class="pole-features">
                         <div class="pole-feature-item">
-                            <div class="pole-feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <div class="pole-feature-icon"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></div>
                             <div class="pole-feature-content">
                                 <h4>L'Accès Digne à Tarif Symbolique</h4>
                                 <p>Objectif : des produits d'hygiène et des denrées de qualité accessibles aux familles orientées par les travailleurs sociaux, à 10 % à 20 % de leur valeur marchande.</p>
                             </div>
                         </div>
                         <div class="pole-feature-item">
-                            <div class="pole-feature-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                            <div class="pole-feature-icon"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Lien Direct avec le Secours d'Urgence</h4>
                                 <p>À terme, l'épicerie approvisionnera les paniers-repas et kits d'urgence distribués aux femmes et familles mises à l'abri à l'hôtel lors des crises aiguës.</p>
                             </div>
                         </div>
                         <div class="pole-feature-item">
-                            <div class="pole-feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <div class="pole-feature-icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></div>
                             <div class="pole-feature-content">
                                 <h4>Anti-Gaspillage & Équilibre Budgétaire</h4>
                                 <p>Prévus : valorisation des invendus de commerçants partenaires, ateliers de cuisine économique et conseils de gestion budgétaire bienveillants.</p>
@@ -2409,7 +2451,7 @@
                     </div>
                     <div class="pole-cta-box">
                         <button onclick="openCheckoutModal('Soutien au projet d\'Épicerie Solidaire', 25, 'donation')" class="btn-pole-action">
-                            <i class="fa-solid fa-basket-shopping"></i> Soutenir le projet d'Épicerie Solidaire (dès 25 €)
+                            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i> Soutenir le projet d'Épicerie Solidaire (dès 25 €)
                         </button>
                     </div>
                 </div>
@@ -2418,7 +2460,7 @@
 
         <!-- TARIFS & ADHÉSIONS (4 FORMULES) -->
         <div id="tarifs" class="section-header">
-            <span class="section-tag"><i class="fa-solid fa-coins"></i> Cotisations Annuelles</span>
+            <span class="section-tag"><i class="fa-solid fa-coins" aria-hidden="true"></i> Cotisations Annuelles</span>
             <h2>Grille des Adhésions & Engagement Solidaire</h2>
             <p>Participez à la gouvernance démocratique ("1 membre = 1 voix"), rejoignez l'équipe fondatrice ou soutenez financièrement le lancement du premier secours social.</p>
         </div>
@@ -2433,7 +2475,7 @@
                     <p class="tarif-desc">Rejoignez la future équipe d'intervention mixte (astreintes paritaires), assurance responsabilité civile incluse, droit de vote à l'AG.</p>
                 </div>
                 <button onclick="openCheckoutModal('Bénévole Actif - Équipe Mixte', 10, 'benevole')" class="btn-tarif">
-                    <i class="fa-solid fa-user-check"></i> Rejoindre l'équipe
+                    <i class="fa-solid fa-user-check" aria-hidden="true"></i> Rejoindre l'équipe
                 </button>
             </div>
 
@@ -2446,7 +2488,7 @@
                     <p class="tarif-desc">Accès universel et inconditionnel aux futures permanences d'écoute, ateliers et soutien éducatif pour personnes et jeunes à faibles revenus.</p>
                 </div>
                 <button onclick="openCheckoutModal('Cotisation Solidaire', 5, 'solidaire')" class="btn-tarif">
-                    <i class="fa-solid fa-heart"></i> Adhérer solidairement
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i> Adhérer solidairement
                 </button>
             </div>
             
@@ -2459,7 +2501,7 @@
                     <p class="tarif-desc">Couverture complète pour l'ensemble du foyer familial. Accès prioritaire aux futurs cycles de médiation et sorties éducatives.</p>
                 </div>
                 <button onclick="openCheckoutModal('Pass Famille / Duo', 25, 'famille')" class="btn-tarif">
-                    <i class="fa-solid fa-star"></i> Choisir le Pass Famille
+                    <i class="fa-solid fa-star" aria-hidden="true"></i> Choisir le Pass Famille
                 </button>
             </div>
             
@@ -2472,7 +2514,7 @@
                     <p class="tarif-desc">Financera 1 nuitée d'hôtel de secours et les repas de crise pour une famille ou une personne en détresse aiguë.</p>
                 </div>
                 <button onclick="openCheckoutModal('Membre Bienfaiteur - Fonds d\'Urgence', 50, 'bienfaiteur')" class="btn-tarif">
-                    <i class="fa-solid fa-shield-heart"></i> Devenir Bienfaiteur
+                    <i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Devenir Bienfaiteur
                 </button>
             </div>
         </div>
@@ -2480,7 +2522,7 @@
         <!-- NOUVEAU MODULE D'IMPACT : APPEL AUX DONS & TRANSPARENCE FISCALE -->
         <div id="dons-impact" class="impact-section">
             <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 1rem auto;">
-                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar"></i> Transparence & Impact Concret</span>
+                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i> Transparence & Impact Concret</span>
                 <h2>Votre Générosité en Action</h2>
                 <p>Chaque don versé à UNISSON ouvre droit à une <strong>réduction d'impôt de 66 %</strong> (au titre des organismes d'intérêt général). Voici ce que permettra concrètement votre soutien, dès le lancement de nos actions :</p>
             </div>
@@ -2490,56 +2532,56 @@
                 <div class="impact-card" onclick="openCheckoutModal('Soutien au projet de Café Solidaire', 5, 'donation')">
                     <div>
                         <div class="impact-amount">5 €</div>
-                        <span class="impact-net-cost"><i class="fa-solid fa-tag"></i> 1,70 € après déduction</span>
+                        <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> 1,70 € après déduction</span>
                         <div class="impact-text">
                             <strong>Soutient la création du Café Solidaire</strong> (en projet), futur lieu d'accueil chaleureux pour rompre l'isolement.
                         </div>
                     </div>
-                    <button class="btn-impact-select"><i class="fa-solid fa-mug-hot"></i> Donner 5 €</button>
+                    <button class="btn-impact-select"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Donner 5 €</button>
                 </div>
 
                 <!-- Carte 2 : 25€ -->
                 <div class="impact-card" onclick="openCheckoutModal('Kit Hygiène & Panier de Secours', 25, 'donation')">
                     <div>
                         <div class="impact-amount">25 €</div>
-                        <span class="impact-net-cost"><i class="fa-solid fa-tag"></i> 8,50 € après déduction</span>
+                        <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> 8,50 € après déduction</span>
                         <div class="impact-text">
                             <strong>Financera 1 kit d'hygiène complet + 1 panier alimentaire de secours</strong> pour une famille mise à l'abri.
                         </div>
                     </div>
-                    <button class="btn-impact-select"><i class="fa-solid fa-basket-shopping"></i> Donner 25 €</button>
+                    <button class="btn-impact-select"><i class="fa-solid fa-basket-shopping" aria-hidden="true"></i> Donner 25 €</button>
                 </div>
 
                 <!-- Carte 3 : 50€ (Recommandé) -->
                 <div class="impact-card highlight selected" onclick="openCheckoutModal('1 Nuitée d\'Hôtel & Repas de Crise', 50, 'donation')">
-                    <span class="impact-badge-top"><i class="fa-solid fa-star"></i> Action Prioritaire</span>
+                    <span class="impact-badge-top"><i class="fa-solid fa-star" aria-hidden="true"></i> Action Prioritaire</span>
                     <div>
                         <div class="impact-amount" style="color: #e11d48;">50 €</div>
-                        <span class="impact-net-cost" style="background: #fff1f2; color: #9f1239;"><i class="fa-solid fa-shield-heart"></i> 17,00 € après déduction</span>
+                        <span class="impact-net-cost" style="background: #fff1f2; color: #9f1239;"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> 17,00 € après déduction</span>
                         <div class="impact-text">
                             <strong>Financera 1 nuitée d'hôtel de secours + repas chauds</strong> pour mettre à l'abri une mère et son enfant à la rue.
                         </div>
                     </div>
-                    <button class="btn-impact-select"><i class="fa-solid fa-heart"></i> Donner 50 €</button>
+                    <button class="btn-impact-select"><i class="fa-solid fa-heart" aria-hidden="true"></i> Donner 50 €</button>
                 </div>
 
                 <!-- Carte 4 : Montant Libre -->
                 <div class="impact-card" onclick="scrollToDonationWidget()">
                     <div>
                         <div class="impact-amount" style="font-size: 1.8rem; line-height: 1.3;">Montant Libre</div>
-                        <span class="impact-net-cost"><i class="fa-solid fa-hand-holding-heart"></i> Déductible à 66 %</span>
+                        <span class="impact-net-cost"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Déductible à 66 %</span>
                         <div class="impact-text">
                             <strong>Versement au Fonds de Premier Secours Social</strong> pour lancer nos premières mises à l'abri.
                         </div>
                     </div>
-                    <button class="btn-impact-select" style="background: var(--uni-purple-mid);"><i class="fa-solid fa-pen"></i> Choisir mon don</button>
+                    <button class="btn-impact-select" style="background: var(--uni-purple-mid);"><i class="fa-solid fa-pen" aria-hidden="true"></i> Choisir mon don</button>
                 </div>
             </div>
 
             <!-- CALCULATEUR DE DÉDUCTION FISCALE INTERACTIF -->
             <div class="tax-calculator-bar">
                 <div class="tax-calc-text">
-                    <div class="tax-calc-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <div class="tax-calc-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></div>
                     <div class="tax-calc-info">
                         <h4>Calculateur de Déduction Fiscale (66 %)</h4>
                         <p id="taxCalcExplanation">Pour un don de <strong>50 €</strong>, votre déduction d'impôt est de <strong>33 €</strong>. Ce don ne vous coûte en réalité que <strong>17 €</strong>.</p>
@@ -2549,7 +2591,7 @@
                     <label for="taxCalcInput" style="font-size: 0.88rem; font-weight: 700; color: var(--uni-deep-purple);">Montant :</label>
                     <input type="number" id="taxCalcInput" class="tax-calc-input" value="50" min="1" oninput="calculateTaxReduction(this.value)">
                     <button onclick="donateCalculatedAmount()" class="btn-portal" style="padding: 0.8rem 1.4rem; font-size: 0.92rem;">
-                        <i class="fa-solid fa-heart"></i> Valider ce don
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i> Valider ce don
                     </button>
                 </div>
             </div>
@@ -2558,11 +2600,11 @@
         <!-- SECTION DONS & FONDS D'URGENCE LIBRE -->
         <div id="dons" class="donation-section">
             <div class="donation-info">
-                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar"></i> Don Libre</span>
+                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i> Don Libre</span>
                 <h3>Abondement du Fonds de Premier Secours Social</h3>
                 <p>Les dons au Fonds de Premier Secours Social serviront à financer les nuitées d'hôtel et les paniers repas des familles et des femmes mises à l'abri, dès le lancement du dispositif.</p>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center;">
-                    <i class="fa-solid fa-lock" style="color: var(--uni-purple-mid); font-size: 1.3rem;"></i>
+                    <i class="fa-solid fa-lock" aria-hidden="true" style="color: var(--uni-purple-mid); font-size: 1.3rem;"></i>
                     <span style="font-size: 0.88rem; color: var(--uni-text-muted);">Paiement 100% sécurisé via HelloAsso • Réduction d'impôt de 66 %</span>
                 </div>
             </div>
@@ -2580,7 +2622,7 @@
                     <input type="number" id="customDonation" value="30" min="1" oninput="handleCustomAmount(this.value)">
                 </div>
                 <button onclick="triggerDonationCheckout()" class="btn-portal" style="width: 100%; justify-content: center; font-size: 1rem;">
-                    <i class="fa-solid fa-heart"></i> Faire ce don au Fonds d'Urgence
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i> Faire ce don au Fonds d'Urgence
                 </button>
             </div>
         </div>
@@ -2631,7 +2673,7 @@
     <!-- MODALE CHECKOUT / HELLOASSO -->
     <div class="modal-overlay" id="checkoutModal">
         <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <button class="modal-close" onclick="closeModal()" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+            <button class="modal-close" onclick="closeModal()" aria-label="Fermer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
             <h3 id="modalTitle">Formule d'Adhésion</h3>
             <p id="modalSubtitle">Cotisation annuelle associative sécurisée via HelloAsso</p>
             
@@ -2642,27 +2684,27 @@
                 <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                     <div class="form-group">
                         <label for="mem_firstname">Prénom *</label>
-                        <input type="text" id="mem_firstname" placeholder="Ex: Jean" required>
+                        <input type="text" id="mem_firstname" autocomplete="given-name" placeholder="Ex: Jean" required>
                     </div>
                     <div class="form-group">
                         <label for="mem_lastname">Nom *</label>
-                        <input type="text" id="mem_lastname" placeholder="Ex: Dupont" required>
+                        <input type="text" id="mem_lastname" autocomplete="family-name" placeholder="Ex: Dupont" required>
                     </div>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 1rem;">
                     <label for="mem_email">Adresse e-mail (reçu & attestation) *</label>
-                    <input type="email" id="mem_email" placeholder="votre.email@exemple.fr" required>
+                    <input type="email" id="mem_email" autocomplete="email" placeholder="votre.email@exemple.fr" required>
                 </div>
 
                 <div class="form-grid" style="grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                     <div class="form-group">
                         <label for="mem_city">Ville (Optionnel)</label>
-                        <input type="text" id="mem_city" placeholder="Ex: Gennevilliers">
+                        <input type="text" id="mem_city" autocomplete="address-level2" placeholder="Ex: Gennevilliers">
                     </div>
                     <div class="form-group">
                         <label for="mem_zip">Code Postal</label>
-                        <input type="text" id="mem_zip" placeholder="92230">
+                        <input type="text" id="mem_zip" autocomplete="postal-code" inputmode="numeric" placeholder="92230">
                     </div>
                 </div>
 
@@ -2672,10 +2714,10 @@
                 </div>
 
                 <button type="submit" id="btnSubmitCheckout" class="btn-portal" style="width: 100%; justify-content: center; padding: 0.95rem;">
-                    <i class="fa-solid fa-lock"></i> Procéder au règlement sécurisé HelloAsso
+                    <i class="fa-solid fa-lock" aria-hidden="true"></i> Procéder au règlement sécurisé HelloAsso
                 </button>
                 <div style="text-align: center; margin-top: 0.8rem; font-size: 0.8rem; color: var(--uni-text-muted);">
-                    <i class="fa-solid fa-shield"></i> Chiffrement SSL 256 bits • Sans frais bancaires pour l'association
+                    <i class="fa-solid fa-shield" aria-hidden="true"></i> Chiffrement SSL 256 bits • Sans frais bancaires pour l'association
                 </div>
             </form>
         </div>
@@ -2685,19 +2727,19 @@
     <footer>
         <div class="footer-container">
             <div class="footer-col">
-                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;">
-                    <img src="/logo.png" alt="UNISSON Logo" style="height: 48px; width: auto; background: #ffffff; padding: 4px 6px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <div class="footer-brand">
+                    <img src="/logo-192.png" width="192" height="192" alt="UNISSON Logo" class="footer-logo">
                     <div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 800; color: #ffffff; letter-spacing: 0.05em; line-height: 1;">UNISSON</div>
-                        <div style="font-size: 0.65rem; font-weight: 700; color: var(--uni-lilac-on-dark); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem;">Association Éducation Solidaire</div>
+                        <div class="footer-brand-name">UNISSON</div>
+                        <div class="footer-brand-sub">Association Éducation Solidaire</div>
                     </div>
                 </div>
-                <p style="color: rgba(255,255,255,0.85); margin-bottom: 1rem; font-weight: 300; font-size: 0.88rem; line-height: 1.6;">Régie par la loi du 1er juillet 1901. Acteur de l'Économie Sociale et Solidaire (loi du 31 juillet 2014).</p>
-                <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.84rem; color: rgba(255,255,255,0.85);">
-                    <div><i class="fa-solid fa-id-card" style="color:var(--uni-lilac); width: 18px;"></i> SIREN : <strong>108 606 260</strong></div>
-                    <div><i class="fa-solid fa-file-contract" style="color:var(--uni-lilac); width: 18px;"></i> RNA : <strong>W922023505</strong></div>
-                    <div><i class="fa-solid fa-location-dot" style="color:var(--uni-lilac); width: 18px;"></i> 45, rue Henri Barbusse, 92230 Gennevilliers</div>
-                    <div style="margin-top: 0.3rem;"><i class="fa-solid fa-envelope" style="color:var(--uni-lilac); width: 18px;"></i> <a href="mailto:contact@education-solidaire.org" style="color: #fff; font-weight: 600; text-decoration: none;">contact@education-solidaire.org</a></div>
+                <p class="footer-legal-intro">Régie par la loi du 1er juillet 1901. Acteur de l'Économie Sociale et Solidaire (loi du 31 juillet 2014).</p>
+                <div class="footer-contact">
+                    <div><i class="fa-solid fa-id-card" aria-hidden="true"></i> SIREN : <strong>108 606 260</strong></div>
+                    <div><i class="fa-solid fa-file-contract" aria-hidden="true"></i> RNA : <strong>W922023505</strong></div>
+                    <div><i class="fa-solid fa-location-dot" aria-hidden="true"></i> 45, rue Henri Barbusse, 92230 Gennevilliers</div>
+                    <div style="margin-top: 0.3rem;"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@education-solidaire.org" style="color: #fff; font-weight: 600; text-decoration: none;">contact@education-solidaire.org</a></div>
                 </div>
             </div>
             <div class="footer-col">
@@ -2726,12 +2768,12 @@
             <div class="footer-col">
                 <h4>Cadre Légal & Registres</h4>
                 <ul>
-                    <li><a href="/mentions-legales"><i class="fa-solid fa-scale-balanced" style="color: var(--uni-lilac);"></i> Mentions Légales</a></li>
-                    <li><a href="/politique-confidentialite"><i class="fa-solid fa-user-shield" style="color: var(--uni-lilac);"></i> Politique de Confidentialité & RGPD</a></li>
-                    <li><a href="/conditions-generales"><i class="fa-solid fa-file-lines" style="color: var(--uni-lilac);"></i> Conditions Générales (CGA)</a></li>
-                    <li><a href="/statuts"><i class="fa-solid fa-building-columns" style="color: var(--uni-lilac);"></i> Statuts de l'association</a></li>
-                    <li><a href="/flyer-a3" target="_blank" style="color: #fbcfe8; font-weight: 700;"><i class="fa-solid fa-file-pdf" style="color: #f43f5e;"></i> Affiche & Flyer Officiel A3 (PDF)</a></li>
-                    <li><a href="https://www.pappers.fr/entreprise/education-solidaire-108606260" target="_blank" rel="noopener" style="color: #f3e8ff; font-weight: 600;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Fiche Légale Pappers (108 606 260)</a></li>
+                    <li><a href="/mentions-legales"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Mentions Légales</a></li>
+                    <li><a href="/politique-confidentialite"><i class="fa-solid fa-user-shield" aria-hidden="true"></i> Politique de Confidentialité & RGPD</a></li>
+                    <li><a href="/conditions-generales"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Conditions Générales (CGA)</a></li>
+                    <li><a href="/statuts"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Statuts de l'association</a></li>
+                    <li><a href="/flyer-a3" target="_blank" style="color: #fbcfe8; font-weight: 700;"><i class="fa-solid fa-file-pdf" aria-hidden="true" style="color: #f43f5e;"></i> Affiche & Flyer Officiel A3 (PDF)</a></li>
+                    <li><a href="https://www.pappers.fr/entreprise/education-solidaire-108606260" target="_blank" rel="noopener" style="color: #f3e8ff; font-weight: 600;"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Fiche Légale Pappers (108 606 260)</a></li>
                 </ul>
             </div>
         </div>
@@ -2746,8 +2788,25 @@
         // Menu Mobile Toggle
         const burgerBtn = document.getElementById('burgerBtn');
         const navLinks = document.getElementById('navLinks');
+        function setMobileMenu(open) {
+            navLinks.classList.toggle('mobile-open', open);
+            burgerBtn.setAttribute('aria-expanded', String(open));
+        }
+
         burgerBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-open');
+            setMobileMenu(!navLinks.classList.contains('mobile-open'));
+        });
+
+        // Le menu se referme après le choix d'un lien ou avec Échap
+        navLinks.addEventListener('click', (event) => {
+            if (event.target.closest('a, button')) setMobileMenu(false);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+                setMobileMenu(false);
+                burgerBtn.focus();
+            }
         });
 
         // Gestion des paramètres de retour HelloAsso dans l'URL
@@ -2775,14 +2834,30 @@
         });
 
         // Helper Toast
+        // Message affiché 10 s, prolongé tant que la souris ou le focus est dessus
+        let toastTimer = null;
+
+        function hideToastLater() {
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                document.getElementById('toast').classList.remove('show');
+            }, 10000);
+        }
+
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-message').innerText = msg;
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 5000);
+            hideToastLater();
         }
+
+        (function () {
+            const toast = document.getElementById('toast');
+            toast.addEventListener('mouseenter', () => clearTimeout(toastTimer));
+            toast.addEventListener('mouseleave', hideToastLater);
+            toast.addEventListener('focusin', () => clearTimeout(toastTimer));
+            toast.addEventListener('focusout', hideToastLater);
+        })();
 
         // Modale d'adhésion & Checkout
         let currentCheckoutFormula = 'general';
@@ -2912,7 +2987,7 @@
             const message = document.getElementById('em_msg').value;
 
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission immédiate...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Transmission immédiate...';
 
             try {
                 const response = await fetch('/api/emergency/alert', {
@@ -2957,7 +3032,7 @@
             const isDonation = document.getElementById('mem_formula_type').value === 'donation';
 
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Connexion sécurisée HelloAsso...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Connexion sécurisée HelloAsso...';
 
             try {
                 const response = await fetch('/api/helloasso/checkout', {

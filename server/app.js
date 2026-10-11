@@ -32,6 +32,7 @@ export const PUBLIC_FILES = [
   'flyer-a5.html',
   'infographie-a5.html',
   'logo.png',
+  'logo-192.png',
   'logo.jpg',
   'logo.jpeg',
   'flyer-visuel.jpg',
