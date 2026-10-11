@@ -32,6 +32,7 @@
             --uni-purple-mid: #6d28d9;     /* Violet moderne doux (actions principales) */
             --uni-purple-light: #8b5cf6;   /* Violet clair doux (accents & interactions) */
             --uni-lilac: #a855f7;          /* Lilas pastel lumineux (highlights) */
+            --uni-lilac-on-dark: #c084fc;  /* Lilas pour texte sur fonds violet foncé (contraste 6:1) */
             --uni-lilac-light: #f3e8ff;    /* Lavande douce (badges / surfaces secondaires) */
             --uni-lilac-tint: #faf5ff;     /* Teinte lavande ultra-douce */
             --uni-bg-light: #faf8fc;       /* Fond soyeux doux et reposant */
@@ -39,14 +40,14 @@
             
             --uni-text-dark: #1e112a;      /* Texte principal contrasté mais adouci */
             --uni-text-muted: #645873;     /* Texte secondaire équilibré */
-            --uni-text-light: #948b9f;     /* Texte discret */
+            --uni-text-light: #706580;     /* Texte discret (contraste 5,4:1 sur blanc) */
             
             --uni-alert: #e11d48;          /* Teinte d'urgence adoucie (rose rubis / corail chaud) */
             --uni-alert-light: #fff1f2;    /* Fond alerte doux */
             --uni-alert-border: #fecdd3;   /* Bordure alerte subtile */
             --uni-alert-text: #9f1239;     /* Texte alerte lisible */
             
-            --uni-success: #16a34a;        /* Vert succès */
+            --uni-success: #15803d;        /* Vert succès (contraste 4,8:1 sur fond succès) */
             --uni-success-light: #f0fdf4;  /* Fond succès doux */
             
             --border-smooth: rgba(109, 40, 217, 0.08);
@@ -166,7 +167,7 @@
         }
 
         .top-bar a:hover {
-            color: var(--uni-lilac);
+            color: var(--uni-lilac-on-dark);
         }
 
         .badge-hotline {
@@ -714,9 +715,10 @@
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
+            outline: 3px solid var(--uni-purple-mid);
+            outline-offset: 1px;
             border-color: var(--uni-purple-mid);
-            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+            box-shadow: none;
         }
 
         .btn-emergency {
@@ -1919,9 +1921,52 @@
             padding: .2rem .65rem; margin-left: .35rem; vertical-align: middle;
             font: 800 .68rem/1.4 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .06em;
         }
+
+        /* ==========================================================================
+           ACCESSIBILITÉ : focus clavier, lien d'évitement, zones tactiles, mouvement réduit
+           ========================================================================== */
+        .skip-link {
+            position: absolute; left: 1rem; top: -100px; z-index: 10000;
+            background: var(--uni-deep-purple); color: #fff;
+            padding: .75rem 1.25rem; border-radius: var(--radius-sm);
+            font-weight: 700; text-decoration: none;
+        }
+        .skip-link:focus { top: 1rem; }
+
+        a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible {
+            outline: 3px solid var(--uni-purple-mid);
+            outline-offset: 3px;
+        }
+        .hero a:focus-visible, .hero button:focus-visible,
+        .sticky-urgent-bar a:focus-visible, .sticky-urgent-bar button:focus-visible,
+        footer a:focus-visible, footer button:focus-visible {
+            outline-color: #ffffff;
+        }
+
+        /* Les halos décoratifs ne doivent pas élargir la page sur mobile */
+        html { overflow-x: clip; }
+
+        /* Cibles tactiles d'au moins 44 x 44 px */
+        .burger-menu { min-width: 44px; min-height: 44px; }
+        .btn-urgent-donate, .btn-urgent-phone,
+        .emergency-warning .numbers a,
+        .btn-impact-select, .btn-amount, .modal-close {
+            min-height: 44px;
+        }
+        .modal-close { min-width: 44px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <a href="#contenu" class="skip-link">Aller au contenu</a>
 
     <div class="ambient-glow"></div>
     <div class="ambient-glow-left"></div>
@@ -2056,7 +2101,7 @@
     </div>
 
     <!-- CONTENU PRINCIPAL -->
-    <main class="container">
+    <main class="container" id="contenu" tabindex="-1">
         
         <!-- SECTION MISSIONS D'UTILITÉ SOCIALE -->
         <div id="missions" class="section-header">
@@ -2413,7 +2458,7 @@
 
     <!-- MODALE CHECKOUT / HELLOASSO -->
     <div class="modal-overlay" id="checkoutModal">
-        <div class="modal-content">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <button class="modal-close" onclick="closeModal()" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
             <h3 id="modalTitle">Formule d'Adhésion</h3>
             <p id="modalSubtitle">Cotisation annuelle associative sécurisée via HelloAsso</p>
@@ -2472,7 +2517,7 @@
                     <img src="/logo.png" alt="UNISSON Logo" style="height: 48px; width: auto; background: #ffffff; padding: 4px 6px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                     <div>
                         <div style="font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 800; color: #ffffff; letter-spacing: 0.05em; line-height: 1;">UNISSON</div>
-                        <div style="font-size: 0.65rem; font-weight: 700; color: var(--uni-lilac); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem;">Association Éducation Solidaire</div>
+                        <div style="font-size: 0.65rem; font-weight: 700; color: var(--uni-lilac-on-dark); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem;">Association Éducation Solidaire</div>
                     </div>
                 </div>
                 <p style="color: rgba(255,255,255,0.85); margin-bottom: 1rem; font-weight: 300; font-size: 0.88rem; line-height: 1.6;">Régie par la loi du 1er juillet 1901. Acteur de l'Économie Sociale et Solidaire (loi du 31 juillet 2014).</p>
@@ -2576,7 +2621,7 @@
             
             if (formulaType === 'donation') {
                 const netCost = (priceInEuros * 0.34).toFixed(2);
-                document.getElementById('modalSubtitle').innerHTML = 'Don de <strong>' + priceInEuros + ' €</strong> • <span style="color: #059669; font-weight:700;">Coût réel après déduction 66% : ' + netCost + ' €</span>';
+                document.getElementById('modalSubtitle').innerHTML = 'Don de <strong>' + priceInEuros + ' €</strong> • <span style="color: #047857; font-weight:700;">Coût réel après déduction 66% : ' + netCost + ' €</span>';
                 document.getElementById('mem_amount_display').value = priceInEuros + ' € (Don Déductible HelloAsso)';
             } else {
                 document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an';
@@ -2585,12 +2630,43 @@
             
             document.getElementById('mem_formula_type').value = formulaType;
             document.getElementById('mem_raw_amount').value = priceInEuros;
+            modalReturnFocus = document.activeElement;
             document.getElementById('checkoutModal').classList.add('active');
+            document.getElementById('mem_firstname').focus();
         }
+
+        let modalReturnFocus = null;
 
         function closeModal() {
             document.getElementById('checkoutModal').classList.remove('active');
+            if (modalReturnFocus) {
+                modalReturnFocus.focus();
+                modalReturnFocus = null;
+            }
         }
+
+        // Clavier dans la modale : Échap ferme, Tab reste à l'intérieur
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('checkoutModal');
+            if (!modal.classList.contains('active')) return;
+            if (event.key === 'Escape') {
+                closeModal();
+                return;
+            }
+            if (event.key !== 'Tab') return;
+            const focusables = [...modal.querySelectorAll('button, a[href], input:not([type="hidden"]), select, textarea')]
+                .filter(el => !el.disabled && el.offsetParent !== null);
+            if (!focusables.length) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        });
 
         window.onclick = function(event) {
             const modal = document.getElementById('checkoutModal');
