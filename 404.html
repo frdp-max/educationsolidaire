@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page introuvable | UNISSON — Association Éducation Solidaire</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --uni-deep-purple: #350b52;
+            --uni-purple-mid: #6d28d9;
+            --uni-lilac-light: #f3e8ff;
+            --uni-bg-light: #faf8fc;
+            --uni-text-dark: #1e112a;
+            --uni-text-muted: #645873;
+            --uni-urgence: #d92d20;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            background: var(--uni-bg-light);
+            color: var(--uni-text-dark);
+            font: 400 1.05rem/1.6 'Atkinson Hyperlegible Next', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        main { max-width: 560px; text-align: center; }
+        img { width: 88px; height: auto; border-radius: 12px; }
+        h1 {
+            font: 800 1.9rem/1.25 'Montserrat', sans-serif;
+            color: var(--uni-deep-purple);
+            margin: 1.25rem 0 .75rem;
+        }
+        p { color: var(--uni-text-muted); margin: 0 0 1.5rem; }
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: .75rem 1.75rem;
+            border-radius: 9999px;
+            background: var(--uni-purple-mid);
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .btn-home:focus-visible, .numbers a:focus-visible {
+            outline: 3px solid var(--uni-purple-mid);
+            outline-offset: 3px;
+        }
+        .urgence {
+            margin-top: 2.5rem;
+            padding: 1.25rem;
+            border-radius: 14px;
+            background: #fff;
+            border: 1px solid var(--uni-lilac-light);
+        }
+        .urgence p { margin: 0 0 .75rem; color: var(--uni-text-dark); font-weight: 600; }
+        .numbers { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+        .numbers a {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            min-height: 44px;
+            padding: .4rem .9rem;
+            border-radius: 9999px;
+            background: var(--uni-bg-light);
+            color: var(--uni-text-dark);
+            text-decoration: none;
+            font-size: .95rem;
+        }
+        .numbers b { font: 800 1.1rem 'Montserrat', sans-serif; color: var(--uni-urgence); }
+    </style>
+</head>
+<body>
+    <main>
+        <img src="/logo.png" alt="UNISSON — Association Éducation Solidaire">
+        <h1>Cette page n'existe pas</h1>
+        <p>Le lien est peut-être erroné ou la page a été déplacée.</p>
+        <a href="/" class="btn-home">Retour à l'accueil</a>
+
+        <div class="urgence">
+            <p>En cas de danger, appelez gratuitement, 24h/24 :</p>
+            <div class="numbers">
+                <a href="tel:115"><b>115</b> Hébergement d'urgence</a>
+                <a href="tel:3919"><b>3919</b> Violences femmes info</a>
+                <a href="tel:119"><b>119</b> Enfance en danger</a>
+                <a href="tel:17"><b>17</b> Police</a>
+                <a href="tel:112"><b>112</b> Urgences</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

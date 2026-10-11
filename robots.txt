@@ -1,0 +1,21 @@
+# Moteurs de recherche et assistants IA : accès autorisé à tout le site public.
+# UNISSON choisit d'autoriser aussi l'entraînement des modèles (visibilité de l'association).
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Recherche IA (citations dans ChatGPT, Perplexity, Claude)
+User-agent: OAI-SearchBot
+User-agent: PerplexityBot
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+
+# Entraînement des modèles et Gemini
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+Sitemap: https://education-solidaire.org/sitemap.xml

@@ -57,10 +57,67 @@ test('les fichiers internes et les données ne sont jamais servis', async () => 
     '/UNISSON_Feuille_de_route_operationnelle.docx', '/CLAUDE.md']) {
     const res = await fetch(base + file);
     const body = await res.text();
-    // Le fallback renvoie la page d'accueil, jamais le fichier demandé
+    // Le fallback renvoie la page 404, jamais le fichier demandé
+    assert.equal(res.status, 404, file);
     assert.match(res.headers.get('content-type'), /text\/html/, file);
-    assert.match(body, /<!DOCTYPE html>/i, file);
+    assert.match(body, /Cette page n'existe pas/, file);
   }
+});
+
+test('une URL inconnue renvoie une vraie 404 (pas l\'accueil)', async () => {
+  const res = await fetch(`${base}/page-inexistante`);
+  assert.equal(res.status, 404);
+  const body = await res.text();
+  assert.match(body, /noindex/);
+  assert.match(body, /tel:115/);
+});
+
+test('robots.txt et sitemap.xml sont servis avec le bon type', async () => {
+  const robots = await fetch(`${base}/robots.txt`);
+  assert.equal(robots.status, 200);
+  assert.match(robots.headers.get('content-type'), /text\/plain/);
+  assert.match(await robots.text(), /Sitemap: https:\/\/education-solidaire\.org\/sitemap\.xml/);
+
+  const sitemap = await fetch(`${base}/sitemap.xml`);
+  assert.equal(sitemap.status, 200);
+  assert.match(sitemap.headers.get('content-type'), /xml/);
+  const xml = await sitemap.text();
+  for (const route of ['/', '/statuts', '/mentions-legales', '/politique-confidentialite', '/conditions-generales']) {
+    assert.ok(xml.includes(`<loc>https://education-solidaire.org${route}</loc>`), route);
+  }
+  assert.ok(!xml.includes('flyer'), 'les supports print ne sont pas dans le sitemap');
+});
+
+test('llms.txt est servi en texte et renvoie vers les numéros d\'urgence', async () => {
+  const res = await fetch(`${base}/llms.txt`);
+  assert.equal(res.status, 200);
+  assert.match(res.headers.get('content-type'), /text\/plain/);
+  const body = await res.text();
+  assert.match(body, /SIREN 108 606 260/);
+  assert.match(body, /115/);
+});
+
+test('la FAQ visible et son JSON-LD FAQPage restent identiques', async () => {
+  const html = await (await fetch(base + '/')).text();
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map((m) => JSON.parse(m[1]));
+  const faq = blocks.find((b) => b['@type'] === 'FAQPage');
+  assert.ok(faq, 'FAQPage présent');
+  const questions = [...html.matchAll(/<article class="faq-item">\s*<h3>(.*?)<\/h3>/g)].map((m) => m[1]);
+  assert.deepEqual(faq.mainEntity.map((q) => q.name), questions);
+});
+
+test('les URL en .html redirigent (301) vers l\'URL canonique', async () => {
+  const cases = { '/index.html': '/', '/statuts.html': '/statuts', '/index.html?checkout=success': '/?checkout=success' };
+  for (const [from, to] of Object.entries(cases)) {
+    const res = await fetch(base + from, { redirect: 'manual' });
+    assert.equal(res.status, 301, from);
+    assert.equal(res.headers.get('location'), to, from);
+  }
+});
+
+test('la page 404 n\'est pas accessible directement en 200', async () => {
+  assert.equal((await fetch(`${base}/404.html`)).status, 404);
 });
 
 test('route API inconnue : 404 JSON', async () => {

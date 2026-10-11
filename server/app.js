@@ -38,6 +38,9 @@ export const PUBLIC_FILES = [
   'UNISSON_Affiche_A3.pdf',
   'UNISSON_Flyer_A5.pdf',
   'UNISSON_Infographie_A5.pdf',
+  'robots.txt',
+  'sitemap.xml',
+  'llms.txt',
 ];
 
 // Routes d'alias historiques (à conserver impérativement)
@@ -276,15 +279,34 @@ app.use('/api', (req, res) => {
  * PAGES & FICHIERS PUBLICS
  * ------------------------------------------------------------- */
 
+app.get('/', (req, res) => res.sendFile(path.join(rootDir, 'index.html')));
+
 for (const [route, file] of Object.entries(PAGE_ALIASES)) {
   app.get(route, (req, res) => res.sendFile(path.join(rootDir, file)));
 }
 
+/**
+ * Une seule URL par page (SEO) : /index.html → /, /statuts.html → /statuts.
+ * La chaîne de requête est conservée.
+ */
+const CANONICAL_PATHS = {
+  '/index.html': '/',
+  ...Object.fromEntries(Object.entries(PAGE_ALIASES).map(([route, file]) => [`/${file}`, route])),
+};
+
+for (const [from, to] of Object.entries(CANONICAL_PATHS)) {
+  app.get(from, (req, res) => {
+    const query = req.originalUrl.slice(req.path.length);
+    res.redirect(301, to + query);
+  });
+}
+
 for (const file of PUBLIC_FILES) {
+  if (CANONICAL_PATHS[`/${file}`]) continue;
   app.get(`/${file}`, (req, res) => res.sendFile(path.join(rootDir, file)));
 }
 
-// Fallback HTML pour toutes les autres routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(rootDir, 'index.html'));
+// Toute autre route : vraie page 404 (évite les doublons de l'accueil dans Google)
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(rootDir, '404.html'));
 });

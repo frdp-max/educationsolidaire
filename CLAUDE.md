@@ -34,6 +34,10 @@
 ├── politique-confidentialite.html# Conformité RGPD et politique de gestion des données
 ├── conditions-generales.html     # CGU et conditions des dons/adhésions
 ├── statuts.html                 # Statuts officiels de l'association
+├── 404.html                     # Page 404 (noindex, rappel des numéros d'urgence), servie pour toute URL inconnue
+├── robots.txt                   # Autorise l'indexation (sauf /api/) et déclare le sitemap
+├── sitemap.xml                  # Pages indexables (accueil + pages légales) — mettre à jour lastmod à chaque modif
+├── llms.txt                     # Fiche de présentation pour les assistants IA — à tenir à jour avec l'état réel des missions
 ├── flyer-a3.html                # Affiche grand format A3 (297 x 420 mm) print-ready
 ├── flyer-a5.html                # Flyer/tract A5 (148 x 210 mm) print-ready
 ├── UNISSON_Affiche_A3.pdf       # Export PDF HD de l'affiche A3
