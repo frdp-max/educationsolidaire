@@ -6,8 +6,8 @@
     <title>UNISSON — Association Éducation Solidaire | Solidarité & Urgence Sociale Île-de-France</title>
     
     <!-- Meta SEO & Social Sharing -->
-    <meta name="description" content="UNISSON - Association Éducation Solidaire (loi 1901, ESS) : Médiation intrafamiliale et scolaire, permanence d'écoute 7j/7 et premier secours social d'urgence (mise à l'abri hôtel 48h à 15j) en Île-de-France.">
-    <meta name="keywords" content="UNISSON, éducation solidaire, médiation familiale, urgence sociale, mise à l'abri, 48h 15 jours, violences intrafamiliales, Gennevilliers, Île-de-France, ESS, HelloAsso">
+    <meta name="description" content="UNISSON - Association Éducation Solidaire (loi 1901, ESS), jeune association de Gennevilliers : premier secours social et mise à l'abri d'urgence en priorité, puis médiation familiale, café et épicerie solidaires.">
+    <meta name="keywords" content="UNISSON, éducation solidaire, médiation familiale, urgence sociale, mise à l'abri, violences intrafamiliales, Gennevilliers, Île-de-France, ESS, HelloAsso">
     <meta property="og:title" content="UNISSON — Association Éducation Solidaire">
     <meta property="og:description" content="Agir à l'unisson pour les familles, les jeunes vulnérables et la solidarité d'urgence.">
     <meta property="og:type" content="website">
@@ -1890,6 +1890,27 @@
             .donation-section { padding: 1.4rem 0.75rem; }
             .donation-widget { padding: 1.2rem 0.75rem; }
         }
+        /* Badge « Priorité » (premier secours social, en lancement) */
+        .badge-prio {
+            display: inline-flex; align-items: center; gap: .35rem;
+            background: #fff1f2; color: var(--uni-alert, #d92d20);
+            border: 1px solid #fecdd3; border-radius: 999px;
+            padding: .2rem .65rem; margin-left: .35rem; vertical-align: middle;
+            font: 800 .68rem/1.4 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+        }
+        /* Encadré « En cas de danger » au-dessus du formulaire de contact */
+        .emergency-warning {
+            background: #fff1f2; border: 2px solid #d92d20; border-radius: 14px;
+            padding: 1.1rem 1.3rem; margin-bottom: 1.4rem; color: #7a1610; line-height: 1.55;
+        }
+        .emergency-warning strong { color: #b42318; }
+        .emergency-warning .numbers { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .8rem; }
+        .emergency-warning .numbers a {
+            display: inline-flex; align-items: baseline; gap: .45rem; text-decoration: none;
+            background: #fff; border: 1px solid #fecdd3; border-radius: 10px; padding: .45rem .8rem; color: #7a1610;
+            font-size: .88rem;
+        }
+        .emergency-warning .numbers a b { font: 800 1.15rem 'Montserrat', sans-serif; color: #d92d20; }
         /* Badge « En projet » (Café & Épicerie en préparation) */
         .badge-projet {
             display: inline-flex; align-items: center; gap: .35rem;
@@ -1922,14 +1943,14 @@
         <div class="urgent-bar-content">
             <div class="urgent-bar-text">
                 <span class="urgent-pulse-dot"></span>
-                <span><strong>Urgence Hébergement & Solidarité :</strong> Aidez-nous à mettre à l'abri les familles en détresse à Gennevilliers.</span>
+                <span><strong>Association en lancement :</strong> aidez-nous à créer un dispositif de mise à l'abri pour les familles en détresse à Gennevilliers.</span>
             </div>
             <div class="urgent-bar-actions">
                 <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-urgent-donate">
                     <i class="fa-solid fa-heart"></i> Faire un Don (Déduction 66 %)
                 </button>
-                <a href="tel:0600000000" class="btn-urgent-phone">
-                    <i class="fa-solid fa-phone"></i> Ligne d'Urgence 7j/7
+                <a href="tel:115" class="btn-urgent-phone">
+                    <i class="fa-solid fa-phone"></i> Urgence : appelez le 115
                 </a>
             </div>
         </div>
@@ -1940,7 +1961,7 @@
         <div class="top-bar-left">
             <i class="fa-solid fa-hand-holding-heart" style="color: var(--uni-lilac);"></i>
             <span><strong>UNISSON</strong> — Association d'intérêt général & d'utilité sociale (Île-de-France)</span>
-            <span class="badge-hotline">Permanence 7j/7</span>
+            <span class="badge-hotline">Association en lancement</span>
         </div>
         <div>
             <a href="#missions"><i class="fa-solid fa-layer-group"></i> Missions</a>
@@ -1968,7 +1989,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#missions">Nos Actions</a></li>
                 <li><a href="#poles-solidaires" style="color: var(--uni-purple-mid); font-weight: 700;"><i class="fa-solid fa-store"></i> Nos projets</a></li>
-                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> Urgence 7j/7</a></li>
+                <li><a href="#urgence" style="color: var(--uni-alert); font-weight: 700;"><i class="fa-solid fa-triangle-exclamation"></i> En cas d'urgence</a></li>
                 <li><a href="#dons-impact" style="color: #be123c; font-weight: 700;"><i class="fa-solid fa-heart"></i> Faire un Don</a></li>
                 <li><a href="#tarifs">Adhérer</a></li>
                 <li><button onclick="openCheckoutModal('Adhésion & Soutien', 25, 'general')" class="btn-portal"><i class="fa-solid fa-shield-heart"></i> Adhérer en ligne</button></li>
@@ -1981,7 +2002,7 @@
         <div class="hero-content">
             <div class="badge-ess"><i class="fa-solid fa-shield-heart"></i> Association loi 1901 · Économie Sociale & Solidaire</div>
             <h1>Agir à l'unisson pour les familles et la jeunesse vulnérable.</h1>
-            <p>Médiation familiale de proximité, permanence d'écoute 7j/7 et premier secours social d'urgence à Gennevilliers et en Île-de-France. En projet : un Café Solidaire et une Épicerie d'accès digne.</p>
+            <p>Jeune association de Gennevilliers, UNISSON se mobilise d'abord pour le premier secours social : mettre à l'abri et nourrir les familles et les jeunes en détresse. Viendront ensuite la médiation familiale, un Café Solidaire et une Épicerie d'accès digne.</p>
             <div class="hero-cta-group">
                 <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-portal" style="background: linear-gradient(135deg, #e11d48, #be123c); padding: 0.95rem 2.2rem; font-size: 1rem; border: none; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.35);">
                     <i class="fa-solid fa-heart"></i> Soutenir les Familles (Don Déductible 66%)
@@ -1997,16 +2018,16 @@
     <div class="stats-bar">
         <div class="stats-grid">
             <div class="stat-item">
-                <span class="stat-number">48h à 15j</span>
-                <span class="stat-label">Mise à l'abri d'urgence & repas</span>
+                <span class="stat-number">Priorité n°1</span>
+                <span class="stat-label">Premier secours social & mise à l'abri</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">2 Projets</span>
                 <span class="stat-label">Café & Épicerie solidaires en préparation</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">7j / 7</span>
-                <span class="stat-label">Permanence d'écoute & astreinte</span>
+                <span class="stat-number">1 membre = 1 voix</span>
+                <span class="stat-label">Gouvernance démocratique (loi 1901)</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">66 %</span>
@@ -2017,6 +2038,11 @@
 
     <!-- KIOSQUE D'ACCÈS RAPIDE -->
     <div class="quick-access">
+        <a href="#urgence" class="access-card">
+            <div class="access-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-hotel"></i></div>
+            <h3>Secours Social & Mise à l'Abri <span class="badge-prio">Priorité</span></h3>
+            <p>Notre première priorité : hébergement d'urgence et repas pour les familles, les femmes victimes de violences et les jeunes en rupture.</p>
+        </a>
         <a href="#poles-solidaires" class="access-card">
             <div class="access-icon" style="background: #f3e8ff; color: var(--uni-purple-mid);"><i class="fa-solid fa-mug-hot"></i></div>
             <h3>Café Solidaire <span class="badge-projet">En projet</span></h3>
@@ -2027,11 +2053,6 @@
             <h3>Épicerie Solidaire <span class="badge-projet">En projet</span></h3>
             <p>Bientôt : alimentation et hygiène de qualité à tarif solidaire pour les familles orientées.</p>
         </a>
-        <a href="#urgence" class="access-card">
-            <div class="access-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-hotel"></i></div>
-            <h3>Secours Social & Mise à l'Abri</h3>
-            <p>Hébergement d'urgence, soutien aux femmes victimes et médiation familiale 7j/7.</p>
-        </a>
     </div>
 
     <!-- CONTENU PRINCIPAL -->
@@ -2041,7 +2062,7 @@
         <div id="missions" class="section-header">
             <span class="section-tag"><i class="fa-solid fa-hand-holding-heart"></i> Article 3 des Statuts</span>
             <h2>Missions d'Utilité Sociale & Leviers d'Action</h2>
-            <p>UNISSON intervient à l'échelle métropolitaine et régionale pour protéger les personnes vulnérables, restaurer le dialogue familial et garantir un premier secours en situation critique.</p>
+            <p>UNISSON se construit pour protéger les personnes vulnérables, restaurer le dialogue familial et garantir un premier secours en situation critique. L'association vient d'être créée : ces missions sont en cours de lancement, en commençant par le secours social.</p>
         </div>
         
         <div class="grid-services">
@@ -2052,13 +2073,13 @@
             </div>
             <div class="card-service">
                 <div class="card-service-icon"><i class="fa-solid fa-headset"></i></div>
-                <h3>Permanence 7j/7 & Écoute Active</h3>
-                <p>Ligne d'écoute et accueil inconditionnel 7 jours sur 7. Soutien moral immédiat, orientation personnalisée et articulation directe avec les services médico-sociaux et hospitaliers.</p>
+                <h3>Écoute Active & Orientation</h3>
+                <p>Objectif : une écoute et un accueil inconditionnels, un soutien moral et une orientation personnalisée vers les services médico-sociaux et hospitaliers.</p>
             </div>
             <div class="card-service">
                 <div class="card-service-icon" style="background: #ffe4e6; color: var(--uni-alert);"><i class="fa-solid fa-shield-halved"></i></div>
                 <h3>Femmes Victimes de Violences</h3>
-                <p>Prise en charge protectrice, mise en sécurité immédiate et accompagnement vers les réseaux spécialisés, associations partenaires et structures médicales et juridiques adaptées.</p>
+                <p>Objectif : mise en sécurité et accompagnement vers les réseaux spécialisés, associations partenaires et structures médicales et juridiques. En cas de danger, appelez dès maintenant le 3919 ou le 17.</p>
             </div>
         </div>
 
@@ -2066,21 +2087,32 @@
         <div id="urgence" class="emergency-block">
             <div class="emergency-header">
                 <div class="emergency-info">
-                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Dispositif de Premier Secours Social : Mise à l'Abri d'Urgence</h3>
-                    <p>Mise à l'abri immédiate à l'hôtel avec prise en charge des repas pour apaiser la crise aiguë. Articulation rapide avec les services sociaux (CCAS, AP-HP, Cochin, Hôtel-Dieu...) et accompagnement personnalisé selon chaque situation.</p>
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Premier Secours Social : notre priorité</h3>
+                    <p>Nous mettons en place un dispositif de mise à l'abri temporaire à l'hôtel avec prise en charge des repas, en lien avec les services sociaux (CCAS, 115). <strong>Il n'est pas encore opérationnel</strong> : vos dons et votre engagement bénévole servent à le lancer.</p>
                     <div class="emergency-pills">
-                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Hébergement hôtel sécurisé</span>
-                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Repas de crise</span>
-                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Équipe d'astreinte 2H/2F</span>
-                        <span class="emergency-pill"><i class="fa-solid fa-check"></i> Relais CCAS & AP-HP</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Objectif : hébergement à l'hôtel</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Repas de crise</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Équipe bénévole mixte</span>
+                        <span class="emergency-pill"><i class="fa-solid fa-flag"></i> Relais CCAS & 115</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Formulaire opérationnel d'urgence connecté -->
+            <!-- Formulaire de contact / signalement (pas d'intervention d'urgence tant que le dispositif n'est pas lancé) -->
             <form class="emergency-form" id="emergencyForm" onsubmit="handleEmergencySubmit(event)">
+                <div class="emergency-warning" role="alert">
+                    <strong><i class="fa-solid fa-circle-exclamation"></i> En cas de danger ou d'urgence, n'attendez pas notre réponse.</strong><br>
+                    L'association est en cours de lancement et ne peut pas encore intervenir en urgence. Appelez gratuitement, 24h/24 :
+                    <div class="numbers">
+                        <a href="tel:115"><b>115</b> Hébergement d'urgence</a>
+                        <a href="tel:3919"><b>3919</b> Violences femmes info</a>
+                        <a href="tel:119"><b>119</b> Enfance en danger</a>
+                        <a href="tel:17"><b>17</b> Police</a>
+                        <a href="tel:112"><b>112</b> Urgences</a>
+                    </div>
+                </div>
                 <h4 style="color: var(--uni-alert-text); margin-bottom: 1.2rem; font-size: 1.18rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fa-solid fa-paper-plane"></i> Formulaire de Signalement & Demande de Prise en Charge d'Urgence
+                    <i class="fa-solid fa-paper-plane"></i> Nous écrire ou nous signaler une situation
                 </h4>
                 <div class="form-grid">
                     <div class="form-group">
@@ -2088,11 +2120,11 @@
                         <input type="text" id="em_name" placeholder="Ex: M. Dupont" required>
                     </div>
                     <div class="form-group">
-                        <label for="em_phone">Numéro de téléphone d'urgence *</label>
+                        <label for="em_phone">Numéro de téléphone *</label>
                         <input type="tel" id="em_phone" placeholder="06 00 00 00 00" required>
                     </div>
                     <div class="form-group">
-                        <label for="em_type">Type de situation de crise *</label>
+                        <label for="em_type">Type de situation *</label>
                         <select id="em_type" required>
                             <option value="Rupture / Conflit familial critique">Rupture / Conflit familial critique</option>
                             <option value="Besoin d'hébergement d'urgence (Mise à l'abri temporaire)">Besoin d'hébergement d'urgence (Mise à l'abri temporaire)</option>
@@ -2107,15 +2139,15 @@
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label for="em_msg">Précisions sur la situation (Composition familiale, enfants en bas âge, urgence vitale) *</label>
-                    <textarea id="em_msg" rows="5" placeholder="Décrivez la situation, le nombre de personnes concernées et les besoins immédiats pour nous permettre d'intervenir au plus vite..." required></textarea>
+                    <label for="em_msg">Votre message (situation, composition familiale, besoins) *</label>
+                    <textarea id="em_msg" rows="5" placeholder="Décrivez la situation et vos besoins. Nous vous répondrons dès que possible." required></textarea>
                 </div>
                 <div class="emergency-actions">
                     <button type="submit" id="btnSubmitEmergency" class="btn-emergency">
-                        <i class="fa-solid fa-bell"></i> Transmettre l'alerte à l'astreinte UNISSON
+                        <i class="fa-solid fa-paper-plane"></i> Envoyer mon message
                     </button>
-                    <a href="tel:0600000000" class="btn-portal" style="background: var(--uni-deep-purple); font-size: 0.9rem;">
-                        <i class="fa-solid fa-phone"></i> Ligne directe permanence
+                    <a href="tel:115" class="btn-portal" style="background: var(--uni-deep-purple); font-size: 0.9rem;">
+                        <i class="fa-solid fa-phone"></i> Urgence : appeler le 115
                     </a>
                 </div>
             </form>
@@ -2212,7 +2244,7 @@
         <div id="tarifs" class="section-header">
             <span class="section-tag"><i class="fa-solid fa-coins"></i> Cotisations Annuelles</span>
             <h2>Grille des Adhésions & Engagement Solidaire</h2>
-            <p>Participez à la gouvernance démocratique ("1 membre = 1 voix"), rejoignez nos équipes de terrain ou soutenez financièrement les prises en charge de crise.</p>
+            <p>Participez à la gouvernance démocratique ("1 membre = 1 voix"), rejoignez l'équipe fondatrice ou soutenez financièrement le lancement du premier secours social.</p>
         </div>
 
         <div class="grid-tarifs">
@@ -2222,7 +2254,7 @@
                     <span class="tarif-badge">Sur le terrain</span>
                     <h4>Bénévole Actif</h4>
                     <div class="tarif-price">10 € <span>/ an</span></div>
-                    <p class="tarif-desc">Équipe d'intervention mixte (astreintes terrain paritaires), assurance responsabilité civile incluse, droit de vote à l'AG.</p>
+                    <p class="tarif-desc">Rejoignez la future équipe d'intervention mixte (astreintes paritaires), assurance responsabilité civile incluse, droit de vote à l'AG.</p>
                 </div>
                 <button onclick="openCheckoutModal('Bénévole Actif - Équipe Mixte', 10, 'benevole')" class="btn-tarif">
                     <i class="fa-solid fa-user-check"></i> Rejoindre l'équipe
@@ -2235,7 +2267,7 @@
                     <span class="tarif-badge">Accessibilité</span>
                     <h4>Cotisation Solidaire</h4>
                     <div class="tarif-price">5 € <span>/ an</span></div>
-                    <p class="tarif-desc">Accès universel et inconditionnel aux permanences d'écoute, ateliers et soutien éducatif pour personnes et jeunes à faibles revenus.</p>
+                    <p class="tarif-desc">Accès universel et inconditionnel aux futures permanences d'écoute, ateliers et soutien éducatif pour personnes et jeunes à faibles revenus.</p>
                 </div>
                 <button onclick="openCheckoutModal('Cotisation Solidaire', 5, 'solidaire')" class="btn-tarif">
                     <i class="fa-solid fa-heart"></i> Adhérer solidairement
@@ -2248,7 +2280,7 @@
                     <span class="tarif-badge" style="background: var(--uni-purple-mid); color: #ffffff;">Formule Recommandée</span>
                     <h4>Pass Famille / Duo</h4>
                     <div class="tarif-price">25 € <span>/ an</span></div>
-                    <p class="tarif-desc">Couverture complète pour l'ensemble du foyer familial. Accès prioritaire aux cycles de médiation et aux sorties éducatives.</p>
+                    <p class="tarif-desc">Couverture complète pour l'ensemble du foyer familial. Accès prioritaire aux futurs cycles de médiation et sorties éducatives.</p>
                 </div>
                 <button onclick="openCheckoutModal('Pass Famille / Duo', 25, 'famille')" class="btn-tarif">
                     <i class="fa-solid fa-star"></i> Choisir le Pass Famille
@@ -2261,7 +2293,7 @@
                     <span class="tarif-badge">Fonds d'Urgence</span>
                     <h4>Membre Bienfaiteur</h4>
                     <div class="tarif-price">50 € <span>/ an</span></div>
-                    <p class="tarif-desc">Finance directement 1 nuitée d'hôtel de secours et les repas de crise pour une famille ou une personne en détresse aiguë.</p>
+                    <p class="tarif-desc">Financera 1 nuitée d'hôtel de secours et les repas de crise pour une famille ou une personne en détresse aiguë.</p>
                 </div>
                 <button onclick="openCheckoutModal('Membre Bienfaiteur - Fonds d\'Urgence', 50, 'bienfaiteur')" class="btn-tarif">
                     <i class="fa-solid fa-shield-heart"></i> Devenir Bienfaiteur
@@ -2274,7 +2306,7 @@
             <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 1rem auto;">
                 <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar"></i> Transparence & Impact Concret</span>
                 <h2>Votre Générosité en Action</h2>
-                <p>Chaque don versé à UNISSON ouvre droit à une <strong>réduction d'impôt de 66 %</strong> (au titre des organismes d'intérêt général). Voici ce que permet concrètement votre soutien sur le terrain :</p>
+                <p>Chaque don versé à UNISSON ouvre droit à une <strong>réduction d'impôt de 66 %</strong> (au titre des organismes d'intérêt général). Voici ce que permettra concrètement votre soutien, dès le lancement de nos actions :</p>
             </div>
 
             <div class="impact-grid">
@@ -2296,7 +2328,7 @@
                         <div class="impact-amount">25 €</div>
                         <span class="impact-net-cost"><i class="fa-solid fa-tag"></i> 8,50 € après déduction</span>
                         <div class="impact-text">
-                            <strong>Finance 1 kit d'hygiène complet + 1 panier alimentaire de secours</strong> pour une famille mise à l'abri.
+                            <strong>Financera 1 kit d'hygiène complet + 1 panier alimentaire de secours</strong> pour une famille mise à l'abri.
                         </div>
                     </div>
                     <button class="btn-impact-select"><i class="fa-solid fa-basket-shopping"></i> Donner 25 €</button>
@@ -2309,7 +2341,7 @@
                         <div class="impact-amount" style="color: #e11d48;">50 €</div>
                         <span class="impact-net-cost" style="background: #fff1f2; color: #9f1239;"><i class="fa-solid fa-shield-heart"></i> 17,00 € après déduction</span>
                         <div class="impact-text">
-                            <strong>Finance 1 nuitée d'hôtel de secours + repas chauds</strong> pour mettre à l'abri immédiatement une mère et son enfant à la rue.
+                            <strong>Financera 1 nuitée d'hôtel de secours + repas chauds</strong> pour mettre à l'abri une mère et son enfant à la rue.
                         </div>
                     </div>
                     <button class="btn-impact-select"><i class="fa-solid fa-heart"></i> Donner 50 €</button>
@@ -2321,7 +2353,7 @@
                         <div class="impact-amount" style="font-size: 1.8rem; line-height: 1.3;">Montant Libre</div>
                         <span class="impact-net-cost"><i class="fa-solid fa-hand-holding-heart"></i> Déductible à 66 %</span>
                         <div class="impact-text">
-                            <strong>Versement direct au Fonds de Premier Secours Social</strong> pour les interventions d'urgence 7j/7.
+                            <strong>Versement au Fonds de Premier Secours Social</strong> pour lancer nos premières mises à l'abri.
                         </div>
                     </div>
                     <button class="btn-impact-select" style="background: var(--uni-purple-mid);"><i class="fa-solid fa-pen"></i> Choisir mon don</button>
@@ -2350,12 +2382,12 @@
         <!-- SECTION DONS & FONDS D'URGENCE LIBRE -->
         <div id="dons" class="donation-section">
             <div class="donation-info">
-                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar"></i> Don Libre ou Récurrent</span>
+                <span class="section-tag" style="color: var(--uni-purple-mid);"><i class="fa-solid fa-hand-holding-dollar"></i> Don Libre</span>
                 <h3>Abondement du Fonds de Premier Secours Social</h3>
-                <p>Chaque don est intégralement affecté aux frais d'hébergement d'urgence (hôtels partenaires) et aux paniers repas pour les familles et femmes mises à l'abri (48h à 15j).</p>
+                <p>Les dons au Fonds de Premier Secours Social serviront à financer les nuitées d'hôtel et les paniers repas des familles et des femmes mises à l'abri, dès le lancement du dispositif.</p>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center;">
                     <i class="fa-solid fa-lock" style="color: var(--uni-purple-mid); font-size: 1.3rem;"></i>
-                    <span style="font-size: 0.88rem; color: var(--uni-text-muted);">Paiement 100% sécurisé via HelloAsso • Déduction fiscale ESS</span>
+                    <span style="font-size: 0.88rem; color: var(--uni-text-muted);">Paiement 100% sécurisé via HelloAsso • Réduction d'impôt de 66 %</span>
                 </div>
             </div>
 
@@ -2452,12 +2484,12 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Services & Actions</h4>
+                <h4>Nos missions</h4>
                 <ul>
                     <li><a href="#missions">Médiation intrafamiliale et scolaire</a></li>
-                    <li><a href="#urgence">Premier Secours Social & Mise à l'abri (48h-15j)</a></li>
+                    <li><a href="#urgence">Premier Secours Social & Mise à l'abri (priorité)</a></li>
                     <li><a href="#urgence">Protection des femmes victimes de violences</a></li>
-                    <li><a href="#tarifs">Astreintes terrain paritaires (Équipe 2H/2F)</a></li>
+                    <li><a href="#tarifs">Devenir bénévole</a></li>
                     <li><a href="#dons">Fonds d'Urgence Sociale</a></li>
                 </ul>
             </div>
@@ -2641,17 +2673,17 @@
                 const data = await response.json();
 
                 if (response.ok && data.success) {
-                    showToast('🚨 Alerte transmise (Réf: ' + data.alertId + '). L\'astreinte prend en charge votre demande.');
+                    showToast('Message reçu (Réf : ' + data.alertId + '). Nous vous répondrons dès que possible. En cas de danger, appelez le 115 ou le 17.');
                     document.getElementById('emergencyForm').reset();
                 } else {
                     throw new Error(data.error || 'Erreur serveur');
                 }
             } catch (err) {
                 // Fallback Mailto immédiat si coupure réseau
-                const subject = encodeURIComponent("[URGENCE SOCIALE] " + emergencyType + " - " + location);
-                const body = encodeURIComponent("Signalement d'urgence reçu :\n\nDemandeur : " + name + "\nTéléphone : " + phone + "\nCommune : " + location + "\nType : " + emergencyType + "\n\nDétails :\n" + message);
+                const subject = encodeURIComponent("[Signalement] " + emergencyType + " - " + location);
+                const body = encodeURIComponent("Message envoyé depuis le site :\n\nDemandeur : " + name + "\nTéléphone : " + phone + "\nCommune : " + location + "\nType : " + emergencyType + "\n\nDétails :\n" + message);
                 window.location.href = "mailto:contact@education-solidaire.org?subject=" + subject + "&body=" + body;
-                showToast("Alerte d'urgence transmise via messagerie de secours.");
+                showToast("Votre messagerie s'ouvre pour nous écrire. En cas de danger, appelez le 115 ou le 17.");
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;

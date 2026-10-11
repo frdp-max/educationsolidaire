@@ -240,11 +240,11 @@ app.post('/api/emergency/alert', async (req, res) => {
       success: true,
       alertId: alert.id,
       timestamp: alert.timestamp,
-      message: 'Votre alerte a été transmise à notre permanence d\'astreinte.',
+      message: 'Votre message a bien été reçu. En cas de danger, appelez le 115 ou le 17.',
     });
   } catch (error) {
     console.error('[API Emergency Alert Error]:', error);
-    res.status(500).json({ error: 'Impossible d\'enregistrer l\'alerte d\'urgence.' });
+    res.status(500).json({ error: 'Impossible d\'enregistrer votre message. En cas de danger, appelez le 115 ou le 17.' });
   }
 });
 

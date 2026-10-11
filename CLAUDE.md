@@ -10,7 +10,7 @@
 - **Statut fiscal** : Dons éligibles à la déduction fiscale de 66 % (art. 200 du CGI, limite 20 % du revenu net imposable).
 
 ### Les 3 Missions Fondamentales
-> **État au 6 octobre 2026** : seule la mission 1 (urgence & mise à l'abri, repas d'urgence) est active. Le Café Solidaire et l'Épicerie Solidaire sont **en projet** : toujours les présenter au futur, avec la mention « En projet », et ne jamais promettre aux donateurs un service qui n'existe pas encore (« soutenir la création » plutôt que « offrir un café suspendu »).
+> **État au 11 octobre 2026** : l'association vient d'être créée, **aucune mission n'est encore opérationnelle**. Priorité n°1 : le premier secours social (mise à l'abri, repas d'urgence), présenté avec le badge « Priorité » et au futur (« financera »). Le Café Solidaire et l'Épicerie Solidaire sont **en projet** (badge « En projet »). Ne jamais affirmer de permanence 7j/7, d'astreinte, de partenariats ou d'agrément non obtenus. Le formulaire du site est un formulaire de contact : il doit toujours renvoyer vers le 115, 3919, 119, 17 et 112 en cas de danger.
 
 1. **Urgence sociale & mise à l'abri** : Hébergement temporaire à l'hôtel, sécurisation des familles, femmes victimes de violences et jeunes en rupture de ban, fourniture de repas d'urgence, articulation avec le 115/CCAS.
 2. **Le Café Solidaire** : Accueil inconditionnel de jour, écoute bienveillante, principe du « café suspendu » (offert à une personne en difficulté), animation de quartier, permanence sociale.
