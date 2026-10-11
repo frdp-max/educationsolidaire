@@ -33,6 +33,7 @@ export const PUBLIC_FILES = [
   'infographie-a5.html',
   'logo.png',
   'logo-192.png',
+  'apple-touch-icon.png',
   'logo.jpg',
   'logo.jpeg',
   'flyer-visuel.jpg',
