@@ -418,12 +418,41 @@
 
         /* --- HERO BANNER ATMOSPHÉRIQUE ADOUCI --- */
         .hero {
-            background: radial-gradient(circle at 85% 30%, rgba(53, 11, 82, 0.92) 0%, rgba(30, 17, 42, 0.96) 100%), 
-                        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1280&q=70') center/cover no-repeat;
+            background: linear-gradient(120deg, #1e112a 0%, #2a0d40 55%, #350b52 100%);
             color: #ffffff;
             padding: 6.5rem 2rem 10.5rem 2rem;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Visuel du flyer sur la moitié droite, fondu vers le texte */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 60%;
+            background:
+                linear-gradient(90deg, rgba(30, 17, 42, 0.75) 0%, rgba(30, 17, 42, 0.25) 60%, rgba(30, 17, 42, 0.1) 100%),
+                url('/hero-visuel.webp') center 62% / cover no-repeat;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 40%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 40%);
+            pointer-events: none;
+        }
+
+        .hero h1, .hero p { text-shadow: 0 2px 12px rgba(20, 6, 32, 0.55); }
+
+        @media (max-width: 768px) {
+            /* Sur mobile, le texte couvre toute la largeur : visuel en fond discret */
+            .hero::before {
+                width: 100%;
+                background:
+                    linear-gradient(180deg, rgba(30, 17, 42, 0.88) 0%, rgba(30, 17, 42, 0.8) 100%),
+                    url('/hero-visuel.webp') center 62% / cover no-repeat;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
         }
 
         .hero::after {
