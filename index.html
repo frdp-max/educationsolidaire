@@ -1579,6 +1579,21 @@
             gap: 0.45rem;
         }
 
+        .footer-partners {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .footer-partners-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--uni-lilac-on-dark);
+        }
+
         .footer-col a:hover {
             color: #ffffff;
             transform: translateX(3px);
@@ -2699,9 +2714,12 @@
                 <h4>Gouvernance & Réseau</h4>
                 <ul>
                     <li><a href="/statuts">Bureau : Sabri TOUJANI & Tahar BENHALIMA</a></li>
-                    <li><a href="#">Services Sociaux Hospitaliers (AP-HP, Cochin, Hôtel-Dieu)</a></li>
-                    <li><a href="#">Collectivités Territoriales & CCAS</a></li>
-                    <li><a href="#">Conseils Départementaux & Région Île-de-France</a></li>
+                    <li class="footer-partners">
+                        <span class="footer-partners-label">Partenaires sollicités</span>
+                        <span>Services sociaux hospitaliers (AP-HP)</span>
+                        <span>Collectivités territoriales & CCAS</span>
+                        <span>Conseil départemental & Région Île-de-France</span>
+                    </li>
                     <li><a href="https://www.helloasso.com" target="_blank" rel="noopener">HelloAsso — Passerelle agréée</a></li>
                 </ul>
             </div>
