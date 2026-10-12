@@ -46,8 +46,14 @@
 ├── UNISSON_Infographie_A5.pdf   # Export PDF HD de l'infographie A5
 ├── cartes-visite.html           # Cartes de visite 85 x 55 mm du Bureau (recto nominatif + verso commun) — usage interne, non servi
 ├── UNISSON_Cartes_Visite.pdf    # Export PDF des cartes (4 pages : Président R/V, Secrétaire-Trésorier R/V)
+├── textile/                     # Kit textile (flex, sérigraphie, DTF) — usage interne, non servi
+│   ├── generate.py              # Générateur des logos vectoriels (fonttools + shapely, police Montserrat OFL)
+│   ├── svg/ pdf/ eps/           # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
+│   ├── fiche-technique.html     # Fiche d'atelier A4 (emplacements, seuils, export)
+│   └── UNISSON_Kit_Textile_Fiche_Technique.pdf
 ├── flyer-visuel.jpg             # Visuel cinématographique d'illustration des 3 missions
-├── logo.png                     # Logo officiel UNISSON
+├── logo.svg                     # Symbole officiel UNISSON (vectoriel, généré par textile/generate.py) — utilisé sur le site et les supports print
+├── logo.png                     # Logo complet (écusson) 1024 px — schema.org ; logo-192.png, favicon.ico, apple-touch-icon.png = symbole
 ├── deploy.sh                    # Script de déploiement automatique sur le VPS
 ├── docker-compose.yml           # Définition des services conteneurisés (app, nginx, certbot)
 ├── Dockerfile                   # Build de l'application Node.js
