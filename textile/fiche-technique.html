@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit textile — Fiche technique · UNISSON</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================
+           FICHE TECHNIQUE TEXTILE — A4 portrait, 3 pages
+           Impression : format A4, marges "Aucune", cocher
+           "Graphiques d'arrière-plan".
+           ========================================================== */
+        @page { size: A4 portrait; margin: 0; }
+
+        :root {
+            --indigo: #260C3B;
+            --violet: #4C1D95;
+            --accent: #6D28D9;
+            --lavender: #f3e8ff;
+            --lavender-2: #faf5ff;
+            --alert: #d92d20;
+            --text: #1e112a;
+            --muted: #574a66;
+            --line: #e4d7f5;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Atkinson Hyperlegible Next', sans-serif;
+            color: var(--text);
+            background: #d9d2e3;
+            font-size: 9.5pt;
+            line-height: 1.45;
+        }
+
+        .page {
+            width: 210mm; height: 297mm;
+            margin: 10mm auto;
+            padding: 11mm 15mm 9mm;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            display: flex; flex-direction: column; gap: 3.5mm;
+        }
+        @media print {
+            body { background: #fff; }
+            .page { margin: 0; page-break-after: always; break-after: page; }
+            .page:last-child { page-break-after: auto; break-after: auto; }
+        }
+
+        header.top {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid var(--indigo); padding-bottom: 3mm;
+        }
+        header.top img { height: 11mm; }
+        header.top .ref { text-align: right; font-size: 8pt; color: var(--muted); }
+        header.top .ref strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--indigo); font-size: 11pt; letter-spacing: .02em; }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif; font-weight: 800;
+            color: var(--indigo); font-size: 12.5pt; letter-spacing: .01em;
+            display: flex; align-items: center; gap: 2.5mm;
+        }
+        h2 .n {
+            display: inline-grid; place-items: center;
+            width: 6.5mm; height: 6.5mm; border-radius: 50%;
+            background: var(--accent); color: #fff; font-size: 9pt;
+        }
+        h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--violet); font-size: 9.5pt; margin-bottom: 1mm; }
+        p.lead { color: var(--muted); }
+
+        .grid { display: grid; gap: 3mm; }
+        .g2 { grid-template-columns: 1fr 1fr; }
+        .g3 { grid-template-columns: repeat(3, 1fr); }
+
+        .tile {
+            border: 1px solid var(--line); border-radius: 2.5mm;
+            padding: 3mm; display: flex; flex-direction: column; gap: 1.8mm;
+        }
+        .tile .art { display: grid; place-items: center; min-height: 18mm; border-radius: 1.5mm; padding: 2.5mm; }
+        .tile .art.light { background: #fff; outline: 1px dashed var(--line); }
+        .tile .art.dark { background: var(--indigo); }
+        .tile .art.black { background: #141414; }
+        .tile .art img { max-width: 100%; max-height: 22mm; }
+        .tile .cap { font-size: 8pt; color: var(--muted); }
+        .tile .cap code { color: var(--violet); }
+
+        code { font-family: Consolas, 'Courier New', monospace; font-size: 8pt; }
+
+        .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+        .sw { border: 1px solid var(--line); border-radius: 2mm; overflow: hidden; font-size: 7.8pt; }
+        .sw .chip { height: 7mm; }
+        .sw .meta { padding: 2mm 2.5mm; }
+        .sw .meta strong { font-family: 'Montserrat', sans-serif; display: block; font-size: 8.5pt; color: var(--indigo); }
+
+        table { width: 100%; border-collapse: collapse; font-size: 8.2pt; }
+        th, td { text-align: left; padding: 1.25mm 2mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+        th { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #fff; background: var(--indigo); font-size: 7.8pt; }
+        tr:nth-child(even) td { background: var(--lavender-2); }
+        td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+        .ok { color: #047857; font-weight: 700; }
+        .warn { color: #b45309; font-weight: 700; }
+        .no { color: var(--alert); font-weight: 700; }
+
+        ul.rules { list-style: none; display: grid; gap: 1.6mm; }
+        ul.rules li { padding-left: 5mm; position: relative; }
+        ul.rules li::before { content: ""; position: absolute; left: 0; top: 1.6mm; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--accent); }
+        ul.rules.dont li::before { background: var(--alert); border-radius: 0; transform: rotate(45deg); }
+
+        .note {
+            background: var(--lavender-2); border-left: 3px solid var(--accent);
+            padding: 3mm 4mm; border-radius: 0 2mm 2mm 0; font-size: 8.3pt;
+        }
+
+        .shirt { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+        .shirt svg { width: 100%; height: 40mm; display: block; }
+
+        footer.foot {
+            margin-top: auto; border-top: 1px solid var(--line); padding-top: 2.5mm;
+            display: flex; justify-content: space-between; font-size: 7.3pt; color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+<!-- =================================================== PAGE 1 -->
+<section class="page">
+    <header class="top">
+        <img src="svg/unisson-horizontal-couleur.svg" alt="UNISSON — Association Éducation Solidaire">
+        <div class="ref"><strong>KIT TEXTILE · FICHE TECHNIQUE</strong>Version 1.0 — octobre 2026 · page 1/3</div>
+    </header>
+
+    <h2><span class="n">1</span>Les quatre logos du kit</h2>
+    <p class="lead">Tous les fichiers sont 100 % vectoriels : contours fermés, textes vectorisés (aucune police à installer), aucun trait, ombre, flou ni dégradé. Chaque couleur forme un tracé unique : <strong>1 tracé = 1 écran de sérigraphie = 1 couleur de flex</strong>.</p>
+
+    <div class="grid g2">
+        <div class="tile">
+            <div class="art light"><img src="svg/unisson-symbole-couleur.svg" alt="Symbole seul" style="max-height:22mm"></div>
+            <h3>A · Symbole seul</h3>
+            <div class="cap">Manche, col, casquette. Chaque ruban passe sous l'autre ; les mains se tiennent au centre.<br><code>unisson-symbole-*.svg</code></div>
+        </div>
+        <div class="tile">
+            <div class="art light"><img src="svg/unisson-coeur-couleur.svg" alt="Logo cœur" style="max-height:12mm"></div>
+            <h3>B · Cœur (sans sous-titre)</h3>
+            <div class="cap">Marquage poitrine gauche 8 à 10 cm. Sans sous-titre : à cette taille, il ferait moins de 2 mm de haut.<br><code>unisson-coeur-*.svg</code></div>
+        </div>
+        <div class="tile">
+            <div class="art light"><img src="svg/unisson-horizontal-couleur.svg" alt="Logo horizontal" style="max-height:15mm"></div>
+            <h3>C · Horizontal</h3>
+            <div class="cap">Dos de t-shirt, sweat, chasuble (25 à 30 cm). Le sous-titre est justifié sur la largeur de « UNISSON ».<br><code>unisson-horizontal-*.svg</code></div>
+        </div>
+        <div class="tile">
+            <div class="art light"><img src="svg/unisson-ecusson-couleur.svg" alt="Logo écusson centré" style="max-height:22mm"></div>
+            <h3>D · Écusson centré</h3>
+            <div class="cap">Tote bag, poitrine centrée, dos grand format. Symbole au-dessus, texte centré.<br><code>unisson-ecusson-*.svg</code></div>
+        </div>
+    </div>
+
+    <h2><span class="n">2</span>Trois déclinaisons couleur</h2>
+    <div class="grid g3">
+        <div class="tile">
+            <div class="art light"><img src="svg/unisson-ecusson-couleur.svg" alt="Version couleur" style="max-height:14mm"></div>
+            <h3>Positive couleur · <code>-couleur</code></h3>
+            <div class="cap">3 couleurs. Textiles blancs, écrus, clairs.</div>
+        </div>
+        <div class="tile">
+            <div class="art light"><img src="svg/unisson-ecusson-mono.svg" alt="Version monochrome" style="max-height:14mm"></div>
+            <h3>Positive mono · <code>-mono</code></h3>
+            <div class="cap">1 couleur. Petit budget, chasuble fluo, coton naturel.</div>
+        </div>
+        <div class="tile">
+            <div class="art dark"><img src="svg/unisson-ecusson-blanc.svg" alt="Version négative blanche" style="max-height:14mm"></div>
+            <h3>Négative · <code>-blanc</code></h3>
+            <div class="cap">100 % blanc. Textiles noirs, indigo, violet foncé.</div>
+        </div>
+    </div>
+
+    <h2><span class="n">3</span>Palette</h2>
+    <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#260C3B"></div><div class="meta"><strong>Indigo profond</strong>#260C3B<br>Pantone ≈ 2695 C<br>CMJN ind. 36/80/0/77<br>Ruban gauche, « UNISSON »</div></div>
+        <div class="sw"><div class="chip" style="background:#4C1D95"></div><div class="meta"><strong>Violet profond</strong>#4C1D95<br>Pantone ≈ 267 C<br>CMJN ind. 49/80/0/42<br>Sous-titre</div></div>
+        <div class="sw"><div class="chip" style="background:#6D28D9"></div><div class="meta"><strong>Violet lumineux</strong>#6D28D9<br>Pantone ≈ 266 C<br>CMJN ind. 50/82/0/15<br>Ruban droit</div></div>
+        <div class="sw"><div class="chip" style="background:#fff;border-bottom:1px solid var(--line)"></div><div class="meta"><strong>Blanc pur</strong>#FFFFFF<br>Blanc couvrant (sous-couche)<br>—<br>Version négative</div></div>
+    </div>
+    <p class="note"><strong>Pantone et CMJN indicatifs</strong> (calculés depuis l'écran) : faire valider sur nuancier physique et BAT couleur avant tout tirage.</p>
+
+    <footer class="foot">
+        <span>UNISSON — Association Éducation Solidaire · loi 1901 · SIREN 108 606 260 · RNA W922023505</span>
+        <span>contact@education-solidaire.org</span>
+    </footer>
+</section>
+
+<!-- =================================================== PAGE 2 -->
+<section class="page">
+    <header class="top">
+        <img src="svg/unisson-horizontal-couleur.svg" alt="UNISSON">
+        <div class="ref"><strong>EMPLACEMENTS &amp; DIMENSIONS</strong>page 2/3</div>
+    </header>
+
+    <h2><span class="n">4</span>Seuils de fabrication</h2>
+    <p class="lead">Valeurs minimales usuelles d'atelier. Les cotes ci-dessous sont mesurées sur les fichiers du kit : <strong>trait</strong> = épaisseur d'un ruban, <strong>jour</strong> = espace où un ruban passe sous l'autre, <strong>fût</strong> = épaisseur des lettres du sous-titre.</p>
+    <table>
+        <thead><tr><th>Technique</th><th>Trait plein min.</th><th>Jour / contre-forme min.</th><th>Remarque</th></tr></thead>
+        <tbody>
+            <tr><td>Flex / flock vinyle (découpe)</td><td class="num">0,8 mm</td><td class="num">0,8 mm</td><td>Échenillage : éviter les petites pièces isolées (aucune dans le kit).</td></tr>
+            <tr><td>Sérigraphie</td><td class="num">0,5 mm</td><td class="num">0,5 mm</td><td>1 écran par couleur. En négatif sur textile foncé : sous-couche blanche.</td></tr>
+            <tr><td>DTF (transfert numérique)</td><td class="num">0,4 mm</td><td class="num">0,4 mm</td><td>Le plus tolérant pour le sous-titre à petite taille.</td></tr>
+            <tr><td>Broderie</td><td class="num">1,5 mm</td><td class="num">1,2 mm</td><td>Symbole ≥ 50 mm ; sous-titre non brodable sous 6 mm de capitale.</td></tr>
+        </tbody>
+    </table>
+
+    <h2><span class="n">5</span>Dimensions recommandées par emplacement</h2>
+    <table>
+        <thead><tr><th>Emplacement</th><th>Logo</th><th>Largeur</th><th>Cotes mesurées</th><th>Flex</th><th>Sérig. / DTF</th></tr></thead>
+        <tbody>
+            <tr><td>Cœur (poitrine gauche)</td><td>B · Cœur</td><td class="num"><strong>90–100 mm</strong></td><td class="num">h 22,5–25 mm · trait 1,7–1,9 · jour 1,0–1,1</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+            <tr><td>Cœur, petit</td><td>B · Cœur</td><td class="num">80 mm</td><td class="num">h 20 mm · trait 1,5 · jour 0,87</td><td class="warn">Limite</td><td class="ok">Oui</td></tr>
+            <tr><td>Cœur avec sous-titre</td><td>C · Horizontal</td><td class="num">90 mm</td><td class="num">capitale ST 2,1 mm · fût 0,38 mm</td><td class="no">Non</td><td class="no">Non</td></tr>
+            <tr><td>Poitrine centrée</td><td>D · Écusson</td><td class="num"><strong>100–130 mm</strong></td><td class="num">capitale ST 3,6–4,6 mm · fût 0,66–0,86</td><td class="warn">≥ 130 mm</td><td class="ok">Oui</td></tr>
+            <tr><td>Dos t-shirt / sweat</td><td>C · Horizontal</td><td class="num"><strong>250–300 mm</strong></td><td class="num">h 67–81 mm · capitale ST 5,7–6,9 · fût 1,1–1,3</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+            <tr><td>Dos grand format</td><td>D · Écusson</td><td class="num"><strong>200–260 mm</strong></td><td class="num">h 185–240 mm · fût 1,3–1,7</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+            <tr><td>Chasuble (dos)</td><td>C · Horizontal</td><td class="num">250–280 mm</td><td class="num">voir dos t-shirt</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+            <tr><td>Tote bag</td><td>D · Écusson</td><td class="num"><strong>200–250 mm</strong></td><td class="num">fût ST ≥ 1,3 mm</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+            <tr><td>Manche</td><td>A · Symbole</td><td class="num"><strong>60–80 mm</strong></td><td class="num">trait 4,5–6 · jour 2,6–3,5</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+            <tr><td>Nuque / col</td><td>A · Symbole</td><td class="num">25–40 mm</td><td class="num">à 25 mm : trait 1,9 · jour 1,1</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+        </tbody>
+    </table>
+    <p class="note">Les largeurs s'entendent pour la taille adulte M/L. Pour les tailles S/XS ou enfant, réduire de 10 à 15 % en restant au-dessus des seuils. Hauteur de pose : cœur à 8–10 cm sous la couture d'épaule ; dos à 7–9 cm sous le col.</p>
+
+    <h2><span class="n">6</span>Positionnement</h2>
+    <div class="shirt" aria-hidden="true">
+        <svg viewBox="0 0 220 200">
+            <path d="M70 10 L40 20 L5 55 L28 82 L45 68 L45 192 L175 192 L175 68 L192 82 L215 55 L180 20 L150 10 Q110 34 70 10 Z" fill="#faf5ff" stroke="#c9b3e8" stroke-width="1.5"/>
+            <image href="svg/unisson-coeur-couleur.svg" x="122" y="52" width="36" height="9"/>
+            <line x1="122" y1="66" x2="158" y2="66" stroke="#6D28D9" stroke-width=".8"/>
+            <text x="140" y="74" font-size="7" text-anchor="middle" fill="#4C1D95" font-family="Montserrat">90–100 mm</text>
+            <text x="110" y="185" font-size="8" text-anchor="middle" fill="#574a66" font-family="Montserrat" font-weight="700">AVANT · cœur</text>
+        </svg>
+        <svg viewBox="0 0 220 200">
+            <path d="M70 10 L40 20 L5 55 L28 82 L45 68 L45 192 L175 192 L175 68 L192 82 L215 55 L180 20 L150 10 Q110 20 70 10 Z" fill="#260C3B" stroke="#260C3B" stroke-width="1.5"/>
+            <image href="svg/unisson-horizontal-blanc.svg" x="58" y="40" width="104" height="28"/>
+            <line x1="58" y1="74" x2="162" y2="74" stroke="#c4b5fd" stroke-width=".8"/>
+            <text x="110" y="83" font-size="7" text-anchor="middle" fill="#e9d5ff" font-family="Montserrat">250–300 mm</text>
+            <text x="110" y="185" font-size="8" text-anchor="middle" fill="#e9d5ff" font-family="Montserrat" font-weight="700">DOS · horizontal blanc</text>
+        </svg>
+    </div>
+
+    <footer class="foot">
+        <span>UNISSON — Kit textile · Fiche technique</span>
+        <span>page 2/3</span>
+    </footer>
+</section>
+
+<!-- =================================================== PAGE 3 -->
+<section class="page">
+    <header class="top">
+        <img src="svg/unisson-horizontal-couleur.svg" alt="UNISSON">
+        <div class="ref"><strong>RÈGLES D'ATELIER &amp; EXPORT</strong>page 3/3</div>
+    </header>
+
+    <h2><span class="n">7</span>Quelle version sur quel textile ?</h2>
+    <table>
+        <thead><tr><th>Couleur du textile</th><th>Version</th><th>Couleurs à imprimer</th></tr></thead>
+        <tbody>
+            <tr><td>Blanc, écru, gris chiné clair, lavande</td><td><code>-couleur</code></td><td>Indigo + Violet + Violet lumineux (3)</td></tr>
+            <tr><td>Coton naturel, jaune fluo (chasuble), orange sécurité</td><td><code>-mono</code></td><td>Indigo (1)</td></tr>
+            <tr><td>Noir, indigo, violet foncé, marine, anthracite</td><td><code>-blanc</code></td><td>Blanc couvrant (1)</td></tr>
+            <tr><td>Violet moyen, couleurs vives saturées</td><td><code>-blanc</code></td><td>Blanc (1) — tester le contraste au BAT</td></tr>
+        </tbody>
+    </table>
+
+    <div class="grid g2">
+        <div>
+            <h2 style="margin-bottom:2mm"><span class="n">8</span>À faire</h2>
+            <ul class="rules">
+                <li>Conserver une zone de protection vide égale à la hauteur du « U » de UNISSON tout autour du logo.</li>
+                <li>Redimensionner uniquement de façon proportionnelle (verrouiller le ratio).</li>
+                <li>Utiliser la version <strong>cœur</strong> dès que le logo fait moins de 13 cm de large en flex.</li>
+                <li>Demander un BAT (bon à tirer) à l'échelle 1 et une pièce test avant la série.</li>
+                <li>En flex : vinyle mat de préférence (rendu plus doux, meilleur toucher).</li>
+            </ul>
+        </div>
+        <div>
+            <h2 style="margin-bottom:2mm"><span class="n">9</span>À ne pas faire</h2>
+            <ul class="rules dont">
+                <li>Ajouter un contour, une ombre, un dégradé ou un effet.</li>
+                <li>Recolorer les rubans hors palette ou inverser leurs couleurs.</li>
+                <li>Écraser, étirer, incliner ou faire pivoter le logo.</li>
+                <li>Réduire le logo horizontal ou l'écusson sous les seuils de la page 2.</li>
+                <li>Retaper les textes dans une autre police : ils sont déjà vectorisés.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2><span class="n">10</span>Fichiers à transmettre &amp; export</h2>
+    <table>
+        <thead><tr><th>Dossier</th><th>Format</th><th>Pour qui</th></tr></thead>
+        <tbody>
+            <tr><td><code>textile/svg/</code></td><td>SVG vectoriel, dimensions en mm</td><td>Découpe flex (plotter), Illustrator, Inkscape, CorelDRAW</td></tr>
+            <tr><td><code>textile/pdf/</code></td><td>PDF vectoriel (couleurs RVB)</td><td>Format d'échange par défaut avec l'atelier</td></tr>
+            <tr><td><code>textile/eps/</code></td><td>EPS vectoriel</td><td>Ateliers et logiciels de découpe plus anciens</td></tr>
+        </tbody>
+    </table>
+    <div class="note">
+        <strong>Sur la mention « CMJN 300 DPI » :</strong> un fichier vectoriel n'a pas de résolution. Il reste net à toutes les tailles, les 300 DPI ne concernent que les images matricielles. Selon la technique :
+        <br>• <strong>Flex / sérigraphie :</strong> fournir le PDF ou l'EPS vectoriel et indiquer les références <strong>Pantone</strong> (ou nuancier flex) de la page 1. La sérigraphie travaille en tons directs, pas en CMJN.
+        <br>• <strong>DTF :</strong> l'atelier rastérise lui-même via son RIP. Fournir le PDF vectoriel. Si un PNG est exigé : <em>taille réelle à 300 DPI, fond transparent</em>.
+        <br>• <strong>Si un PDF CMJN est imposé :</strong> ouvrir le PDF dans Illustrator, puis <em>Fichier › Mode colorimétrique › CMJN</em>, profil <em>Coated FOGRA39</em>, remplacer les valeurs par celles validées au nuancier, enregistrer en <em>PDF/X-4</em> (« Conserver les fonctions d'édition » décoché). Avec Scribus (gratuit), même opération via l'export PDF/X-4.
+    </div>
+    <p style="font-size:8pt;color:var(--muted)">Régénération des fichiers : <code>python textile/generate.py Montserrat[wght].ttf</code>, puis export PDF/EPS : <code>inkscape fichier.svg --export-type=pdf</code>. Police Montserrat © The Montserrat Project Authors, licence SIL Open Font License 1.1.</p>
+
+    <footer class="foot">
+        <span>UNISSON — Association Éducation Solidaire · 45, rue Henri Barbusse, 92230 Gennevilliers</span>
+        <span>page 3/3</span>
+    </footer>
+</section>
+
+</body>
+</html>
