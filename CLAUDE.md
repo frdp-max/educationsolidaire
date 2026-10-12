@@ -50,7 +50,10 @@
 │   ├── generate.py              # Générateur des logos vectoriels (fonttools + shapely, police Montserrat OFL)
 │   ├── svg/ pdf/ eps/           # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
 │   ├── fiche-technique.html     # Fiche d'atelier A4 (emplacements, seuils, export)
-│   └── UNISSON_Kit_Textile_Fiche_Technique.pdf
+│   ├── UNISSON_Kit_Textile_Fiche_Technique.pdf
+│   ├── mockups.py               # Maquettes à plat hoodie/parka (logos à taille réelle) → maquettes/*.svg|png
+│   ├── maquettes.html           # Planches A4 paysage des maquettes
+│   └── UNISSON_Maquettes_Textiles.pdf
 ├── flyer-visuel.jpg             # Visuel cinématographique d'illustration des 3 missions
 ├── logo.svg                     # Symbole officiel UNISSON (vectoriel, généré par textile/generate.py) — utilisé sur le site et les supports print
 ├── logo.png                     # Logo complet (écusson) 1024 px — schema.org ; logo-192.png, favicon.ico, apple-touch-icon.png = symbole

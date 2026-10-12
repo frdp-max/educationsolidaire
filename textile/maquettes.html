@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquettes textiles · UNISSON</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* MAQUETTES — A4 paysage, 2 planches par page.
+           Impression : marges "Aucune", "Graphiques d'arrière-plan" coché. */
+        @page { size: A4 landscape; margin: 0; }
+        :root { --indigo: #260C3B; --violet: #4C1D95; --accent: #6D28D9; --muted: #574a66; --line: #e4d7f5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        body { font-family: 'Atkinson Hyperlegible Next', sans-serif; color: #1e112a; background: #d9d2e3; font-size: 9pt; }
+        .page { width: 297mm; height: 210mm; margin: 10mm auto; padding: 10mm 14mm 8mm; background: #fff; display: flex; flex-direction: column; gap: 4mm; overflow: hidden; }
+        @media print { body { background: #fff; } .page { margin: 0; break-after: page; } .page:last-child { break-after: auto; } }
+        header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--indigo); padding-bottom: 2.5mm; }
+        header img { height: 10mm; }
+        header .ref { text-align: right; font-size: 8pt; color: var(--muted); }
+        header .ref strong { display: block; font: 800 11pt 'Montserrat', sans-serif; color: var(--indigo); }
+        .boards { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; min-height: 0; }
+        .board { display: flex; flex-direction: column; gap: 2mm; min-height: 0; }
+        .board img { width: 100%; border-radius: 2mm; background: #f4f1f8; }
+        .board h2 { font: 800 11pt 'Montserrat', sans-serif; color: var(--indigo); }
+        .board .views { display: flex; justify-content: space-around; font: 700 7.5pt 'Montserrat', sans-serif; color: var(--muted); letter-spacing: .08em; margin-top: -1mm; }
+        table { width: 100%; border-collapse: collapse; font-size: 8pt; }
+        td { padding: 1.1mm 1.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+        td:first-child { color: var(--violet); font-weight: 700; width: 24mm; }
+        code { font: 7.5pt Consolas, monospace; color: var(--violet); }
+        footer { border-top: 1px solid var(--line); padding-top: 2mm; display: flex; justify-content: space-between; font-size: 7.3pt; color: var(--muted); }
+    </style>
+</head>
+<body>
+
+<section class="page">
+    <header>
+        <img src="svg/unisson-horizontal-couleur.svg" alt="UNISSON — Association Éducation Solidaire">
+        <div class="ref"><strong>MAQUETTES · HOODIES</strong>Logos posés à leur taille réelle d'impression (taille M) · page 1/2</div>
+    </header>
+    <div class="boards">
+        <article class="board">
+            <h2>Hoodie indigo · logo blanc</h2>
+            <img src="maquettes/hoodie-indigo.png" alt="Hoodie indigo, face et dos">
+            <div class="views"><span>FACE</span><span>DOS</span></div>
+            <table>
+                <tr><td>Face</td><td>Logo cœur, 95 mm, poitrine gauche · <code>coeur-blanc</code></td></tr>
+                <tr><td>Dos</td><td>Logo horizontal, 280 mm, 8 cm sous le col · <code>horizontal-blanc</code></td></tr>
+                <tr><td>Technique</td><td>Flex blanc mat ou sérigraphie 1 couleur (blanc couvrant)</td></tr>
+                <tr><td>Usage</td><td>Tenue des bénévoles, maraudes, événements</td></tr>
+            </table>
+        </article>
+        <article class="board">
+            <h2>Hoodie gris chiné · logo couleur</h2>
+            <img src="maquettes/hoodie-gris.png" alt="Hoodie gris chiné, face et dos">
+            <div class="views"><span>FACE</span><span>DOS</span></div>
+            <table>
+                <tr><td>Face</td><td>Écusson centré, 130 mm, sous les cordons · <code>ecusson-couleur</code></td></tr>
+                <tr><td>Dos</td><td>Logo horizontal, 280 mm · <code>horizontal-couleur</code></td></tr>
+                <tr><td>Technique</td><td>DTF ou sérigraphie 3 couleurs (flex : écusson ≥ 130 mm)</td></tr>
+                <tr><td>Usage</td><td>Merchandising, adhérents, soutiens</td></tr>
+            </table>
+        </article>
+    </div>
+    <footer><span>UNISSON — Association Éducation Solidaire · Kit textile v1.0</span><span>Maquettes illustratives, non contractuelles : couleurs à valider sur BAT</span></footer>
+</section>
+
+<section class="page">
+    <header>
+        <img src="svg/unisson-horizontal-couleur.svg" alt="UNISSON">
+        <div class="ref"><strong>MAQUETTES · PARKAS</strong>Logos posés à leur taille réelle d'impression (taille M) · page 2/2</div>
+    </header>
+    <div class="boards">
+        <article class="board">
+            <h2>Parka noire · logo blanc</h2>
+            <img src="maquettes/parka-noire.png" alt="Parka noire, face et dos">
+            <div class="views"><span>FACE</span><span>DOS</span></div>
+            <table>
+                <tr><td>Face</td><td>Logo cœur, 95 mm · symbole 70 mm sur la manche gauche · <code>-blanc</code></td></tr>
+                <tr><td>Dos</td><td>Écusson, 260 mm, centré sous l'empiècement · <code>ecusson-blanc</code></td></tr>
+                <tr><td>Technique</td><td>Flex nylon/softshell (basse température) ou transfert DTF adapté aux tissus déperlants. Pas de sérigraphie sur membrane.</td></tr>
+                <tr><td>Usage</td><td>Maraudes de nuit, hiver : version réfléchissante possible (flex rétroréfléchissant argent)</td></tr>
+            </table>
+        </article>
+        <article class="board">
+            <h2>Parka sable · logo indigo</h2>
+            <img src="maquettes/parka-sable.png" alt="Parka sable, face et dos">
+            <div class="views"><span>FACE</span><span>DOS</span></div>
+            <table>
+                <tr><td>Face</td><td>Logo cœur, 95 mm · symbole 70 mm sur la manche · <code>-mono</code></td></tr>
+                <tr><td>Dos</td><td>Écusson, 260 mm · <code>ecusson-mono</code></td></tr>
+                <tr><td>Technique</td><td>Flex indigo 1 couleur ou broderie du symbole sur la manche (≥ 50 mm)</td></tr>
+                <tr><td>Usage</td><td>Équipe permanente, représentation institutionnelle</td></tr>
+            </table>
+        </article>
+    </div>
+    <footer><span>UNISSON — 45, rue Henri Barbusse, 92230 Gennevilliers</span><span>Régénérer : <code>python textile/mockups.py</code></span></footer>
+</section>
+
+</body>
+</html>
