@@ -1,0 +1,228 @@
+const DATE = '___/___/2026';
+const P = 'Sabri TOUJANI';
+
+module.exports = [
+  // ------------------------------------------------------------------ 11
+  {
+    code: '11', file: 'Charte_du_benevole', kicker: 'Phase 2 · fiche 2.5 · annexe du règlement intérieur',
+    title: 'Charte du bénévole',
+    meta: 'Signée en deux exemplaires : un pour le bénévole, un conservé par l\'association',
+    blocks: [
+      ['p', 'Le bénévolat à UNISSON repose sur un engagement libre et réciproque. Cette charte dit ce que l\'association s\'engage à offrir à ses bénévoles, et ce qu\'elle attend d\'eux, au service des personnes accueillies.'],
+      ['h2', 'L\'association s\'engage à'],
+      ['ul', [
+        'accueillir chaque bénévole, lui présenter le projet, les statuts, le règlement intérieur et ses interlocuteurs ;',
+        'lui confier des missions adaptées à ses compétences et à ses disponibilités, sans jamais lui imposer d\'horaires ;',
+        'le former avant toute mission : écoute active, puis intervention de crise et premiers secours (PSC1) avant toute action hors du siège ;',
+        'le couvrir par son assurance pendant les missions, et lui rembourser ses frais réels sur justificatifs ;',
+        'ne jamais le laisser seul face à une situation difficile : binôme systématique, dirigeant joignable, débriefing ;',
+        'respecter son droit de refuser une mission, de se retirer d\'une situation dangereuse et de mettre fin à son engagement à tout moment ;',
+        'lui délivrer, à sa demande, une attestation de bénévolat.',
+      ]],
+      ['h2', 'Le bénévole s\'engage à'],
+      ['ul', [
+        'adhérer aux valeurs d\'UNISSON : dignité, respect, non-jugement, absence de misérabilisme, neutralité politique et religieuse ;',
+        'respecter les statuts, le règlement intérieur et les protocoles d\'intervention ;',
+        'garder une **discrétion absolue** sur les personnes accueillies et leur situation, pendant et après son engagement ;',
+        'ne jamais intervenir seul, et toujours se présenter comme membre d\'une association ;',
+        'ne rien accepter (argent, cadeau, service) d\'une personne accueillie, et ne nouer avec elle aucune relation privée ;',
+        'ne rien promettre que l\'association n\'a pas décidé, et orienter vers le 115, le 17, le 119 ou le 3919 dès qu\'une situation le requiert ;',
+        'signaler sans délai à un dirigeant toute situation d\'enfant en danger ;',
+        'prévenir le plus tôt possible en cas d\'indisponibilité, et participer aux temps d\'équipe et de formation.',
+      ]],
+      ['box', 'Le bénévole n\'est ni un travailleur social, ni un agent public, ni un agent de sécurité. Il écoute, accompagne et oriente. Il sait passer le relais : c\'est une force, pas un échec.'],
+      ['break'],
+      ['h1', 'Fiche d\'engagement bénévole'],
+      ['fields', ['Nom et prénom', 'Date de naissance', 'Téléphone', 'Courriel', 'Personne à prévenir en cas d\'urgence (nom, téléphone)']],
+      ['h3', 'Missions souhaitées'],
+      ['checks', ['Écoute téléphonique (journée)', 'Accueil physique au siège', 'Interventions hors du siège (après formation de crise et PSC1)', 'Ateliers et sorties éducatives', 'Café et épicerie solidaires', 'Communication, collecte, administratif']],
+      ['h3', 'Disponibilités indicatives'],
+      ['table', ['', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.', 'Dim.'], [['Matin', '', '', '', '', '', '', ''], ['Après-midi', '', '', '', '', '', '', ''], ['Soirée', '', '', '', '', '', '', '']], [1600, 1148, 1148, 1148, 1148, 1148, 1148, 1150]],
+      ['h3', 'Suivi par l\'association'],
+      ['table', ['Étape', 'Date', 'Visa'], [['Entretien de présentation', '', ''], ['Adhésion « Bénévole Actif » réglée', '', ''], ['Formation à l\'écoute (2 demi-journées)', '', ''], ['Formation à l\'intervention de crise', '', ''], ['Certificat PSC1', '', ''], ['Bulletin n° 3 présenté (date uniquement, non conservé)', '', ''], ['Remise de la tenue et du badge (document 25)', '', '']], [5638, 2000, 2000]],
+      ['p', 'Je déclare avoir pris connaissance des statuts, du règlement intérieur et de la présente charte, et m\'engage à les respecter.'],
+      ['p', `Fait à Gennevilliers, le ${DATE}, en deux exemplaires.`],
+      ['sign', ['Le bénévole', `Pour l\'association — ${P}`]],
+    ],
+  },
+
+  // ------------------------------------------------------------------ 12
+  {
+    code: '12', file: 'Protocoles_d_ecoute', kicker: 'Phase 2 · fiche 2.2 · à afficher au poste d\'accueil',
+    title: 'Protocoles d\'écoute — quatre niveaux',
+    meta: 'Écouter, évaluer le danger, agir selon le niveau, consigner · Adopté par le Conseil d\'Administration le ___/___/2026',
+    blocks: [
+      ['h2', 'Les cinq premières minutes — pour tout contact'],
+      ['ol', [
+        '**Accueillir** : se présenter (« UNISSON, association de solidarité, je m\'appelle … »), parler calmement, laisser la personne s\'exprimer.',
+        '**Évaluer le danger** : « Êtes-vous en sécurité en ce moment ? », « Y a-t-il des enfants avec vous ? », « Où êtes-vous ? »',
+        '**Comprendre** : qui, où, depuis quand, ce qui a déjà été tenté.',
+        '**Qualifier** le niveau ci-dessous et agir en conséquence.',
+        '**Consigner** l\'appel au registre (document 14), sans nom.',
+      ]],
+      ['table', ['Niveau', 'Situations', 'Réponse d\'UNISSON', 'Délai'], [
+        [['**VERT**', 'Information, soutien'], 'Question pratique, besoin d\'écoute, difficulté scolaire ou éducative sans tension aiguë.', 'Écoute, information, orientation vers le service adapté, proposition de rendez-vous à la permanence ou d\'un atelier.', 'Rendez-vous en journée'],
+        [['**ORANGE**', 'Tension, conflit aigu'], 'Conflit familial vif, menace de départ du domicile, rupture de dialogue avec un adolescent, épuisement parental.', 'Écoute approfondie, proposition d\'entretien de médiation, information du Bureau. Vérifier à nouveau l\'absence de danger et de violences.', 'Médiation sous 48 h'],
+        [['**ROUGE**', 'Rupture, nuit sans abri'], 'Mise à la rue effective, rupture brutale de cohabitation, personne sans solution pour la nuit.', 'Appel au 115 (heure et réponse consignées). Si le dispositif de mise à l\'abri est activé : appel d\'un dirigeant pour autorisation, puis protocole (document 18). Sinon : orientation et accompagnement vers un service compétent.', 'Immédiat'],
+        [['**SIGNALEMENT**', 'Danger vital, mineur en danger, violences'], 'Danger immédiat pour la vie, enfant maltraité ou en danger, violences en cours ou imminentes.', '**17 ou 112** si danger immédiat · **15** si urgence médicale · **119** pour un enfant · **3919** pour les violences faites aux femmes. Prévenir un dirigeant. UNISSON reste en appui, ne remplace jamais les secours.', 'Immédiat'],
+      ], [1700, 2500, 4038, 1400]],
+      ['box', [
+        '**Avant l\'activation du dispositif de mise à l\'abri par le Conseil d\'Administration**, un appel de niveau rouge se traite uniquement par l\'écoute, l\'orientation vers le 115, le 17 ou le 3919 et, si possible, un accompagnement vers un service compétent — **jamais par une réservation d\'hôtel improvisée**.',
+        '**Mineur seul** : ne jamais l\'héberger. Mise en sécurité immédiate, appel au 119 ou au 17, information du Président.',
+        '**Violences conjugales** : jamais de médiation avec l\'auteur. Priorité à la mise en sécurité.',
+      ], 'alert'],
+      ['h2', 'Postures à tenir'],
+      ['table', ['À faire', 'À éviter'], [
+        ['Reformuler : « Si je comprends bien, vous … »', 'Juger, minimiser (« ce n\'est pas si grave »), moraliser'],
+        ['Valider l\'émotion : « Je comprends que ce soit très dur. »', 'Promettre ce que l\'association n\'a pas décidé'],
+        ['Poser des questions ouvertes, laisser des silences', 'Enquêter, demander des détails inutiles'],
+        ['Dire clairement ce que l\'on peut faire et ce que l\'on ne peut pas faire', 'Garder pour soi une situation de danger'],
+        ['Face à l\'agressivité : rester calme, poser une limite, mettre fin à l\'appel si besoin', 'Répondre à l\'agressivité, argumenter'],
+      ], [4819, 4819]],
+      ['h2', 'Après l\'appel'],
+      ['checks', ['Registre des appels complété (sans nom)', 'Dirigeant informé pour tout niveau orange, rouge ou signalement', 'Rappel programmé si promis', 'Débriefing demandé après une situation éprouvante']],
+    ],
+  },
+
+  // ------------------------------------------------------------------ 13
+  {
+    code: '13', file: 'Annuaire_d_urgence', kicker: 'Phase 2 · fiche 2.3',
+    title: 'Annuaire d\'urgence et d\'orientation',
+    meta: 'À imprimer pour le poste d\'accueil et à garder sur le téléphone de permanence · Vérifier chaque numéro local avant diffusion, puis tous les six mois',
+    blocks: [
+      ['h2', 'Numéros d\'urgence nationaux — gratuits'],
+      ['table', ['Numéro', 'Service', 'Quand l\'appeler'], [
+        ['**17**', 'Police / gendarmerie', 'Danger immédiat, violences en cours, auteur présent'],
+        ['**112**', 'Urgences (numéro européen)', 'Toute urgence, y compris depuis un téléphone sans forfait'],
+        ['**15**', 'SAMU', 'Urgence médicale, détresse psychique aiguë'],
+        ['**18**', 'Pompiers', 'Incendie, accident, secours à personne'],
+        ['**114**', 'Urgences par SMS', 'Personne sourde, malentendante, ou qui ne peut pas parler'],
+        ['**115**', 'Hébergement d\'urgence (SIAO)', 'Personne sans solution pour la nuit — consigner l\'heure et la réponse'],
+        ['**119**', 'Allô Enfance en Danger', 'Enfant en danger ou en risque de l\'être, 24 h/24'],
+        ['**3919**', 'Violences Femmes Info', 'Violences conjugales, sexuelles, intrafamiliales, 24 h/24, anonyme'],
+        ['**3114**', 'Prévention du suicide', 'Idées suicidaires, crise suicidaire, entourage inquiet, 24 h/24'],
+        ['**116 006**', 'France Victimes', 'Aide aux victimes d\'infractions, 7 j/7'],
+        ['**3020**', 'Non au harcèlement', 'Harcèlement scolaire'],
+        ['**3018**', 'Cyberharcèlement', 'Violences numériques chez les jeunes'],
+        ['**0 800 235 236**', 'Fil Santé Jeunes', 'Écoute des 12-25 ans (santé, sexualité, mal-être)'],
+        ['**0 800 23 13 13**', 'Drogues Info Service', 'Consommations, addictions, entourage'],
+      ], [1900, 2900, 4838]],
+      ['h2', 'Partenaires locaux — Gennevilliers et Hauts-de-Seine'],
+      ['box', 'Les coordonnées locales ne sont pas pré-remplies : elles changent souvent et doivent être vérifiées directement auprès de chaque service avant toute diffusion. Noter la date de vérification.', 'warm'],
+      ['table', ['Service', 'Rôle', 'Téléphone', 'Adresse / horaires', 'Vérifié le'], [
+        ['CCAS de Gennevilliers', 'Action sociale communale, aides d\'urgence', '', '', ''],
+        ['Commissariat de Gennevilliers', 'Plaintes, mains courantes, violences', '', '', ''],
+        ['CRIP des Hauts-de-Seine (Conseil départemental)', 'Informations préoccupantes concernant un mineur', '', '', ''],
+        ['Espace départemental d\'action sociale (EDAS) de secteur', 'Accompagnement social départemental', '', '', ''],
+        ['PMI de secteur', 'Protection maternelle et infantile', '', '', ''],
+        ['Maison des Adolescents 92', 'Accueil et écoute des 11-25 ans', '', '', ''],
+        ['CMP / CMPP de secteur', 'Soins psychiques adultes / enfants', '', '', ''],
+        ['Unité médico-judiciaire (UMJ) compétente', 'Constatations médicales après violences', '', '', ''],
+        ['CIDFF des Hauts-de-Seine', 'Droits des femmes et des familles', '', '', ''],
+        ['Association d\'aide aux victimes du département (réseau France Victimes)', 'Accompagnement des victimes', '', '', ''],
+        ['Point d\'accès au droit / Maison de la justice', 'Information juridique gratuite', '', '', ''],
+        ['Hôtels conventionnés (document 21)', 'Mise à l\'abri, après activation du dispositif', '', '', ''],
+      ], [2400, 2400, 1500, 2138, 1200]],
+      ['h2', 'Contacts internes'],
+      ['table', ['Fonction', 'Nom', 'Téléphone'], [['Président — autorisations de mise à l\'abri', P, ''], ['Trésorier — suppléant', 'Tahar BENHALIMA', ''], ['Ligne de permanence', '—', '']], [4200, 2800, 2638]],
+    ],
+  },
+
+  // ------------------------------------------------------------------ 14
+  {
+    code: '14', file: 'Fiche_d_accueil_et_registre_des_appels', kicker: 'Phase 2 · fiches 2.9 et 2.10',
+    title: 'Fiche d\'accueil et registre des appels',
+    meta: 'Aucun nom n\'est inscrit : un identifiant interne (année-mois-numéro) remplace l\'identité · Conservation : 1 an',
+    blocks: [
+      ['h1', 'Fiche d\'accueil anonymisée'],
+      ['fields', ['Identifiant (ex. 2026-11-007)', 'Date et heure', 'Canal (téléphone, accueil physique, formulaire, partenaire)', 'Bénévoles présents (prénoms)']],
+      ['h3', 'Situation'],
+      ['checks', ['Adulte seul', 'Parent avec enfant(s) — nombre et âges : ______', 'Jeune de 18 à 25 ans', 'Mineur — **ne jamais héberger** ; 119 / 17 si danger', 'Commune : Gennevilliers ☐ Autre : ____________']],
+      ['h3', 'Motif principal'],
+      ['checks', ['Information, démarche', 'Difficulté éducative ou scolaire', 'Conflit familial', 'Rupture d\'hébergement', 'Violences (préciser le type sans détail inutile)', 'Isolement, mal-être', 'Autre : ____________']],
+      ['h3', 'Niveau qualifié'],
+      ['checks', ['Vert', 'Orange', 'Rouge', 'Signalement (17 / 15 / 119 / 3919 appelé à ___h___)']],
+      ['h3', 'Suite donnée'],
+      ['lines', 3],
+      ['checks', ['Orientation vers : ____________________', 'Rendez-vous proposé le ___/___ à ___h___', 'Dirigeant informé (nom, heure) : ____________', 'Consentement à la transmission des informations au service orienté : oui ☐ non ☐']],
+      ['break'],
+      ['h1', 'Registre des appels et des contacts'],
+      ['table', ['Date', 'Heure', 'Identifiant', 'Canal', 'Niveau', 'Orientation / suite', 'Bénévole'], [
+        ...Array.from({ length: 14 }, () => ['', '', '', '', '', '', '']),
+      ], [1000, 800, 1400, 1100, 900, 3238, 1200]],
+      ['small', 'Niveaux : V = vert · O = orange · R = rouge · S = signalement. Toute ligne R ou S fait l\'objet d\'une information immédiate d\'un dirigeant.'],
+    ],
+  },
+
+  // ------------------------------------------------------------------ 15
+  {
+    code: '15', file: 'Planning_des_permanences', kicker: 'Phase 2 · fiche 2.8 · article 21 du règlement intérieur',
+    title: 'Planning mensuel des permanences',
+    meta: 'Diffusé au plus tard le 20 du mois précédent · Mois de : ______________ 20____',
+    blocks: [
+      ['table', ['Semaine', 'Écoute de journée', 'Permanence de nuit (urgences)', 'Accueil physique mercredi 14 h-18 h (2 pers., dont 1 femme)', 'Accueil physique samedi 9 h-13 h (2 pers., dont 1 femme)', 'Dirigeant joignable'], [
+        ['Semaine 1', '', '', '', '', ''], ['Semaine 2', '', '', '', '', ''], ['Semaine 3', '', '', '', '', ''], ['Semaine 4', '', '', '', '', ''], ['Semaine 5', '', '', '', '', ''],
+      ], [1200, 1700, 1700, 1800, 1800, 1438]],
+      ['h2', 'Règles du planning'],
+      ['ul', ['Personne ne tient **deux semaines consécutives** de permanence de nuit.', 'Les remplacements sont organisés entre bénévoles et signalés au référent bénévoles.', 'L\'accueil physique se fait toujours à deux, dont au moins une femme.', 'Aucun horaire n\'est imposé : chacun indique ses disponibilités avant le 15 du mois.', 'Les horaires publiés (site, messagerie vocale, affichage) sont strictement ceux réellement tenus.']],
+      ['h2', 'Remplacements du mois'],
+      ['table', ['Date', 'Créneau', 'Remplacé(e)', 'Remplaçant(e)', 'Bureau informé le'], [['', '', '', '', ''], ['', '', '', '', ''], ['', '', '', '', '']], [1500, 2000, 2000, 2000, 2138]],
+    ],
+  },
+
+  // ------------------------------------------------------------------ 16
+  {
+    code: '16', file: 'Courrier_presentation_CCAS', kicker: 'Phase 2 · fiche 2.12 · séquence d\'approche institutionnelle',
+    title: 'Courrier de présentation au CCAS de Gennevilliers',
+    meta: 'À envoyer sur papier à en-tête, en recommandé avec accusé de réception, signé du Président · Joindre statuts, récépissé RNA, avis SIREN et note de présentation',
+    blocks: [
+      ['p', 'Gennevilliers, le [date]'],
+      ['p', 'Centre Communal d\'Action Sociale de Gennevilliers'],
+      ['p', 'À l\'attention de Madame / Monsieur [nom], [fonction]'],
+      ['p', '[Adresse]'],
+      ['space', 100],
+      ['p', '**Objet :** présentation de l\'association UNISSON et demande de rendez-vous de coordination'],
+      ['space', 100],
+      ['p', 'Madame, Monsieur,'],
+      ['p', 'Nous avons le plaisir de vous présenter l\'association **UNISSON — Association Éducation Solidaire**, association loi 1901 déclarée en préfecture (RNA W922023505, SIREN 108 606 260), dont le siège est situé 45, rue Henri Barbusse à Gennevilliers.'],
+      ['p', 'Créée en juillet 2026 par des habitants de la ville, UNISSON a pour objet d\'accompagner les familles et les jeunes dans la prévention des ruptures éducatives et familiales : écoute, médiation, orientation vers les services compétents et, à terme, mise à l\'abri d\'urgence de premier niveau pour des durées strictement limitées.'],
+      ['p', 'Notre démarche est celle de la **complémentarité** avec les services de la Ville. Nous souhaitons être utiles là où les besoins sont les moins couverts — en particulier le soir et le week-end — et transmettre systématiquement les situations au service social compétent dès le premier jour ouvré. Nous ne nous substituons ni au CCAS, ni au 115, ni aux services départementaux.'],
+      ['p', 'L\'association en est à ses débuts : aucune de nos actions n\'est encore opérationnelle, et c\'est précisément pourquoi nous souhaitons construire dès maintenant, avec vous, le bon cadre de travail. Nous serions heureux de vous rencontrer afin de vous présenter notre projet, d\'entendre vos besoins et d\'identifier ensemble la meilleure articulation possible, notamment les modalités de transmission des fiches de liaison.'],
+      ['p', 'Nous nous tenons à votre disposition pour convenir d\'une date et vous prions d\'agréer, Madame, Monsieur, l\'expression de notre considération distinguée.'],
+      ['space', 300],
+      ['p', `**${P}**`],
+      ['p', 'Président de l\'association UNISSON — Association Éducation Solidaire'],
+      ['p', 'Téléphone : [à compléter] · contact@education-solidaire.org'],
+      ['space', 120],
+      ['small', 'Pièces jointes : statuts · récépissé de déclaration · avis de situation SIREN · note de présentation d\'une page'],
+      ['box', '**Après le rendez-vous** : envoyer sous 48 heures un compte rendu écrit actant les points d\'accord. Ce document sert de base à la future convention de relais (document 22).', 'warm'],
+    ],
+  },
+
+  // ------------------------------------------------------------------ 17
+  {
+    code: '17', file: 'Affiche_droits_des_personnes_accueillies', kicker: 'Phase 2 · fiche 2.4 · articles 26 à 34 du règlement intérieur',
+    title: 'Vos droits à UNISSON',
+    meta: 'Affiche pour l\'espace d\'accueil · Imprimer en A3 ou A4',
+    blocks: [
+      ['p', 'Ici, vous êtes accueilli(e) **gratuitement, sans condition et en toute confidentialité**. Vous pouvez rester anonyme.'],
+      ['h2', 'Vous avez le droit'],
+      ['ul', [
+        'd\'être accueilli(e) avec respect, quelle que soit votre situation, votre origine, votre religion, votre genre ou vos opinions ;',
+        'd\'être écouté(e) sans jugement ;',
+        'de savoir ce que nous pouvons faire pour vous, et ce que nous ne pouvons pas faire ;',
+        'd\'accepter ou de refuser ce qui vous est proposé ;',
+        'que votre vie privée soit respectée : rien n\'est transmis sans votre accord, sauf si un enfant est en danger ;',
+        'de consulter, corriger ou faire effacer les informations vous concernant ;',
+        'de faire une réclamation : nous vous répondons par écrit sous 15 jours.',
+      ]],
+      ['h2', 'Nous vous demandons'],
+      ['ul', ['de respecter les personnes présentes et les lieux ;', 'pas de violence, pas d\'insulte, pas d\'arme, pas d\'alcool ni de drogue dans les locaux.']],
+      ['h2', 'En cas de danger, appelez'],
+      ['table', null, [
+        ['**17** ou **112**', 'Danger immédiat'], ['**115**', 'Hébergement d\'urgence'], ['**15**', 'Urgence médicale'], ['**119**', 'Enfant en danger'], ['**3919**', 'Violences faites aux femmes'], ['**114**', 'Urgence par SMS'],
+      ], [3000, 6638]],
+      ['p', 'Contact : contact@education-solidaire.org · education-solidaire.org'],
+    ],
+  },
+];

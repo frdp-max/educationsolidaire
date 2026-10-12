@@ -46,6 +46,9 @@
 ├── UNISSON_Infographie_A5.pdf   # Export PDF HD de l'infographie A5
 ├── cartes-visite.html           # Cartes de visite 85 x 55 mm du Bureau (recto nominatif + verso commun) — usage interne, non servi
 ├── UNISSON_Cartes_Visite.pdf    # Export PDF des cartes (4 pages : Président R/V, Trésorier R/V)
+├── gouvernance/                 # Dossier de gouvernance (phases 1 à 3 de la feuille de route) — usage interne, non servi
+│   ├── word/ pdf/               # 27 documents : 00 sommaire, 01-09 socle, 10 règlement intérieur, 11-17 permanence, 18-26 mise à l'abri
+│   └── _source/                 # Générateur docx (à n'utiliser qu'avant adoption : ensuite, modifier dans Word)
 ├── textile/                     # Kit textile (flex, sérigraphie, DTF) — usage interne, non servi
 │   ├── generate.py              # Générateur des logos vectoriels + logo.svg du site (fonttools + shapely, police Montserrat OFL)
 │   ├── svg/ pdf/ eps/           # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
