@@ -23,15 +23,14 @@ from shapely.ops import unary_union
 OUT = Path(__file__).resolve().parent / "svg"
 ROOT = Path(__file__).resolve().parent.parent  # logo.svg du site
 
-# Palette du brief textile
-INDIGO = "#260C3B"   # primaire : ruban gauche + « UNISSON »
-VIOLET = "#4C1D95"   # primaire secondaire : sous-titre
-ACCENT = "#6D28D9"   # accent : ruban droit
+# Palette officielle (charte 2026-10) : 2 violets, comme le site et le print
+INDIGO = "#2A0E45"   # encre : ruban gauche + « UNISSON »
+ACCENT = "#6D28D9"   # violet : ruban droit + sous-titre
 WHITE = "#FFFFFF"
 
 COLORWAYS = {
     # suffixe : (ruban A, ruban B, UNISSON, sous-titre)
-    "couleur": (INDIGO, ACCENT, INDIGO, VIOLET),
+    "couleur": (INDIGO, ACCENT, INDIGO, ACCENT),
     "mono": (INDIGO, INDIGO, INDIGO, INDIGO),
     "blanc": (WHITE, WHITE, WHITE, WHITE),
 }

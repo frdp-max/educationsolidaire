@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette — comparatif · UNISSON</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Document de travail : comparatif palette actuelle / proposée (A3 paysage à l'impression). */
+        @page { size: A3 landscape; margin: 10mm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        body { font-family: 'Atkinson Hyperlegible Next', sans-serif; background: #f4f2f7; color: #1e112a; padding: 28px 16px 40px; }
+        .wrap { max-width: 1320px; margin: 0 auto; }
+        h1 { font: 800 1.7rem 'Montserrat', sans-serif; color: #1e112a; }
+        .intro { color: #574a66; margin: .4rem 0 1.6rem; max-width: 900px; line-height: 1.5; }
+        .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .cols > .col, .duo > div { min-width: 0; }
+        @media (max-width: 900px) { .cols { grid-template-columns: 1fr; } }
+
+        /* ---------- tokens par colonne ---------- */
+        .current {
+            --ink: #350b52; --ink-dark: #1e112a; --main: #6d28d9; --link: #a855f7; --light: #8b5cf6;
+            --on-dark: #c084fc; --soft: #f3e8ff; --soft-text: #6b1d9e;
+            --don-bg: linear-gradient(135deg, #e11d48, #be123c); --don-text: #fff;
+            --cta2-bg: linear-gradient(135deg, #6d28d9, #350b52); --cta2-text: #fff;
+            --urgent: #e11d48; --green: #059669; --warm: #a855f7;
+        }
+        .proposed {
+            --ink: #2A0E45; --ink-dark: #1a0a2b; --main: #6D28D9; --link: #6D28D9; --light: #6D28D9;
+            --on-dark: #F4A259; --soft: #EDE4FB; --soft-text: #5B21B6;
+            --don-bg: #F4A259; --don-text: #2A0E45;
+            --cta2-bg: #6D28D9; --cta2-text: #fff;
+            --urgent: #D92D20; --green: #059669; --warm: #F4A259;
+        }
+
+        .col { background: #fff; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 1px 3px rgba(30,17,42,.08); }
+        .col > header { display: flex; flex-wrap: wrap; gap: 4px 12px; justify-content: space-between; align-items: baseline; }
+        .col > header h2 { font: 800 1.15rem 'Montserrat', sans-serif; color: var(--ink); }
+        .col > header span { font-size: .85rem; color: #645873; }
+        h3 { font: 700 .72rem 'Montserrat', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #645873; margin-bottom: 8px; }
+
+        /* palette */
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { flex: 1 1 70px; border-radius: 8px; overflow: hidden; border: 1px solid #ece6f3; font-size: .7rem; }
+        .chip i { display: block; height: 34px; }
+        .chip b { display: block; padding: 4px 6px 0; font-family: 'Montserrat', sans-serif; font-size: .68rem; }
+        .chip code { display: block; padding: 0 6px 5px; color: #645873; font-size: .66rem; }
+
+        /* mini site */
+        .site { border: 1px solid #ece6f3; border-radius: 10px; overflow: hidden; font-size: .78rem; }
+        .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 8px 12px; background: #fff; border-bottom: 1px solid #ece6f3; }
+        .nav img { height: 26px; }
+        .nav .brand { font: 800 .9rem/1 'Montserrat', sans-serif; color: var(--ink); }
+        .nav .brand small { display: block; font: 700 .48rem 'Montserrat', sans-serif; letter-spacing: .08em; color: var(--main); margin-top: 2px; }
+        .nav nav { margin-left: auto; display: flex; gap: 10px; align-items: center; color: var(--ink-dark); font-weight: 600; font-size: .7rem; }
+        .nav nav a { color: inherit; text-decoration: none; }
+        .nav nav .u { color: var(--urgent); }
+        .nav .join { background: var(--cta2-bg); color: var(--cta2-text); padding: 5px 10px; border-radius: 99px; font: 700 .68rem 'Montserrat', sans-serif; }
+        .hero { position: relative; padding: 26px 18px 28px; color: #fff; background: linear-gradient(120deg, var(--ink-dark), var(--ink)); overflow: hidden; }
+        .hero::before { content: ""; position: absolute; inset: 0 0 0 40%; background: url('../hero-visuel.webp') center 60% / cover; opacity: .45; -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%); mask-image: linear-gradient(90deg, transparent, #000 45%); }
+        .hero > * { position: relative; }
+        .hero .tag { display: inline-block; font: 700 .58rem 'Montserrat', sans-serif; letter-spacing: .08em; padding: 3px 8px; border-radius: 99px; background: rgba(255,255,255,.14); margin-bottom: 10px; }
+        .hero h4 { font: 800 1.35rem/1.15 'Montserrat', sans-serif; max-width: 330px; }
+        .hero h4 em { font-style: normal; color: var(--on-dark); }
+        .hero p { margin: 8px 0 14px; max-width: 320px; opacity: .9; font-size: .72rem; line-height: 1.5; }
+        .ctas { display: flex; gap: 8px; flex-wrap: wrap; }
+        .don { background: var(--don-bg); color: var(--don-text); padding: 8px 14px; border-radius: 99px; font: 800 .72rem 'Montserrat', sans-serif; }
+        .ghost { border: 1px solid rgba(255,255,255,.5); padding: 7px 13px; border-radius: 99px; font: 700 .72rem 'Montserrat', sans-serif; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; padding: 12px; background: #faf8fc; }
+        .card { background: #fff; border-radius: 8px; padding: 9px; border-top: 3px solid var(--c); font-size: .66rem; line-height: 1.4; }
+        .card .badge { display: inline-block; font: 700 .52rem 'Montserrat', sans-serif; letter-spacing: .06em; padding: 2px 6px; border-radius: 99px; margin-bottom: 5px; }
+        .card .b-prio { background: #fde8e7; color: var(--urgent); }
+        .card .b-proj { background: var(--soft); color: var(--soft-text); }
+        .card h5 { font: 700 .74rem 'Montserrat', sans-serif; color: var(--ink); margin-bottom: 3px; }
+        .card a { color: var(--link); font-weight: 700; text-decoration: none; }
+
+        /* contrastes */
+        table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+        td { padding: 6px 6px; border-bottom: 1px solid #f0ebf5; vertical-align: middle; }
+        td.sample span { padding: 2px 7px; border-radius: 4px; font-weight: 700; }
+        td.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 700; }
+        .ok { color: #047857; } .ko { color: #b42318; }
+
+        /* carte + hoodie */
+        .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; align-items: center; }
+        .bcard { aspect-ratio: 85 / 55; border-radius: 6px; background: #fff; box-shadow: 0 2px 10px rgba(30,17,42,.14); position: relative; overflow: hidden; padding: 7% 8% 6% 10%; display: flex; flex-direction: column; }
+        .bcard .band { position: absolute; left: 0; top: 0; bottom: 0; width: 3.5%; background: linear-gradient(180deg, var(--urgent) 0 33%, var(--main) 33% 66%, var(--green) 66%); }
+        .bcard .arc { position: absolute; right: -14%; bottom: -30%; width: 46%; aspect-ratio: 1; border-radius: 50%; border: 9px solid var(--soft); }
+        .bcard .b { display: flex; align-items: center; gap: 6px; }
+        .bcard .b img { height: 24px; }
+        .bcard .b strong { font: 800 .82rem/1 'Montserrat', sans-serif; color: var(--ink); }
+        .bcard .b small { display: block; font: 700 .42rem 'Montserrat', sans-serif; color: var(--main); letter-spacing: .06em; }
+        .bcard .n { font: 800 1rem 'Montserrat', sans-serif; color: var(--ink); margin-top: 10%; }
+        .bcard .role { font: 700 .5rem 'Montserrat', sans-serif; letter-spacing: .1em; color: var(--main); margin-top: 2px; }
+        .bcard .rule { width: 18%; height: 3px; border-radius: 3px; background: var(--warm); margin-top: 6px; }
+        .bcard .ct { margin-top: auto; font-size: .5rem; color: #3b2d4a; line-height: 1.6; }
+        .hoodie { background: #f4f1f8; border-radius: 10px; padding: 8px; }
+        .hoodie img { width: 100%; display: block; }
+
+        .verdict { margin-top: 24px; background: #fff; border-radius: 14px; padding: 18px 20px; line-height: 1.55; font-size: .92rem; }
+        .verdict h2 { font: 800 1.05rem 'Montserrat', sans-serif; margin-bottom: 6px; color: #2A0E45; }
+        .verdict ul { padding-left: 1.1rem; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>Palette UNISSON : actuelle ou proposée</h1>
+    <p class="intro">Mêmes composants, mêmes textes : seule la palette change. À gauche, les couleurs réellement utilisées aujourd'hui par le site et le print. À droite, la proposition : une seule gamme de violets et un abricot chaleureux réservé aux actions (don, adhésion).</p>
+
+    <div class="cols">
+        <!-- ======================================================= ACTUELLE -->
+        <section class="col current">
+            <header><h2>Actuelle</h2><span>5 violets + rose-rouge</span></header>
+            <div>
+                <h3>Palette</h3>
+                <div class="chips">
+                    <div class="chip"><i style="background:#350b52"></i><b>Profond</b><code>#350b52</code></div>
+                    <div class="chip"><i style="background:#6d28d9"></i><b>Moyen</b><code>#6d28d9</code></div>
+                    <div class="chip"><i style="background:#8b5cf6"></i><b>Clair</b><code>#8b5cf6</code></div>
+                    <div class="chip"><i style="background:#a855f7"></i><b>Lilas</b><code>#a855f7</code></div>
+                    <div class="chip"><i style="background:#c084fc"></i><b>Lilas sombre</b><code>#c084fc</code></div>
+                    <div class="chip"><i style="background:#e11d48"></i><b>Don / urgence</b><code>#e11d48</code></div>
+                </div>
+            </div>
+            <div>
+                <h3>Site — accueil</h3>
+                <div class="site">
+                    <div class="nav"><img src="../logo.svg" alt=""><div class="brand">UNISSON<small>ASSOCIATION ÉDUCATION SOLIDAIRE</small></div>
+                        <nav><a>Missions</a><a class="u">En cas d'urgence</a><span class="join">Adhérer</span></nav></div>
+                    <div class="hero"><span class="tag">ASSOCIATION LOI 1901</span>
+                        <h4>Agir à l'unisson pour les familles <em>et la jeunesse vulnérable.</em></h4>
+                        <p>Jeune association de Gennevilliers, UNISSON se mobilise d'abord pour le premier secours social.</p>
+                        <div class="ctas"><span class="don">Faire un don</span><span class="ghost">Nos projets</span></div></div>
+                    <div class="cards">
+                        <div class="card" style="--c:var(--urgent)"><span class="badge b-prio">PRIORITÉ</span><h5>Urgence sociale</h5>Mise à l'abri et repas d'urgence. <a>En savoir plus →</a></div>
+                        <div class="card" style="--c:var(--light)"><span class="badge b-proj">EN PROJET</span><h5>Café Solidaire</h5>Accueil, écoute, café suspendu. <a>En savoir plus →</a></div>
+                        <div class="card" style="--c:var(--green)"><span class="badge b-proj">EN PROJET</span><h5>Épicerie Solidaire</h5>Produits à prix solidaire. <a>En savoir plus →</a></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>Lisibilité (WCAG, minimum 4,5 : 1 pour le texte courant)</h3>
+                <table>
+                    <tr><td class="sample"><span style="color:#a855f7">Lien lilas</span></td><td>texte lilas sur blanc</td><td class="r ko">4,0 : 1 ✕</td></tr>
+                    <tr><td class="sample"><span style="color:#8b5cf6">Violet clair</span></td><td>texte violet clair sur blanc</td><td class="r ko">4,2 : 1 ✕</td></tr>
+                    <tr><td class="sample"><span style="background:#e11d48;color:#fff">Faire un don</span></td><td>blanc sur rose-rouge</td><td class="r ok">4,7 : 1 ✓</td></tr>
+                    <tr><td class="sample"><span style="background:#350b52;color:#c084fc">Accent</span></td><td>lilas sur violet profond</td><td class="r ok">6,0 : 1 ✓</td></tr>
+                </table>
+            </div>
+            <div class="duo">
+                <div><h3>Carte de visite</h3>
+                    <div class="bcard"><div class="band"></div><div class="arc"></div>
+                        <div class="b"><img src="../logo.svg" alt=""><div><strong>UNISSON</strong><small>ASSOCIATION ÉDUCATION SOLIDAIRE</small></div></div>
+                        <div class="n">Sabri TOUJANI</div><div class="role">PRÉSIDENT</div><div class="rule"></div>
+                        <div class="ct">contact@education-solidaire.org<br>45, rue Henri Barbusse · 92230 Gennevilliers</div></div></div>
+                <div><h3>Hoodie bénévole</h3><div class="hoodie"><img src="hoodie-actuel.svg" alt="Hoodie violet profond, logo blanc"></div></div>
+            </div>
+        </section>
+
+        <!-- ======================================================= PROPOSÉE -->
+        <section class="col proposed">
+            <header><h2>Proposée</h2><span>2 violets + abricot</span></header>
+            <div>
+                <h3>Palette</h3>
+                <div class="chips">
+                    <div class="chip"><i style="background:#2A0E45"></i><b>Encre</b><code>#2A0E45</code></div>
+                    <div class="chip"><i style="background:#6D28D9"></i><b>Violet</b><code>#6D28D9</code></div>
+                    <div class="chip"><i style="background:#EDE4FB"></i><b>Lavande</b><code>#EDE4FB</code></div>
+                    <div class="chip"><i style="background:#F4A259"></i><b>Abricot</b><code>#F4A259</code></div>
+                    <div class="chip"><i style="background:#D92D20"></i><b>Urgence</b><code>#D92D20</code></div>
+                    <div class="chip"><i style="background:#059669"></i><b>Épicerie</b><code>#059669</code></div>
+                </div>
+            </div>
+            <div>
+                <h3>Site — accueil</h3>
+                <div class="site">
+                    <div class="nav"><img src="../logo.svg" alt=""><div class="brand">UNISSON<small>ASSOCIATION ÉDUCATION SOLIDAIRE</small></div>
+                        <nav><a>Missions</a><a class="u">En cas d'urgence</a><span class="join">Adhérer</span></nav></div>
+                    <div class="hero"><span class="tag">ASSOCIATION LOI 1901</span>
+                        <h4>Agir à l'unisson pour les familles <em>et la jeunesse vulnérable.</em></h4>
+                        <p>Jeune association de Gennevilliers, UNISSON se mobilise d'abord pour le premier secours social.</p>
+                        <div class="ctas"><span class="don">Faire un don</span><span class="ghost">Nos projets</span></div></div>
+                    <div class="cards">
+                        <div class="card" style="--c:var(--urgent)"><span class="badge b-prio">PRIORITÉ</span><h5>Urgence sociale</h5>Mise à l'abri et repas d'urgence. <a>En savoir plus →</a></div>
+                        <div class="card" style="--c:var(--warm)"><span class="badge b-proj">EN PROJET</span><h5>Café Solidaire</h5>Accueil, écoute, café suspendu. <a>En savoir plus →</a></div>
+                        <div class="card" style="--c:var(--green)"><span class="badge b-proj">EN PROJET</span><h5>Épicerie Solidaire</h5>Produits à prix solidaire. <a>En savoir plus →</a></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>Lisibilité (WCAG, minimum 4,5 : 1 pour le texte courant)</h3>
+                <table>
+                    <tr><td class="sample"><span style="color:#6D28D9">Lien violet</span></td><td>texte violet sur blanc</td><td class="r ok">7,1 : 1 ✓</td></tr>
+                    <tr><td class="sample"><span style="background:#EDE4FB;color:#6D28D9">En projet</span></td><td>violet sur lavande</td><td class="r ok">5,8 : 1 ✓</td></tr>
+                    <tr><td class="sample"><span style="background:#F4A259;color:#2A0E45">Faire un don</span></td><td>encre sur abricot</td><td class="r ok">8,1 : 1 ✓</td></tr>
+                    <tr><td class="sample"><span style="background:#2A0E45;color:#F4A259">Accent</span></td><td>abricot sur encre</td><td class="r ok">8,1 : 1 ✓</td></tr>
+                </table>
+            </div>
+            <div class="duo">
+                <div><h3>Carte de visite</h3>
+                    <div class="bcard"><div class="band"></div><div class="arc"></div>
+                        <div class="b"><img src="../logo.svg" alt=""><div><strong>UNISSON</strong><small>ASSOCIATION ÉDUCATION SOLIDAIRE</small></div></div>
+                        <div class="n">Sabri TOUJANI</div><div class="role">PRÉSIDENT</div><div class="rule"></div>
+                        <div class="ct">contact@education-solidaire.org<br>45, rue Henri Barbusse · 92230 Gennevilliers</div></div></div>
+                <div><h3>Hoodie bénévole</h3><div class="hoodie"><img src="hoodie-propose.svg" alt="Hoodie encre, logo blanc, cordons et liseré abricot"></div></div>
+            </div>
+        </section>
+    </div>
+
+    <section class="verdict">
+        <h2>Ce que change la proposition</h2>
+        <ul>
+            <li><strong>Le don ne se confond plus avec l'urgence :</strong> aujourd'hui « Faire un don » et « En cas d'urgence » partagent le même rose-rouge. L'abricot distingue l'action « je soutiens » de l'alerte « je suis en danger ».</li>
+            <li><strong>Tous les textes sont lisibles</strong> (≥ 4,5 : 1), y compris les liens et les badges, ce qui compte pour un public malvoyant ou peu à l'aise avec la lecture.</li>
+            <li><strong>Un seul violet partout :</strong> site, print et textile utilisent les mêmes deux teintes, déjà présentes dans le logo.</li>
+            <li><strong>Règle d'usage de l'abricot :</strong> en fond ou en accent sur foncé, jamais en texte sur blanc (2,1 : 1).</li>
+        </ul>
+    </section>
+</div>
+</body>
+</html>

@@ -45,9 +45,9 @@
 ├── infographie-a5.html          # Infographie A5 (parcours, impact des dons, numéros d'urgence) print-ready
 ├── UNISSON_Infographie_A5.pdf   # Export PDF HD de l'infographie A5
 ├── cartes-visite.html           # Cartes de visite 85 x 55 mm du Bureau (recto nominatif + verso commun) — usage interne, non servi
-├── UNISSON_Cartes_Visite.pdf    # Export PDF des cartes (4 pages : Président R/V, Secrétaire-Trésorier R/V)
+├── UNISSON_Cartes_Visite.pdf    # Export PDF des cartes (4 pages : Président R/V, Trésorier R/V)
 ├── textile/                     # Kit textile (flex, sérigraphie, DTF) — usage interne, non servi
-│   ├── generate.py              # Générateur des logos vectoriels (fonttools + shapely, police Montserrat OFL)
+│   ├── generate.py              # Générateur des logos vectoriels + logo.svg du site (fonttools + shapely, police Montserrat OFL)
 │   ├── svg/ pdf/ eps/           # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
 │   ├── fiche-technique.html     # Fiche d'atelier A4 (emplacements, seuils, export)
 │   ├── UNISSON_Kit_Textile_Fiche_Technique.pdf
@@ -99,14 +99,19 @@ git pull && bash deploy.sh
 
 ## 4. Charte Graphique & Tokens CSS
 
+Palette validée le 12 octobre 2026 : **deux violets seulement + un abricot chaleureux**. Ne pas réintroduire d'autres violets (`#350b52`, `#6b1d9e`, `#8b5cf6`, `#a855f7`…) ni de rose-rouge `#e11d48`.
+
 | Élément | Valeur HEX | Rôle |
 |---|---|---|
-| Deep Purple | `#350b52` | Couleur primaire identitaire UNISSON, fonds de nav/footer, titres |
-| Royal Violet | `#6b1d9e` | Accents forts, boutons d'action secondaires |
-| Lilac / Purple | `#a855f7` | Badges, surbrillances, hover states |
-| Soft Lavender | `#f3e8ff` / `#faf5ff` | Fonds de cartes, bordures légères, lisibilité |
-| Urgence Red | `#d92d20` | Alerte mise à l'abri d'urgence, badges critiques |
+| Encre | `#2A0E45` | Couleur identitaire (logo), titres, fonds de nav/footer/hero |
+| Violet | `#6D28D9` | Liens, boutons secondaires, second ruban du logo (7,1:1 sur blanc) ; survol `#5B21B6` |
+| Lavande | `#EDE4FB` / `#F7F3FD` | Fonds de cartes et de badges, bordures légères — jamais en texte |
+| Lavande claire | `#C4B5FD` | Texte secondaire sur fond encre |
+| Abricot | `#F4A259` | Don, adhésion, accents chaleureux (titres sur fond sombre, liserés) ; survol `#E8893A`. **Toujours avec texte encre, jamais en texte sur blanc (2,1:1)** |
+| Urgence Red | `#D92D20` | Réservé au danger : numéros d'urgence, badge « Priorité ». Jamais pour le don |
 | Épicerie Green | `#059669` | Épicerie solidaire, dons écologiques/durables |
+
+Tout texte doit atteindre un contraste ≥ 4,5:1 (WCAG AA). Comparatif avant/après : `design/palette-comparatif.html`.
 
 - **Typographies** :
   - Titres et accroches : `'Montserrat', sans-serif` (poids 700, 800 — pas de 900, pour un ton plus chaleureux)

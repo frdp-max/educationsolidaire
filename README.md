@@ -18,13 +18,13 @@ Plateforme web officielle, API d'intégration **HelloAsso v5** et architecture d
 
 ## 🎨 Identité Visuelle & Charte Graphique
 
-* **Violet Profond (dominant/structure) :** `#43006d`
-* **Violet Médian (accents/actions) :** `#6b1d9e`
-* **Lilas Lumineux (highlights/liens) :** `#b874ea`
-* **Lavande Douce (fonds secondaires/badges) :** `#e9d5ff`
-* **Fond de page soyeux :** `#faf7fd`
-* **Alerte / Urgence sociale :** `#d92d20`
-* **Typographies :** `Montserrat` (Headings) & `Open Sans` / `Inter` (Body).
+* **Encre (identité, titres, fonds sombres) :** `#2A0E45`
+* **Violet (liens, actions secondaires) :** `#6D28D9`
+* **Lavande (fonds secondaires/badges) :** `#EDE4FB`
+* **Abricot (don, adhésion, accents — jamais en texte sur blanc) :** `#F4A259`
+* **Urgence (réservé au danger) :** `#D92D20`
+* **Épicerie solidaire :** `#059669`
+* **Typographies :** `Montserrat` (titres) & `Atkinson Hyperlegible Next` (textes).
 
 ---
 

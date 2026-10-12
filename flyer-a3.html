@@ -22,11 +22,11 @@
         @page { size: A3 portrait; margin: 0; }
 
         :root {
-            --deep: #350b52;
-            --royal: #6b1d9e;
-            --lilac: #a855f7;
-            --lavender: #f3e8ff;
-            --lavender-2: #faf5ff;
+            --deep: #2A0E45;
+            --royal: #6D28D9;
+            --warm: #F4A259;
+            --lavender: #EDE4FB;
+            --lavender-2: #F7F3FD;
             --alert: #d92d20;
             --green: #059669;
             --text: #1e112a;
@@ -60,7 +60,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,.3);
         }
         .toolbar button {
-            background: linear-gradient(135deg, #e11d48, #be123c); color: #fff;
+            background: var(--warm); color: var(--deep);
             border: 0; border-radius: 30px; padding: 9px 18px; cursor: pointer;
             font: 700 13px 'Montserrat', sans-serif;
             display: inline-flex; gap: 8px; align-items: center;
@@ -84,7 +84,7 @@
         }
         .hero::before { /* voile haut pour lisibilité du titre */
             content: ''; position: absolute; inset: 0 0 auto 0; height: 120mm;
-            background: linear-gradient(180deg, rgba(30,6,48,.92) 0%, rgba(53,11,82,.70) 45%, rgba(53,11,82,0) 100%);
+            background: linear-gradient(180deg, rgba(26,10,43,.92) 0%, rgba(42,14,69,.70) 45%, rgba(42,14,69,0) 100%);
         }
         .hero::after { /* fondu bas vers le blanc */
             content: ''; position: absolute; inset: auto 0 0 0; height: 26mm;
@@ -105,7 +105,7 @@
         .brand-left .name { font: 800 9mm/1 'Montserrat', sans-serif; letter-spacing: .06em; }
         .brand-left .sub {
             font: 700 2.9mm 'Montserrat', sans-serif; letter-spacing: .14em;
-            text-transform: uppercase; color: #e9d5ff; margin-top: 1.2mm;
+            text-transform: uppercase; color: #E4DAFB; margin-top: 1.2mm;
         }
         .brand-tag {
             border: .35mm solid rgba(255,255,255,.55); border-radius: 20mm;
@@ -116,9 +116,9 @@
         .headline h1 {
             font-size: 15.5mm; line-height: 1.05; font-weight: 800; letter-spacing: -.01em;
         }
-        .headline h1 span { color: #d8b4fe; }
+        .headline h1 span { color: var(--warm); }
         .headline p {
-            margin-top: 5mm; font-size: 5mm; line-height: 1.4; color: #f3e8ff;
+            margin-top: 5mm; font-size: 5mm; line-height: 1.4; color: #EDE4FB;
             max-width: 200mm;
         }
 
@@ -131,7 +131,7 @@
         .mission {
             background: #fff; border-radius: 4mm;
             padding: 6.5mm 6mm 6.5mm 6mm;
-            box-shadow: 0 3mm 9mm rgba(53,11,82,.16);
+            box-shadow: 0 3mm 9mm rgba(42,14,69,.16);
             border-top: 2.2mm solid var(--royal);
         }
         .mission.urgence { border-top-color: var(--alert); }
@@ -150,7 +150,7 @@
         /* ---------- 3. COMMENT AIDER + QR ---------- */
         .help {
             margin: 9mm 14mm 0 14mm;
-            background: linear-gradient(135deg, #350b52 0%, #5b1187 60%, #7c22b5 100%);
+            background: linear-gradient(135deg, #2A0E45 0%, #5B21B6 60%, #6D28D9 100%);
             border-radius: 5mm; color: #fff;
             display: grid; grid-template-columns: 1fr 52mm; gap: 7mm;
             padding: 9mm 9mm; align-items: center;
@@ -162,8 +162,8 @@
             border-radius: 3mm; padding: 4.5mm;
         }
         .help-item .k { font: 800 6mm/1 'Montserrat', sans-serif; color: #fff; }
-        .help-item .t { font: 800 3.3mm 'Montserrat', sans-serif; color: #e9d5ff; margin-top: 1.5mm; text-transform: uppercase; letter-spacing: .04em; }
-        .help-item .d { font-size: 3.3mm; line-height: 1.4; color: #f3e8ff; margin-top: 1.5mm; }
+        .help-item .t { font: 800 3.3mm 'Montserrat', sans-serif; color: #E4DAFB; margin-top: 1.5mm; text-transform: uppercase; letter-spacing: .04em; }
+        .help-item .d { font-size: 3.3mm; line-height: 1.4; color: #EDE4FB; margin-top: 1.5mm; }
         .qr-box { text-align: center; }
         .qr-frame {
             background: #fff; border-radius: 3.5mm; padding: 3.5mm;
@@ -171,7 +171,7 @@
         }
         .qr-frame svg { width: 100%; height: 100%; display: block; }
         .qr-box .cta { font: 800 3.6mm 'Montserrat', sans-serif; margin-top: 2.5mm; letter-spacing: .03em; }
-        .qr-box .url { font-size: 2.8mm; color: #e9d5ff; margin-top: .8mm; }
+        .qr-box .url { font-size: 2.8mm; color: #E4DAFB; margin-top: .8mm; }
 
         /* ---------- 4. CONTACT ---------- */
         .contact {
@@ -181,11 +181,11 @@
         }
         .c-item {
             display: flex; align-items: center; gap: 3mm;
-            background: var(--lavender-2); border: .3mm solid #e9d5ff;
+            background: var(--lavender-2); border: .3mm solid #E4DAFB;
             border-radius: 3mm; padding: 4.5mm 5mm;
         }
         .c-item i { font-size: 5mm; color: var(--royal); }
-        .c-item.urg { background: #fff1f2; border-color: #fecdd3; }
+        .c-item.urg { background: #FEF3F2; border-color: #FECDCA; }
         .c-item.urg i { color: var(--alert); }
         .c-item .l { font: 700 2.5mm 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
         .c-item .v { font: 800 3.6mm 'Montserrat', sans-serif; color: var(--deep); margin-top: .5mm; }
@@ -195,7 +195,7 @@
         .legal {
             margin-top: auto;
             padding: 4.5mm 14mm 6mm 14mm;
-            border-top: .4mm solid #e9d5ff;
+            border-top: .4mm solid #E4DAFB;
             background: #fbf9fd;
             font-size: 2.7mm; line-height: 1.55; color: var(--muted);
             display: grid; grid-template-columns: 1fr auto; gap: 6mm; align-items: end;
@@ -203,7 +203,7 @@
         .legal strong { color: var(--deep); }
         .legal .nojet {
             font: 800 2.6mm 'Montserrat', sans-serif; color: var(--deep);
-            border: .3mm solid #d8b4fe; border-radius: 2mm; padding: 1.8mm 3mm;
+            border: .3mm solid #C4B5FD; border-radius: 2mm; padding: 1.8mm 3mm;
             white-space: nowrap; text-align: center;
         }
         .legal .nojet i { color: var(--green); }
@@ -212,11 +212,11 @@
         .mission { position: relative; }
         .mission .projet {
             position: absolute; top: 4.89mm; right: 4.89mm;
-            background: var(--lavender); color: var(--royal); border: 0.41mm solid #d8b4fe;
+            background: var(--lavender); color: var(--royal); border: 0.41mm solid #C4B5FD;
             border-radius: 6.11mm; padding: 1.02mm 3.05mm;
             font: 800 2.75mm/1.2 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .05em;
         }
-        .mission .projet.prio { background: #fff1f2; color: var(--alert); border-color: #fecdd3; }
+        .mission .projet.prio { background: #FEF3F2; color: var(--alert); border-color: #FECDCA; }
         .todo { background: #fef08a; outline: .3mm dashed #ca8a04; }
 
         @media print {
@@ -304,7 +304,7 @@
             <div class="qr-box">
                 <div class="qr-frame">
                     <!-- QR code réel → https://education-solidaire.org (correction H) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#350b52" d="M0 0.5h7m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h6m3 0h2m2 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h2m1 0h1m2 0h4m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h1m3 0h1m2 0h1m5 0h3m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m2 0h1m2 0h2m2 0h2m4 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h7m1 0h2m1 0h1m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h3m3 0h2m2 0h3M2 8.5h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h6m2 0h3M0 9.5h1m4 0h1m5 0h1m3 0h7m1 0h1m1 0h2m2 0h1m2 0h1M0 10.5h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m1 0h3M2 11.5h1m1 0h1m2 0h2m1 0h2m7 0h4m2 0h2m2 0h3M1 12.5h1m2 0h3m2 0h3m1 0h1m2 0h2m2 0h2m2 0h2m2 0h2m1 0h1M0 13.5h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1M4 14.5h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h3m1 0h4M3 15.5h1m1 0h1m1 0h4m2 0h2m1 0h2m3 0h2m5 0h1m1 0h3M1 16.5h2m2 0h2m4 0h2m12 0h1m1 0h2m2 0h2M0 17.5h5m4 0h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h2m1 0h1m5 0h1M0 18.5h1m1 0h1m1 0h1m1 0h3m1 0h8m2 0h1m1 0h1m5 0h1m1 0h2M0 19.5h1m2 0h1m3 0h1m1 0h4m2 0h1m2 0h7m1 0h1m1 0h3m1 0h1M2 20.5h1m1 0h1m1 0h4m3 0h4m2 0h1m2 0h1m1 0h2m1 0h3M0 21.5h2m1 0h1m1 0h1m2 0h2m2 0h4m1 0h1m6 0h1m1 0h1m2 0h2m1 0h1M0 22.5h1m1 0h2m1 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m8 0h1M0 23.5h1m1 0h4m2 0h1m1 0h2m2 0h1m1 0h4m1 0h3m5 0h2m1 0h1M0 24.5h1m1 0h1m3 0h2m2 0h2m2 0h3m3 0h1m1 0h1m1 0h6m1 0h2M8 25.5h3m2 0h2m1 0h4m2 0h1m1 0h1m3 0h1m1 0h1m1 0h1M0 26.5h7m3 0h1m1 0h2m1 0h1m1 0h1m4 0h3m1 0h1m1 0h2m1 0h1M0 27.5h1m5 0h1m6 0h1m1 0h1m1 0h4m2 0h2m3 0h5M0 28.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h2m1 0h5m2 0h2M0 29.5h1m1 0h3m1 0h1m1 0h1m2 0h3m5 0h1m3 0h3m2 0h2m1 0h1M0 30.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m3 0h2M0 31.5h1m5 0h1m2 0h1m1 0h5m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2M0 32.5h7m3 0h3m1 0h1m2 0h1m1 0h2m2 0h3m5 0h1"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#2A0E45" d="M0 0.5h7m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h6m3 0h2m2 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h2m1 0h1m2 0h4m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h1m3 0h1m2 0h1m5 0h3m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m2 0h1m2 0h2m2 0h2m4 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h7m1 0h2m1 0h1m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h3m3 0h2m2 0h3M2 8.5h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h6m2 0h3M0 9.5h1m4 0h1m5 0h1m3 0h7m1 0h1m1 0h2m2 0h1m2 0h1M0 10.5h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m1 0h3M2 11.5h1m1 0h1m2 0h2m1 0h2m7 0h4m2 0h2m2 0h3M1 12.5h1m2 0h3m2 0h3m1 0h1m2 0h2m2 0h2m2 0h2m2 0h2m1 0h1M0 13.5h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1M4 14.5h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h3m1 0h4M3 15.5h1m1 0h1m1 0h4m2 0h2m1 0h2m3 0h2m5 0h1m1 0h3M1 16.5h2m2 0h2m4 0h2m12 0h1m1 0h2m2 0h2M0 17.5h5m4 0h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h2m1 0h1m5 0h1M0 18.5h1m1 0h1m1 0h1m1 0h3m1 0h8m2 0h1m1 0h1m5 0h1m1 0h2M0 19.5h1m2 0h1m3 0h1m1 0h4m2 0h1m2 0h7m1 0h1m1 0h3m1 0h1M2 20.5h1m1 0h1m1 0h4m3 0h4m2 0h1m2 0h1m1 0h2m1 0h3M0 21.5h2m1 0h1m1 0h1m2 0h2m2 0h4m1 0h1m6 0h1m1 0h1m2 0h2m1 0h1M0 22.5h1m1 0h2m1 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m8 0h1M0 23.5h1m1 0h4m2 0h1m1 0h2m2 0h1m1 0h4m1 0h3m5 0h2m1 0h1M0 24.5h1m1 0h1m3 0h2m2 0h2m2 0h3m3 0h1m1 0h1m1 0h6m1 0h2M8 25.5h3m2 0h2m1 0h4m2 0h1m1 0h1m3 0h1m1 0h1m1 0h1M0 26.5h7m3 0h1m1 0h2m1 0h1m1 0h1m4 0h3m1 0h1m1 0h2m1 0h1M0 27.5h1m5 0h1m6 0h1m1 0h1m1 0h4m2 0h2m3 0h5M0 28.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h2m1 0h5m2 0h2M0 29.5h1m1 0h3m1 0h1m1 0h1m2 0h3m5 0h1m3 0h3m2 0h2m1 0h1M0 30.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m3 0h2M0 31.5h1m5 0h1m2 0h1m1 0h5m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2M0 32.5h7m3 0h3m1 0h1m2 0h1m1 0h2m2 0h3m5 0h1"/></svg>
                 </div>
                 <div class="cta"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Scannez pour agir</div>
                 <div class="url">education-solidaire.org</div>

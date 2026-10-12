@@ -22,11 +22,11 @@
         @page { size: A5 portrait; margin: 0; }
 
         :root {
-            --deep: #350b52;
-            --royal: #6b1d9e;
-            --lilac: #a855f7;
-            --lavender: #f3e8ff;
-            --lavender-2: #faf5ff;
+            --deep: #2A0E45;
+            --royal: #6D28D9;
+            --warm: #F4A259;
+            --lavender: #EDE4FB;
+            --lavender-2: #F7F3FD;
             --alert: #d92d20;
             --green: #059669;
             --text: #1e112a;
@@ -60,7 +60,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,.3);
         }
         .toolbar button {
-            background: linear-gradient(135deg, #e11d48, #be123c); color: #fff;
+            background: var(--warm); color: var(--deep);
             border: 0; border-radius: 20px; padding: 7px 14px; cursor: pointer;
             font: 700 12px 'Montserrat', sans-serif;
             display: inline-flex; gap: 6px; align-items: center;
@@ -93,13 +93,13 @@
 
         /* ---------- EN-TÊTE ---------- */
         .header {
-            background: linear-gradient(135deg, #2a0842 0%, #350b52 45%, #6b1d9e 100%);
+            background: linear-gradient(135deg, #1A0A2B 0%, #2A0E45 45%, #6D28D9 100%);
             color: #fff; padding: 5.2mm 7mm 4.4mm 7mm; position: relative; flex-shrink: 0;
         }
         .header::after { /* motif discret */
             content: ''; position: absolute; right: -14mm; top: -16mm;
             width: 52mm; height: 52mm; border-radius: 50%;
-            border: 5mm solid rgba(168,85,247,.18);
+            border: 5mm solid rgba(109,40,217,.18);
         }
         .brand { display: flex; align-items: center; gap: 2.2mm; position: relative; z-index: 1; }
         .brand img {
@@ -109,7 +109,7 @@
         .brand .name { font: 800 4.2mm/1 'Montserrat', sans-serif; letter-spacing: .06em; }
         .brand .sub {
             font: 700 1.55mm 'Montserrat', sans-serif; letter-spacing: .12em;
-            text-transform: uppercase; color: #e9d5ff; margin-top: .6mm;
+            text-transform: uppercase; color: #E4DAFB; margin-top: .6mm;
         }
         .brand .tag {
             margin-left: auto; border: .2mm solid rgba(255,255,255,.5); border-radius: 10mm;
@@ -120,9 +120,9 @@
             margin-top: 3.4mm; font-size: 6.2mm; line-height: 1.08; font-weight: 800;
             position: relative; z-index: 1; max-width: 120mm;
         }
-        .header h1 span { color: #d8b4fe; }
+        .header h1 span { color: var(--warm); }
         .header p {
-            margin-top: 1.8mm; font-size: 2.3mm; line-height: 1.4; color: #f3e8ff;
+            margin-top: 1.8mm; font-size: 2.3mm; line-height: 1.4; color: #EDE4FB;
             max-width: 118mm; position: relative; z-index: 1;
         }
 
@@ -142,7 +142,7 @@
             width: 10mm; height: 10mm; border-radius: 50%; margin: 0 auto;
             display: flex; align-items: center; justify-content: center;
             font-size: 4mm; color: #fff; position: relative;
-            border: .9mm solid #fff; box-shadow: 0 1mm 3mm rgba(53,11,82,.22);
+            border: .9mm solid #fff; box-shadow: 0 1mm 3mm rgba(42,14,69,.22);
         }
         .step .dot b {
             position: absolute; top: -1.4mm; right: -1.6mm;
@@ -168,7 +168,7 @@
         /* ---------- 2. VOTRE DON ---------- */
         .gift {
             margin: 3.4mm 7mm 0 7mm; padding: 3.2mm 4mm 3mm 4mm;
-            background: var(--lavender-2); border: .25mm solid #e9d5ff; border-radius: 3mm;
+            background: var(--lavender-2); border: .25mm solid #E4DAFB; border-radius: 3mm;
             display: grid; grid-template-columns: 1fr 27mm; gap: 3.5mm; align-items: center;
             flex-shrink: 0;
         }
@@ -181,7 +181,7 @@
         }
         .bar .real { background: var(--deep); color: #fff; padding-left: 1.4mm; white-space: nowrap; }
         .bar .tax {
-            background: repeating-linear-gradient(135deg, #e9d5ff 0 1.1mm, #f3e8ff 1.1mm 2.2mm);
+            background: repeating-linear-gradient(135deg, #E4DAFB 0 1.1mm, #EDE4FB 1.1mm 2.2mm);
             color: var(--royal); padding-left: 1.4mm; white-space: nowrap;
         }
         .bar-row .impact {
@@ -196,7 +196,7 @@
 
         .big66 {
             width: 27mm; height: 27mm; border-radius: 50%; position: relative;
-            background: conic-gradient(var(--lilac) 0 66%, var(--deep) 66% 100%);
+            background: conic-gradient(var(--warm) 0 66%, var(--deep) 66% 100%);
             display: flex; align-items: center; justify-content: center; margin: 0 auto;
         }
         .big66::before {
@@ -210,7 +210,7 @@
         /* ---------- 3. AGIR + QR ---------- */
         .act {
             margin: 3.4mm 7mm 0 7mm;
-            background: linear-gradient(135deg, #350b52 0%, #5b1187 60%, #7c22b5 100%);
+            background: linear-gradient(135deg, #2A0E45 0%, #5B21B6 60%, #6D28D9 100%);
             border-radius: 3mm; color: #fff;
             display: grid; grid-template-columns: 1fr 24mm; gap: 3.5mm;
             padding: 3mm 4mm; align-items: center; flex-shrink: 0;
@@ -221,25 +221,25 @@
             background: rgba(255,255,255,.1); border: .2mm solid rgba(255,255,255,.24);
             border-radius: 1.8mm; padding: 1.9mm 2mm;
         }
-        .act-item i { font-size: 2.6mm; color: #d8b4fe; }
+        .act-item i { font-size: 2.6mm; color: #C4B5FD; }
         .act-item .k { font: 800 2.45mm/1 'Montserrat', sans-serif; margin-top: 1mm; }
-        .act-item .d { font-size: 1.55mm; line-height: 1.3; color: #f3e8ff; margin-top: .8mm; }
+        .act-item .d { font-size: 1.55mm; line-height: 1.3; color: #EDE4FB; margin-top: .8mm; }
         .qr-box { text-align: center; }
         .qr-frame { background: #fff; border-radius: 2mm; padding: 1.6mm; width: 24mm; height: 24mm; margin: 0 auto; }
         .qr-frame svg { width: 100%; height: 100%; display: block; }
         .qr-box .cta { font: 800 1.7mm 'Montserrat', sans-serif; margin-top: 1.2mm; }
-        .qr-box .url { font-size: 1.42mm; color: #e9d5ff; margin-top: .3mm; }
+        .qr-box .url { font-size: 1.42mm; color: #E4DAFB; margin-top: .3mm; }
 
         /* ---------- 4. NUMÉROS UTILES ---------- */
         .numbers { margin: 3mm 7mm 0 7mm; flex-shrink: 0; }
         .numbers-grid { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr 1fr; gap: 1.6mm; margin-top: 2mm; }
         .n-item {
             border-radius: 1.6mm; padding: 1.5mm 1.8mm; text-align: center;
-            background: #fff1f2; border: .2mm solid #fecdd3;
+            background: #FEF3F2; border: .2mm solid #FECDCA;
         }
         .n-item .v { font: 800 3.2mm/1 'Montserrat', sans-serif; color: var(--alert); }
         .n-item .l { font-size: 1.38mm; line-height: 1.25; color: var(--muted); margin-top: .7mm; }
-        .n-item.unisson { background: var(--lavender-2); border-color: #e9d5ff; text-align: left; }
+        .n-item.unisson { background: var(--lavender-2); border-color: #E4DAFB; text-align: left; }
         .n-item.unisson .v { font-size: 2mm; color: var(--deep); line-height: 1.15; }
         .n-item.unisson .v i { color: var(--royal); }
 
@@ -247,7 +247,7 @@
         .legal {
             margin-top: auto;
             padding: 2.2mm 7mm 3mm 7mm;
-            border-top: .25mm solid #e9d5ff; background: #fbf9fd;
+            border-top: .25mm solid #E4DAFB; background: #fbf9fd;
             font-size: 1.36mm; line-height: 1.45; color: var(--muted);
             display: grid; grid-template-columns: 1fr auto; gap: 3mm; align-items: end;
             flex-shrink: 0;
@@ -255,7 +255,7 @@
         .legal strong { color: var(--deep); }
         .legal .nojet {
             font: 800 1.3mm 'Montserrat', sans-serif; color: var(--deep);
-            border: .2mm solid #d8b4fe; border-radius: 1.2mm; padding: 1mm 1.8mm;
+            border: .2mm solid #C4B5FD; border-radius: 1.2mm; padding: 1mm 1.8mm;
             white-space: nowrap; text-align: center; line-height: 1.25;
         }
         .legal .nojet i { color: var(--green); }
@@ -356,7 +356,7 @@
                 </div>
                 <div class="legend">
                     <span><i class="sw" style="background:var(--deep)"></i> Coût réel pour vous</span>
-                    <span><i class="sw" style="background:repeating-linear-gradient(135deg,#e9d5ff 0 1px,#f3e8ff 1px 2px);border:.15mm solid #d8b4fe"></i> Réduction d'impôt</span>
+                    <span><i class="sw" style="background:repeating-linear-gradient(135deg,#E4DAFB 0 1px,#EDE4FB 1px 2px);border:.15mm solid #C4B5FD"></i> Réduction d'impôt</span>
                 </div>
             </div>
             <div class="gift-side">
@@ -395,7 +395,7 @@
             <div class="qr-box">
                 <div class="qr-frame">
                     <!-- QR code réel → https://education-solidaire.org (correction H) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#350b52" d="M0 0.5h7m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h6m3 0h2m2 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h2m1 0h1m2 0h4m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h1m3 0h1m2 0h1m5 0h3m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m2 0h1m2 0h2m2 0h2m4 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h7m1 0h2m1 0h1m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h3m3 0h2m2 0h3M2 8.5h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h6m2 0h3M0 9.5h1m4 0h1m5 0h1m3 0h7m1 0h1m1 0h2m2 0h1m2 0h1M0 10.5h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m1 0h3M2 11.5h1m1 0h1m2 0h2m1 0h2m7 0h4m2 0h2m2 0h3M1 12.5h1m2 0h3m2 0h3m1 0h1m2 0h2m2 0h2m2 0h2m2 0h2m1 0h1M0 13.5h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1M4 14.5h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h3m1 0h4M3 15.5h1m1 0h1m1 0h4m2 0h2m1 0h2m3 0h2m5 0h1m1 0h3M1 16.5h2m2 0h2m4 0h2m12 0h1m1 0h2m2 0h2M0 17.5h5m4 0h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h2m1 0h1m5 0h1M0 18.5h1m1 0h1m1 0h1m1 0h3m1 0h8m2 0h1m1 0h1m5 0h1m1 0h2M0 19.5h1m2 0h1m3 0h1m1 0h4m2 0h1m2 0h7m1 0h1m1 0h3m1 0h1M2 20.5h1m1 0h1m1 0h4m3 0h4m2 0h1m2 0h1m1 0h2m1 0h3M0 21.5h2m1 0h1m1 0h1m2 0h2m2 0h4m1 0h1m6 0h1m1 0h1m2 0h2m1 0h1M0 22.5h1m1 0h2m1 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m8 0h1M0 23.5h1m1 0h4m2 0h1m1 0h2m2 0h1m1 0h4m1 0h3m5 0h2m1 0h1M0 24.5h1m1 0h1m3 0h2m2 0h2m2 0h3m3 0h1m1 0h1m1 0h6m1 0h2M8 25.5h3m2 0h2m1 0h4m2 0h1m1 0h1m3 0h1m1 0h1m1 0h1M0 26.5h7m3 0h1m1 0h2m1 0h1m1 0h1m4 0h3m1 0h1m1 0h2m1 0h1M0 27.5h1m5 0h1m6 0h1m1 0h1m1 0h4m2 0h2m3 0h5M0 28.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h2m1 0h5m2 0h2M0 29.5h1m1 0h3m1 0h1m1 0h1m2 0h3m5 0h1m3 0h3m2 0h2m1 0h1M0 30.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m3 0h2M0 31.5h1m5 0h1m2 0h1m1 0h5m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2M0 32.5h7m3 0h3m1 0h1m2 0h1m1 0h2m2 0h3m5 0h1"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#2A0E45" d="M0 0.5h7m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h6m3 0h2m2 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h2m1 0h1m2 0h4m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h1m3 0h1m2 0h1m5 0h3m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m2 0h1m2 0h2m2 0h2m4 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h7m1 0h2m1 0h1m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h3m3 0h2m2 0h3M2 8.5h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h6m2 0h3M0 9.5h1m4 0h1m5 0h1m3 0h7m1 0h1m1 0h2m2 0h1m2 0h1M0 10.5h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m1 0h3M2 11.5h1m1 0h1m2 0h2m1 0h2m7 0h4m2 0h2m2 0h3M1 12.5h1m2 0h3m2 0h3m1 0h1m2 0h2m2 0h2m2 0h2m2 0h2m1 0h1M0 13.5h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1M4 14.5h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h3m1 0h4M3 15.5h1m1 0h1m1 0h4m2 0h2m1 0h2m3 0h2m5 0h1m1 0h3M1 16.5h2m2 0h2m4 0h2m12 0h1m1 0h2m2 0h2M0 17.5h5m4 0h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h2m1 0h1m5 0h1M0 18.5h1m1 0h1m1 0h1m1 0h3m1 0h8m2 0h1m1 0h1m5 0h1m1 0h2M0 19.5h1m2 0h1m3 0h1m1 0h4m2 0h1m2 0h7m1 0h1m1 0h3m1 0h1M2 20.5h1m1 0h1m1 0h4m3 0h4m2 0h1m2 0h1m1 0h2m1 0h3M0 21.5h2m1 0h1m1 0h1m2 0h2m2 0h4m1 0h1m6 0h1m1 0h1m2 0h2m1 0h1M0 22.5h1m1 0h2m1 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m8 0h1M0 23.5h1m1 0h4m2 0h1m1 0h2m2 0h1m1 0h4m1 0h3m5 0h2m1 0h1M0 24.5h1m1 0h1m3 0h2m2 0h2m2 0h3m3 0h1m1 0h1m1 0h6m1 0h2M8 25.5h3m2 0h2m1 0h4m2 0h1m1 0h1m3 0h1m1 0h1m1 0h1M0 26.5h7m3 0h1m1 0h2m1 0h1m1 0h1m4 0h3m1 0h1m1 0h2m1 0h1M0 27.5h1m5 0h1m6 0h1m1 0h1m1 0h4m2 0h2m3 0h5M0 28.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h2m1 0h5m2 0h2M0 29.5h1m1 0h3m1 0h1m1 0h1m2 0h3m5 0h1m3 0h3m2 0h2m1 0h1M0 30.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m3 0h2M0 31.5h1m5 0h1m2 0h1m1 0h5m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2M0 32.5h7m3 0h3m1 0h1m2 0h1m1 0h2m2 0h3m5 0h1"/></svg>
                 </div>
                 <div class="cta"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Scanner pour agir</div>
                 <div class="url">education-solidaire.org</div>
