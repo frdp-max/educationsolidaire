@@ -75,7 +75,7 @@
                 "name": "À quoi servira mon don ?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Votre don alimente le Fonds de Premier Secours Social, qui financera la mise à l'abri temporaire à l'hôtel de familles et de jeunes en détresse, avec des repas et des kits d'hygiène, en lien avec le 115 et le CCAS. Il soutient aussi la création du Café Solidaire et de l'Épicerie Solidaire."
+                    "text": "Votre don contribue d'abord au premier palier de 16 000 € qui lancera le premier secours social : une équipe de 4 bénévoles formés, un véhicule 7 places pour accompagner les familles, les outils de liaison et un fonds pour mettre à l'abri à l'hôtel les 5 premières familles, avec repas et kits d'hygiène, en lien avec le 115 et le CCAS. Il soutient aussi la création du Café Solidaire et de l'Épicerie Solidaire."
                 }
             },
             {
@@ -2106,6 +2106,91 @@
         }
 
         /* ==========================================================================
+           PREMIER PALIER DE FINANCEMENT (lancement du premier secours social)
+           ========================================================================== */
+        .palier-section { margin: 5rem 0; }
+        .palier-hero {
+            background: var(--uni-deep-purple); color: #ffffff;
+            border-radius: var(--radius-lg); padding: 3rem;
+            display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.5rem; align-items: center;
+            box-shadow: var(--shadow-card); position: relative; overflow: hidden;
+        }
+        .palier-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--uni-purple-mid), var(--uni-warm));
+        }
+        .palier-hero .section-tag { color: var(--uni-warm); }
+        .palier-hero h2 {
+            font-family: 'Montserrat', sans-serif; font-weight: 800;
+            font-size: 2.1rem; line-height: 1.2; color: #ffffff; margin-bottom: 1rem;
+        }
+        .palier-hero h2 em { font-style: normal; color: var(--uni-warm); }
+        .palier-hero p { color: var(--uni-lilac-on-dark); line-height: 1.65; }
+        .palier-hero p strong { color: #ffffff; }
+        .palier-gauge {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(196,181,253,0.3);
+            border-radius: var(--radius-md); padding: 1.8rem;
+        }
+        .palier-gauge-label { font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--uni-lilac-on-dark); }
+        .palier-gauge-figures { display: flex; align-items: baseline; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1rem; }
+        .palier-gauge-raised { font: 800 2.3rem/1 'Montserrat', sans-serif; color: var(--uni-warm); }
+        .palier-gauge-goal { font-size: 1rem; color: var(--uni-lilac-on-dark); }
+        .palier-gauge-goal strong { color: #ffffff; }
+        .palier-track { height: 16px; border-radius: 999px; background: rgba(255,255,255,0.14); overflow: hidden; }
+        .palier-fill {
+            height: 100%; width: 0; min-width: 8px; border-radius: 999px;
+            background: linear-gradient(90deg, var(--uni-purple-mid), var(--uni-warm));
+            transition: width 1.2s ease;
+        }
+        .palier-gauge-note { font-size: .88rem; color: var(--uni-lilac-on-dark); margin: .9rem 0 1.3rem; line-height: 1.5; }
+        .btn-palier {
+            width: 100%; justify-content: center; border: none;
+            background: var(--uni-warm); color: var(--uni-deep-purple) !important;
+        }
+        .btn-palier:hover { background: var(--uni-warm-dark); }
+        .palier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin: 2rem 0 1rem; }
+        .palier-card {
+            background: #ffffff; border: 1.5px solid var(--uni-lilac-light); border-radius: var(--radius-md);
+            padding: 1.8rem 1.5rem; box-shadow: var(--shadow-card);
+        }
+        .palier-card-icon {
+            width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+            background: var(--uni-lilac-light); color: var(--uni-purple-mid); font-size: 1.25rem; margin-bottom: 1rem;
+        }
+        .palier-card-amount { font: 800 1.7rem/1 'Montserrat', sans-serif; color: var(--uni-deep-purple); margin-bottom: .35rem; }
+        .palier-card h3 { font-size: 1.08rem; color: var(--uni-deep-purple); margin-bottom: .6rem; }
+        .palier-card p { font-size: .92rem; color: var(--uni-text-muted); line-height: 1.55; }
+        .palier-card ul { margin: .8rem 0 0; padding-left: 1.1rem; font-size: .88rem; color: var(--uni-text-dark); line-height: 1.6; }
+        .palier-total { text-align: center; font-size: .95rem; color: var(--uni-text-muted); margin-bottom: 3rem; }
+        .palier-total strong { color: var(--uni-deep-purple); }
+        .palier-subtitle { font: 800 1.4rem 'Montserrat', sans-serif; color: var(--uni-deep-purple); margin-bottom: .4rem; }
+        .palier-lead { color: var(--uni-text-muted); margin-bottom: 1.4rem; line-height: 1.6; }
+        .palier-offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 3rem; }
+        .palier-offers.mecenat { grid-template-columns: repeat(4, 1fr); margin-bottom: 1rem; }
+        .palier-offer {
+            background: var(--uni-lilac-tint); border: 1.5px solid var(--uni-lilac-light); border-radius: var(--radius-md);
+            padding: 1.5rem; display: flex; flex-direction: column; gap: .6rem;
+        }
+        .palier-offer-amount { font: 800 1.6rem/1 'Montserrat', sans-serif; color: var(--uni-deep-purple); }
+        .palier-offer h4 { font-size: 1rem; color: var(--uni-deep-purple); }
+        .palier-offer p { font-size: .9rem; color: var(--uni-text-dark); line-height: 1.5; flex: 1; }
+        .palier-offer .impact-net-cost { margin: 0; align-self: flex-start; }
+        .palier-offer .btn-impact-select { margin-top: .4rem; text-decoration: none; }
+        .palier-legal { font-size: .85rem; color: var(--uni-text-muted); line-height: 1.55; }
+        @media (max-width: 1024px) {
+            .palier-hero { grid-template-columns: 1fr; padding: 2.4rem 2rem; }
+            .palier-grid, .palier-offers.mecenat { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .palier-offers { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .palier-hero { padding: 2rem 1.2rem; }
+            .palier-hero h2 { font-size: 1.6rem; }
+            .palier-grid, .palier-offers.mecenat { grid-template-columns: 1fr; }
+        }
+
+        /* ==========================================================================
            ACCESSIBILITÉ : focus clavier, lien d'évitement, zones tactiles, mouvement réduit
            ========================================================================== */
         .skip-link {
@@ -2199,7 +2284,7 @@
         <div class="urgent-bar-content">
             <div class="urgent-bar-text">
                 <span class="urgent-pulse-dot"></span>
-                <span><strong>Association en lancement :</strong> aidez-nous à créer un dispositif de mise à l'abri pour les familles en détresse à Gennevilliers.</span>
+                <span><strong>Association en lancement :</strong> 16 000 € pour lancer la mise à l'abri des familles en détresse à Gennevilliers. <a href="#premier-palier" style="color: inherit; text-decoration: underline;">Le premier palier</a></span>
             </div>
             <div class="urgent-bar-actions">
                 <button onclick="openCheckoutModal('Don au Fonds d\'Urgence Sociale', 50, 'donation')" class="btn-urgent-donate">
@@ -2274,8 +2359,8 @@
     <div class="stats-bar">
         <div class="stats-grid">
             <div class="stat-item">
-                <span class="stat-number">Priorité n°1</span>
-                <span class="stat-label">Premier secours social & mise à l'abri</span>
+                <span class="stat-number">16 000 €</span>
+                <span class="stat-label">Premier palier pour lancer la mise à l'abri</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">2 Projets</span>
@@ -2344,7 +2429,7 @@
             <div class="emergency-header">
                 <div class="emergency-info">
                     <h3><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Premier Secours Social : notre priorité</h3>
-                    <p>Nous mettons en place un dispositif de mise à l'abri temporaire à l'hôtel avec prise en charge des repas, en lien avec les services sociaux (CCAS, 115). <strong>Il n'est pas encore opérationnel</strong> : vos dons et votre engagement bénévole servent à le lancer.</p>
+                    <p>Nous mettons en place un dispositif de mise à l'abri temporaire à l'hôtel avec prise en charge des repas, en lien avec les services sociaux (CCAS, 115). <strong>Il n'est pas encore opérationnel</strong> : vos dons et votre engagement bénévole servent à le lancer. <a href="#premier-palier" style="color: inherit; font-weight: 700;">Voir le premier palier de 16 000 €</a>.</p>
                     <div class="emergency-pills">
                         <span class="emergency-pill"><i class="fa-solid fa-flag" aria-hidden="true"></i> Objectif : hébergement à l'hôtel</span>
                         <span class="emergency-pill"><i class="fa-solid fa-flag" aria-hidden="true"></i> Repas de crise</span>
@@ -2408,6 +2493,141 @@
                 </div>
             </form>
         </div>
+
+        <!-- PREMIER PALIER DE FINANCEMENT : LANCEMENT DU PREMIER SECOURS SOCIAL -->
+        <section id="premier-palier" class="palier-section" aria-labelledby="palier-title">
+            <div class="palier-hero">
+                <div>
+                    <span class="section-tag"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> Objectif de lancement</span>
+                    <h2 id="palier-title">Premier palier : <em>16 000 €</em> pour lancer la mise à l'abri</h2>
+                    <p>Pour démarrer son projet prioritaire, UNISSON doit d'abord se doter de sa propre capacité d'intervention : <strong>une équipe formée, un véhicule pour accompagner les familles et un fonds pour régler leurs premières nuits d'hôtel et leurs repas</strong>, en attendant le relais du 115 et du CCAS.</p>
+                    <p style="margin-top: .8rem;">Ce budget est calculé sur les coûts réels constatés en Île-de-France. Dès qu'il sera réuni, le dispositif pourra commencer.</p>
+                </div>
+                <div class="palier-gauge">
+                    <span class="palier-gauge-label">Collecte du premier palier</span>
+                    <div class="palier-gauge-figures">
+                        <span class="palier-gauge-raised" id="palierRaised">16 000 €</span>
+                        <span class="palier-gauge-goal" id="palierGoalText">à réunir</span>
+                    </div>
+                    <div class="palier-track" role="progressbar" id="palierBar" aria-label="Progression de la collecte du premier palier" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="palier-fill" id="palierFill"></div>
+                    </div>
+                    <p class="palier-gauge-note" id="palierNote">La collecte est ouverte : chaque don nous rapproche du lancement.</p>
+                    <button onclick="openCheckoutModal('Premier palier - Lancement de la mise à l\'abri', 50, 'donation')" class="btn-portal btn-palier">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i> Contribuer au premier palier
+                    </button>
+                </div>
+            </div>
+
+            <div class="palier-grid">
+                <article class="palier-card">
+                    <div class="palier-card-icon"><i class="fa-solid fa-van-shuttle" aria-hidden="true"></i></div>
+                    <div class="palier-card-amount">9 700 €</div>
+                    <h3>Mobilité solidaire</h3>
+                    <p>Un véhicule 7 places pour accompagner dignement un parent, ses enfants et leurs bagages jusqu'à l'hébergement, y compris la nuit.</p>
+                    <ul>
+                        <li>Véhicule d'occasion révisé et garanti</li>
+                        <li>Mise en service et marquage</li>
+                        <li>Assurance transport de personnes (12 mois)</li>
+                        <li>Carburant et entretien de la 1<sup>re</sup> année</li>
+                    </ul>
+                </article>
+                <article class="palier-card">
+                    <div class="palier-card-icon" style="background: #FFF1E3; color: var(--uni-deep-purple);"><i class="fa-solid fa-hotel" aria-hidden="true"></i></div>
+                    <div class="palier-card-amount">4 000 €</div>
+                    <h3>Fonds de premier secours</h3>
+                    <p>La mise à l'abri des <strong>5 premières familles</strong> : 110 € par jour et par famille (chambre familiale à 85 €, repas et hygiène à 25 €).</p>
+                    <ul>
+                        <li>5 jours d'hôtel et de repas par famille</li>
+                        <li>Marge pour les délais de relais 115 / CCAS</li>
+                        <li>Kits d'hygiène et de puériculture</li>
+                    </ul>
+                </article>
+                <article class="palier-card">
+                    <div class="palier-card-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
+                    <div class="palier-card-amount">1 140 €</div>
+                    <h3>Équipe d'intervention</h3>
+                    <p>4 bénévoles, 2 femmes et 2 hommes, qui interviendront toujours en binôme.</p>
+                    <ul>
+                        <li>Premiers secours (PSC1)</li>
+                        <li>Médiation de crise et désescalade</li>
+                        <li>Tenues et badges identifiables</li>
+                    </ul>
+                </article>
+                <article class="palier-card">
+                    <div class="palier-card-icon"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></div>
+                    <div class="palier-card-amount">980 €</div>
+                    <h3>Liaison &amp; sécurité</h3>
+                    <p>Les outils pour joindre l'équipe, travailler avec les services sociaux et protéger chacun.</p>
+                    <ul>
+                        <li>Téléphone d'astreinte et forfait (12 mois)</li>
+                        <li>Tablette pour les fiches de liaison</li>
+                        <li>Radios, trousse de secours, lampes</li>
+                    </ul>
+                </article>
+            </div>
+            <p class="palier-total">Budget chiffré : <strong>15 820 €</strong>, arrondi à <strong>16 000 €</strong> pour le premier palier.</p>
+
+            <h3 class="palier-subtitle">Mettre une famille à l'abri</h3>
+            <p class="palier-lead">Chaque don peut aussi financer directement une prise en charge. Réduction d'impôt de 66 % pour les particuliers.</p>
+            <div class="palier-offers">
+                <div class="palier-offer">
+                    <span class="palier-offer-amount">220 €</span>
+                    <h4>Un week-end à l'abri</h4>
+                    <p>2 nuits d'hôtel et les repas pour une famille, quand les services sont fermés.</p>
+                    <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> 74,80 € après réduction</span>
+                    <button onclick="openCheckoutModal('Mise à l\'abri d\'une famille - week-end', 220, 'donation')" class="btn-impact-select"><i class="fa-solid fa-heart" aria-hidden="true"></i> Donner 220 €</button>
+                </div>
+                <div class="palier-offer">
+                    <span class="palier-offer-amount">550 €</span>
+                    <h4>5 jours avant le relais</h4>
+                    <p>Une prise en charge complète, le temps que le CCAS ou le 115 prenne le relais.</p>
+                    <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> 187 € après réduction</span>
+                    <button onclick="openCheckoutModal('Mise à l\'abri d\'une famille - 5 jours', 550, 'donation')" class="btn-impact-select"><i class="fa-solid fa-heart" aria-hidden="true"></i> Donner 550 €</button>
+                </div>
+                <div class="palier-offer">
+                    <span class="palier-offer-amount">800 €</span>
+                    <h4>Une semaine complète</h4>
+                    <p>Une semaine à l'abri, avec une marge pour les délais de relais.</p>
+                    <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> 272 € après réduction</span>
+                    <button onclick="openCheckoutModal('Mise à l\'abri d\'une famille - 1 semaine', 800, 'donation')" class="btn-impact-select"><i class="fa-solid fa-heart" aria-hidden="true"></i> Donner 800 €</button>
+                </div>
+            </div>
+
+            <h3 class="palier-subtitle">Entreprises : parrainer un pôle du palier</h3>
+            <p class="palier-lead">Le mécénat d'entreprise ouvre droit à une réduction d'impôt de 60 % du montant du don (article 238 bis du CGI).</p>
+            <div class="palier-offers mecenat">
+                <div class="palier-offer">
+                    <span class="palier-offer-amount">10 000 €</span>
+                    <h4>Parrain Mobilité solidaire</h4>
+                    <p>Finance le véhicule et sa mise en service. Le nom de l'entreprise figure sur le véhicule.</p>
+                    <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> Coût réel : 4 000 €</span>
+                    <a href="mailto:contact@education-solidaire.org?subject=M%C3%A9c%C3%A9nat%20-%20Parrain%20Mobilit%C3%A9%20solidaire" class="btn-impact-select"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Nous contacter</a>
+                </div>
+                <div class="palier-offer">
+                    <span class="palier-offer-amount">4 000 €</span>
+                    <h4>Parrain Premier secours</h4>
+                    <p>Finance la mise à l'abri des 5 premières familles, avec leurs repas.</p>
+                    <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> Coût réel : 1 600 €</span>
+                    <a href="mailto:contact@education-solidaire.org?subject=M%C3%A9c%C3%A9nat%20-%20Parrain%20Premier%20secours" class="btn-impact-select"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Nous contacter</a>
+                </div>
+                <div class="palier-offer">
+                    <span class="palier-offer-amount">1 200 €</span>
+                    <h4>Parrain Liaison &amp; sécurité</h4>
+                    <p>Finance le téléphone d'astreinte, la tablette et l'équipement de l'équipe.</p>
+                    <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> Coût réel : 480 €</span>
+                    <a href="mailto:contact@education-solidaire.org?subject=M%C3%A9c%C3%A9nat%20-%20Parrain%20Liaison%20et%20s%C3%A9curit%C3%A9" class="btn-impact-select"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Nous contacter</a>
+                </div>
+                <div class="palier-offer">
+                    <span class="palier-offer-amount">800 €</span>
+                    <h4>Parrain Formation</h4>
+                    <p>Finance la formation de toute l'équipe : premiers secours et médiation de crise.</p>
+                    <span class="impact-net-cost"><i class="fa-solid fa-tag" aria-hidden="true"></i> Coût réel : 320 €</span>
+                    <a href="mailto:contact@education-solidaire.org?subject=M%C3%A9c%C3%A9nat%20-%20Parrain%20Formation" class="btn-impact-select"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Nous contacter</a>
+                </div>
+            </div>
+            <p class="palier-legal">Réduction de 60 % dans la limite de 20 000 € ou de 5 ‰ du chiffre d'affaires hors taxes (le montant le plus élevé étant retenu), avec report possible sur 5 ans. Un reçu fiscal est délivré pour chaque don. Pour une convention de mécénat : <a href="mailto:contact@education-solidaire.org">contact@education-solidaire.org</a>.</p>
+        </section>
 
         <!-- NOUVELLE SECTION VITRINE : PÔLES SOLIDAIRES DE PROXIMITÉ (GENNEVILLIERS) -->
         <div id="poles-solidaires" class="section-header">
@@ -2590,17 +2810,17 @@
                     <button class="btn-impact-select"><i class="fa-solid fa-basket-shopping" aria-hidden="true"></i> Donner 25 €</button>
                 </div>
 
-                <!-- Carte 3 : 80€ (Recommandé) -->
-                <div class="impact-card highlight selected" onclick="openCheckoutModal('1 Nuitée d\'Hôtel & Repas de Crise', 80, 'donation')">
+                <!-- Carte 3 : 110€ (Recommandé) -->
+                <div class="impact-card highlight selected" onclick="openCheckoutModal('1 Journée de Mise à l\'Abri d\'une Famille', 110, 'donation')">
                     <span class="impact-badge-top"><i class="fa-solid fa-star" aria-hidden="true"></i> Action Prioritaire</span>
                     <div>
-                        <div class="impact-amount" style="color: var(--uni-purple-mid);">80 €</div>
-                        <span class="impact-net-cost"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> 27,20 € après déduction</span>
+                        <div class="impact-amount" style="color: var(--uni-purple-mid);">110 €</div>
+                        <span class="impact-net-cost"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> 37,40 € après déduction</span>
                         <div class="impact-text">
-                            <strong>Financera 1 nuitée d'hôtel de secours + repas chauds</strong> pour mettre à l'abri une mère et son enfant à la rue.
+                            <strong>Financera 1 journée de mise à l'abri</strong> pour une famille : chambre familiale à l'hôtel, repas et hygiène.
                         </div>
                     </div>
-                    <button class="btn-impact-select"><i class="fa-solid fa-heart" aria-hidden="true"></i> Donner 80 €</button>
+                    <button class="btn-impact-select"><i class="fa-solid fa-heart" aria-hidden="true"></i> Donner 110 €</button>
                 </div>
 
                 <!-- Carte 4 : Montant Libre -->
@@ -2670,7 +2890,7 @@
             <div class="section-header">
                 <span class="section-tag"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> Questions fréquentes</span>
                 <h2 id="faq-title">Questions fréquentes sur UNISSON</h2>
-                <p class="faq-updated">Dernière mise à jour : <time datetime="2026-10-11">11 octobre 2026</time></p>
+                <p class="faq-updated">Dernière mise à jour : <time datetime="2026-10-14">14 octobre 2026</time></p>
             </div>
 
             <div class="faq-list">
@@ -2686,7 +2906,7 @@
 
                 <article class="faq-item">
                     <h3>À quoi servira mon don ?</h3>
-                    <p>Votre don alimente le Fonds de Premier Secours Social, qui financera la mise à l'abri temporaire à l'hôtel de familles et de jeunes en détresse, avec des repas et des kits d'hygiène, en lien avec le 115 et le CCAS. Il soutient aussi la création du Café Solidaire et de l'Épicerie Solidaire.</p>
+                    <p>Votre don contribue d'abord au premier palier de 16 000 € qui lancera le premier secours social : une équipe de 4 bénévoles formés, un véhicule 7 places pour accompagner les familles, les outils de liaison et un fonds pour mettre à l'abri à l'hôtel les 5 premières familles, avec repas et kits d'hygiène, en lien avec le 115 et le CCAS. Il soutient aussi la création du Café Solidaire et de l'Épicerie Solidaire.</p>
                 </article>
 
                 <article class="faq-item">
@@ -2816,7 +3036,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 UNISSON — Association Éducation Solidaire (SIREN 108 606 260 • RNA W922023505). Tous droits réservés. Dernière mise à jour : <time datetime="2026-10-11">11 octobre 2026</time>.</p>
+            <p>&copy; 2026 UNISSON — Association Éducation Solidaire (SIREN 108 606 260 • RNA W922023505). Tous droits réservés. Dernière mise à jour : <time datetime="2026-10-14">14 octobre 2026</time>.</p>
             <p>Gouvernance démocratique "1 membre = 1 voix" • Lucrativité limitée & Réserves impartageables</p>
         </div>
     </footer>
@@ -2962,6 +3182,31 @@
                 closeModal();
             }
         };
+
+        // Jauge du premier palier (montants agrégés via /api/funding)
+        async function loadFundingGauge() {
+            // Espace insécable classique : l'espace fine produite par Intl manque dans certaines polices du site
+            const nbsp = String.fromCharCode(160);
+            const fmt = (n) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n).replace(/\s/g, nbsp) + nbsp + '€';
+            try {
+                const response = await fetch('/api/funding');
+                if (!response.ok) return;
+                const data = await response.json();
+                if (!(data.raised > 0)) return; // rien encore : on garde « 16 000 € à réunir »
+                document.getElementById('palierRaised').textContent = fmt(data.raised);
+                document.getElementById('palierGoalText').innerHTML = 'collectés sur <strong>' + fmt(data.goal) + '</strong>';
+                document.getElementById('palierFill').style.width = data.percent + '%';
+                const bar = document.getElementById('palierBar');
+                bar.setAttribute('aria-valuenow', data.percent);
+                bar.setAttribute('aria-valuetext', fmt(data.raised) + ' sur ' + fmt(data.goal));
+                document.getElementById('palierNote').textContent = data.raised >= data.goal
+                    ? 'Premier palier atteint : merci ! Vos dons continuent d\'alimenter le fonds de premier secours.'
+                    : data.percent + ' % de l\'objectif : encore ' + fmt(data.goal - data.raised) + ' pour lancer la mise à l\'abri.';
+            } catch (err) {
+                // Jauge facultative : l'objectif reste affiché
+            }
+        }
+        loadFundingGauge();
 
         // Calculateur Fiscal Interactif (66% de déduction)
         function calculateTaxReduction(val) {

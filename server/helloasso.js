@@ -29,6 +29,15 @@ export function getHelloAssoAuthUrl() {
 }
 
 /**
+ * Vrai si les identifiants API HelloAsso sont renseignés (et ne sont pas les valeurs d'exemple)
+ */
+export function hasHelloAssoCredentials() {
+  const id = process.env.HELLOASSO_CLIENT_ID;
+  const secret = process.env.HELLOASSO_CLIENT_SECRET;
+  return Boolean(id && secret && !id.startsWith('VOTRE_') && !secret.startsWith('VOTRE_'));
+}
+
+/**
  * Obtient un jeton d'accès OAuth2 (avec mise en cache automatique)
  */
 export async function getAccessToken() {

@@ -10,7 +10,8 @@ import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { createCheckoutIntent, verifyWebhookSignature, fetchNotifiedResource } from './helloasso.js';
+import { createCheckoutIntent, verifyWebhookSignature, fetchNotifiedResource, hasHelloAssoCredentials } from './helloasso.js';
+import { getFundingStatus } from './funding.js';
 import { saveEmergencyAlert, getEmergencyAlerts } from './emergency.js';
 import { validateEmergencyAlert, validateCheckout, safeCompare } from './validation.js';
 
@@ -115,6 +116,20 @@ app.get('/api/health', (req, res) => {
 });
 
 /**
+ * Jauge publique du premier palier de financement (montants agrégés, aucune donnée personnelle)
+ */
+app.get('/api/funding', async (req, res) => {
+  try {
+    const status = await getFundingStatus();
+    res.set('Cache-Control', 'public, max-age=300');
+    res.json(status);
+  } catch (error) {
+    console.error('[API Funding Error]:', error);
+    res.status(503).json({ error: 'Suivi de la collecte momentanément indisponible.' });
+  }
+});
+
+/**
  * Initialisation d'un Checkout HelloAsso v5
  * Body attendu : { amount (en EUR), title, name, email, address, zipCode, city, isDonation }
  */
@@ -126,11 +141,8 @@ app.post('/api/helloasso/checkout', async (req, res) => {
   const input = check.value;
 
   try {
-    const clientId = process.env.HELLOASSO_CLIENT_ID;
-    const clientSecret = process.env.HELLOASSO_CLIENT_SECRET;
-
     // Si les clés API HelloAsso ne sont pas encore fournies dans l'environnement, mode simulation sécurisé
-    if (!clientId || !clientSecret || clientId === 'VOTRE_CLIENT_ID') {
+    if (!hasHelloAssoCredentials()) {
       const fallbackUrl = process.env.HELLOASSO_DEFAULT_FORM_URL ||
         'https://www.helloasso.com/associations/unisson-association-education-solidaire';
 
@@ -192,7 +204,7 @@ function authenticateHelloAssoWebhook(req) {
  * Relit le paiement ou la commande notifiés auprès de l'API HelloAsso et journalise le résultat.
  */
 async function confirmHelloAssoEvent(eventType, data) {
-  if (!process.env.HELLOASSO_CLIENT_ID || !process.env.HELLOASSO_CLIENT_SECRET) {
+  if (!hasHelloAssoCredentials()) {
     console.warn(`[HelloAsso Webhook] ${eventType} ${data.id} non vérifié : clés API HelloAsso absentes.`);
     return null;
   }

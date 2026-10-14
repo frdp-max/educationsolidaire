@@ -225,3 +225,13 @@ test('webhook HelloAsso : sans secret configuré, acquitté (compatibilité)', a
     console.warn = originalWarn;
   }
 });
+
+test('jauge du premier palier : objectif et montants hors HelloAsso, sans clés API', async () => {
+  const res = await fetch(`${base}/api/funding`);
+  assert.equal(res.status, 200);
+  const data = await res.json();
+  assert.equal(data.goal, 16000);
+  assert.equal(data.raised, 0);
+  assert.equal(data.percent, 0);
+  assert.equal(data.online, false);
+});
