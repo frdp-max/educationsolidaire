@@ -108,7 +108,7 @@ export async function createCheckoutIntent({
 }) {
   const token = await getAccessToken();
   const baseUrl = getHelloAssoBaseUrl();
-  const orgSlug = process.env.HELLOASSO_ORGANIZATION_SLUG || 'unisson-association-education-solidaire';
+  const orgSlug = process.env.HELLOASSO_ORGANIZATION_SLUG || 'education-solidaire';
   const siteUrl = process.env.PUBLIC_URL || 'https://education-solidaire.org';
 
   const payload = {

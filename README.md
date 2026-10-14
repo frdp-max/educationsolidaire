@@ -104,7 +104,7 @@ PUBLIC_URL=https://education-solidaire.org
 HELLOASSO_ENV=production
 HELLOASSO_CLIENT_ID=votre_client_id_helloasso
 HELLOASSO_CLIENT_SECRET=votre_client_secret_helloasso
-HELLOASSO_ORGANIZATION_SLUG=unisson-association-education-solidaire
+HELLOASSO_ORGANIZATION_SLUG=education-solidaire
 
 ADMIN_SECRET_KEY=cle_securisee_pour_acces_admin
 ```

@@ -144,7 +144,7 @@ app.post('/api/helloasso/checkout', async (req, res) => {
     // Si les clés API HelloAsso ne sont pas encore fournies dans l'environnement, mode simulation sécurisé
     if (!hasHelloAssoCredentials()) {
       const fallbackUrl = process.env.HELLOASSO_DEFAULT_FORM_URL ||
-        'https://www.helloasso.com/associations/unisson-association-education-solidaire';
+        'https://www.helloasso.com/associations/education-solidaire';
 
       console.warn('[HelloAsso] Clés non configurées, redirection vers la page de campagne par défaut.');
       return res.json({

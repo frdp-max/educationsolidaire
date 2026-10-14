@@ -33,7 +33,7 @@ export function getFundingConfig() {
  */
 export async function sumHelloAssoPayments(from) {
   const token = await getAccessToken();
-  const orgSlug = process.env.HELLOASSO_ORGANIZATION_SLUG || 'unisson-association-education-solidaire';
+  const orgSlug = process.env.HELLOASSO_ORGANIZATION_SLUG || 'education-solidaire';
   let totalCents = 0;
   let continuationToken = null;
 
