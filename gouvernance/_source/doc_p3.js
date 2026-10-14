@@ -11,7 +11,7 @@ module.exports = [
     blocks: [
       ['box', [
         '**Conditions d\'activation du dispositif** (jalon de la Phase 3) — toutes doivent être réunies et constatées au procès-verbal du Conseil :',
-        '☐ au moins deux conventions hôtelières signées (document 21) · ☐ bénévoles formés à l\'intervention de crise, titulaires du PSC1 et assurés · ☐ Fonds de Premier Secours Social provisionné sur le compte · ☐ procédure de relais avec le CCAS formalisée (document 22) · ☐ registre des prises en charge ouvert (document 24).',
+        '☐ premier palier de 16 000 € réuni et encaissé · ☐ au moins deux conventions hôtelières signées, avec chambres familiales (document 21) · ☐ équipe de 4 bénévoles (2 femmes, 2 hommes) formés à l\'intervention de crise, titulaires du PSC1 et assurés · ☐ Fonds de Premier Secours Social provisionné à 4 000 € sur le compte · ☐ véhicule de l\'association assuré pour le transport de personnes, conducteurs désignés · ☐ téléphone d\'astreinte, radios et trousse de secours remis (document 25) · ☐ procédure de relais avec le CCAS formalisée (document 22) · ☐ registre des prises en charge ouvert (document 24).',
         'Tant que le dispositif n\'est pas activé, **aucune réservation d\'hôtel n\'est faite** : la réponse se limite à l\'écoute, à l\'appel au 115 et à l\'orientation.',
       ], 'alert'],
       ['h2', 'Principes'],
@@ -40,7 +40,7 @@ module.exports = [
       ['table', ['Étape', 'Actions', 'Qui décide · trace écrite'], [
         ['J0 — H+0 · Qualification', 'Contrôle des 4 critères et des exclusions. Appel au 115 (heure, réponse).', 'Équipe de deux · fiche d\'intervention, parties 1 et 2'],
         ['J0 — H+1 · Autorisation', 'Appel au Président ; en son absence, au Trésorier. **Aucun déclenchement sans accord d\'un dirigeant.** Vérification du solde du fonds.', 'Président (ou Trésorier) · heure d\'autorisation portée sur la fiche'],
-        ['J0 — H+2 · Mise à l\'abri', 'Réservation auprès d\'un hôtel conventionné, remise du bon de prise en charge (document 20), du kit d\'hygiène et du forfait repas. Accompagnement jusqu\'à l\'établissement.', 'Équipe · fiche, partie 3 ; bon signé'],
+        ['J0 — H+2 · Mise à l\'abri', 'Réservation auprès d\'un hôtel conventionné, remise du bon de prise en charge (document 20), du kit d\'hygiène et du forfait repas. Accompagnement jusqu\'à l\'établissement dans le véhicule de l\'association, conduit par un conducteur désigné (carnet de bord, document 25).', 'Équipe · fiche, partie 3 ; bon signé'],
         ['J0 — H+3 · Engagement', 'Lecture et signature de l\'engagement de la personne et de son consentement à la transmission de ses informations au service social.', 'Personne accueillie · fiche, partie 4'],
         ['J+1 ouvré · Relais', 'Transmission de la fiche de liaison au CCAS (document 22). Nouvel appel au 115 / SIAO pour inscription. Si un mineur est concerné : information préoccupante ou signalement.', 'Président · accusé de transmission'],
         ['J+1 à J+5 · Médiation', 'Entretien de médiation avec la famille lorsque le retour est envisageable **et sans danger**. Jamais de médiation en cas de violences conjugales.', 'Médiateur · compte rendu'],
@@ -49,11 +49,15 @@ module.exports = [
       ], [2100, 4938, 2600]],
       ['h2', 'Budget d\'un cas'],
       ['table', ['Poste', 'Base', 'Montant'], [
-        ['Nuitée en hôtel conventionné (taxe de séjour incluse)', '1 nuit', '50 € maximum'],
-        ['Forfait repas et hygiène', '1 jour / personne', '25 €'],
-        ['Coût journalier pour une personne', '—', '75 €'],
+        ['Chambre familiale en hôtel conventionné (taxe de séjour incluse)', '1 nuit / famille', '85 € maximum'],
+        ['Chambre standard, personne seule ou deux adultes', '1 nuit', '50 € maximum'],
+        ['Forfait repas et hygiène', '1 jour / foyer', '25 €'],
+        ['**Coût journalier pour une famille**', '—', '**110 €**'],
+        ['Socle du premier palier', '5 familles × 5 jours', '2 750 €'],
+        ['Marge pour les délais de relais 115 / CCAS, kits d\'hygiène et de puériculture', '—', '1 250 €'],
+        ['**Provision du Fonds de Premier Secours Social**', '—', '**4 000 €**'],
       ], [5238, 2200, 2200]],
-      ['p', 'Le Trésorier tient le compteur du fonds. **À 70 % de consommation, le Bureau se réunit** pour décider d\'une campagne de dons ciblée ou d\'un resserrement temporaire des critères.'],
+      ['p', 'Le Trésorier tient le compteur du fonds. **À 70 % de consommation (2 800 €), le Bureau se réunit** pour décider d\'une campagne de dons ciblée ou d\'un resserrement temporaire des critères.'],
       ['h2', 'Sécurité de l\'équipe'],
       ['ul', ['Équipe de deux systématique ; au moins une intervenante pour une femme seule ou des violences conjugales.', 'Un dirigeant joignable pendant toute intervention de nuit ; heures de départ et de retour consignées.', 'Jamais d\'entrée dans un domicile où se trouve un auteur de violences.', 'Retrait immédiat et appel au 17 en cas de menace, d\'arme ou d\'attroupement hostile.', 'Débriefing d\'équipe dans les 72 heures, consigné au registre.']],
     ],
@@ -97,7 +101,7 @@ module.exports = [
       ['h2', 'Prise en charge'],
       ['fields', ['Nom de la personne hébergée (ou du chef de famille)', 'Nombre de personnes (adultes / enfants)', 'Date d\'arrivée', 'Date de départ prévue']],
       ['checks', ['1 nuit', '2 nuits', 'Prolongation jusqu\'au ___/___ (avenant n° ___)']],
-      ['p', 'Tarif conventionnel : **50,00 € TTC maximum par nuitée**, taxe de séjour incluse, chambre standard. Les prestations non mentionnées (minibar, téléphone, extras) ne sont pas prises en charge.'],
+      ['p', 'Tarif conventionnel, taxe de séjour incluse : ☐ chambre standard, **50,00 € TTC maximum par nuitée** · ☐ chambre familiale, **85,00 € TTC maximum par nuitée**. Les prestations non mentionnées (minibar, téléphone, extras) ne sont pas prises en charge.'],
       ['p', 'Facturation à l\'ordre de : **Association EDUCATION SOLIDAIRE (UNISSON)**, 45, rue Henri Barbusse, 92230 Gennevilliers — règlement sous 15 jours à réception de facture, par carte associative ou virement, en mentionnant le numéro du présent bon.'],
       ['p', `Ligne de permanence de l'association en cas d'incident : ______________________`],
       ['p', `Délivré à Gennevilliers, le ${DATE} à ${HOUR}.`],
@@ -119,7 +123,7 @@ module.exports = [
       ['h2', 'Article 1 — Objet'],
       ['p', 'La présente convention fixe les conditions de réservation, de mise à disposition et de règlement de chambres mobilisées en urgence par l\'Association pour la mise à l\'abri temporaire de personnes ou de familles en situation de détresse sociale aiguë, orientées par son équipe.'],
       ['h2', 'Article 2 — Tarification sociale'],
-      ['p', 'L\'Établissement applique à l\'Association un tarif social forfaitaire plafonné à **50,00 € TTC par nuitée**, taxe de séjour incluse, pour une chambre standard d\'une à deux personnes. Pour une famille, le tarif d\'une chambre familiale est fixé à ______ € TTC. Ces tarifs sont fermes pour la durée de la convention.'],
+      ['p', 'L\'Établissement applique à l\'Association un tarif social forfaitaire plafonné à **50,00 € TTC par nuitée**, taxe de séjour incluse, pour une chambre standard d\'une à deux personnes. Pour une famille, le tarif d\'une chambre familiale est plafonné à **85,00 € TTC par nuitée**, taxe de séjour incluse. Ces tarifs sont fermes pour la durée de la convention.'],
       ['h2', 'Article 3 — Réservation et paiement'],
       ['ul', [
         '3.1 Toute réservation fait l\'objet d\'un bon de prise en charge écrit, signé par le Président ou le Trésorier de l\'Association et remis à l\'arrivée.',
@@ -202,7 +206,7 @@ module.exports = [
     title: 'Registre des prises en charge d\'urgence',
     meta: 'Tenu par le Trésorier · Anonymisé : seule la référence du dossier figure · Compteur du Fonds de Premier Secours Social',
     blocks: [
-      ['p', 'Plafond du fonds pour l\'exercice : **______ €** · Seuil d\'alerte (70 %) : **______ €**'],
+      ['p', 'Plafond du fonds pour l\'exercice : **4 000 €** (premier palier) · Seuil d\'alerte (70 %) : **2 800 €**'],
       ['table', ['Référence', 'Entrée', 'Sortie', 'Pers.', 'Nuits', 'Hôtel', 'Coût', 'Solde du fonds', 'Relais', 'Débrief.'], [
         ...Array.from({ length: 12 }, () => ['', '', '', '', '', '', '', '', '', '']),
       ], [1300, 850, 850, 600, 600, 1250, 900, 1100, 1288, 900]],
@@ -214,15 +218,17 @@ module.exports = [
   {
     code: '25', file: 'Fiche_d_affectation_du_materiel', kicker: 'Phase 3 · fiches 3.1 à 3.3',
     title: 'Fiche d\'affectation du matériel',
-    meta: 'Une fiche par bénévole · Matériel restitué en fin d\'engagement',
+    meta: 'Une fiche par bénévole · Matériel restitué en fin d\'engagement · Véhicule : liste des conducteurs et carnet de bord',
     blocks: [
       ['fields', ['Bénévole (nom, prénom)', 'Date de remise']],
       ['table', ['Matériel', 'Référence / n° de série', 'État à la remise', 'Date de restitution', 'État au retour'], [
         ['Tenue d\'identification « ASSOCIATION UNISSON »', '', '', '', ''],
         ['Parka', '', '', '', ''],
         ['Badge nominatif', '', '', '', ''],
-        ['Talkie-walkie et oreillette', '', '', '', ''],
-        ['Sac d\'intervention et trousse de secours', '', '', '', ''],
+        ['Radio (talkie-walkie) et oreillette', '', '', '', ''],
+        ['Téléphone d\'astreinte (avec forfait)', '', '', '', ''],
+        ['Tablette pour les fiches de liaison', '', '', '', ''],
+        ['Sac d\'intervention, trousse de secours et lampe', '', '', '', ''],
         ['Autre', '', '', '', ''],
       ], [3200, 1900, 1500, 1500, 1538]],
       ['box', [
@@ -231,6 +237,18 @@ module.exports = [
       ]],
       ['p', 'Je reconnais avoir reçu le matériel ci-dessus et m\'engage à en prendre soin, à ne l\'utiliser que pour les missions de l\'association et à le restituer à la fin de mon engagement.'],
       ['sign', ['Le bénévole', `Le Trésorier — ${T}`]],
+      ['break'],
+      ['h1', 'Véhicule de l\'association — conducteurs et carnet de bord'],
+      ['p', 'Véhicule 7 places financé par le premier palier · Immatriculation : ______________ · Assurance transport de personnes n° ______________, valable jusqu\'au ___/___/______'],
+      ['h3', 'Conducteurs désignés par le Bureau'],
+      ['table', ['Nom et prénom', 'Permis n° / date d\'obtention', 'Permis vu le', 'Désigné le', 'Visa du Président'], [
+        ['', '', '', '', ''], ['', '', '', '', ''], ['', '', '', '', ''], ['', '', '', '', ''],
+      ], [2600, 2200, 1400, 1400, 2038]],
+      ['h3', 'Carnet de bord'],
+      ['table', ['Date', 'Conducteur', 'Équipier', 'Dossier (URG-2026-___) ou objet', 'Km départ', 'Km retour', 'Carburant', 'Observations'], [
+        ...Array.from({ length: 10 }, () => ['', '', '', '', '', '', '', '']),
+      ], [900, 1300, 1300, 1700, 900, 900, 1000, 1638]],
+      ['box', 'Le véhicule sert exclusivement aux missions de l\'association, jamais à un usage personnel. Il est conduit uniquement par un conducteur désigné, toujours en binôme lors d\'un transport de personnes. Les enfants voyagent dans un siège adapté à leur âge. Tout incident, sinistre ou infraction est signalé au Président le jour même (voir article 22 bis du règlement intérieur).', 'warm'],
     ],
   },
 
@@ -244,7 +262,7 @@ module.exports = [
       ['p', 'Gennevilliers, le [date — au moins 7 jours avant l\'Assemblée]'],
       ['p', 'Madame, Monsieur, chère adhérente, cher adhérent,'],
       ['p', `Vous êtes convoqué(e) à l'**Assemblée Générale Ordinaire** de l'association UNISSON — Association Éducation Solidaire, qui se tiendra le ${DATE} à ${HOUR}, au [lieu], avec l'ordre du jour suivant :`],
-      ['ol', ['Rapport moral du Président', 'Rapport financier du Trésorier et point sur le Fonds de Premier Secours Social', 'Approbation du règlement intérieur établi par le Conseil d\'Administration', 'Élection de trois administrateurs', 'Questions diverses']],
+      ['ol', ['Rapport moral du Président', 'Rapport financier du Trésorier, point sur la collecte du premier palier de 16 000 € et sur le Fonds de Premier Secours Social', 'Approbation du règlement intérieur établi par le Conseil d\'Administration', 'Élection de trois administrateurs', 'Questions diverses']],
       ['p', 'Seuls les membres majeurs à jour de leur cotisation peuvent voter. Si vous ne pouvez pas être présent(e), vous pouvez donner pouvoir à un autre membre au moyen du formulaire joint (deux pouvoirs au plus par membre présent). Les candidatures au Conseil d\'Administration sont à adresser au Président avant le ___/___/2026.'],
       ['p', `${P}, Président`],
       ['h1', '2. Pouvoir'],

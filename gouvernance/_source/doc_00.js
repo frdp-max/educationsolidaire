@@ -2,13 +2,13 @@ const row = (n, title, fiche, use, step) => [n, title, fiche, use, step, '☐'];
 module.exports = {
   code: '00', file: 'Sommaire_et_suivi', kicker: 'Dossier de gouvernance · phases 1 à 3 de la feuille de route',
   title: 'Sommaire et tableau de suivi des documents',
-  meta: 'Version 1.0 · octobre 2026 · Chaque document existe en Word (modifiable) et en PDF',
+  meta: 'Version 1.1 · octobre 2026 · Mise à jour : premier palier de 16 000 € · Chaque document existe en Word (modifiable) et en PDF',
   blocks: [
     ['p', 'Ce dossier rassemble les documents à produire pendant les phases 1 à 3 de la feuille de route opérationnelle. Ce sont des **modèles prêts à compléter, adopter et signer** : les zones « ___ » et « [ … ] » sont à remplir, et les documents marqués « à adopter » n\'ont de valeur qu\'après un vote du Conseil d\'Administration consigné au procès-verbal.'],
     ['box', 'Ces documents constituent des repères de gestion, pas un avis juridique. Les renvois aux articles des statuts sont à vérifier sur l\'exemplaire signé ; le règlement intérieur (document 10) et le protocole de mise à l\'abri (document 18) gagnent à être relus par un juriste associatif avant adoption.', 'warm'],
     ['h2', 'Phase 1 — Socle administratif'],
     ['table', ['N°', 'Document', 'Fiche', 'Usage', 'Étape suivante', 'Fait'], [
-      row('01', 'PV du Conseil d\'Administration n° 1', '1.3 · 1.6', 'Cotisations, budget, banque, assurance, délégation, fonds', 'Tenir le CA, voter, signer', ''),
+      row('01', 'PV du Conseil d\'Administration n° 1', '1.3 · 1.6', 'Cotisations, budget et premier palier, banque, assurance, délégation, fonds', 'Tenir le CA, voter, signer', ''),
       row('02', 'Liste des dirigeants', 'Pièce 06', 'Banque, assureur, préfecture', 'Compléter les données personnelles', ''),
       row('03', 'Attestation sur l\'honneur du Président', 'Pièce 09', 'Subventions, partenariats', 'Compléter, signer', ''),
       row('04', 'Registre spécial', '1.2', 'Obligation légale', 'Imprimer, relier, coter, parapher', ''),
@@ -30,6 +30,7 @@ module.exports = {
       row('17', 'Affiche « Vos droits à UNISSON »', '2.4', 'Espace d\'accueil', 'Imprimer en A3', ''),
     ], [600, 2700, 1100, 2500, 2138, 600]],
     ['h2', 'Phase 3 — Dispositif de mise à l\'abri'],
+    ['box', 'La phase 3 est financée par le **premier palier de 16 000 €** (budget chiffré 15 820 €) : véhicule 7 places (9 700 €), Fonds de Premier Secours Social (4 000 €), équipe de 4 bénévoles (1 140 €), liaison et sécurité (980 €). Le dispositif n\'est activé qu\'une fois ce palier réuni.', 'warm'],
     ['table', ['N°', 'Document', 'Fiche', 'Usage', 'Étape suivante', 'Fait'], [
       row('18', 'Protocole de mise à l\'abri', '3.10', 'Règles de déclenchement et de sortie', 'Adopter en CA', ''),
       row('19', 'Fiche d\'intervention', '3.10 · annexe 19.2', 'Chaque mise à l\'abri', 'Imprimer, ranger dans le sac', ''),
@@ -38,7 +39,7 @@ module.exports = {
       row('22', 'Procédure de relais et fiche de liaison', '3.9', 'Transmission au CCAS', 'Valider avec le CCAS', ''),
       row('23', 'Fiche de sortie', '3.10', 'Clôture de chaque prise en charge', 'Imprimer', ''),
       row('24', 'Registre des prises en charge', '3.12', 'Compteur du fonds d\'urgence', 'Ouvrir à l\'activation', ''),
-      row('25', 'Fiche d\'affectation du matériel', '3.1 à 3.3', 'Dotation des bénévoles', 'Remplir à chaque remise', ''),
+      row('25', 'Fiche d\'affectation du matériel', '3.1 à 3.3', 'Dotation des bénévoles, carnet de bord du véhicule', 'Remplir à chaque remise', ''),
       row('26', 'Kit d\'Assemblée Générale', '3.11', 'AGO d\'élargissement du CA', 'Convoquer 7 jours avant', ''),
     ], [600, 2700, 1100, 2500, 2138, 600]],
     ['h2', 'Hors de ce dossier'],
