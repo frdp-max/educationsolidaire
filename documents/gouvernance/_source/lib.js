@@ -129,7 +129,7 @@ function render(blocks, numbering) {
   return out;
 }
 
-const LOGO = fs.readFileSync(fs.existsSync(path.join(__dirname, 'logo-symbole.png')) ? path.join(__dirname, 'logo-symbole.png') : path.join(__dirname, '..', '..', 'logo-symbole.png'));
+const LOGO = fs.readFileSync(fs.existsSync(path.join(__dirname, 'logo-symbole.png')) ? path.join(__dirname, 'logo-symbole.png') : path.join(__dirname, '..', '..', '..', 'logo-symbole.png'));
 
 function titleBlock(doc) {
   return [

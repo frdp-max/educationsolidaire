@@ -308,9 +308,9 @@
     <table>
         <thead><tr><th>Dossier</th><th>Format</th><th>Pour qui</th></tr></thead>
         <tbody>
-            <tr><td><code>textile/svg/</code></td><td>SVG vectoriel, dimensions en mm</td><td>Découpe flex (plotter), Illustrator, Inkscape, CorelDRAW</td></tr>
-            <tr><td><code>textile/pdf/</code></td><td>PDF vectoriel (couleurs RVB)</td><td>Format d'échange par défaut avec l'atelier</td></tr>
-            <tr><td><code>textile/eps/</code></td><td>EPS vectoriel</td><td>Ateliers et logiciels de découpe plus anciens</td></tr>
+            <tr><td><code>documents/textile/svg/</code></td><td>SVG vectoriel, dimensions en mm</td><td>Découpe flex (plotter), Illustrator, Inkscape, CorelDRAW</td></tr>
+            <tr><td><code>documents/textile/pdf/</code></td><td>PDF vectoriel (couleurs RVB)</td><td>Format d'échange par défaut avec l'atelier</td></tr>
+            <tr><td><code>documents/textile/eps/</code></td><td>EPS vectoriel</td><td>Ateliers et logiciels de découpe plus anciens</td></tr>
         </tbody>
     </table>
     <div class="note">
@@ -319,7 +319,7 @@
         <br>• <strong>DTF :</strong> l'atelier rastérise lui-même via son RIP. Fournir le PDF vectoriel. Si un PNG est exigé : <em>taille réelle à 300 DPI, fond transparent</em>.
         <br>• <strong>Si un PDF CMJN est imposé :</strong> ouvrir le PDF dans Illustrator, puis <em>Fichier › Mode colorimétrique › CMJN</em>, profil <em>Coated FOGRA39</em>, remplacer les valeurs par celles validées au nuancier, enregistrer en <em>PDF/X-4</em> (« Conserver les fonctions d'édition » décoché). Avec Scribus (gratuit), même opération via l'export PDF/X-4.
     </div>
-    <p style="font-size:8pt;color:var(--muted)">Régénération des fichiers : <code>python textile/generate.py Montserrat[wght].ttf</code>, puis export PDF/EPS : <code>inkscape fichier.svg --export-type=pdf</code>. Police Montserrat © The Montserrat Project Authors, licence SIL Open Font License 1.1.</p>
+    <p style="font-size:8pt;color:var(--muted)">Régénération des fichiers : <code>python documents/textile/generate.py Montserrat[wght].ttf</code>, puis export PDF/EPS : <code>inkscape fichier.svg --export-type=pdf</code>. Police Montserrat © The Montserrat Project Authors, licence SIL Open Font License 1.1.</p>
 
     <footer class="foot">
         <span>UNISSON — Association Éducation Solidaire · 45, rue Henri Barbusse, 92230 Gennevilliers</span>

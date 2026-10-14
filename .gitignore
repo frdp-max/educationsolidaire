@@ -3,3 +3,7 @@ node_modules/
 data/
 *.log
 .DS_Store
+
+# Coordonnées bancaires : jamais dans git
+documents/administratif/rib*
+~$*

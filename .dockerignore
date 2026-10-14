@@ -11,7 +11,7 @@ temp_dir/
 *.log
 *.docx
 ~$*
-UNISSON_Feuille_de_route_operationnelle.*
+documents/
 README.md
 CLAUDE.md
 deploy.sh

@@ -1,8 +1,8 @@
 """Maquettes à plat (hoodie, parka) habillées avec les logos du kit textile.
 
-Usage : python textile/mockups.py   (après generate.py)
-Produit textile/maquettes/*.svg ; l'export PNG se fait avec Inkscape :
-    inkscape textile/maquettes/x.svg -w 2400 -o textile/maquettes/x.png
+Usage : python documents/textile/mockups.py   (après generate.py)
+Produit documents/textile/maquettes/*.svg ; l'export PNG se fait avec Inkscape :
+    inkscape documents/textile/maquettes/x.svg -w 2400 -o documents/textile/maquettes/x.png
 
 Échelle : 1 px = 2 mm (torse taille M ≈ 520 mm = 260 px), donc les logos sont
 posés à leur taille d'impression recommandée par la fiche technique.

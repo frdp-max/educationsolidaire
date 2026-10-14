@@ -2,7 +2,7 @@
 
 Usage :
     pip install fonttools shapely
-    python textile/generate.py chemin/vers/Montserrat[wght].ttf
+    python documents/textile/generate.py chemin/vers/Montserrat[wght].ttf
 
 La police Montserrat (SIL OFL) se télécharge depuis
 https://github.com/google/fonts/tree/main/ofl/montserrat — elle n'est utilisée
@@ -21,7 +21,7 @@ from shapely.geometry.polygon import orient
 from shapely.ops import unary_union
 
 OUT = Path(__file__).resolve().parent / "svg"
-ROOT = Path(__file__).resolve().parent.parent  # logo.svg du site
+ROOT = Path(__file__).resolve().parents[2]  # logo.svg du site (racine du dépôt)
 
 # Palette officielle (charte 2026-10) : 2 violets, comme le site et le print
 INDIGO = "#2A0E45"   # encre : ruban gauche + « UNISSON »

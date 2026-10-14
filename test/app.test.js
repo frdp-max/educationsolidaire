@@ -55,7 +55,8 @@ test('les ressources publiques sont servies', async () => {
 test('les fichiers internes et les données ne sont jamais servis', async () => {
   for (const file of ['/data/emergency_alerts.json', '/server/index.js', '/server/helloasso.js',
     '/.env', '/package.json', '/deploy.sh', '/docker-compose.yml', '/nginx/default.conf',
-    '/UNISSON_Feuille_de_route_operationnelle.docx', '/CLAUDE.md']) {
+    '/UNISSON_Feuille_de_route_operationnelle.docx', '/CLAUDE.md',
+    '/documents/gouvernance/pdf/01_PV_CA_n1.pdf', '/documents/administratif/UNISSON_Feuille_de_route_operationnelle.pdf']) {
     const res = await fetch(base + file);
     const body = await res.text();
     // Le fallback renvoie la page 404, jamais le fichier demandé

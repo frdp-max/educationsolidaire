@@ -44,21 +44,21 @@
 ├── UNISSON_Flyer_A5.pdf         # Export PDF HD du flyer A5
 ├── infographie-a5.html          # Infographie A5 (parcours, impact des dons, numéros d'urgence) print-ready
 ├── UNISSON_Infographie_A5.pdf   # Export PDF HD de l'infographie A5
-├── cartes-visite.html           # Cartes de visite 85 x 55 mm du Bureau (recto nominatif + verso commun) — usage interne, non servi
-├── UNISSON_Cartes_Visite.pdf    # Export PDF des cartes (4 pages : Président R/V, Trésorier R/V)
-├── gouvernance/                 # Dossier de gouvernance (phases 1 à 3 de la feuille de route) — usage interne, non servi
-│   ├── word/ pdf/               # 27 documents : 00 sommaire, 01-09 socle, 10 règlement intérieur, 11-17 permanence, 18-26 mise à l'abri
-│   └── _source/                 # Générateur docx (à n'utiliser qu'avant adoption : ensuite, modifier dans Word)
-├── textile/                     # Kit textile (flex, sérigraphie, DTF) — usage interne, non servi
-│   ├── generate.py              # Générateur des logos vectoriels + logo.svg du site (fonttools + shapely, police Montserrat OFL)
-│   ├── svg/ pdf/ eps/           # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
-│   ├── fiche-technique.html     # Fiche d'atelier A4 (emplacements, seuils, export)
-│   ├── UNISSON_Kit_Textile_Fiche_Technique.pdf
-│   ├── mockups.py               # Maquettes à plat hoodie/parka (logos à taille réelle) → maquettes/*.svg|png
-│   ├── maquettes.html           # Planches A4 paysage des maquettes
-│   └── UNISSON_Maquettes_Textiles.pdf
+├── documents/                   # Documents internes — jamais servis, exclus de l'image Docker (.dockerignore)
+│   ├── administratif/           # Statuts signés, feuille de route opérationnelle (docx + pdf), RIB (ignoré par git)
+│   ├── gouvernance/             # Dossier de gouvernance (phases 1 à 3 de la feuille de route)
+│   │   ├── word/ pdf/           # 27 documents : 00 sommaire, 01-09 socle, 10 règlement intérieur, 11-17 permanence, 18-26 mise à l'abri
+│   │   └── _source/             # Générateur docx (à n'utiliser qu'avant adoption : ensuite, modifier dans Word)
+│   ├── fiscal/rescrit/          # Demande de rescrit mécénat L. 80 C (réponses md, html, pdf)
+│   ├── communication/           # cartes-visite.html + UNISSON_Cartes_Visite.pdf (Bureau, 85 x 55 mm), design/ (palette, hoodies)
+│   └── textile/                 # Kit textile (flex, sérigraphie, DTF)
+│       ├── generate.py          # Générateur des logos vectoriels + logo.svg du site (fonttools + shapely, police Montserrat OFL)
+│       ├── svg/ pdf/ eps/       # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
+│       ├── fiche-technique.html # Fiche d'atelier A4 (emplacements, seuils, export) → UNISSON_Kit_Textile_Fiche_Technique.pdf
+│       ├── mockups.py           # Maquettes à plat hoodie/parka (logos à taille réelle) → maquettes/*.svg|png
+│       └── maquettes.html       # Planches A4 paysage des maquettes → UNISSON_Maquettes_Textiles.pdf
 ├── flyer-visuel.jpg             # Visuel cinématographique d'illustration des 3 missions
-├── logo.svg                     # Symbole officiel UNISSON (vectoriel, généré par textile/generate.py) — utilisé sur le site et les supports print
+├── logo.svg                     # Symbole officiel UNISSON (vectoriel, généré par documents/textile/generate.py) — utilisé sur le site et les supports print
 ├── logo.png                     # Logo complet (écusson) 1024 px — schema.org ; logo-192.png, favicon.ico, apple-touch-icon.png = symbole
 ├── deploy.sh                    # Script de déploiement automatique sur le VPS
 ├── docker-compose.yml           # Définition des services conteneurisés (app, nginx, certbot)
@@ -114,7 +114,7 @@ Palette validée le 12 octobre 2026 : **deux violets seulement + un abricot chal
 | Urgence Red | `#D92D20` | Réservé au danger : numéros d'urgence, badge « Priorité ». Jamais pour le don |
 | Épicerie Green | `#059669` | Épicerie solidaire, dons écologiques/durables |
 
-Tout texte doit atteindre un contraste ≥ 4,5:1 (WCAG AA). Comparatif avant/après : `design/palette-comparatif.html`.
+Tout texte doit atteindre un contraste ≥ 4,5:1 (WCAG AA). Comparatif avant/après : `documents/communication/design/palette-comparatif.html`.
 
 - **Typographies** :
   - Titres et accroches : `'Montserrat', sans-serif` (poids 700, 800 — pas de 900, pour un ton plus chaleureux)

@@ -27,11 +27,11 @@ sur demarche.numerique.gouv.fr (formulaire « rescrit 200, 200-1 b, 238 et 238 b
 | Pièce | Fichier | État |
 |---|---|---|
 | Statuts (version en vigueur, paraphés T.B. S.T.) | `statut.pdf` (réparé le 14/10/2026) | ✓ |
-| Liste des dirigeants | `gouvernance/pdf/02_Liste_des_dirigeants.pdf` | ✓ |
+| Liste des dirigeants | `documents/gouvernance/pdf/02_Liste_des_dirigeants.pdf` | ✓ |
 | Budget prévisionnel + description des activités (association récente) | Annexes A et B ci-dessous, à exporter en PDF | ✓ |
 | Description des activités par ordre d'importance | Annexe A | ✓ |
-| Procès-verbal d'AG / de CA | PV de l'AG constitutive du 11/07/2026 + `gouvernance/pdf/01_PV_CA_n1.pdf` | ✓ |
-| Règlement intérieur | `gouvernance/pdf/10_Reglement_interieur.pdf` (seulement s'il est adopté) | à vérifier |
+| Procès-verbal d'AG / de CA | PV de l'AG constitutive du 11/07/2026 + `documents/gouvernance/pdf/01_PV_CA_n1.pdf` | ✓ |
+| Règlement intérieur | `documents/gouvernance/pdf/10_Reglement_interieur.pdf` (seulement s'il est adopté) | à vérifier |
 | Récépissé de déclaration en préfecture + témoin de publication JOAFE | à télécharger (Le Compte Asso / journal-officiel.gouv.fr) | ⚠ à joindre |
 | Avis de situation SIRENE (INSEE) | avis-situation-sirene.insee.fr | ⚠ à joindre |
 | Rapports d'activité, comptes, bilans des 3 dernières années | **Sans objet** : association créée en 2026, premier exercice non clos | — |

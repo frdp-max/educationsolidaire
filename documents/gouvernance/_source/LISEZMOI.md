@@ -5,14 +5,14 @@ Une fois un document adopté, on le modifie directement dans Word : régénérer
 
 ```bash
 npm install --no-save docx@9 jszip
-node gouvernance/_source/build.js gouvernance/word          # tous les documents
-node gouvernance/_source/build.js gouvernance/word ri       # un seul (filtre sur le nom du fichier doc_*.js)
+node documents/gouvernance/_source/build.js documents/gouvernance/word          # tous les documents
+node documents/gouvernance/_source/build.js documents/gouvernance/word ri       # un seul (filtre sur le nom du fichier doc_*.js)
 ```
 
 Conversion PDF (Windows, Word installé) :
 
 ```powershell
-./gouvernance/_source/topdf.ps1 -In gouvernance/word -Out gouvernance/pdf
+./documents/gouvernance/_source/topdf.ps1 -In documents/gouvernance/word -Out documents/gouvernance/pdf
 ```
 
 Le logo utilisé est `logo-symbole.png` à la racine du dépôt.
