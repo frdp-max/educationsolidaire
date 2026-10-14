@@ -38,12 +38,6 @@
 ├── robots.txt                   # Autorise l'indexation (sauf /api/) et déclare le sitemap
 ├── sitemap.xml                  # Pages indexables (accueil + pages légales) — mettre à jour lastmod à chaque modif
 ├── llms.txt                     # Fiche de présentation pour les assistants IA — à tenir à jour avec l'état réel des missions
-├── flyer-a3.html                # Affiche grand format A3 (297 x 420 mm) print-ready
-├── flyer-a5.html                # Flyer/tract A5 (148 x 210 mm) print-ready
-├── UNISSON_Affiche_A3.pdf       # Export PDF HD de l'affiche A3
-├── UNISSON_Flyer_A5.pdf         # Export PDF HD du flyer A5
-├── infographie-a5.html          # Infographie A5 (parcours, impact des dons, numéros d'urgence) print-ready
-├── UNISSON_Infographie_A5.pdf   # Export PDF HD de l'infographie A5
 ├── documents/                   # Documents internes — jamais servis, exclus de l'image Docker (.dockerignore)
 │   ├── administratif/           # Statuts signés, feuille de route opérationnelle (docx + pdf), RIB (ignoré par git)
 │   ├── gouvernance/             # Dossier de gouvernance (phases 1 à 3 de la feuille de route)
@@ -51,13 +45,17 @@
 │   │   └── _source/             # Générateur docx (à n'utiliser qu'avant adoption : ensuite, modifier dans Word)
 │   ├── fiscal/rescrit/          # Demande de rescrit mécénat L. 80 C (réponses md, html, pdf)
 │   ├── communication/           # cartes-visite.html + UNISSON_Cartes_Visite.pdf (Bureau, 85 x 55 mm), design/ (palette, hoodies)
+│   │   └── flyers/              # ⚠ PUBLIÉ par le site (seule exception de documents/, incluse dans l'image Docker)
+│   │       ├── flyer-a3.html    # Affiche A3 (297 x 420 mm) → /flyer-a3 · export UNISSON_Affiche_A3.pdf
+│   │       ├── flyer-a5.html    # Flyer A5 (148 x 210 mm) → /flyer-a5 · export UNISSON_Flyer_A5.pdf
+│   │       ├── infographie-a5.html # Infographie A5 → /infographie-a5 · export UNISSON_Infographie_A5.pdf
+│   │       └── flyer-visuel.jpg # Visuel des 3 missions (aussi og:image du site → /flyer-visuel.jpg)
 │   └── textile/                 # Kit textile (flex, sérigraphie, DTF)
 │       ├── generate.py          # Générateur des logos vectoriels + logo.svg du site (fonttools + shapely, police Montserrat OFL)
 │       ├── svg/ pdf/ eps/       # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
 │       ├── fiche-technique.html # Fiche d'atelier A4 (emplacements, seuils, export) → UNISSON_Kit_Textile_Fiche_Technique.pdf
 │       ├── mockups.py           # Maquettes à plat hoodie/parka (logos à taille réelle) → maquettes/*.svg|png
 │       └── maquettes.html       # Planches A4 paysage des maquettes → UNISSON_Maquettes_Textiles.pdf
-├── flyer-visuel.jpg             # Visuel cinématographique d'illustration des 3 missions
 ├── logo.svg                     # Symbole officiel UNISSON (vectoriel, généré par documents/textile/generate.py) — utilisé sur le site et les supports print
 ├── logo.png                     # Logo complet (écusson) 1024 px — schema.org ; logo-192.png, favicon.ico, apple-touch-icon.png = symbole
 ├── deploy.sh                    # Script de déploiement automatique sur le VPS
@@ -92,7 +90,7 @@ npm start
 npm test
 
 # Exporter un flyer en PDF (via Chrome headless)
-& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu --user-data-dir="temp_dir" --no-pdf-header-footer --virtual-time-budget=6000 --print-to-pdf="UNISSON_Flyer_A5.pdf" "file:///ABSOLUTE_PATH/flyer-a5.html"
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu --user-data-dir="temp_dir" --no-pdf-header-footer --virtual-time-budget=6000 --print-to-pdf="documents/communication/flyers/UNISSON_Flyer_A5.pdf" "file:///ABSOLUTE_PATH/documents/communication/flyers/flyer-a5.html"
 
 # Déploiement sur le VPS (exécuter sur le serveur OVH 51.178.47.78)
 git pull && bash deploy.sh
@@ -127,7 +125,7 @@ Tout texte doit atteindre un contraste ≥ 4,5:1 (WCAG AA). Comparatif avant/apr
 
 1. **Sécurité stricte** : Ne jamais commiter de secrets, tokens ou clés privées dans git. Utiliser exclusivement les variables d'environnement (`.env`).
 2. **Politique de Sécurité du Contenu (CSP)** : Toute nouvelle ressource externe (script, CDN, iframe) doit être déclarée dans la configuration `helmet` de `server/app.js`.
-   **Fichiers publics** : seuls les fichiers listés dans `PUBLIC_FILES` (`server/app.js`) sont servis. Tout nouvel asset public doit y être ajouté.
+   **Fichiers publics** : seuls les fichiers listés dans `PUBLIC_FILES` (`server/app.js`) sont servis, à la racine du site sous leur seul nom. Tout nouvel asset public doit y être ajouté ; s'il est rangé sous `documents/`, son dossier doit aussi être réinclus dans `.dockerignore`.
 3. **Rétrocompatibilité des routes** : Conserver impérativement les routes d'alias `/mentions-legales`, `/politique-confidentialite`, `/conditions-generales`, `/statuts`, `/flyer-a3`, `/flyer-a5`, `/infographie-a5`.
 4. **Précision juridique et éthique** :
    - Mentionner systématiquement les informations légales exactes (SIREN 108 606 260, RNA W922023505, art. 200 CGI pour la déduction 66%).

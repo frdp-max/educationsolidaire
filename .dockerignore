@@ -12,6 +12,8 @@ temp_dir/
 *.docx
 ~$*
 documents/
+# … sauf les supports imprimables publiés par le site (liste blanche PUBLIC_FILES)
+!documents/communication/flyers
 README.md
 CLAUDE.md
 deploy.sh

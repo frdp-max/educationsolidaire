@@ -20,18 +20,23 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.join(__dirname, '..');
 
 /**
- * Liste blanche des fichiers publiés. Tout le reste du dépôt (server/, data/,
- * configuration, documents internes) n'est jamais servi.
+ * Liste blanche des fichiers publiés, chemins relatifs à la racine du dépôt.
+ * Chaque fichier est servi à la racine du site sous son seul nom
+ * (documents/communication/flyers/UNISSON_Flyer_A5.pdf → /UNISSON_Flyer_A5.pdf).
+ * Tout le reste du dépôt (server/, data/, configuration, documents internes)
+ * n'est jamais servi.
  */
+const FLYERS_DIR = 'documents/communication/flyers';
+
 export const PUBLIC_FILES = [
   'index.html',
   'mentions-legales.html',
   'politique-confidentialite.html',
   'conditions-generales.html',
   'statuts.html',
-  'flyer-a3.html',
-  'flyer-a5.html',
-  'infographie-a5.html',
+  `${FLYERS_DIR}/flyer-a3.html`,
+  `${FLYERS_DIR}/flyer-a5.html`,
+  `${FLYERS_DIR}/infographie-a5.html`,
   'logo.svg',
   'logo.png',
   'logo-192.png',
@@ -39,11 +44,11 @@ export const PUBLIC_FILES = [
   'favicon.ico',
   'logo.jpg',
   'logo.jpeg',
-  'flyer-visuel.jpg',
+  `${FLYERS_DIR}/flyer-visuel.jpg`,
   'hero-visuel.webp',
-  'UNISSON_Affiche_A3.pdf',
-  'UNISSON_Flyer_A5.pdf',
-  'UNISSON_Infographie_A5.pdf',
+  `${FLYERS_DIR}/UNISSON_Affiche_A3.pdf`,
+  `${FLYERS_DIR}/UNISSON_Flyer_A5.pdf`,
+  `${FLYERS_DIR}/UNISSON_Infographie_A5.pdf`,
   'robots.txt',
   'sitemap.xml',
   'llms.txt',
@@ -55,9 +60,9 @@ const PAGE_ALIASES = {
   '/politique-confidentialite': 'politique-confidentialite.html',
   '/conditions-generales': 'conditions-generales.html',
   '/statuts': 'statuts.html',
-  '/flyer-a3': 'flyer-a3.html',
-  '/flyer-a5': 'flyer-a5.html',
-  '/infographie-a5': 'infographie-a5.html',
+  '/flyer-a3': `${FLYERS_DIR}/flyer-a3.html`,
+  '/flyer-a5': `${FLYERS_DIR}/flyer-a5.html`,
+  '/infographie-a5': `${FLYERS_DIR}/infographie-a5.html`,
 };
 
 export const app = express();
@@ -308,7 +313,7 @@ for (const [route, file] of Object.entries(PAGE_ALIASES)) {
  */
 const CANONICAL_PATHS = {
   '/index.html': '/',
-  ...Object.fromEntries(Object.entries(PAGE_ALIASES).map(([route, file]) => [`/${file}`, route])),
+  ...Object.fromEntries(Object.entries(PAGE_ALIASES).map(([route, file]) => [`/${path.posix.basename(file)}`, route])),
 };
 
 for (const [from, to] of Object.entries(CANONICAL_PATHS)) {
@@ -319,8 +324,9 @@ for (const [from, to] of Object.entries(CANONICAL_PATHS)) {
 }
 
 for (const file of PUBLIC_FILES) {
-  if (CANONICAL_PATHS[`/${file}`]) continue;
-  app.get(`/${file}`, (req, res) => res.sendFile(path.join(rootDir, file)));
+  const url = `/${path.posix.basename(file)}`;
+  if (CANONICAL_PATHS[url]) continue;
+  app.get(url, (req, res) => res.sendFile(path.join(rootDir, file)));
 }
 
 // Toute autre route : vraie page 404 (évite les doublons de l'accueil dans Google)

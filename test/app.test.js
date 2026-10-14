@@ -45,7 +45,7 @@ test('les routes d\'alias historiques répondent', async () => {
 
 test('les ressources publiques sont servies', async () => {
   for (const file of ['/logo.svg', '/logo.png', '/logo-192.png', '/favicon.ico', '/apple-touch-icon.png', '/hero-visuel.webp',
-    '/flyer-visuel.jpg', '/UNISSON_Flyer_A5.pdf', '/UNISSON_Infographie_A5.pdf']) {
+    '/flyer-visuel.jpg', '/UNISSON_Affiche_A3.pdf', '/UNISSON_Flyer_A5.pdf', '/UNISSON_Infographie_A5.pdf']) {
     const res = await fetch(base + file);
     assert.equal(res.status, 200, file);
     assert.doesNotMatch(res.headers.get('content-type'), /text\/html/, file);
@@ -56,7 +56,8 @@ test('les fichiers internes et les données ne sont jamais servis', async () => 
   for (const file of ['/data/emergency_alerts.json', '/server/index.js', '/server/helloasso.js',
     '/.env', '/package.json', '/deploy.sh', '/docker-compose.yml', '/nginx/default.conf',
     '/UNISSON_Feuille_de_route_operationnelle.docx', '/CLAUDE.md',
-    '/documents/gouvernance/pdf/01_PV_CA_n1.pdf', '/documents/administratif/UNISSON_Feuille_de_route_operationnelle.pdf']) {
+    '/documents/gouvernance/pdf/01_PV_CA_n1.pdf', '/documents/administratif/UNISSON_Feuille_de_route_operationnelle.pdf',
+    '/documents/communication/flyers/UNISSON_Flyer_A5.pdf', '/documents/communication/cartes-visite.html']) {
     const res = await fetch(base + file);
     const body = await res.text();
     // Le fallback renvoie la page 404, jamais le fichier demandé
