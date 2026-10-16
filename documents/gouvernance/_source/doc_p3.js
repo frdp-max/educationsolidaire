@@ -11,7 +11,7 @@ module.exports = [
     blocks: [
       ['box', [
         '**Conditions d\'activation du dispositif** (jalon de la Phase 3) — toutes doivent être réunies et constatées au procès-verbal du Conseil :',
-        '☐ premier palier de 16 000 € réuni et encaissé · ☐ au moins deux conventions hôtelières signées, avec chambres familiales (document 21) · ☐ équipe de 4 bénévoles (2 femmes, 2 hommes) formés à l\'intervention de crise, titulaires du PSC1 et assurés · ☐ Fonds de Premier Secours Social provisionné à 4 000 € sur le compte · ☐ véhicule de l\'association assuré pour le transport de personnes, conducteurs désignés · ☐ téléphone d\'astreinte, radios et trousse de secours remis (document 25) · ☐ procédure de relais avec le CCAS formalisée (document 22) · ☐ registre des prises en charge ouvert (document 24).',
+        '☐ premier palier de 18 000 € réuni et encaissé · ☐ au moins deux conventions hôtelières signées, avec chambres familiales (document 21) · ☐ équipe de 4 bénévoles (2 femmes, 2 hommes) formés à l\'intervention de crise, titulaires du PSC1 et assurés · ☐ Fonds de Premier Secours Social provisionné à 4 000 € sur le compte · ☐ véhicule de l\'association assuré pour le transport de personnes, conducteurs désignés · ☐ téléphone d\'astreinte, radios et trousse de secours remis (document 25) · ☐ procédure de relais avec le CCAS formalisée (document 22) · ☐ registre des prises en charge ouvert (document 24).',
         'Tant que le dispositif n\'est pas activé, **aucune réservation d\'hôtel n\'est faite** : la réponse se limite à l\'écoute, à l\'appel au 115 et à l\'orientation.',
       ], 'alert'],
       ['h2', 'Principes'],
@@ -262,7 +262,7 @@ module.exports = [
       ['p', 'Gennevilliers, le [date — au moins 7 jours avant l\'Assemblée]'],
       ['p', 'Madame, Monsieur, chère adhérente, cher adhérent,'],
       ['p', `Vous êtes convoqué(e) à l'**Assemblée Générale Ordinaire** de l'association UNISSON — Association Éducation Solidaire, qui se tiendra le ${DATE} à ${HOUR}, au [lieu], avec l'ordre du jour suivant :`],
-      ['ol', ['Rapport moral du Président', 'Rapport financier du Trésorier, point sur la collecte du premier palier de 16 000 € et sur le Fonds de Premier Secours Social', 'Approbation du règlement intérieur établi par le Conseil d\'Administration', 'Élection de trois administrateurs', 'Questions diverses']],
+      ['ol', ['Rapport moral du Président', 'Rapport financier du Trésorier, point sur la collecte du premier palier de 18 000 € et sur le Fonds de Premier Secours Social', 'Approbation du règlement intérieur établi par le Conseil d\'Administration', 'Élection de trois administrateurs', 'Questions diverses']],
       ['p', 'Seuls les membres majeurs à jour de leur cotisation peuvent voter. Si vous ne pouvez pas être présent(e), vous pouvez donner pouvoir à un autre membre au moyen du formulaire joint (deux pouvoirs au plus par membre présent). Les candidatures au Conseil d\'Administration sont à adresser au Président avant le ___/___/2026.'],
       ['p', `${P}, Président`],
       ['h1', '2. Pouvoir'],

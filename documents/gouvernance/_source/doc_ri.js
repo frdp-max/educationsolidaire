@@ -108,7 +108,7 @@ module.exports = {
       'Le Trésorier tient un compteur permanent du solde disponible. Dès que 70 % du fonds est consommé, le Bureau se réunit pour décider d\'une campagne de dons ciblée ou d\'un resserrement temporaire des critères.',
       'Le fonds ne peut jamais présenter un solde négatif : aucune mise à l\'abri n\'est promise sans financement disponible.',
       'Les dons fléchés vers le fonds sont affectés à celui-ci et suivis séparément.',
-      'Les dons collectés pour le **premier palier** (16 000 €) sont suivis sur une ligne dédiée et réservés à ses quatre postes : véhicule, Fonds de Premier Secours Social, équipe d\'intervention, liaison et sécurité. Ils ne financent pas le fonctionnement courant.',
+      'Les dons collectés pour le **premier palier** (18 000 €) sont suivis sur une ligne dédiée et réservés à ses quatre postes : véhicule, Fonds de Premier Secours Social, équipe d\'intervention, liaison, sécurité et assurance. Ils ne financent pas le fonctionnement courant.',
     ]],
     ['h2', 'Article 13 — Réserves impartageables'],
     ['p', 'Conformément à l\'article 15 bis des statuts, tout excédent de l\'exercice est intégralement affecté en réserves impartageables, par délibération expresse de l\'Assemblée Générale. Aucune somme ne peut être distribuée, directement ou indirectement, aux membres ou aux dirigeants, ni en cours de vie sociale ni lors de la dissolution (article 17 des statuts).'],
@@ -206,7 +206,7 @@ module.exports = {
     ['h2', 'Article 29 — Comportement attendu'],
     ['p', 'Les personnes accueillies, comme les membres, s\'engagent à respecter les personnes présentes et les locaux. Sont incompatibles avec l\'accueil : la violence verbale ou physique, les propos discriminatoires, la détention d\'armes ou d\'objets dangereux, la consommation d\'alcool ou de stupéfiants dans les locaux. En cas de manquement, l\'équipe peut interrompre l\'entretien ; le Bureau peut décider d\'une suspension temporaire de l\'accueil physique, en maintenant toujours une orientation vers les services compétents.'],
     ['h2', 'Article 30 — Mise à l\'abri d\'urgence'],
-    ['p', 'La mise à l\'abri temporaire (48 heures à 15 jours au plus, article 3 des statuts) n\'est déclenchée qu\'une fois le dispositif activé par le Conseil d\'Administration (premier palier de 16 000 € réuni, conventions hôtelières signées, bénévoles formés et assurés, fonds provisionné, véhicule assuré). Elle obéit au protocole adopté par le Conseil (document 18). Elle suppose la réunion de **quatre critères cumulatifs** :'],
+    ['p', 'La mise à l\'abri temporaire (48 heures à 15 jours au plus, article 3 des statuts) n\'est déclenchée qu\'une fois le dispositif activé par le Conseil d\'Administration (premier palier de 18 000 € réuni, conventions hôtelières signées, bénévoles formés et assurés, fonds provisionné, véhicule assuré). Elle obéit au protocole adopté par le Conseil (document 18). Elle suppose la réunion de **quatre critères cumulatifs** :'],
     ['ol', [
       'un ancrage territorial (résidence ou scolarité à Gennevilliers, ou orientation par un partenaire de proximité identifié) ;',
       'une urgence immédiate avérée (mise à la rue effective, rupture brutale de cohabitation, menace de violences constatée) ;',

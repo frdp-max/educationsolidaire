@@ -2,7 +2,7 @@ const row = (n, title, fiche, use, step) => [n, title, fiche, use, step, '☐'];
 module.exports = {
   code: '00', file: 'Sommaire_et_suivi', kicker: 'Dossier de gouvernance · phases 1 à 3 de la feuille de route',
   title: 'Sommaire et tableau de suivi des documents',
-  meta: 'Version 1.1 · octobre 2026 · Mise à jour : premier palier de 16 000 € · Chaque document existe en Word (modifiable) et en PDF',
+  meta: 'Version 1.1 · octobre 2026 · Mise à jour : premier palier de 18 000 € · Chaque document existe en Word (modifiable) et en PDF',
   blocks: [
     ['p', 'Ce dossier rassemble les documents à produire pendant les phases 1 à 3 de la feuille de route opérationnelle. Ce sont des **modèles prêts à compléter, adopter et signer** : les zones « ___ » et « [ … ] » sont à remplir, et les documents marqués « à adopter » n\'ont de valeur qu\'après un vote du Conseil d\'Administration consigné au procès-verbal.'],
     ['box', 'Ces documents constituent des repères de gestion, pas un avis juridique. Les renvois aux articles des statuts sont à vérifier sur l\'exemplaire signé ; le règlement intérieur (document 10) et le protocole de mise à l\'abri (document 18) gagnent à être relus par un juriste associatif avant adoption.', 'warm'],
@@ -30,7 +30,7 @@ module.exports = {
       row('17', 'Affiche « Vos droits à UNISSON »', '2.4', 'Espace d\'accueil', 'Imprimer en A3', ''),
     ], [600, 2700, 1100, 2500, 2138, 600]],
     ['h2', 'Phase 3 — Dispositif de mise à l\'abri'],
-    ['box', 'La phase 3 est financée par le **premier palier de 16 000 €** (budget chiffré 15 820 €) : véhicule 7 places (9 700 €), Fonds de Premier Secours Social (4 000 €), équipe de 4 bénévoles (1 140 €), liaison et sécurité (980 €). Le dispositif n\'est activé qu\'une fois ce palier réuni.', 'warm'],
+    ['box', 'La phase 3 est financée par le **premier palier de 18 000 €** (budget chiffré 17 570 €) : véhicule 7 places (11 100 €), Fonds de Premier Secours Social (4 000 €), équipe de 4 bénévoles (1 140 €), liaison, sécurité et assurance (1 330 €). Le dispositif n\'est activé qu\'une fois ce palier réuni.', 'warm'],
     ['table', ['N°', 'Document', 'Fiche', 'Usage', 'Étape suivante', 'Fait'], [
       row('18', 'Protocole de mise à l\'abri', '3.10', 'Règles de déclenchement et de sortie', 'Adopter en CA', ''),
       row('19', 'Fiche d\'intervention', '3.10 · annexe 19.2', 'Chaque mise à l\'abri', 'Imprimer, ranger dans le sac', ''),

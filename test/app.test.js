@@ -232,7 +232,7 @@ test('jauge du premier palier : objectif et montants hors HelloAsso, sans clés 
   const res = await fetch(`${base}/api/funding`);
   assert.equal(res.status, 200);
   const data = await res.json();
-  assert.equal(data.goal, 16000);
+  assert.equal(data.goal, 18000);
   assert.equal(data.raised, 0);
   assert.equal(data.percent, 0);
   assert.equal(data.online, false);

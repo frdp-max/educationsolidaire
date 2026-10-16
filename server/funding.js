@@ -22,7 +22,7 @@ function eurosFromEnv(name, fallback) {
 
 export function getFundingConfig() {
   return {
-    goal: eurosFromEnv('FUNDING_GOAL_EUR', 16000),
+    goal: eurosFromEnv('FUNDING_GOAL_EUR', 18000),
     offline: eurosFromEnv('FUNDING_OFFLINE_EUR', 0),
     startDate: process.env.FUNDING_START_DATE || '2026-10-01',
   };

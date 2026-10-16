@@ -243,7 +243,7 @@ Ajouter : « Premier exercice en cours, non clos. Budget prévisionnel du premie
 **Observations utiles à l'instruction** :
 
 > L'association Éducation Solidaire (UNISSON) a été constituée le 11 juillet 2026 à Gennevilliers. Elle
-> n'a encore engagé aucune action : la collecte en cours (objectif de 16 000 €, budget détaillé joint)
+> n'a encore engagé aucune action : la collecte en cours (objectif de 18 000 €, budget détaillé joint)
 > doit financer le lancement de sa mission prioritaire de mise à l'abri et de repas d'urgence gratuits.
 >
 > Gestion désintéressée : dirigeants bénévoles, aucune rémunération ni avantage (art. 16-1), interdiction
@@ -282,18 +282,18 @@ Critère retenu : part du budget prévisionnel consacrée à chaque activité.
 
 | Poste | Montant | Détail |
 |---|---:|---|
-| Mobilité solidaire | 9 700 € | Véhicule 7 places d'occasion révisé, mise en service, assurance transport de personnes 12 mois, carburant et entretien 1re année |
+| Mobilité solidaire | 11 100 € | Véhicule 7 places d'occasion révisé (8 000 €), carte grise, mise en service et marquage (600 €), assurance transport de personnes 12 mois (1 000 €), carburant (1 000 €) et entretien (500 €) 1re année |
 | Fonds de premier secours | 4 000 € | Mise à l'abri de 5 familles × 5 jours à 110 €/jour (chambre 85 €, repas et hygiène 25 €), marge pour délais de relais 115/CCAS, kits hygiène et puériculture |
 | Équipe d'intervention | 1 140 € | Formation de 4 bénévoles (PSC1, médiation de crise), tenues et badges |
-| Liaison et sécurité | 980 € | Téléphone d'astreinte et forfait 12 mois, tablette, radios, trousse de secours, lampes |
-| **Total charges** | **15 820 €** | arrondi à 16 000 € |
+| Liaison, sécurité et assurance | 1 330 € | Téléphone de l'équipe et forfait 12 mois, tablette, radios, trousse de secours, lampes (980 €) ; assurance RC multirisque et protection juridique de l'association 12 mois (350 €) |
+| **Total charges** | **17 570 €** | arrondi à 18 000 € |
 
 | Ressources prévues | Montant |
 |---|---:|
 | Dons de particuliers et d'entreprises (HelloAsso) | `[À COMPLÉTER]` |
 | Cotisations des membres | `[À COMPLÉTER]` |
 | Subventions (Ville, Département, Région — demandes à venir) | `[À COMPLÉTER]` |
-| **Total ressources** | **16 000 €** |
+| **Total ressources** | **18 000 €** |
 
 ---
 
