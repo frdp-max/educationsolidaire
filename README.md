@@ -30,10 +30,10 @@ Plateforme web officielle, API d'intégration **HelloAsso v5** et architecture d
 
 ## 🏛️ Formules d'Adhésion & Bénévolat
 
-1. **Bénévole Actif - Équipe Mixte (10 €/an) :** Intervention sur le terrain au sein d'équipes paritaires (2H / 2F), assurance RC incluse, droit de vote ("1 membre = 1 voix").
+1. **Bénévole Actif - Équipe Mixte (10 €/an) :** Future équipe d'intervention mixte, toujours en binôme, couverte par l'assurance RC de l'association (aucune mission avant sa souscription), droit de vote ("1 membre = 1 voix").
 2. **Cotisation Solidaire (5 €/an) :** Accès universel aux permanences d'écoute et ateliers pour personnes et familles à revenus modestes.
 3. **Pass Famille / Duo (25 €/an - Recommandé) :** Couverture pour l'ensemble du foyer familial, accès prioritaire aux cycles de médiation et activités.
-4. **Membre Bienfaiteur / Fonds d'Urgence (50 €/an) :** Finance directement 1 nuitée d'hôtel de secours et les repas de crise pour une personne ou famille en détresse.
+4. **Membre Bienfaiteur / Fonds d'Urgence (50 €/an) :** Cotisation de soutien versée au Fonds de Premier Secours Social (nuitées d'hôtel et repas des familles mises à l'abri). Sans reçu fiscal, comme toute cotisation.
 5. **Abondement Libre du Fonds d'Urgence :** Dons ponctuels ou réguliers fléchés vers la mise à l'abri d'urgence 48h-15j.
 
 ---

@@ -91,7 +91,7 @@
                 "name": "Comment devenir bénévole ou adhérent ?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "L'adhésion annuelle se règle en ligne via HelloAsso : 5 € (cotisation solidaire), 10 € (bénévole actif), 25 € (pass famille ou duo) ou 50 € (membre bienfaiteur). Chaque membre dispose d'une voix en assemblée générale. Pour toute question, écrivez à contact@education-solidaire.org."
+                    "text": "L'adhésion annuelle se règle en ligne via HelloAsso : 5 € (cotisation solidaire), 10 € (bénévole actif), 25 € (pass famille ou duo) ou 50 € (membre bienfaiteur). Chaque membre dispose d'une voix en assemblée générale. La cotisation n'ouvre pas droit au reçu fiscal : seuls les dons en bénéficient. Pour toute question, écrivez à contact@education-solidaire.org."
                 }
             },
             {
@@ -2501,7 +2501,7 @@
                     <span class="section-tag"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> Objectif de lancement</span>
                     <h2 id="palier-title">Premier palier : <em>16 000 €</em> pour lancer la mise à l'abri</h2>
                     <p>Pour démarrer son projet prioritaire, UNISSON doit d'abord se doter de sa propre capacité d'intervention : <strong>une équipe formée, un véhicule pour accompagner les familles et un fonds pour régler leurs premières nuits d'hôtel et leurs repas</strong>, en attendant le relais du 115 et du CCAS.</p>
-                    <p style="margin-top: .8rem;">Ce budget est calculé sur les coûts réels constatés en Île-de-France. Dès qu'il sera réuni, le dispositif pourra commencer.</p>
+                    <p style="margin-top: .8rem;">Ce budget est une estimation établie à partir des prix pratiqués en Île-de-France ; il sera ajusté sur devis avant chaque dépense. Dès qu'il sera réuni, le dispositif pourra commencer.</p>
                 </div>
                 <div class="palier-gauge">
                     <span class="palier-gauge-label">Collecte du premier palier</span>
@@ -2730,7 +2730,7 @@
                     <span class="tarif-badge">Sur le terrain</span>
                     <h4>Bénévole Actif</h4>
                     <div class="tarif-price">10 € <span>/ an</span></div>
-                    <p class="tarif-desc">Rejoignez la future équipe d'intervention mixte (astreintes paritaires), assurance responsabilité civile incluse, droit de vote à l'AG.</p>
+                    <p class="tarif-desc">Rejoignez la future équipe d'intervention mixte, en binôme, et votez à l'AG. Couverture par l'assurance responsabilité civile de l'association dès les premières missions.</p>
                 </div>
                 <button onclick="openCheckoutModal('Bénévole Actif - Équipe Mixte', 10, 'benevole')" class="btn-tarif">
                     <i class="fa-solid fa-user-check" aria-hidden="true"></i> Rejoindre l'équipe
@@ -2769,7 +2769,7 @@
                     <span class="tarif-badge">Fonds d'Urgence</span>
                     <h4>Membre Bienfaiteur</h4>
                     <div class="tarif-price">50 € <span>/ an</span></div>
-                    <p class="tarif-desc">Contribue au financement des nuitées d'hôtel de secours et des repas de crise pour les familles et les personnes en détresse aiguë.</p>
+                    <p class="tarif-desc">Cotisation versée au Fonds de Premier Secours Social, qui financera les nuitées d'hôtel et les repas des familles mises à l'abri. Sans reçu fiscal : pour une réduction d'impôt, faites un don.</p>
                 </div>
                 <button onclick="openCheckoutModal('Membre Bienfaiteur - Fonds d\'Urgence', 50, 'bienfaiteur')" class="btn-tarif">
                     <i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Devenir Bienfaiteur
@@ -2916,7 +2916,7 @@
 
                 <article class="faq-item">
                     <h3>Comment devenir bénévole ou adhérent ?</h3>
-                    <p>L'adhésion annuelle se règle en ligne via HelloAsso : 5 € (cotisation solidaire), 10 € (bénévole actif), 25 € (pass famille ou duo) ou 50 € (membre bienfaiteur). Chaque membre dispose d'une voix en assemblée générale. Pour toute question, écrivez à <a href="mailto:contact@education-solidaire.org">contact@education-solidaire.org</a>.</p>
+                    <p>L'adhésion annuelle se règle en ligne via HelloAsso : 5 € (cotisation solidaire), 10 € (bénévole actif), 25 € (pass famille ou duo) ou 50 € (membre bienfaiteur). Chaque membre dispose d'une voix en assemblée générale. La cotisation n'ouvre pas droit au reçu fiscal : seuls les dons en bénéficient. Pour toute question, écrivez à <a href="mailto:contact@education-solidaire.org">contact@education-solidaire.org</a>.</p>
                 </article>
 
                 <article class="faq-item">
@@ -3132,7 +3132,7 @@
                 document.getElementById('modalSubtitle').innerHTML = 'Don de <strong>' + priceInEuros + ' €</strong> • <span style="color: #047857; font-weight:700;">Coût réel après déduction 66% : ' + netCost + ' €</span>';
                 document.getElementById('mem_amount_display').value = priceInEuros + ' € (Don Déductible HelloAsso)';
             } else {
-                document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an';
+                document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an (sans reçu fiscal)';
                 document.getElementById('mem_amount_display').value = priceInEuros + ' € (Règlement sécurisé HelloAsso)';
             }
             
