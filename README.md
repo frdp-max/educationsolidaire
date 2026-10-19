@@ -18,7 +18,8 @@ Plateforme web officielle, API d'intégration **HelloAsso v5** et architecture d
 
 ## 🎨 Identité Visuelle & Charte Graphique
 
-* **Encre (identité, titres, fonds sombres) :** `#2A0E45`
+* **Encre (identité, titres, fonds sombres) :** `#4F0D70`
+* **Lilas (seconde couleur du logo, décor — jamais en texte sur blanc) :** `#C384E0`
 * **Violet (liens, actions secondaires) :** `#6D28D9`
 * **Lavande (fonds secondaires/badges) :** `#EDE4FB`
 * **Abricot (don, adhésion, accents — jamais en texte sur blanc) :** `#F4A259`

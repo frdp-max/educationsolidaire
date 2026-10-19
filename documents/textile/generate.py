@@ -1,239 +1,176 @@
-"""Génère le kit textile UNISSON (SVG 100 % vectoriel, contours fermés).
+"""Génère le kit textile UNISSON et les logos du site à partir du logo officiel.
 
 Usage :
-    pip install fonttools shapely
-    python documents/textile/generate.py chemin/vers/Montserrat[wght].ttf
+    pip install svgelements shapely
+    python documents/textile/generate.py
 
-La police Montserrat (SIL OFL) se télécharge depuis
-https://github.com/google/fonts/tree/main/ofl/montserrat — elle n'est utilisée
-que pour vectoriser les textes : les SVG produits n'en dépendent plus.
+Source : source/unisson-logo-source.svg (logo livré par le graphiste, 2026-10) —
+deux mains entrelacées, « UNISSON » et le sous-titre déjà vectorisés. Le script
+ne redessine rien : il reprend ces tracés (courbes de Bézier conservées), les
+recompose en quatre logos et les décline en trois couleurs. Aucune police n'est
+nécessaire.
+
+Exports PNG / PDF / EPS ensuite : voir build_exports() (Inkscape requis).
 """
 import math
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
-from fontTools.pens.svgPathPen import SVGPathPen
-from fontTools.pens.transformPen import TransformPen
-from fontTools.ttLib import TTFont
-from fontTools.varLib.instancer import instantiateVariableFont
-from shapely.geometry import LineString, Point
-from shapely.geometry.polygon import orient
+from shapely.geometry import Polygon
 from shapely.ops import unary_union
+from svgelements import SVG, Arc, Close, CubicBezier, Line, Matrix, Move, Path as SvgPath, QuadraticBezier
 
-OUT = Path(__file__).resolve().parent / "svg"
+HERE = Path(__file__).resolve().parent
+SOURCE = HERE / "source" / "unisson-logo-source.svg"
+OUT = HERE / "svg"
 ROOT = Path(__file__).resolve().parents[2]  # logo.svg du site (racine du dépôt)
 
-# Palette officielle (charte 2026-10) : 2 violets, comme le site et le print
-INDIGO = "#2A0E45"   # encre : ruban gauche + « UNISSON »
-ACCENT = "#6D28D9"   # violet : ruban droit + sous-titre
+# Palette officielle (charte 2026-10-19) : couleurs du logo livré
+ENCRE = "#4F0D70"    # main gauche + « UNISSON »
+LILAS = "#C384E0"    # main droite + sous-titre
 WHITE = "#FFFFFF"
 
 COLORWAYS = {
-    # suffixe : (ruban A, ruban B, UNISSON, sous-titre)
-    "couleur": (INDIGO, ACCENT, INDIGO, ACCENT),
-    "mono": (INDIGO, INDIGO, INDIGO, INDIGO),
+    # suffixe : (main A, main B, UNISSON, sous-titre)
+    "couleur": (ENCRE, LILAS, ENCRE, LILAS),
+    "mono": (ENCRE, ENCRE, ENCRE, ENCRE),
     "blanc": (WHITE, WHITE, WHITE, WHITE),
 }
 
-# ---------------------------------------------------------------- symbole
-# Repère 200 x 200. Un ruban = arc ouvert prolongé par une « main » en crochet ;
-# le second ruban est le premier tourné de 180°. Valeurs vérifiées pour
-# garantir, à 30 mm de large, un trait de 1,8 mm et des jours ≥ 1 mm.
-STROKE = 12          # épaisseur du ruban
-GAP = 7              # jour d'entrelacs (passage dessous)
-ARC = (80, 80, 54, 93, 350)  # cx, cy, r, angle de départ, angle d'arrivée
-CURL = [((136, 92), (133, 118), (118, 121)), ((105, 123), (103, 110), (109.5, 103))]
+
+# ---------------------------------------------------------------- lecture
+def load_source():
+    """Répartit les tracés de la source : mains A / B, mot, sous-titre."""
+    svg = SVG.parse(str(SOURCE), reify=True)
+    paths = [e for e in svg.elements() if isinstance(e, SvgPath) and len(e)]
+    text = [p for p in paths if sum(isinstance(s, Move) for s in p) > 1]  # glyphes : plusieurs contours
+    hands = [p for p in paths if p not in text]
+    dark = str(hands[0].fill).lower()
+    word = max(text, key=lambda p: p.bbox()[3] - p.bbox()[1])
+    sub = [p for p in text if p is not word][0]
+    return ([p for p in hands if str(p.fill).lower() == dark],
+            [p for p in hands if str(p.fill).lower() != dark], [word], [sub])
 
 
-def _arc(cx, cy, r, a0, a1, n=360):
-    return [(cx + r * math.cos(math.radians(a0 + (a1 - a0) * i / n)),
-             cy + r * math.sin(math.radians(a0 + (a1 - a0) * i / n))) for i in range(n + 1)]
+def bounds(paths):
+    bb = [p.bbox() for p in paths]
+    return (min(b[0] for b in bb), min(b[1] for b in bb), max(b[2] for b in bb), max(b[3] for b in bb))
 
 
-def _cubic(p0, p1, p2, p3, n=120):
-    return [tuple((1 - t) ** 3 * a + 3 * (1 - t) ** 2 * t * b + 3 * (1 - t) * t * t * c + t ** 3 * d
-                  for a, b, c, d in zip(p0, p1, p2, p3)) for t in (i / n for i in range(n + 1))]
+def d_string(path, matrix, prec=2):
+    """Chemin transformé, courbes conservées, précision réduite."""
+    p = SvgPath(path) * matrix
+    p.reify()
+    f = "%%.%df" % prec
 
-
-def symbol_shapes():
-    pts = _arc(*ARC)
-    for seg in CURL:
-        pts += _cubic(pts[-1], *seg)[1:]
-    line_a = LineString(pts)
-    line_b = LineString([(200 - x, 200 - y) for x, y in pts])
-    shape_a = line_a.buffer(STROKE / 2, quad_segs=24)
-    shape_b = line_b.buffer(STROKE / 2, quad_segs=24)
-    # Entrelacs : chaque arc passe au-dessus de l'extrémité de l'autre ruban.
-    for p in line_a.intersection(line_b).geoms:
-        zone = Point(p.x, p.y).buffer(STROKE * 2)
-        if p.x > 100:   # en haut à droite : A dessus
-            shape_b = shape_b.difference(line_a.buffer(STROKE / 2 + GAP).intersection(zone))
-        else:           # en bas à gauche : B dessus
-            shape_a = shape_a.difference(line_b.buffer(STROKE / 2 + GAP).intersection(zone))
-    # Aucun îlot résiduel : en flex, les petites pièces isolées se décollent.
-    def solid(g):
-        parts = [p for p in getattr(g, "geoms", [g]) if p.area > 20]
-        assert len(parts) == 1, "le ruban doit rester d'un seul tenant"
-        return parts[0].simplify(0.02)
-    return solid(shape_a), solid(shape_b)
-
-
-def poly_path(geom, scale, dx, dy):
-    polys = getattr(geom, "geoms", [geom])
+    def pt(q):
+        return (f + " " + f) % (q.x, q.y)
     out = []
-    for poly in polys:
-        poly = orient(poly)  # trous en sens inverse : rendu correct en nonzero
-        for ring in [poly.exterior, *poly.interiors]:
-            c = list(ring.coords)[:-1]
-            out.append("M" + " L".join("%.2f %.2f" % (x * scale + dx, y * scale + dy) for x, y in c) + " Z")
-    return " ".join(out)
+    for s in p:
+        if isinstance(s, Move):
+            out.append("M" + pt(s.end))
+        elif isinstance(s, Line):
+            out.append("L" + pt(s.end))
+        elif isinstance(s, CubicBezier):
+            out.append("C" + " ".join(pt(q) for q in (s.control1, s.control2, s.end)))
+        elif isinstance(s, QuadraticBezier):
+            out.append("Q" + pt(s.control) + " " + pt(s.end))
+        elif isinstance(s, Arc):
+            for c in s.as_cubic_curves():
+                out.append("C" + " ".join(pt(q) for q in (c.control1, c.control2, c.end)))
+        elif isinstance(s, Close):
+            out.append("Z")
+    return "".join(out).replace(" -", "-")
 
 
-def build_web_logo():
-    """logo.svg du site : symbole couleur allégé (précision 0,1 unité, invisible à l'écran)."""
-    a, b = symbol_shapes()
-    minx, miny, maxx, maxy = unary_union([a, b]).bounds
-
-    def path(g):
-        g = orient(g.simplify(0.12))
-        return " ".join("M" + " L".join("%.1f %.1f" % (x - minx, y - miny) for x, y in list(r.coords)[:-1]) + "Z"
-                        for r in [g.exterior, *g.interiors])
-    svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %.0f %.0f">'
-           '<title>UNISSON</title>'
-           '<path fill="%s" d="%s"/><path fill="%s" d="%s"/></svg>\n') % (
-        math.ceil(maxx - minx), math.ceil(maxy - miny), INDIGO, path(a), ACCENT, path(b))
-    (ROOT / "logo.svg").write_text(svg, encoding="utf-8")
-    print("logo.svg", len(svg), "octets")
+def polygons(paths):
+    """Aplatit les tracés (pour les mesures uniquement)."""
+    polys = []
+    for path in paths:
+        for sub in SvgPath(path).as_subpaths():
+            pts = [(q.x, q.y) for q in SvgPath(sub).as_points()]
+            if len(pts) > 2:
+                polys.append(Polygon(pts).buffer(0))
+    # Les contre-formes (O, D, A…) sont des contours intérieurs : différence symétrique.
+    shape = polys[0]
+    for p in polys[1:]:
+        shape = shape.symmetric_difference(p)
+    return shape
 
 
-# ---------------------------------------------------------------- textes
-class Face:
-    def __init__(self, path, weight):
-        self.font = instantiateVariableFont(TTFont(path), {"wght": weight})
-        self.glyphs = self.font.getGlyphSet()
-        self.cmap = self.font.getBestCmap()
-        self.hmtx = self.font["hmtx"]
-        self.cap = self.font["OS/2"].sCapHeight
-
-    def _glyf(self, ch):
-        return self.font["glyf"][self.cmap[ord(ch)]]
-
-    def lsb(self, text):
-        return self._glyf(text[0]).xMin
-
-    def width(self, text, tracking):
-        """Largeur de l'encre (du premier au dernier pixel imprimé), en unités de police."""
-        adv = [self.hmtx[self.cmap[ord(ch)]][0] for ch in text]
-        last = self._glyf(text[-1])
-        return sum(adv[:-1]) + tracking * (len(text) - 1) + last.xMax - self.lsb(text)
-
-    def path(self, text, x, baseline, cap_height, tracking=0.0):
-        """Chemin SVG du texte ; tracking en unités de police."""
-        s = cap_height / self.cap
-        pen = SVGPathPen(self.glyphs, ntos=lambda v: "%.2f" % v)
-        cursor = -self.lsb(text)  # aligne l'encre, pas la chasse
-        for ch in text:
-            name = self.cmap[ord(ch)]
-            self.glyphs[name].draw(TransformPen(pen, (s, 0, 0, -s, x + cursor * s, baseline)))
-            cursor += self.hmtx[name][0] + tracking
-        return pen.getCommands()
+# ---------------------------------------------------------------- mises en page
+def place(paths, k, dx, dy, src_bounds):
+    """Matrice : met les tracés à l'échelle k, coin haut-gauche de src_bounds en (dx, dy)."""
+    return Matrix("translate(%f,%f) scale(%f) translate(%f,%f)" % (dx, dy, k, -src_bounds[0], -src_bounds[1]))
 
 
-WORD = "UNISSON"
-SUB = "ASSOCIATION ÉDUCATION SOLIDAIRE"
+def build():
+    hand_a, hand_b, word, sub = load_source()
+    sym_b = bounds(hand_a + hand_b)
+    word_b, sub_b = bounds(word), bounds(sub)
+    sym_w, sym_h = sym_b[2] - sym_b[0], sym_b[3] - sym_b[1]
+    word_w, word_h = word_b[2] - word_b[0], word_b[3] - word_b[1]
+    sub_w = sub_b[2] - sub_b[0]
+    all_b = bounds(hand_a + hand_b + word + sub)
 
-
-def build(font_path):
-    bold = Face(font_path, 800)
-    semi = Face(font_path, 600)
-    a, b = symbol_shapes()
-    minx, miny, maxx, maxy = unary_union([a, b]).bounds
-    sym_w, sym_h = maxx - minx, maxy - miny
-
-    word_track = 40  # +4 % : capitales grasses légèrement aérées
-
-    def justified_sub(target_w_units_bold, word_scale, sub_cap):
-        """Approche du sous-titre pour qu'il occupe exactement la largeur de UNISSON."""
-        s = sub_cap / semi.cap
-        target = target_w_units_bold * word_scale / s
-        natural = semi.width(SUB, 0)
-        return (target - natural) / (len(SUB) - 1)
+    def parts(c, m_sym, m_word=None, m_sub=None):
+        out = [(c[0], hand_a, m_sym), (c[1], hand_b, m_sym)]
+        if m_word is not None:
+            out.append((c[2], word, m_word))
+        if m_sub is not None:
+            out.append((c[3], sub, m_sub))
+        return out
 
     layouts = {}
 
-    # --- 1. symbole seul
+    # --- A. symbole seul : 100 unités de large
     def symbol_only(c):
-        k = 100 / sym_w  # 100 unités de large
-        return (100, sym_h * k, [
-            (c[0], poly_path(a, k, -minx * k, -miny * k)),
-            (c[1], poly_path(b, k, -minx * k, -miny * k)),
-        ])
+        k = 100 / sym_w
+        return 100, sym_h * k, parts(c, place(None, k, 0, 0, sym_b))
     layouts["symbole"] = symbol_only
 
-    # --- 2. horizontal / 4. cœur (sans sous-titre)
+    # --- B. cœur (sans sous-titre) / C. horizontal : symbole à gauche, haut 100
     def horizontal(with_sub):
         def make(c):
-            H = 100                      # hauteur du symbole
+            H = 100
             k = H / sym_h
-            gap = 0.16 * H
-            word_cap = 0.36 * H if with_sub else 0.40 * H
-            sub_cap = 0.085 * H
-            sw = sym_w * k
-            word_w = bold.width(WORD, word_track) * word_cap / bold.cap
-            x0 = sw + gap
+            x0 = sym_w * k + 0.14 * H
             if with_sub:
-                line_gap = 0.13 * H
-                block_h = word_cap + line_gap + sub_cap
-                top = (H - block_h) / 2
-                word_base = top + word_cap
-                sub_base = word_base + line_gap + sub_cap
-            else:
-                word_base = (H + word_cap) / 2
-            parts = [
-                (c[0], poly_path(a, k, -minx * k, -miny * k)),
-                (c[1], poly_path(b, k, -minx * k, -miny * k)),
-                (c[2], bold.path(WORD, x0, word_base, word_cap, word_track)),
-            ]
-            if with_sub:
-                tr = justified_sub(bold.width(WORD, word_track), word_cap / bold.cap, sub_cap)
-                parts.append((c[3], semi.path(SUB, x0, sub_base, sub_cap, tr)))
-            return (x0 + word_w, H, parts)
+                kt = 0.30 * H / word_h          # capitale UNISSON = 30 % du symbole
+                gap = (sub_b[1] - word_b[3]) * kt * 1.4
+                sub_h = (sub_b[3] - sub_b[1]) * kt
+                top = (H - (word_h * kt + gap + sub_h)) / 2
+                m_word = place(None, kt, x0, top, word_b)
+                m_sub = place(None, kt, x0, top + word_h * kt + gap, sub_b)
+                w = x0 + max(word_w, sub_w) * kt
+                return w, H, parts(c, place(None, k, 0, 0, sym_b), m_word, m_sub)
+            kt = 0.36 * H / word_h
+            m_word = place(None, kt, x0, (H - word_h * kt) / 2, word_b)
+            return x0 + word_w * kt, H, parts(c, place(None, k, 0, 0, sym_b), m_word)
         return make
     layouts["horizontal"] = horizontal(True)
     layouts["coeur"] = horizontal(False)
 
-    # --- 3. écusson centré
+    # --- D. écusson : composition d'origine, 300 unités de large
     def centered(c):
-        word_cap = 34
-        word_w = bold.width(WORD, word_track) * word_cap / bold.cap
-        sub_cap = 8.6
-        W = word_w
-        sw = 0.62 * W
-        k = sw / sym_w
-        sh = sym_h * k
-        sx = (W - sw) / 2
-        word_base = sh + 18 + word_cap
-        sub_base = word_base + 13 + sub_cap
-        tr = justified_sub(bold.width(WORD, word_track), word_cap / bold.cap, sub_cap)
-        return (W, sub_base, [
-            (c[0], poly_path(a, k, sx - minx * k, -miny * k)),
-            (c[1], poly_path(b, k, sx - minx * k, -miny * k)),
-            (c[2], bold.path(WORD, 0, word_base, word_cap, word_track)),
-            (c[3], semi.path(SUB, 0, sub_base, sub_cap, tr)),
-        ])
+        k = 300 / (all_b[2] - all_b[0])
+        m = place(None, k, 0, 0, all_b)
+        return 300, (all_b[3] - all_b[1]) * k, parts(c, m, m, m)
     layouts["ecusson"] = centered
 
     OUT.mkdir(parents=True, exist_ok=True)
     for lname, make in layouts.items():
         for cname, colors in COLORWAYS.items():
-            w, h, parts = make(colors)
+            w, h, items = make(colors)
             # Regroupe par couleur : 1 calque = 1 écran de sérigraphie / 1 couleur de flex.
             by_color = {}
-            for col, d in parts:
-                by_color.setdefault(col, []).append(d)
+            for col, paths, matrix in items:
+                by_color.setdefault(col, []).extend(d_string(p, matrix) for p in paths)
             m = 2  # marge de sécurité (unités) autour de l'encre
             body = "\n".join(
-                '  <path id="encre-%d" fill="%s" fill-rule="nonzero" d="%s"/>' % (i + 1, col, " ".join(ds))
+                '  <path id="encre-%d" fill="%s" fill-rule="nonzero" d="%s"/>' % (i + 1, col, "".join(ds))
                 for i, (col, ds) in enumerate(by_color.items()))
             svg = (
                 '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -245,9 +182,93 @@ def build(font_path):
             (OUT / ("unisson-%s-%s.svg" % (lname, cname))).write_text(svg, encoding="utf-8")
             print("unisson-%s-%s.svg" % (lname, cname), "%.1f x %.1f" % (w, h))
 
+    # --- logo.svg du site : symbole couleur, précision 0,1 unité (invisible à l'écran)
+    k = 160 / max(sym_w, sym_h)
+    mtx = place(None, k, 0, 0, sym_b)
+    web = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %.0f %.0f"><title>UNISSON</title>'
+           '<path fill="%s" d="%s"/><path fill="%s" d="%s"/></svg>\n') % (
+        math.ceil(sym_w * k), math.ceil(sym_h * k),
+        ENCRE, "".join(d_string(p, mtx, 1) for p in hand_a),
+        LILAS, "".join(d_string(p, mtx, 1) for p in hand_b))
+    (ROOT / "logo.svg").write_text(web, encoding="utf-8")
+    print("logo.svg", len(web), "octets")
+
+    # Cotes pour 100 mm de large, par logo : symbole (largeur) et sous-titre (échelle du texte)
+    sizes = {name: make(COLORWAYS["couleur"])[:2] for name, make in layouts.items()}
+    widths = {name: wh[0] for name, wh in sizes.items()}
+    sym_frac = {"symbole": 1, "coeur": 100 / sym_h * sym_w / widths["coeur"],
+                "horizontal": 100 / sym_h * sym_w / widths["horizontal"],
+                "ecusson": sym_w / (all_b[2] - all_b[0])}
+    sub_scale = {"horizontal": 0.30 * 100 / word_h / widths["horizontal"],
+                 "ecusson": 1 / (all_b[2] - all_b[0])}
+    measure(hand_a, hand_b, sub, sym_w, sizes, sym_frac, sub_scale)
+
+
+def measure(hand_a, hand_b, sub, sym_w, sizes, sym_frac, sub_scale):
+    """Cotes de fabrication (mm) pour chaque logo posé à 100 mm de large : règle de trois ensuite."""
+    pieces = [polygons([p]) for p in hand_a + hand_b]
+    # Trait : épaisseur moyenne d'une main (2 × aire / périmètre) ; jour : écart minimal entre deux pièces.
+    trait = min(2 * g.area / g.length for g in pieces) / sym_w
+    # (les mains se touchent par endroits : léger chevauchement d'origine, utile en sérigraphie)
+    jour = min(d for i, a in enumerate(pieces) for b in pieces[i + 1:] if (d := a.distance(b)) > 0) / sym_w
+    letters = polygons(sub)
+    stem = 2 * letters.area / letters.length
+    caps = sorted(SvgPath(s).bbox()[3] - SvgPath(s).bbox()[1] for s in sub[0].as_subpaths())
+    cap = caps[len(caps) // 2]  # médiane : écarte l'accent du É et les contre-formes
+    for name, (w, h) in sizes.items():
+        line = "%-10s h %.1f · trait %.2f · jour %.2f" % (
+            name, 100 * h / w, 100 * sym_frac[name] * trait, 100 * sym_frac[name] * jour)
+        if name in sub_scale:
+            line += " · capitale ST %.2f · fût %.2f" % (100 * sub_scale[name] * cap, 100 * sub_scale[name] * stem)
+        print(line, "(mm, logo de 100 mm de large)")
+
+
+# ---------------------------------------------------------------- exports
+INKSCAPE = shutil.which("inkscape") or r"C:\Program Files\Inkscape\bin\inkscape.com"
+
+
+def ink(src, out, *args):
+    subprocess.run([INKSCAPE, str(src), "--export-filename=%s" % out, *args], check=True,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+def build_exports():
+    """PDF/EPS du kit, PNG/ICO du site et logo des documents Word."""
+    from PIL import Image
+    for d in ("pdf", "eps"):
+        (HERE / d).mkdir(exist_ok=True)
+    for svg in sorted(OUT.glob("*.svg")):
+        ink(svg, HERE / "pdf" / (svg.stem + ".pdf"), "--export-text-to-path")
+        ink(svg, HERE / "eps" / (svg.stem + ".eps"), "--export-text-to-path")
+    tmp = HERE / "_tmp.png"
+
+    def square(svg, size, bg=None, pad=0.0):
+        ink(svg, tmp, "--export-width=%d" % (size * 4))
+        art = Image.open(tmp).convert("RGBA")
+        art = art.crop(art.getbbox())
+        inner = round(size * (1 - 2 * pad))
+        r = inner / max(art.size)
+        art = art.resize((max(1, round(art.width * r)), max(1, round(art.height * r))), Image.LANCZOS)
+        canvas = Image.new("RGBA", (size, size), bg or (0, 0, 0, 0))
+        canvas.alpha_composite(art, ((size - art.width) // 2, (size - art.height) // 2))
+        return canvas
+
+    sym = OUT / "unisson-symbole-couleur.svg"
+    eco = OUT / "unisson-ecusson-couleur.svg"
+    full = square(eco, 1024, (255, 255, 255, 255), 0.08)
+    full.convert("RGB").save(ROOT / "logo.png", optimize=True)
+    full.convert("RGB").save(ROOT / "logo.jpg", quality=92)
+    full.convert("RGB").save(ROOT / "logo.jpeg", quality=92)
+    square(sym, 192, None, 0.03).save(ROOT / "logo-192.png", optimize=True)
+    square(sym, 180, (255, 255, 255, 255), 0.12).convert("RGB").save(ROOT / "apple-touch-icon.png", optimize=True)
+    square(sym, 256, None, 0.0).save(ROOT / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
+    square(sym, 512, None, 0.04).save(ROOT / "logo-symbole.png", optimize=True)
+    square(sym, 512, (255, 255, 255, 255), 0.04).convert("RGB").save(ROOT / "logo-symbole-blanc.png", optimize=True)
+    tmp.unlink()
+    print("exports PDF/EPS/PNG/ICO OK")
+
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        sys.exit(__doc__)
-    build(sys.argv[1])
-    build_web_logo()
+    build()
+    if "--exports" in sys.argv:
+        build_exports()

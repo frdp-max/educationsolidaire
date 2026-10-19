@@ -8,7 +8,7 @@ const {
   TabStopType, HeadingLevel, VerticalAlign,
 } = require('docx');
 
-const C = { ink: '2A0E45', violet: '6D28D9', lav: 'EDE4FB', lav2: 'F7F3FD', warm: 'F4A259', red: 'D92D20', muted: '574A66', line: 'D9CCEF' };
+const C = { ink: '4F0D70', violet: '6D28D9', lav: 'EDE4FB', lav2: 'F7F3FD', warm: 'F4A259', red: 'D92D20', muted: '574A66', line: 'D9CCEF' };
 const FONT = 'Arial';
 const W = 9638; // largeur utile A4 (marges 2 cm) en DXA
 

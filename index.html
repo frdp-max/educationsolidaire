@@ -123,12 +123,13 @@
            PALETTE CHROMATIQUE ADOUCIE & TOKENS DE DESIGN UNISSON
            ========================================================================== */
         :root {
-            --uni-deep-purple: #2A0E45;    /* Encre : structure, titres, fonds sombres (logo) */
+            --uni-deep-purple: #4F0D70;    /* Encre : structure, titres, fonds sombres (logo) */
+            --uni-lilac: #C384E0;          /* Lilas du logo : décor, texte sur fond encre (4,7:1). Jamais en texte sur blanc */
             --uni-purple-mid: #6D28D9;     /* Violet : liens, actions secondaires (7,1:1 sur blanc) */
             --uni-purple-light: #6D28D9;   /* Alias du violet (une seule teinte d'interaction) */
             --uni-purple-dark: #5B21B6;    /* Violet au survol */
             --uni-warm: #F4A259;           /* Abricot : don, adhésion, accents. Jamais en texte sur blanc */
-            --uni-warm-dark: #E8893A;      /* Abricot au survol (texte encre : 6,6:1) */
+            --uni-warm-dark: #E8893A;      /* Abricot au survol (texte encre : 5,0:1) */
             --uni-lilac-on-dark: #C4B5FD;  /* Lavande claire pour texte sur fond encre */
             --uni-lilac-light: #EDE4FB;    /* Lavande : badges / surfaces secondaires */
             --uni-lilac-tint: #F7F3FD;     /* Lavande ultra-douce */
@@ -150,9 +151,9 @@
             --border-smooth: rgba(109, 40, 217, 0.08);
             --border-hover: rgba(109, 40, 217, 0.3);
             
-            --shadow-subtle: 0 4px 16px -2px rgba(42, 14, 69, 0.04);
-            --shadow-card: 0 10px 25px -4px rgba(42, 14, 69, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
-            --shadow-wow: 0 18px 32px -6px rgba(42, 14, 69, 0.09), 0 8px 16px -4px rgba(109, 40, 217, 0.05);
+            --shadow-subtle: 0 4px 16px -2px rgba(79, 13, 112, 0.04);
+            --shadow-card: 0 10px 25px -4px rgba(79, 13, 112, 0.06), 0 4px 10px -2px rgba(109, 40, 217, 0.03);
+            --shadow-wow: 0 18px 32px -6px rgba(79, 13, 112, 0.09), 0 8px 16px -4px rgba(109, 40, 217, 0.05);
             
             --radius-sm: 8px;
             --radius-md: 14px;
@@ -320,7 +321,7 @@
             width: auto;
             object-fit: contain;
             border-radius: 8px;
-            filter: drop-shadow(0 2px 5px rgba(42, 14, 69, 0.12));
+            filter: drop-shadow(0 2px 5px rgba(79, 13, 112, 0.12));
             transition: transform 0.3s ease;
         }
 
@@ -421,7 +422,7 @@
 
         /* --- HERO BANNER ATMOSPHÉRIQUE ADOUCI --- */
         .hero {
-            background: linear-gradient(120deg, #1e112a 0%, #2A0E45 55%, #2A0E45 100%);
+            background: linear-gradient(120deg, #1e112a 0%, #4F0D70 55%, #4F0D70 100%);
             color: #ffffff;
             padding: 6.5rem 2rem 10.5rem 2rem;
             position: relative;
@@ -993,7 +994,7 @@
 
         /* --- BANDEAU D'APPEL AU DON PERMANENT (STICKY TOP BAR) --- */
         .sticky-urgent-bar {
-            background: linear-gradient(135deg, #1A0A2B 0%, #2A0E45 50%, #6D28D9 100%);
+            background: linear-gradient(135deg, #1A0A2B 0%, #4F0D70 50%, #6D28D9 100%);
             color: #ffffff;
             padding: 0.65rem 1.5rem;
             position: relative;
@@ -1129,7 +1130,7 @@
         }
 
         .pole-card.cafe .pole-banner {
-            background: linear-gradient(135deg, #2A0E45 0%, #6D28D9 70%, #6D28D9 100%);
+            background: linear-gradient(135deg, #4F0D70 0%, #6D28D9 70%, #6D28D9 100%);
         }
 
         .pole-card.grocery .pole-banner {
@@ -1579,7 +1580,7 @@
 
         /* --- PIED DE PAGE (FOOTER) HARMONIEUX & GRID 4 COLONNES PARFAITE --- */
         footer {
-            background: linear-gradient(180deg, #2A0E45 0%, #1A0A2B 100%);
+            background: linear-gradient(180deg, #4F0D70 0%, #1A0A2B 100%);
             color: #ffffff;
             padding: 5rem 2rem 3rem 2rem;
             margin-top: 8rem;

@@ -22,7 +22,7 @@
         @page { size: A3 portrait; margin: 0; }
 
         :root {
-            --deep: #2A0E45;
+            --deep: #4F0D70;
             --royal: #6D28D9;
             --warm: #F4A259;
             --lavender: #EDE4FB;
@@ -84,7 +84,7 @@
         }
         .hero::before { /* voile haut pour lisibilité du titre */
             content: ''; position: absolute; inset: 0 0 auto 0; height: 120mm;
-            background: linear-gradient(180deg, rgba(26,10,43,.92) 0%, rgba(42,14,69,.70) 45%, rgba(42,14,69,0) 100%);
+            background: linear-gradient(180deg, rgba(26,10,43,.92) 0%, rgba(79,13,112,.70) 45%, rgba(79,13,112,0) 100%);
         }
         .hero::after { /* fondu bas vers le blanc */
             content: ''; position: absolute; inset: auto 0 0 0; height: 26mm;
@@ -131,7 +131,7 @@
         .mission {
             background: #fff; border-radius: 4mm;
             padding: 6.5mm 6mm 6.5mm 6mm;
-            box-shadow: 0 3mm 9mm rgba(42,14,69,.16);
+            box-shadow: 0 3mm 9mm rgba(79,13,112,.16);
             border-top: 2.2mm solid var(--royal);
         }
         .mission.urgence { border-top-color: var(--alert); }
@@ -150,7 +150,7 @@
         /* ---------- 3. COMMENT AIDER + QR ---------- */
         .help {
             margin: 9mm 14mm 0 14mm;
-            background: linear-gradient(135deg, #2A0E45 0%, #5B21B6 60%, #6D28D9 100%);
+            background: linear-gradient(135deg, #4F0D70 0%, #5B21B6 60%, #6D28D9 100%);
             border-radius: 5mm; color: #fff;
             display: grid; grid-template-columns: 1fr 52mm; gap: 7mm;
             padding: 9mm 9mm; align-items: center;
@@ -304,7 +304,7 @@
             <div class="qr-box">
                 <div class="qr-frame">
                     <!-- QR code réel → https://education-solidaire.org (correction H) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#2A0E45" d="M0 0.5h7m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h6m3 0h2m2 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h2m1 0h1m2 0h4m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h1m3 0h1m2 0h1m5 0h3m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m2 0h1m2 0h2m2 0h2m4 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h7m1 0h2m1 0h1m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h3m3 0h2m2 0h3M2 8.5h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h6m2 0h3M0 9.5h1m4 0h1m5 0h1m3 0h7m1 0h1m1 0h2m2 0h1m2 0h1M0 10.5h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m1 0h3M2 11.5h1m1 0h1m2 0h2m1 0h2m7 0h4m2 0h2m2 0h3M1 12.5h1m2 0h3m2 0h3m1 0h1m2 0h2m2 0h2m2 0h2m2 0h2m1 0h1M0 13.5h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1M4 14.5h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h3m1 0h4M3 15.5h1m1 0h1m1 0h4m2 0h2m1 0h2m3 0h2m5 0h1m1 0h3M1 16.5h2m2 0h2m4 0h2m12 0h1m1 0h2m2 0h2M0 17.5h5m4 0h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h2m1 0h1m5 0h1M0 18.5h1m1 0h1m1 0h1m1 0h3m1 0h8m2 0h1m1 0h1m5 0h1m1 0h2M0 19.5h1m2 0h1m3 0h1m1 0h4m2 0h1m2 0h7m1 0h1m1 0h3m1 0h1M2 20.5h1m1 0h1m1 0h4m3 0h4m2 0h1m2 0h1m1 0h2m1 0h3M0 21.5h2m1 0h1m1 0h1m2 0h2m2 0h4m1 0h1m6 0h1m1 0h1m2 0h2m1 0h1M0 22.5h1m1 0h2m1 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m8 0h1M0 23.5h1m1 0h4m2 0h1m1 0h2m2 0h1m1 0h4m1 0h3m5 0h2m1 0h1M0 24.5h1m1 0h1m3 0h2m2 0h2m2 0h3m3 0h1m1 0h1m1 0h6m1 0h2M8 25.5h3m2 0h2m1 0h4m2 0h1m1 0h1m3 0h1m1 0h1m1 0h1M0 26.5h7m3 0h1m1 0h2m1 0h1m1 0h1m4 0h3m1 0h1m1 0h2m1 0h1M0 27.5h1m5 0h1m6 0h1m1 0h1m1 0h4m2 0h2m3 0h5M0 28.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h2m1 0h5m2 0h2M0 29.5h1m1 0h3m1 0h1m1 0h1m2 0h3m5 0h1m3 0h3m2 0h2m1 0h1M0 30.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m3 0h2M0 31.5h1m5 0h1m2 0h1m1 0h5m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2M0 32.5h7m3 0h3m1 0h1m2 0h1m1 0h2m2 0h3m5 0h1"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#4F0D70" d="M0 0.5h7m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h6m3 0h2m2 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h2m1 0h1m2 0h4m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h1m3 0h1m2 0h1m5 0h3m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m2 0h1m2 0h2m2 0h2m4 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h7m1 0h2m1 0h1m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h3m3 0h2m2 0h3M2 8.5h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h6m2 0h3M0 9.5h1m4 0h1m5 0h1m3 0h7m1 0h1m1 0h2m2 0h1m2 0h1M0 10.5h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m1 0h3M2 11.5h1m1 0h1m2 0h2m1 0h2m7 0h4m2 0h2m2 0h3M1 12.5h1m2 0h3m2 0h3m1 0h1m2 0h2m2 0h2m2 0h2m2 0h2m1 0h1M0 13.5h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1M4 14.5h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h3m1 0h4M3 15.5h1m1 0h1m1 0h4m2 0h2m1 0h2m3 0h2m5 0h1m1 0h3M1 16.5h2m2 0h2m4 0h2m12 0h1m1 0h2m2 0h2M0 17.5h5m4 0h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h2m1 0h1m5 0h1M0 18.5h1m1 0h1m1 0h1m1 0h3m1 0h8m2 0h1m1 0h1m5 0h1m1 0h2M0 19.5h1m2 0h1m3 0h1m1 0h4m2 0h1m2 0h7m1 0h1m1 0h3m1 0h1M2 20.5h1m1 0h1m1 0h4m3 0h4m2 0h1m2 0h1m1 0h2m1 0h3M0 21.5h2m1 0h1m1 0h1m2 0h2m2 0h4m1 0h1m6 0h1m1 0h1m2 0h2m1 0h1M0 22.5h1m1 0h2m1 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m8 0h1M0 23.5h1m1 0h4m2 0h1m1 0h2m2 0h1m1 0h4m1 0h3m5 0h2m1 0h1M0 24.5h1m1 0h1m3 0h2m2 0h2m2 0h3m3 0h1m1 0h1m1 0h6m1 0h2M8 25.5h3m2 0h2m1 0h4m2 0h1m1 0h1m3 0h1m1 0h1m1 0h1M0 26.5h7m3 0h1m1 0h2m1 0h1m1 0h1m4 0h3m1 0h1m1 0h2m1 0h1M0 27.5h1m5 0h1m6 0h1m1 0h1m1 0h4m2 0h2m3 0h5M0 28.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h2m1 0h5m2 0h2M0 29.5h1m1 0h3m1 0h1m1 0h1m2 0h3m5 0h1m3 0h3m2 0h2m1 0h1M0 30.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m3 0h2M0 31.5h1m5 0h1m2 0h1m1 0h5m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2M0 32.5h7m3 0h3m1 0h1m2 0h1m1 0h2m2 0h3m5 0h1"/></svg>
                 </div>
                 <div class="cta"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Scannez pour agir</div>
                 <div class="url">education-solidaire.org</div>

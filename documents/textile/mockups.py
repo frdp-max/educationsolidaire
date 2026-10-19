@@ -141,7 +141,7 @@ def parka(c, view, marks):
 MODELS = {
     # nom : (vêtement, couleur tissu, version logo, marquages {vue: [...]})
     "hoodie-indigo": ("hoodie", "#2a1240", "blanc", {
-        "front": [("coeur", 370, 232, 95)],
+        "front": [("coeur", 372, 232, 105)],
         "back": [("horizontal", 300, 290, 280)],
     }),
     "hoodie-gris": ("hoodie", "#d8d5dc", "couleur", {
@@ -149,11 +149,11 @@ MODELS = {
         "back": [("horizontal", 300, 290, 280)],
     }),
     "parka-noire": ("parka", "#1d1c22", "blanc", {
-        "front": [("coeur", 372, 250, 95), ("symbole", 112, 330, 70, {"rotate": 5})],
+        "front": [("symbole", 372, 250, 55)],
         "back": [("ecusson", 300, 296, 260)],
     }),
     "parka-sable": ("parka", "#cdbf9f", "mono", {
-        "front": [("coeur", 372, 250, 95), ("symbole", 112, 330, 70, {"rotate": 5})],
+        "front": [("coeur", 374, 250, 105), ("symbole", 112, 330, 70, {"rotate": 5})],
         "back": [("ecusson", 300, 296, 260)],
     }),
 }

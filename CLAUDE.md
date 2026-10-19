@@ -51,12 +51,13 @@
 │   │       ├── infographie-a5.html # Infographie A5 → /infographie-a5 · export UNISSON_Infographie_A5.pdf
 │   │       └── flyer-visuel.jpg # Visuel des 3 missions (aussi og:image du site → /flyer-visuel.jpg)
 │   └── textile/                 # Kit textile (flex, sérigraphie, DTF)
-│       ├── generate.py          # Générateur des logos vectoriels + logo.svg du site (fonttools + shapely, police Montserrat OFL)
+│       ├── source/              # Logo officiel livré (unisson-logo-source.svg + pdf) — seule source des logos
+│       ├── generate.py          # Recompose les 4 logos × 3 couleurs + logo.svg du site depuis source/ (svgelements + shapely) ; --exports : PDF/EPS (Inkscape), PNG/ICO du site, logo-symbole*.png
 │       ├── svg/ pdf/ eps/       # 4 logos (symbole, cœur, horizontal, écusson) × 3 versions (couleur, mono, blanc)
 │       ├── fiche-technique.html # Fiche d'atelier A4 (emplacements, seuils, export) → UNISSON_Kit_Textile_Fiche_Technique.pdf
 │       ├── mockups.py           # Maquettes à plat hoodie/parka (logos à taille réelle) → maquettes/*.svg|png
 │       └── maquettes.html       # Planches A4 paysage des maquettes → UNISSON_Maquettes_Textiles.pdf
-├── logo.svg                     # Symbole officiel UNISSON (vectoriel, généré par documents/textile/generate.py) — utilisé sur le site et les supports print
+├── logo.svg                     # Symbole officiel UNISSON (deux mains entrelacées, vectoriel, généré par documents/textile/generate.py) — utilisé sur le site et les supports print
 ├── logo.png                     # Logo complet (écusson) 1024 px — schema.org ; logo-192.png, favicon.ico, apple-touch-icon.png = symbole
 ├── deploy.sh                    # Script de déploiement automatique sur le VPS
 ├── docker-compose.yml           # Définition des services conteneurisés (app, nginx, certbot)
@@ -100,15 +101,16 @@ git pull && bash deploy.sh
 
 ## 4. Charte Graphique & Tokens CSS
 
-Palette validée le 12 octobre 2026 : **deux violets seulement + un abricot chaleureux**. Ne pas réintroduire d'autres violets (`#350b52`, `#6b1d9e`, `#8b5cf6`, `#a855f7`…) ni de rose-rouge `#e11d48`.
+Palette validée le 12 octobre 2026, encre et lilas alignés sur le nouveau logo (deux mains entrelacées) le 19 octobre 2026 : **encre + violet d'interaction + lilas du logo, et un abricot chaleureux**. Ne pas réintroduire d'autres violets (`#2A0E45`, `#350b52`, `#6b1d9e`, `#8b5cf6`, `#a855f7`…) ni de rose-rouge `#e11d48`.
 
 | Élément | Valeur HEX | Rôle |
 |---|---|---|
-| Encre | `#2A0E45` | Couleur identitaire (logo), titres, fonds de nav/footer/hero |
-| Violet | `#6D28D9` | Liens, boutons secondaires, second ruban du logo (7,1:1 sur blanc) ; survol `#5B21B6` |
+| Encre | `#4F0D70` | Couleur identitaire (main gauche et « UNISSON » du logo), titres, fonds de nav/footer/hero (12,9:1 sur blanc) |
+| Lilas | `#C384E0` | Main droite et sous-titre du logo ; accents décoratifs, texte sur fond encre (4,7:1). **Jamais en texte sur blanc (2,7:1)** |
+| Violet | `#6D28D9` | Liens, boutons secondaires (7,1:1 sur blanc) ; survol `#5B21B6` — hors logo |
 | Lavande | `#EDE4FB` / `#F7F3FD` | Fonds de cartes et de badges, bordures légères — jamais en texte |
 | Lavande claire | `#C4B5FD` | Texte secondaire sur fond encre |
-| Abricot | `#F4A259` | Don, adhésion, accents chaleureux (titres sur fond sombre, liserés) ; survol `#E8893A`. **Toujours avec texte encre, jamais en texte sur blanc (2,1:1)** |
+| Abricot | `#F4A259` | Don, adhésion, accents chaleureux (titres sur fond sombre, liserés) ; survol `#E8893A` (texte encre 5,0:1). **Toujours avec texte encre, jamais en texte sur blanc (2,1:1)** |
 | Urgence Red | `#D92D20` | Réservé au danger : numéros d'urgence, badge « Priorité ». Jamais pour le don |
 | Épicerie Green | `#059669` | Épicerie solidaire, dons écologiques/durables |
 
