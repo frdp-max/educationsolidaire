@@ -145,6 +145,16 @@ app.post('/api/helloasso/checkout', async (req, res) => {
   }
   const input = check.value;
 
+  // Les dons passent par la campagne de dons HelloAsso, seule à émettre les reçus fiscaux
+  // (un paiement Checkout n'en reçoit pas) : le site ne crée de Checkout que pour les adhésions.
+  if (input.isDonation) {
+    return res.json({
+      success: true,
+      redirectUrl: process.env.HELLOASSO_DONATION_FORM_URL ||
+        'https://www.helloasso.com/associations/education-solidaire/formulaires/1',
+    });
+  }
+
   try {
     // Si les clés API HelloAsso ne sont pas encore fournies dans l'environnement, mode simulation sécurisé
     if (!hasHelloAssoCredentials()) {

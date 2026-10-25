@@ -2870,20 +2870,11 @@
             </div>
 
             <div class="donation-widget">
-                <h4 style="color: var(--uni-deep-purple); font-size: 1.15rem; margin-bottom: 0.5rem;">Montant du don libre</h4>
-                <div class="donation-amounts">
-                    <button class="btn-amount" onclick="selectDonationAmount(15, this)">15 €</button>
-                    <button class="btn-amount active" onclick="selectDonationAmount(30, this)">30 €</button>
-                    <button class="btn-amount" onclick="selectDonationAmount(60, this)">60 €</button>
-                    <button class="btn-amount" onclick="selectDonationAmount(100, this)">100 €</button>
-                </div>
-                <div class="form-group" style="margin-bottom: 1.2rem;">
-                    <label for="customDonation">Ou montant personnalisé (€)</label>
-                    <input type="number" id="customDonation" value="30" min="1" oninput="handleCustomAmount(this.value)">
-                </div>
-                <button onclick="triggerDonationCheckout()" class="btn-portal" style="width: 100%; justify-content: center; font-size: 1rem;">
-                    <i class="fa-solid fa-heart" aria-hidden="true"></i> Faire ce don au Fonds d'Urgence
-                </button>
+                <h4 style="color: var(--uni-deep-purple); font-size: 1.15rem; margin-bottom: 0.5rem;">Don ponctuel ou mensuel, montant libre</h4>
+                <p style="font-size: 0.92rem; color: var(--uni-text-muted); margin-bottom: 1.2rem;">Vous choisissez votre montant sur notre page de dons HelloAsso. Votre reçu fiscal vous est envoyé par email : un don de 50 € ne vous coûte que 17 € après réduction d'impôt.</p>
+                <a href="https://www.helloasso.com/associations/education-solidaire/formulaires/1" class="btn-portal" style="width: 100%; justify-content: center; font-size: 1rem;">
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i> Faire un don au Fonds d'Urgence
+                </a>
             </div>
         </div>
 
@@ -3123,21 +3114,24 @@
         let currentCheckoutFormula = 'general';
         let currentCheckoutAmount = 25;
 
+        // Les dons passent par la campagne de dons HelloAsso : seule elle émet les reçus fiscaux
+        // (les paiements Checkout de l'API n'en reçoivent pas). Le montant se choisit sur HelloAsso.
+        const DONATION_FORM_URL = 'https://www.helloasso.com/associations/education-solidaire/formulaires/1';
+
         function openCheckoutModal(title, priceInEuros, formulaType = 'general') {
+            if (formulaType === 'donation') {
+                showToast('Redirection vers notre page de dons HelloAsso...');
+                setTimeout(() => { window.location.href = DONATION_FORM_URL; }, 600);
+                return;
+            }
+
             currentCheckoutFormula = formulaType;
             currentCheckoutAmount = priceInEuros;
 
             document.getElementById('modalTitle').innerText = title;
-            
-            if (formulaType === 'donation') {
-                const netCost = (priceInEuros * 0.34).toFixed(2);
-                document.getElementById('modalSubtitle').innerHTML = 'Don de <strong>' + priceInEuros + ' €</strong> • <span style="color: #047857; font-weight:700;">Coût réel après déduction 66% : ' + netCost + ' €</span>';
-                document.getElementById('mem_amount_display').value = priceInEuros + ' € (Don Déductible HelloAsso)';
-            } else {
-                document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an (sans reçu fiscal)';
-                document.getElementById('mem_amount_display').value = priceInEuros + ' € (Règlement sécurisé HelloAsso)';
-            }
-            
+            document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an (sans reçu fiscal)';
+            document.getElementById('mem_amount_display').value = priceInEuros + ' € (Règlement sécurisé HelloAsso)';
+
             document.getElementById('mem_formula_type').value = formulaType;
             document.getElementById('mem_raw_amount').value = priceInEuros;
             modalReturnFocus = document.activeElement;
@@ -3232,31 +3226,7 @@
             const donsSection = document.getElementById('dons');
             if (donsSection) {
                 donsSection.scrollIntoView({ behavior: 'smooth' });
-                const customInput = document.getElementById('customDonation');
-                if (customInput) customInput.focus();
             }
-        }
-
-        // Gestion du widget Don Libre
-        let selectedDonationAmount = 30;
-
-        function selectDonationAmount(amount, btnElement) {
-            selectedDonationAmount = amount;
-            document.getElementById('customDonation').value = amount;
-            document.querySelectorAll('.btn-amount').forEach(b => b.classList.remove('active'));
-            btnElement.classList.add('active');
-        }
-
-        function handleCustomAmount(val) {
-            const parsed = parseFloat(val);
-            if (parsed > 0) {
-                selectedDonationAmount = parsed;
-                document.querySelectorAll('.btn-amount').forEach(b => b.classList.remove('active'));
-            }
-        }
-
-        function triggerDonationCheckout() {
-            openCheckoutModal('Fonds de Premier Secours Social', selectedDonationAmount, 'donation');
         }
 
         // Soumission Formulaire d'urgence (Connecté à /api/emergency/alert)

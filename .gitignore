@@ -7,3 +7,6 @@ data/
 # Coordonnées bancaires : jamais dans git
 documents/administratif/rib*
 ~$*
+
+# Signatures manuscrites : jamais dans git
+documents/administratif/signature*
