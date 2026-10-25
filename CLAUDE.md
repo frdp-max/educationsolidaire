@@ -24,7 +24,7 @@
 - **Frontend** : HTML5 sémantique, CSS3 moderne (variables CSS, flexbox/grid responsive), Vanilla JavaScript (sans framework lourd pour un temps de chargement optimal et un SEO maximal).
 - **Backend** : Node.js (v18+) avec Express configuré en modules ECMAScript (`"type": "module"`).
 - **Sécurité** : `helmet` (avec CSP configuré pour autoriser Google Fonts, FontAwesome, HelloAsso), `cors`, `morgan`, `dotenv`.
-- **Intégrations** : HelloAsso v5 API (OAuth2, checkout intents pour dons et adhésions), Brevo / SMTP pour les alertes urgences.
+- **Intégrations** : HelloAsso : dons et adhésions via les campagnes HelloAsso (dons → `formulaires/1`, seule à émettre les reçus fiscaux ; adhésions → `adhesions/adhesion-unisson-2026-2027`, à renouveler chaque automne) ; API v5 (OAuth2) pour la jauge et la relecture des webhooks, Brevo / SMTP pour les alertes urgences.
 - **Infrastructure** : Docker & Docker Compose, Nginx Reverse Proxy avec HTTP/2 et SSL Let's Encrypt automatique (Certbot), hébergé sur VPS Ubuntu OVH (`51.178.47.78`).
 
 ### Arborescence des Fichiers Clés
@@ -65,8 +65,8 @@
 ├── server/
 │   ├── index.js                 # Point d'entrée (dotenv + démarrage du serveur)
 │   ├── app.js                   # App Express : CSP, routes API, liste blanche des fichiers publics (PUBLIC_FILES)
-│   ├── validation.js            # Validation des entrées (urgence, checkout en euros → centimes), comparaison sûre
-│   ├── helloasso.js             # Client API HelloAsso v5 (auth token, checkout, signature & relecture des webhooks)
+│   ├── validation.js            # Validation des entrées (signalements d'urgence), comparaison sûre
+│   ├── helloasso.js             # Client API HelloAsso v5 (auth token, signature & relecture des webhooks)
 │   ├── emergency.js             # Gestionnaire des signalements et alertes d'urgence
 │   └── notify.js                # Notifications d'astreinte : email Brevo + webhook Discord/Slack
 ├── test/                        # Tests node:test (validation, routes, fichiers non exposés)

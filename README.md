@@ -61,7 +61,7 @@ Plateforme web officielle, API d'intégration **HelloAsso v5** et architecture d
 
 ### Endpoints API
 
-* `POST /api/helloasso/checkout` : Initialise une intention de paiement Checkout Intent via l'API v5 HelloAsso (`/v5/organizations/{slug}/checkout-intents`) et renvoie l'URL de redirection sécurisée.
+* `POST /api/helloasso/checkout` : Compatibilité avec les pages en cache : renvoie l'URL de la campagne HelloAsso de dons (`isDonation: true`) ou d'adhésion.
 * `POST /api/helloasso/webhook` : Point de terminaison pour la réception et l'acquittement des notifications d'adhésion et de paiement validés.
 * `POST /api/emergency/alert` : Réception instantanée des demandes de prise en charge et de mise à l'abri (48h-15j) avec notification d'astreinte.
 * `GET /api/emergency/alerts` : Consultation sécurisée de l'historique des alertes pour les membres autorisés (`x-admin-key`).

@@ -1491,93 +1491,6 @@
             border: 1px solid rgba(109, 40, 217, 0.06);
         }
 
-        .donation-amounts {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.6rem;
-            margin: 1.2rem 0;
-        }
-
-        .btn-amount {
-            padding: 0.75rem 0.5rem;
-            border: 1.5px solid var(--uni-lilac-light);
-            background: #ffffff;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            color: var(--uni-purple-mid);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
-        .btn-amount.active, .btn-amount:hover {
-            background: var(--uni-deep-purple);
-            color: #ffffff;
-            border-color: var(--uni-deep-purple);
-        }
-
-        /* --- MODALE DE PAIEMENT CHECKOUT HELLOASSO --- */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(30, 17, 42, 0.6);
-            backdrop-filter: blur(6px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            animation: fadeIn 0.25s ease;
-        }
-
-        .modal-content {
-            background: #ffffff;
-            border-radius: var(--radius-lg);
-            max-width: 580px;
-            width: 100%;
-            padding: 2.5rem;
-            position: relative;
-            box-shadow: var(--shadow-wow);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.2rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--uni-text-light);
-            cursor: pointer;
-            padding: 0.3rem;
-            transition: color 0.2s ease;
-        }
-
-        .modal-close:hover {
-            color: var(--uni-alert);
-        }
-
-        .modal-content h3 {
-            color: var(--uni-deep-purple);
-            font-size: 1.45rem;
-            font-weight: 800;
-            margin-bottom: 0.3rem;
-        }
-
-        .modal-content p {
-            color: var(--uni-text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 1.8rem;
-        }
-
         /* --- PIED DE PAGE (FOOTER) HARMONIEUX & GRID 4 COLONNES PARFAITE --- */
         footer {
             background: linear-gradient(180deg, #4F0D70 0%, #1A0A2B 100%);
@@ -2036,28 +1949,6 @@
                 padding: 1.4rem 1rem;
                 border-radius: var(--radius-sm);
             }
-            .donation-amounts {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.4rem;
-            }
-            .btn-amount {
-                padding: 0.65rem 0.2rem;
-                font-size: 0.85rem;
-            }
-
-            /* Modale Checkout */
-            .modal-overlay {
-                padding: 0.8rem;
-            }
-            .modal-content {
-                padding: 1.6rem 1.1rem;
-                border-radius: var(--radius-md);
-                width: 100%;
-                max-width: 100%;
-            }
-            .modal-content .form-grid {
-                grid-template-columns: 1fr !important;
-            }
         }
 
         @media (max-width: 480px) {
@@ -2245,10 +2136,9 @@
         .burger-menu { min-width: 44px; min-height: 44px; }
         .btn-urgent-donate, .btn-urgent-phone,
         .emergency-warning .numbers a,
-        .btn-impact-select, .btn-amount, .modal-close {
+        .btn-impact-select {
             min-height: 44px;
         }
-        .modal-close { min-width: 44px; }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -2921,58 +2811,6 @@
 
     </main>
 
-    <!-- MODALE CHECKOUT / HELLOASSO -->
-    <div class="modal-overlay" id="checkoutModal">
-        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <button class="modal-close" onclick="closeModal()" aria-label="Fermer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-            <h3 id="modalTitle">Formule d'Adhésion</h3>
-            <p id="modalSubtitle">Cotisation annuelle associative sécurisée via HelloAsso</p>
-            
-            <form id="membershipForm" onsubmit="handleMembershipSubmit(event)">
-                <input type="hidden" id="mem_formula_type" value="general">
-                <input type="hidden" id="mem_raw_amount" value="25">
-                
-                <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                    <div class="form-group">
-                        <label for="mem_firstname">Prénom *</label>
-                        <input type="text" id="mem_firstname" autocomplete="given-name" placeholder="Ex: Jean" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mem_lastname">Nom *</label>
-                        <input type="text" id="mem_lastname" autocomplete="family-name" placeholder="Ex: Dupont" required>
-                    </div>
-                </div>
-
-                <div class="form-group" style="margin-bottom: 1rem;">
-                    <label for="mem_email">Adresse e-mail (reçu & attestation) *</label>
-                    <input type="email" id="mem_email" autocomplete="email" placeholder="votre.email@exemple.fr" required>
-                </div>
-
-                <div class="form-grid" style="grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                    <div class="form-group">
-                        <label for="mem_city">Ville (Optionnel)</label>
-                        <input type="text" id="mem_city" autocomplete="address-level2" placeholder="Ex: Gennevilliers">
-                    </div>
-                    <div class="form-group">
-                        <label for="mem_zip">Code Postal</label>
-                        <input type="text" id="mem_zip" autocomplete="postal-code" inputmode="numeric" placeholder="92230">
-                    </div>
-                </div>
-
-                <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label>Montant à régler</label>
-                    <input type="text" id="mem_amount_display" readonly style="background: #f8fafc; font-weight: 800; font-size: 1.1rem; color: var(--uni-deep-purple);">
-                </div>
-
-                <button type="submit" id="btnSubmitCheckout" class="btn-portal" style="width: 100%; justify-content: center; padding: 0.95rem;">
-                    <i class="fa-solid fa-lock" aria-hidden="true"></i> Procéder au règlement sécurisé HelloAsso
-                </button>
-                <div style="text-align: center; margin-top: 0.8rem; font-size: 0.8rem; color: var(--uni-text-muted);">
-                    <i class="fa-solid fa-shield" aria-hidden="true"></i> Chiffrement SSL 256 bits • Sans frais bancaires pour l'association
-                </div>
-            </form>
-        </div>
-    </div>
 
     <!-- FOOTER INSTITUTIONNEL -->
     <footer>
@@ -3110,74 +2948,16 @@
             toast.addEventListener('focusout', hideToastLater);
         })();
 
-        // Modale d'adhésion & Checkout
-        let currentCheckoutFormula = 'general';
-        let currentCheckoutAmount = 25;
-
-        // Les dons passent par la campagne de dons HelloAsso : seule elle émet les reçus fiscaux
-        // (les paiements Checkout de l'API n'en reçoivent pas). Le montant se choisit sur HelloAsso.
+        // Dons et adhésions passent par les campagnes HelloAsso, où le montant ou le tarif se choisit :
+        // la campagne de dons émet les reçus fiscaux, la campagne d'adhésion tient la liste des membres.
         const DONATION_FORM_URL = 'https://www.helloasso.com/associations/education-solidaire/formulaires/1';
+        const MEMBERSHIP_FORM_URL = 'https://www.helloasso.com/associations/education-solidaire/adhesions/adhesion-unisson-2026-2027';
 
         function openCheckoutModal(title, priceInEuros, formulaType = 'general') {
-            if (formulaType === 'donation') {
-                showToast('Redirection vers notre page de dons HelloAsso...');
-                setTimeout(() => { window.location.href = DONATION_FORM_URL; }, 600);
-                return;
-            }
-
-            currentCheckoutFormula = formulaType;
-            currentCheckoutAmount = priceInEuros;
-
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalSubtitle').innerText = 'Cotisation associative : ' + priceInEuros + ' € / an (sans reçu fiscal)';
-            document.getElementById('mem_amount_display').value = priceInEuros + ' € (Règlement sécurisé HelloAsso)';
-
-            document.getElementById('mem_formula_type').value = formulaType;
-            document.getElementById('mem_raw_amount').value = priceInEuros;
-            modalReturnFocus = document.activeElement;
-            document.getElementById('checkoutModal').classList.add('active');
-            document.getElementById('mem_firstname').focus();
+            const isDonation = formulaType === 'donation';
+            showToast(isDonation ? 'Redirection vers notre page de dons HelloAsso...' : "Redirection vers notre page d'adhésion HelloAsso...");
+            setTimeout(() => { window.location.href = isDonation ? DONATION_FORM_URL : MEMBERSHIP_FORM_URL; }, 600);
         }
-
-        let modalReturnFocus = null;
-
-        function closeModal() {
-            document.getElementById('checkoutModal').classList.remove('active');
-            if (modalReturnFocus) {
-                modalReturnFocus.focus();
-                modalReturnFocus = null;
-            }
-        }
-
-        // Clavier dans la modale : Échap ferme, Tab reste à l'intérieur
-        document.addEventListener('keydown', function(event) {
-            const modal = document.getElementById('checkoutModal');
-            if (!modal.classList.contains('active')) return;
-            if (event.key === 'Escape') {
-                closeModal();
-                return;
-            }
-            if (event.key !== 'Tab') return;
-            const focusables = [...modal.querySelectorAll('button, a[href], input:not([type="hidden"]), select, textarea')]
-                .filter(el => !el.disabled && el.offsetParent !== null);
-            if (!focusables.length) return;
-            const first = focusables[0];
-            const last = focusables[focusables.length - 1];
-            if (event.shiftKey && document.activeElement === first) {
-                event.preventDefault();
-                last.focus();
-            } else if (!event.shiftKey && document.activeElement === last) {
-                event.preventDefault();
-                first.focus();
-            }
-        });
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('checkoutModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        };
 
         // Jauge du premier palier (montants agrégés via /api/funding)
         async function loadFundingGauge() {
@@ -3265,62 +3045,6 @@
                 const body = encodeURIComponent("Message envoyé depuis le site :\n\nDemandeur : " + name + "\nTéléphone : " + phone + "\nCommune : " + location + "\nType : " + emergencyType + "\n\nDétails :\n" + message);
                 window.location.href = "mailto:contact@education-solidaire.org?subject=" + subject + "&body=" + body;
                 showToast("Votre messagerie s'ouvre pour nous écrire. En cas de danger, appelez le 115 ou le 17.");
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-            }
-        }
-
-        // Soumission Adhésion / Checkout HelloAsso
-        async function handleMembershipSubmit(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btnSubmitCheckout');
-            const originalText = btn.innerHTML;
-
-            const firstName = document.getElementById('mem_firstname').value;
-            const lastName = document.getElementById('mem_lastname').value;
-            const email = document.getElementById('mem_email').value;
-            const city = document.getElementById('mem_city').value;
-            const zipCode = document.getElementById('mem_zip').value;
-            const formula = document.getElementById('modalTitle').innerText;
-            const amount = parseFloat(document.getElementById('mem_raw_amount').value);
-            const isDonation = document.getElementById('mem_formula_type').value === 'donation';
-
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Connexion sécurisée HelloAsso...';
-
-            try {
-                const response = await fetch('/api/helloasso/checkout', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        amount,
-                        title: formula,
-                        name: `${firstName} ${lastName}`,
-                        email,
-                        city,
-                        zipCode,
-                        isDonation,
-                    }),
-                });
-
-                const data = await response.json();
-
-                if (response.ok && data.redirectUrl) {
-                    showToast('Redirection vers la passerelle sécurisée HelloAsso...');
-                    setTimeout(() => {
-                        window.location.href = data.redirectUrl;
-                    }, 800);
-                } else {
-                    throw new Error(data.error || 'Erreur initialisation');
-                }
-            } catch (err) {
-                console.warn('Fallback redirection directe:', err);
-                showToast('Redirection vers la page de campagne associative HelloAsso...');
-                setTimeout(() => {
-                    window.open('https://www.helloasso.com/associations/education-solidaire', '_blank');
-                    closeModal();
-                }, 1000);
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;

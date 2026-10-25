@@ -10,10 +10,10 @@ import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { createCheckoutIntent, verifyWebhookSignature, fetchNotifiedResource, hasHelloAssoCredentials } from './helloasso.js';
+import { verifyWebhookSignature, fetchNotifiedResource, hasHelloAssoCredentials } from './helloasso.js';
 import { getFundingStatus } from './funding.js';
 import { saveEmergencyAlert, getEmergencyAlerts } from './emergency.js';
-import { validateEmergencyAlert, validateCheckout, safeCompare } from './validation.js';
+import { validateEmergencyAlert, safeCompare } from './validation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -135,65 +135,21 @@ app.get('/api/funding', async (req, res) => {
 });
 
 /**
- * Initialisation d'un Checkout HelloAsso v5
- * Body attendu : { amount (en EUR), title, name, email, address, zipCode, city, isDonation }
+ * Compatibilité avec les pages encore en cache qui appelaient le Checkout HelloAsso :
+ * dons et adhésions passent désormais par les campagnes HelloAsso (reçus fiscaux,
+ * liste des membres), le site n'y crée plus de paiement.
+ * Body attendu : { isDonation }
  */
-app.post('/api/helloasso/checkout', async (req, res) => {
-  const check = validateCheckout(req.body);
-  if (!check.ok) {
-    return res.status(400).json({ error: check.error });
-  }
-  const input = check.value;
-
-  // Les dons passent par la campagne de dons HelloAsso, seule à émettre les reçus fiscaux
-  // (un paiement Checkout n'en reçoit pas) : le site ne crée de Checkout que pour les adhésions.
-  if (input.isDonation) {
-    return res.json({
-      success: true,
-      redirectUrl: process.env.HELLOASSO_DONATION_FORM_URL ||
-        'https://www.helloasso.com/associations/education-solidaire/formulaires/1',
-    });
-  }
-
-  try {
-    // Si les clés API HelloAsso ne sont pas encore fournies dans l'environnement, mode simulation sécurisé
-    if (!hasHelloAssoCredentials()) {
-      const fallbackUrl = process.env.HELLOASSO_DEFAULT_FORM_URL ||
-        'https://www.helloasso.com/associations/education-solidaire';
-
-      console.warn('[HelloAsso] Clés non configurées, redirection vers la page de campagne par défaut.');
-      return res.json({
-        success: true,
-        simulated: true,
-        redirectUrl: fallbackUrl,
-        message: 'Redirection vers l\'espace de paiement associatif HelloAsso.',
-      });
-    }
-
-    const intent = await createCheckoutIntent({
-      totalAmount: input.amountInCents,
-      itemName: input.title,
-      payerFirstName: input.firstName,
-      payerLastName: input.lastName,
-      payerEmail: input.email,
-      payerAddress: input.address,
-      payerZipCode: input.zipCode,
-      payerCity: input.city,
-      metadata: {
-        formula: input.title,
-        isDonation: input.isDonation,
-      },
-    });
-
-    res.json({
-      success: true,
-      redirectUrl: intent.redirectUrl,
-      id: intent.id,
-    });
-  } catch (error) {
-    console.error('[API HelloAsso Checkout Error]:', error);
-    res.status(500).json({ error: 'Erreur lors de l\'initialisation du paiement.' });
-  }
+app.post('/api/helloasso/checkout', (req, res) => {
+  const isDonation = req.body?.isDonation === true || req.body?.isDonation === 'true';
+  res.json({
+    success: true,
+    redirectUrl: isDonation
+      ? process.env.HELLOASSO_DONATION_FORM_URL ||
+        'https://www.helloasso.com/associations/education-solidaire/formulaires/1'
+      : process.env.HELLOASSO_MEMBERSHIP_FORM_URL ||
+        'https://www.helloasso.com/associations/education-solidaire/adhesions/adhesion-unisson-2026-2027',
+  });
 });
 
 /**

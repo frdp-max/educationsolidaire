@@ -165,23 +165,14 @@ test('consultation des alertes désactivée sans clé configurée', async () => 
   }
 });
 
-test('checkout : montant invalide refusé, montant valide redirigé (mode simulation)', async () => {
-  let res = await post('/api/helloasso/checkout', { amount: 0, name: 'A B', email: 'a@b.fr' });
-  assert.equal(res.status, 400);
+test('checkout (pages en cache) : dons et adhésions renvoyés vers leur campagne HelloAsso', async () => {
+  let res = await post('/api/helloasso/checkout', { amount: 150, name: 'A B', email: 'a@b.fr', isDonation: true });
+  assert.equal(res.status, 200);
+  assert.equal((await res.json()).redirectUrl, 'https://www.helloasso.com/associations/education-solidaire/formulaires/1');
 
   res = await post('/api/helloasso/checkout', { amount: 25, name: 'A B', email: 'a@b.fr' });
   assert.equal(res.status, 200);
-  const data = await res.json();
-  assert.equal(data.simulated, true);
-  assert.match(data.redirectUrl, /^https:\/\/www\.helloasso\.com\//);
-});
-
-test('checkout : un don est renvoyé vers la campagne de dons (seule à émettre les reçus fiscaux)', async () => {
-  const res = await post('/api/helloasso/checkout', { amount: 150, name: 'A B', email: 'a@b.fr', isDonation: true });
-  assert.equal(res.status, 200);
-  const data = await res.json();
-  assert.equal(data.simulated, undefined);
-  assert.equal(data.redirectUrl, 'https://www.helloasso.com/associations/education-solidaire/formulaires/1');
+  assert.equal((await res.json()).redirectUrl, 'https://www.helloasso.com/associations/education-solidaire/adhesions/adhesion-unisson-2026-2027');
 });
 
 test('la CSP autorise les gestionnaires inline du site (onclick)', async () => {
