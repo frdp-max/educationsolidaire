@@ -87,6 +87,8 @@ app.use(helmet({
     },
   },
   crossOriginEmbedderPolicy: false,
+  // HSTS est posé par Nginx (nginx/default.conf, 2 ans + preload) : pas de second en-tête ici
+  strictTransportSecurity: false,
 }));
 
 // L'API n'est appelée que par le site lui-même : CORS restreint à l'origine officielle
