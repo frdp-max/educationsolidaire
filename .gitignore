@@ -10,3 +10,13 @@ documents/administratif/rib*
 
 # Signatures manuscrites : jamais dans git
 documents/administratif/signature*
+
+# Pièces administratives et comptables (dépôt public) : jamais dans git
+documents/administratif/*.pdf
+documents/administratif/*.doc
+!documents/administratif/UNISSON_Feuille_de_route_operationnelle.pdf
+facture*.pdf
+
+# Verrous LibreOffice
+.~lock.*#
+.claude/
