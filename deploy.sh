@@ -52,52 +52,49 @@ if [ ! -f "$SCRIPT_DIR/.env" ]; then
     cp "$SCRIPT_DIR/.env.example" "$SCRIPT_DIR/.env"
 fi
 
-# 6. Création des volumes et certificats initiaux
+# 6. Construction de l'image et volumes de certificats
 echo "🔒 Initialisation des volumes de certificats..."
 sudo docker compose build --pull
 
 sudo docker volume create educationsolidaire_certbot_etc > /dev/null 2>&1 || true
 sudo docker volume create educationsolidaire_certbot_var > /dev/null 2>&1 || true
 
-CERT_DIR="/var/lib/docker/volumes/educationsolidaire_certbot_etc/_data/live/$DOMAIN"
-if [ ! -d "$CERT_DIR" ]; then
-    echo "🔑 Création d'un certificat SSL temporaire pour amorcer Nginx..."
-    sudo mkdir -p "$CERT_DIR"
+# Nginx lit un chemin fixe, /etc/letsencrypt/unisson/, rempli par certbot/install-cert.py
+# à partir de la lignée Let's Encrypt valide (quel que soit son nom : -0001, etc.).
+# Ne jamais écrire dans /etc/letsencrypt/live/ : c'est le domaine réservé de certbot.
+echo "🔑 Installation du certificat Let's Encrypt existant..."
+sudo docker compose run --rm --no-deps --entrypoint "python3 /opt/unisson/install-cert.py" certbot || true
+
+SERVED_DIR="/var/lib/docker/volumes/educationsolidaire_certbot_etc/_data/unisson"
+if ! sudo test -f "$SERVED_DIR/fullchain.pem"; then
+    echo "🔑 Premier déploiement : certificat temporaire pour amorcer Nginx..."
+    sudo mkdir -p "$SERVED_DIR"
     sudo openssl req -x509 -nodes -newkey rsa:2048 -days 1 \
-        -keyout "$CERT_DIR/privkey.pem" \
-        -out "$CERT_DIR/fullchain.pem" \
-        -subj "/CN=localhost" > /dev/null 2>&1 || true
+        -keyout "$SERVED_DIR/privkey.pem" \
+        -out "$SERVED_DIR/fullchain.pem" \
+        -subj "/CN=localhost" > /dev/null 2>&1
 fi
 
 # 7. Démarrage des conteneurs
-echo "🔨 Démarrage des conteneurs Docker (App + Nginx)..."
+echo "🔨 Démarrage des conteneurs Docker (App + Nginx + Certbot)..."
 sudo docker compose up -d --remove-orphans
 
-# 8. Obtention / conservation du certificat Let's Encrypt
-echo "🌐 Vérification du certificat officiel Let's Encrypt SSL..."
+# 8. Obtention du certificat si absent ou proche de l'expiration (sinon conservé)
+echo "🌐 Vérification du certificat officiel Let's Encrypt..."
 sudo docker compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     --email $EMAIL \
     -d $DOMAIN \
     -d www.$DOMAIN \
-    --agree-tos --no-eff-email --keep-until-expiring --non-interactive" certbot || echo "ℹ️ Note: Certificat officiel actif déjà présent."
+    --agree-tos --no-eff-email --keep-until-expiring --non-interactive \
+    --deploy-hook 'python3 /opt/unisson/install-cert.py'" certbot || echo "⚠️ certbot certonly a échoué : voir les logs ci-dessus."
 
-# 8b. Synchronisation automatique du certificat Let's Encrypt authentique
-sudo docker compose run --rm --entrypoint "sh -c '
-  mkdir -p /etc/letsencrypt/live/education-solidaire.org
-  for f in \$(find /etc/letsencrypt/archive/ -name \"fullchain*.pem\" 2>/dev/null); do
-    if openssl x509 -in \$f -noout -issuer 2>/dev/null | grep -iq \"Let\"; then
-      cp -f \$f /etc/letsencrypt/live/education-solidaire.org/fullchain.pem
-      KEY_FILE=\$(echo \$f | sed \"s/fullchain/privkey/\")
-      cp -f \$KEY_FILE /etc/letsencrypt/live/education-solidaire.org/privkey.pem
-    fi
-  done
-  chmod 644 /etc/letsencrypt/live/education-solidaire.org/*.pem 2>/dev/null || true
-'" certbot > /dev/null 2>&1 || true
-
-# 9. Rechargement immédiat de Nginx
-echo "🔄 Rechargement de Nginx avec les certificats certifiés..."
-sudo docker compose restart nginx
+# 9. Contrôle du certificat installé et rechargement de Nginx
+if ! sudo docker compose run --rm --no-deps --entrypoint "python3 /opt/unisson/install-cert.py" certbot; then
+    echo "❌ Aucun certificat Let's Encrypt valide n'est installé : le site HTTPS est en erreur."
+    exit 1
+fi
+sudo docker compose exec nginx nginx -s reload
 
 echo "========================================================"
 echo "✅ DÉPLOIEMENT & CERTIFICAT SSL VALIDÉS !"
