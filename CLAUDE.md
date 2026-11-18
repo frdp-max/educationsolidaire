@@ -60,7 +60,8 @@
 ├── logo.svg                     # Symbole officiel UNISSON (deux mains entrelacées, vectoriel, généré par documents/textile/generate.py) — utilisé sur le site et les supports print
 ├── logo.png                     # Logo complet (écusson) 1024 px — schema.org ; logo-192.png, favicon.ico, apple-touch-icon.png = symbole
 ├── deploy.sh                    # Script de déploiement automatique sur le VPS
-├── docker-compose.yml           # Définition des services conteneurisés (app, nginx, certbot)
+├── docker-compose.yml           # Définition des services conteneurisés (app, nginx rechargé toutes les 6 h, certbot)
+├── certbot/install-cert.py      # Hook certbot : copie la lignée Let's Encrypt valide (quel que soit son nom, ex. -0001) vers /etc/letsencrypt/unisson/, seul chemin lu par Nginx. Ne jamais écrire dans live/
 ├── Dockerfile                   # Build de l'application Node.js
 ├── server/
 │   ├── index.js                 # Point d'entrée (dotenv + démarrage du serveur)

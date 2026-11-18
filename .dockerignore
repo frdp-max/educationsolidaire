@@ -19,3 +19,4 @@ CLAUDE.md
 deploy.sh
 docker-compose.yml
 nginx/
+certbot/

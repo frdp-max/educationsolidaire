@@ -32,6 +32,9 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - certbot_etc:/etc/letsencrypt:ro
       - certbot_var:/var/www/certbot:ro
+    # Recharge Nginx toutes les 6 h pour prendre en compte un certificat renouvelé
+    # (lu dans /etc/letsencrypt/unisson/, installé par certbot/install-cert.py).
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & exec nginx -g \"daemon off;\"'"
     depends_on:
       - app
     networks:
@@ -40,11 +43,13 @@ services:
   certbot:
     image: certbot/certbot
     container_name: unisson_certbot
-    restart: "no"
+    # Doit survivre aux redémarrages du VPS, sinon plus aucun renouvellement.
+    restart: unless-stopped
     volumes:
       - certbot_etc:/etc/letsencrypt
       - certbot_var:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+      - ./certbot:/opt/unisson:ro
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --deploy-hook \"python3 /opt/unisson/install-cert.py\"; python3 /opt/unisson/install-cert.py; sleep 12h & wait $${!}; done;'"
     networks:
       - unisson_network
 
