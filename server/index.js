@@ -9,6 +9,10 @@ dotenv.config();
 
 // Import dynamique : les modules lisent process.env au chargement, après dotenv
 const { app } = await import('./app.js');
+const { startRetentionSchedule } = await import('./emergency.js');
+
+// RGPD : suppression des demandes de plus de 6 mois, au démarrage puis chaque jour
+startRetentionSchedule();
 
 const PORT = process.env.PORT || 3000;
 
