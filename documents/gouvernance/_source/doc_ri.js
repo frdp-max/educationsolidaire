@@ -5,7 +5,6 @@ module.exports = {
   blocks: [
     ['box', [
       '**Note de rédaction — à supprimer avant adoption.** Cette version est alignée sur les statuts modifiés par l\'Assemblée Générale Extraordinaire du 22 novembre 2026 (art. 5 à 14, 16, 18, 20 et 21). Avant le vote, le Bureau vérifie chaque renvoi sur l\'exemplaire signé des statuts : en cas de contradiction, les statuts prévalent toujours sur le règlement intérieur.',
-      '**Décision à prendre par le Conseil :** l\'article 5 des statuts renvoie au présent règlement la limite du nombre de membres couverts par une formule famille ou duo. Le projet retient **deux personnes majeures au plus** (article 1) ; le Conseil peut retenir un autre nombre avant l\'adoption.',
       'Les passages juridiques sensibles (radiation, casier judiciaire, protection de l\'enfance, données de santé) gagnent à être relus par un juriste associatif ou la Maison des associations avant adoption. Ce document constitue un cadre de gestion, pas un avis juridique.',
     ], 'warm'],
 
