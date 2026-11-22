@@ -187,7 +187,7 @@ const DOC27 = {
   ],
   [
    "p",
-   "Il est fondé entre les adhérents aux présents statuts une association régie par la loi du 1er juillet 1901 et le décret du 16 août 1901, ayant pour dénomination : « Éducation Solidaire »."
+   "Il est fondé entre les adhérents aux présents statuts une association régie par la loi du 1er juillet 1901 et le décret du 16 août 1901, ayant pour dénomination : **« Éducation Solidaire »**."
   ],
   [
    "h3",
@@ -195,7 +195,11 @@ const DOC27 = {
   ],
   [
    "p",
-   "Le siège social est fixé à : 45, rue Henri Barbusse, 92230 Gennevilliers. Il pourra être transféré par simple décision du Conseil d'Administration, ratifiée par l'Assemblée Générale Ordinaire la plus proche."
+   "Le siège social est fixé à : **45, rue Henri Barbusse, 92230 Gennevilliers**."
+  ],
+  [
+   "p",
+   "Il pourra être transféré par simple décision du Conseil d'Administration, ratifiée par l'Assemblée Générale Ordinaire la plus proche."
   ],
   [
    "h3",
@@ -216,7 +220,7 @@ const DOC27 = {
     "La proposition d'un lieu de socialisation et d'écoute où les jeunes peuvent se poser ;",
     "L'organisation de sorties et d'activités éducatives ;",
     "L'orientation des usagers vers les services sociaux et scolaires compétents ;",
-    "La mise à l'abri et l'assistance d'urgence temporaire (repas et hébergement de secours de premier niveau) pour les personnes ou familles en détresse aiguë, en lien étroit avec les services sociaux de la commune ;",
+    "La mise à l'abri et l'assistance d'urgence temporaire (repas et hébergement de secours de premier niveau) pour les personnes ou familles en situation de détresse aiguë, en lien étroit avec les services sociaux de la commune ;",
     "La formation et la sensibilisation des parents et des professionnels du secteur ;",
     "L'accompagnement, l'orientation et la mise à l'abri d'urgence des femmes victimes de violences intra-familiales."
    ]
@@ -253,13 +257,13 @@ const DOC27 = {
    "ul",
    [
     "**Membres fondateurs** : Sabri TOUJANI et Tahar BENHALIMA. Ils sont membres du Conseil d'Administration de plein droit pendant la période de fondation, puis membres de droit dans les conditions prévues à l'article 9.",
-    "**Membres d'honneur** : personnes physiques ou morales ayant rendu des services importants à l'association. Leur admission est prononcée par le Conseil d'Administration. Ils sont dispensés de cotisation.",
-    "**Membres adhérents** : personnes physiques ou morales admises dans les conditions de l'article 6, qui adhèrent aux présents statuts, s'engagent à participer aux activités et s'acquittent de leur cotisation annuelle."
+    "**Membres d'honneur** : Personnes physiques ou morales ayant rendu des services importants à l'association. Leur admission est prononcée par le Conseil d'Administration. Ils sont dispensés de cotisation.",
+    "**Membres adhérents** : Personnes physiques ou morales admises dans les conditions de l'article 6, qui adhèrent aux présents statuts, s'engagent à participer aux activités de l'association et s'acquittent de leur cotisation annuelle."
    ]
   ],
   [
    "p",
-   "La qualité de membre est personnelle. Lorsqu'une formule de cotisation couvre plusieurs personnes (famille ou duo), elle ne confère la qualité de membre qu'aux personnes majeures nommément désignées lors de l'adhésion, dans la limite fixée par le règlement intérieur ; chacune dispose d'une voix. Les mineurs couverts par une telle formule sont bénéficiaires des activités et ne sont pas membres. Le montant de la cotisation, selon la formule choisie, est sans incidence sur les droits attachés à la qualité de membre."
+   "La qualité de membre est personnelle. Lorsqu'une formule de cotisation couvre plusieurs personnes (formule famille ou duo), elle ne confère la qualité de membre qu'aux personnes majeures nommément désignées lors de l'adhésion, dans la limite fixée par le règlement intérieur ; chacune d'elles dispose d'une voix. Les mineurs couverts par une telle formule sont bénéficiaires des activités et ne sont pas membres. Le montant de la cotisation, selon la formule choisie, est sans incidence sur les droits attachés à la qualité de membre."
   ],
   [
    "p",
@@ -271,11 +275,15 @@ const DOC27 = {
   ],
   [
    "p",
-   "Pour faire partie de l'association, il faut être agréé par le Conseil d'Administration, qui statue souverainement sur les demandes d'admission, dans le respect du principe de non-discrimination. Le refus d'admission n'a pas à être motivé."
+   "Pour faire partie de l'association, il faut être agréé par le Conseil d'Administration, qui statue souverainement lors de ses réunions sur les demandes d'admission présentées, dans le respect du principe de non-discrimination. Le refus d'admission n'a pas à être motivé."
   ],
   [
    "p",
-   "Le bulletin d'adhésion rempli et le versement de la cotisation, en ligne ou sur papier, valent demande d'admission. Le Conseil d'Administration statue au plus tard dans les trois mois qui suivent la réception de la demande, selon des critères cohérents avec l'objet de l'association. L'examen préalable des demandes peut être confié au Bureau, mais la décision d'admission appartient au seul Conseil d'Administration. La condition de présence d'un membre fondateur pour prononcer une admission cesse définitivement de s'appliquer dès le déclenchement du palier de majorité élue prévu à l'article 9, ou dès la fin de la période de fondation si celle-ci intervient auparavant ; passé ce terme, la décision est prise collégialement par le Conseil d'Administration, sans présence obligatoire d'un fondateur. La décision est notifiée par écrit ou par courriel. En cas de refus, la cotisation versée est intégralement remboursée et le demandeur peut solliciter le réexamen de sa demande par le Conseil d'Administration."
+   "Le bulletin d'adhésion rempli et le versement de la cotisation, en ligne ou sur papier, valent **demande d'admission**. Le Conseil d'Administration statue au plus tard dans les trois mois qui suivent la réception de la demande, selon des critères cohérents avec l'objet de l'association. Il peut confier l'examen préalable des demandes au Bureau, mais la décision d'admission lui appartient. La décision est notifiée par écrit ou par courriel. En cas de refus, la cotisation versée est intégralement remboursée et le demandeur peut solliciter le réexamen de sa demande par le Conseil d'Administration."
+  ],
+  [
+   "p",
+   "Jusqu'au déclenchement du palier de majorité élue prévu à l'article 9, ou jusqu'à la fin de la période de fondation si elle intervient auparavant, une admission ne peut être prononcée en l'absence d'un membre fondateur en fonction. Cette condition cesse ensuite définitivement de s'appliquer et la décision est prise collégialement par le Conseil d'Administration."
   ],
   [
    "p",
@@ -287,7 +295,7 @@ const DOC27 = {
   ],
   [
    "p",
-   "Les membres adhérents s'acquittent d'une cotisation annuelle. Le montant et les conditions de versement sont fixés chaque année par le Conseil d'Administration. Les membres fondateurs et d'honneur en sont exemptés de plein droit."
+   "Les membres adhérents s'acquittent d'une cotisation annuelle. Le montant et les conditions de versement de cette cotisation sont fixés chaque année par le Conseil d'Administration. Les membres fondateurs et d'honneur en sont exemptés de plein droit."
   ],
   [
    "h3",
@@ -295,7 +303,15 @@ const DOC27 = {
   ],
   [
    "p",
-   "La qualité de membre se perd par : le décès de la personne physique ou la dissolution de la personne morale ; la démission adressée par écrit au Président ; la radiation prononcée par le Conseil d'Administration pour non-paiement de la cotisation ou pour motif grave. Dans ce dernier cas, l'intéressé doit être invité par écrit, au moins 7 jours avant la réunion du CA, à présenter sa défense. La décision est prise à la majorité absolue des membres présents du CA ; hors période de fondation, la voix du Président est prépondérante en cas d'égalité."
+   "La qualité de membre se perd par :"
+  ],
+  [
+   "ul",
+   [
+    "Le décès de la personne physique ou la dissolution de la personne morale ;",
+    "La démission adressée par écrit (courrier ou email) au Président de l'association ;",
+    "La radiation prononcée par le Conseil d'Administration pour non-paiement de la cotisation ou pour motif grave. Dans ce cas, l'intéressé doit être invité par écrit, au moins 7 jours avant la réunion du CA, à présenter sa défense. La décision est prise à la majorité absolue des membres présents du CA ; hors période de fondation, la voix du Président est prépondérante en cas d'égalité."
+   ]
   ],
   [
    "h2",
@@ -313,12 +329,12 @@ const DOC27 = {
    "ul",
    [
     "Des membres fondateurs (Sabri TOUJANI et Tahar BENHALIMA), membres de droit dans les conditions de la période de fondation ci-après ;",
-    "De membres élus par l'Assemblée Générale Ordinaire parmi les membres adhérents, pour un mandat de 3 ans renouvelable, dans les limites de composition fixées ci-après (période de fondation et palier de majorité élue)."
+    "De membres élus par l'Assemblée Générale Ordinaire parmi les membres adhérents de l'association, pour un mandat de 3 ans renouvelable, dans les limites de composition fixées ci-après."
    ]
   ],
   [
    "p",
-   "Est éligible tout membre adhérent majeur, jouissant de ses droits civils, à jour de sa cotisation et membre depuis au moins un an à la date de l'Assemblée Générale. Les candidatures sont adressées par écrit au Président au moins dix jours avant l'Assemblée."
+   "Est éligible au Conseil d'Administration tout membre adhérent majeur, jouissant de ses droits civils, à jour de sa cotisation et membre de l'association depuis au moins un an à la date de l'Assemblée Générale. Les candidatures sont adressées par écrit au Président au moins dix jours avant l'Assemblée."
   ],
   [
    "p",
@@ -338,7 +354,7 @@ const DOC27 = {
   ],
   [
    "p",
-   "Le Conseil d'Administration se réunit au moins une fois par an, sur convocation du Président ou à la demande d'au moins la moitié de ses membres, cette demande ne pouvant en aucun cas émaner d'un seul administrateur (soit au minimum deux administrateurs). La présence de la moitié au moins de ses membres est nécessaire pour qu'il délibère valablement. Les décisions sont prises à la majorité absolue des membres présents. Hors période de fondation, la voix du Président est prépondérante en cas d'égalité."
+   "Le Conseil d'Administration se réunit au moins une fois par an, sur convocation du Président ou à la demande d'au moins la moitié de ses membres, cette demande ne pouvant en aucun cas émaner d'un seul administrateur (soit au minimum deux administrateurs). La présence de la moitié au moins de ses membres est nécessaire pour que le conseil puisse délibérer valablement. Les décisions sont prises à la majorité absolue des membres présents. Hors période de fondation, la voix du Président est prépondérante en cas d'égalité."
   ],
   [
    "p",
@@ -350,7 +366,22 @@ const DOC27 = {
   ],
   [
    "p",
-   "Le Conseil d'Administration élit parmi ses membres, pour un mandat de trois ans renouvelable, un Bureau composé au minimum d'un Président et d'un Trésorier. Il pourra être complété ultérieurement par un Secrétaire et/ou un Vice-Président au fur et à mesure du développement de l'association. Les fonctions de Président et de Trésorier ne peuvent pas être cumulées par la même personne ; le cumul d'autres fonctions du Bureau est autorisé si l'effectif le justifie."
+   "Le Conseil d'Administration élit parmi ses membres, pour un mandat de trois ans renouvelable, un Bureau composé au minimum de :"
+  ],
+  [
+   "ul",
+   [
+    "Un Président ;",
+    "Un Trésorier."
+   ]
+  ],
+  [
+   "p",
+   "Il pourra être complété ultérieurement par un Secrétaire et/ou un Vice-Président au fur et à mesure du développement de l'association et de l'intégration de nouveaux membres."
+  ],
+  [
+   "p",
+   "Les fonctions de Président et de Trésorier ne peuvent pas être cumulées par la même personne. En revanche, le cumul d'autres fonctions du Bureau (par exemple Trésorier et Secrétaire) est autorisé si l'effectif de l'association le justifie."
   ],
   [
    "p",
@@ -362,7 +393,7 @@ const DOC27 = {
   ],
   [
    "p",
-   "**Révocation des autres membres du Bureau.** La révocation d'un autre membre du Bureau de ses fonctions de gestion interne peut être prononcée à tout moment par le Conseil d'Administration pour motif grave, à la majorité absolue de ses membres, après respect d'un délai de contradiction de 7 jours. S'il s'agit d'un administrateur élu par l'Assemblée Générale, seul cet organe souverain peut révoquer son mandat d'administrateur."
+   "**Révocation des autres membres du Bureau.** La révocation d'un autre membre du Bureau de ses fonctions de gestion interne peut être prononcée à tout moment par le Conseil d'Administration pour motif grave, à la majorité absolue de ses membres, après respect d'un délai de contradiction de 7 jours permettant à l'intéressé d'être entendu. En revanche, s'il s'agit d'un administrateur élu par l'Assemblée Générale, seul cet organe souverain dispose du pouvoir de révoquer son mandat d'administrateur au CA."
   ],
   [
    "p",
@@ -398,7 +429,7 @@ const DOC27 = {
   ],
   [
    "h2",
-   "Titre IV — Assemblées Générales"
+   "Titre IV — Assemblées générales"
   ],
   [
    "h3",
@@ -406,7 +437,7 @@ const DOC27 = {
   ],
   [
    "p",
-   "L'Assemblée Générale Ordinaire comprend tous les membres à jour de leurs obligations (fondateurs, d'honneur et adhérents). Elle se réunit au moins une fois par an, en présentiel ou par visioconférence, dans des conditions permettant l'identification des participants."
+   "L'Assemblée Générale Ordinaire comprend tous les membres de l'association à jour de leurs obligations (fondateurs, d'honneur et adhérents). Elle se réunit au moins une fois par an, en présentiel ou par visioconférence, dans des conditions qui permettent l'identification des participants."
   ],
   [
    "p",
@@ -414,15 +445,19 @@ const DOC27 = {
   ],
   [
    "p",
-   "Elle est convoquée par le Président ou par au moins la moitié des membres du Conseil d'Administration, sans que cette demande puisse émaner d'un seul administrateur (soit au minimum deux administrateurs). La convocation est adressée par écrit ou par courriel au moins quinze jours à l'avance. L'ordre du jour figure obligatoirement sur la convocation. Seules les questions inscrites à l'ordre du jour peuvent faire l'objet d'un vote ; tout membre peut demander l'inscription d'une question par écrit au Président au moins dix jours avant l'Assemblée. Si l'Assemblée Générale Ordinaire annuelle n'a pas été convoquée dans les quinze mois suivant la précédente, elle peut l'être par tout administrateur ou à la demande écrite d'au moins 20 % des membres appelés à voter."
+   "Elle est convoquée par le Président ou à la demande d'au moins la moitié des membres du Conseil d'Administration, cette demande ne pouvant émaner d'un seul administrateur. La convocation est adressée par écrit ou par courrier électronique au moins **quinze jours** à l'avance. **L'ordre du jour doit obligatoirement figurer sur la convocation.** Seules les questions inscrites à l'ordre du jour peuvent faire l'objet d'un vote ; tout membre peut demander l'inscription d'une question par écrit au Président au moins dix jours avant l'Assemblée. Si l'Assemblée Générale Ordinaire annuelle n'a pas été convoquée dans les quinze mois suivant la précédente, elle peut l'être par tout administrateur ou à la demande écrite d'au moins 20 % des membres appelés à voter."
   ],
   [
    "p",
-   "L'AGO entend les rapports sur la gestion et la situation morale, examine le rapport financier du Trésorier, approuve les comptes de l'exercice clos, vote le budget prévisionnel et pourvoit au renouvellement des membres élus du Conseil d'Administration."
+   "L'AGO entend les rapports sur la gestion du Conseil d'Administration et la situation morale, examine le rapport financier du Trésorier, approuve les comptes de l'exercice clos, vote le budget prévisionnel de l'exercice suivant et pourvoit au renouvellement des membres élus du Conseil d'Administration."
   ],
   [
    "p",
-   "L'AGO délibère valablement si le quart au moins des membres appelés à voter est présent ou représenté. À défaut, une seconde Assemblée est convoquée avec le même ordre du jour, à quinze jours au moins d'intervalle ; elle délibère quel que soit le nombre de présents ou représentés. Les décisions sont prises à la majorité simple des voix exprimées."
+   "L'AGO délibère valablement si le quart au moins des membres appelés à voter est présent ou représenté. À défaut, une seconde Assemblée est convoquée avec le même ordre du jour, à quinze jours au moins d'intervalle ; elle délibère quel que soit le nombre de membres présents ou représentés."
+  ],
+  [
+   "p",
+   "Les décisions sont prises à la majorité simple des voix exprimées des membres présents ou représentés."
   ],
   [
    "h3",
@@ -430,14 +465,18 @@ const DOC27 = {
   ],
   [
    "p",
-   "L'AGE est compétente pour statuer sur les modifications des statuts, la dissolution, les opérations immobilières majeures, la révocation du Président ou toute question de gouvernance exceptionnelle. Elle est valablement convoquée :"
+   "L'Assemblée Générale Extraordinaire est compétente pour statuer sur les modifications des statuts, la dissolution de l'association, les opérations immobilières majeures, la révocation du Président ou toute question de gouvernance exceptionnelle."
+  ],
+  [
+   "p",
+   "Elle est valablement convoquée :"
   ],
   [
    "ul",
    [
     "Sur décision du Président ;",
-    "À la demande d'au moins la moitié des membres du Conseil d'Administration, sans que cette demande puisse émaner d'un seul administrateur (soit au minimum deux administrateurs) ;",
-    "Ou à la demande écrite d'au moins 20 % des membres appelés à voter, signée par chacun et précisant les questions à inscrire. Dans ce cas, le Président convoque l'AGE dans les 30 jours de la réception, sans qu'un veto ou accord préalable du CA ne puisse y faire obstacle. À défaut de convocation dans ce délai, l'AGE est convoquée par le Trésorier, à défaut par tout administrateur, à défaut par les deux premiers signataires de la demande."
+    "À la demande d'au moins la moitié des membres du Conseil d'Administration, cette demande ne pouvant émaner d'un seul administrateur ;",
+    "Ou à la demande écrite d'au moins 20 % des membres appelés à voter, signée par chacun d'eux et précisant les questions à inscrire à l'ordre du jour. Dans ce cas, le Président est tenu de convoquer l'AGE dans un délai de 30 jours à compter de la réception de la demande, sans qu'un droit de veto ou d'accord préalable du CA ne puisse y faire obstacle. À défaut de convocation dans ce délai, l'AGE est convoquée par le Trésorier, à défaut par tout administrateur, à défaut par les deux premiers signataires de la demande."
    ]
   ],
   [
@@ -462,14 +501,14 @@ const DOC27 = {
   ],
   [
    "p",
-   "Conformément aux principes intangibles de l'ESS et de l'agrément ESUS, la gouvernance de l'association est démocratique :"
+   "Conformément aux principes intangibles de l'Économie Sociale et Solidaire (ESS) et de l'agrément ESUS, la gouvernance de l'association est démocratique :"
   ],
   [
    "ul",
    [
-    "En Assemblée Générale (Ordinaire et Extraordinaire), chaque membre appelé à voter (fondateur, adhérent ou d'honneur) dispose d'une seule voix délibérative selon le principe : « un membre = une voix ».",
+    "En Assemblée Générale (Ordinaire et Extraordinaire), chaque membre appelé à voter (qu'il soit fondateur, adhérent ou d'honneur) dispose d'**une seule voix délibérative** selon le principe : **« un membre = une voix »**.",
     "Tout système de vote pondéré, de quota bloqué ou de plafond de voix est exclu.",
-    "Le vote par procuration est autorisé au profit d'un autre membre appelé à voter. Un membre présent ne peut détenir plus d'une (1) procuration. La procuration est écrite, datée, signée et nominative ; elle est remise au Bureau au plus tard quarante-huit heures avant l'Assemblée (lorsque l'Assemblée statue sur la révocation du Président, à un membre du Bureau autre que le Président). Les pouvoirs sans mandataire désigné sont nuls.",
+    "Le vote par procuration est autorisé au profit d'un autre membre appelé à voter. Un membre présent ne peut détenir plus d'une (1) procuration. La procuration est écrite, datée, signée et nominative ; elle est remise au Bureau au plus tard quarante-huit heures avant l'Assemblée (lorsque l'Assemblée statue sur la révocation du Président, à un membre du Bureau autre que le Président). Les pouvoirs qui ne désignent pas de mandataire sont nuls.",
     "Les votes ont lieu à main levée. Le vote a lieu à bulletin secret pour l'élection ou la révocation d'une personne, ou dès qu'un membre présent le demande."
    ]
   ],
@@ -483,7 +522,17 @@ const DOC27 = {
   ],
   [
    "p",
-   "Les ressources comprennent : les cotisations des membres adhérents ; les subventions de l'État, des collectivités territoriales (notamment la Ville de Gennevilliers, le Département des Hauts-de-Seine et la Région Île-de-France), des établissements publics ou de l'Union Européenne ; les dons, legs, parrainages et mécénats privés ; les recettes de ses activités économiques et prestations ; toutes autres ressources autorisées par les lois et règlements."
+   "Les ressources de l'association comprennent :"
+  ],
+  [
+   "ul",
+   [
+    "Les cotisations des membres adhérents ;",
+    "Les subventions de l'État, des collectivités territoriales (notamment la Ville de Gennevilliers, Le Departement Haut de Seine et la Région Ile de France), des établissements publics ou de l'Union Européenne ;",
+    "Les dons, legs, parrainages et mécénats privés ;",
+    "Les recettes issues de ses activités économiques et des prestations fournies par l'association ;",
+    "Toutes autres ressources autorisées par les lois et règlements en vigueur."
+   ]
   ],
   [
    "h3",
@@ -491,15 +540,22 @@ const DOC27 = {
   ],
   [
    "p",
-   "Les excédents sont intégralement et obligatoirement affectés à la constitution de réserves de sécurité et au développement de l'objet social. Aucune distribution de bénéfices, dividendes, excédents de gestion ou part d'actif aux membres n'est autorisée. Les réserves constituées sont impartageables de manière définitive."
+   "Les excédents financiers générés par l'association sont intégralement et obligatoirement affectés à la constitution de réserves de sécurité et au développement de son objet social d'utilité sociale."
+  ],
+  [
+   "p",
+   "Aucune distribution de bénéfices, de dividendes, d'excédents de gestion ou de part d'actif aux membres (qu'ils soient fondateurs, adhérents ou d'honneur) n'est autorisée. Les réserves constituées sont impartageables de manière définitive."
   ],
   [
    "h3",
    "Article 16 — Gratuité des fonctions et politique de rémunération *"
   ],
   [
-   "p",
-   "Les fonctions d'administration et de direction exercées par les membres du Conseil d'Administration et du Bureau sont gratuites et bénévoles ; seuls les frais réels et justifiés sont remboursés, après validation du Bureau. Si l'association rémunère des salariés ou des dirigeants, sa politique de rémunération respecte les conditions de l'article L. 3332-17-1 du code du travail, ou de toute disposition qui s'y substituerait : la moyenne des sommes versées, y compris les primes, aux cinq salariés ou dirigeants les mieux rémunérés n'excède pas, au titre de l'année pour un emploi à temps complet, sept fois la rémunération annuelle perçue par un salarié à temps complet sur la base de la durée légale du travail et du salaire minimum de croissance, ou du salaire minimum de branche s'il est supérieur ; les sommes versées, y compris les primes, au salarié ou dirigeant le mieux rémunéré n'excèdent pas dix fois cette même rémunération annuelle."
+   "ol",
+   [
+    "Les fonctions d'administration et de direction exercées par les membres du Conseil d'Administration et du Bureau sont gratuites et bénévoles. Seuls les frais réels et justifiés occasionnés par l'accomplissement de leur mandat sont remboursés, sur présentation de justificatifs et après validation du Bureau.",
+    "Si l'association rémunère des salariés ou des dirigeants, sa politique de rémunération respecte les conditions de l'article L. 3332-17-1 du code du travail, ou de toute disposition qui s'y substituerait : la moyenne des sommes versées, y compris les primes, aux cinq salariés ou dirigeants les mieux rémunérés n'excède pas, au titre de l'année pour un emploi à temps complet, sept fois la rémunération annuelle perçue par un salarié à temps complet sur la base de la durée légale du travail et du salaire minimum de croissance, ou du salaire minimum de branche s'il est supérieur ; les sommes versées, y compris les primes, au salarié ou dirigeant le mieux rémunéré n'excèdent pas dix fois cette même rémunération annuelle."
+   ]
   ],
   [
    "h2",
@@ -511,7 +567,11 @@ const DOC27 = {
   ],
   [
    "p",
-   "La dissolution ne peut être prononcée qu'en AGE convoquée spécialement à cet effet, à la majorité des deux tiers des voix exprimées. Un ou plusieurs liquidateurs sont nommés par l'AGE. L'actif net subsistant ne peut être dévolu à aucun membre, même partiellement ; il est obligatoirement dévolu à une ou plusieurs associations, fondations ou organismes poursuivant un objet similaire et partageant les principes de l'ESS, conformément à l'article 9 de la loi du 1er juillet 1901 et à la loi ESS du 31 juillet 2014."
+   "La dissolution de l'association ne peut être prononcée qu'en Assemblée Générale Extraordinaire convoquée spécialement à cet effet, à la majorité des deux tiers des voix exprimées des membres présents ou représentés."
+  ],
+  [
+   "p",
+   "En cas de dissolution, un ou plusieurs liquidateurs sont nommés par l'AGE. L'actif net subsistant après reprise des apports éventuels ne peut être dévolu à aucun membre de l'association, même partiellement. Cet actif net sera obligatoirement dévolu à une ou plusieurs associations, fondations ou organismes poursuivant un objet similaire et partageant les principes de l'Économie Sociale et Solidaire, conformément à l'article 9 de la loi du 1er juillet 1901 et à la loi ESS du 31 juillet 2014."
   ],
   [
    "h2",
@@ -523,7 +583,7 @@ const DOC27 = {
   ],
   [
    "p",
-   "Un règlement intérieur peut être rédigé par le Conseil d'Administration pour fixer les détails d'exécution des statuts et l'organisation pratique de l'association. Il est soumis à l'approbation de l'AGO la plus proche."
+   "Un règlement intérieur peut être rédigé par le Conseil d'Administration pour fixer les détails d'exécution des présents statuts et l'organisation pratique de l'association. Il est soumis à l'approbation de l'Assemblée Générale Ordinaire la plus proche."
   ],
   [
    "h3",
@@ -531,7 +591,19 @@ const DOC27 = {
   ],
   [
    "p",
-   "Constituée sous la forme d'une association régie par la loi du 1er juillet 1901, l'association relève de l'économie sociale et solidaire au sens du 1° du II de l'article 1er de la loi n° 2014-856 du 31 juillet 2014. Elle s'engage à en respecter les principes énoncés au I du même article : un but poursuivi autre que le seul partage des bénéfices ; une gouvernance démocratique, définie et organisée par les présents statuts, fondée sur le principe « un membre = une voix » et prévoyant l'information et la participation des membres, des salariés et des parties prenantes ; une gestion consacrant les excédents au maintien et au développement de l'activité, avec des réserves impartageables. Elle peut solliciter l'agrément « entreprise solidaire d'utilité sociale » dans les conditions de l'article L. 3332-17-1 du code du travail, ou de toute disposition qui s'y substituerait."
+   "Constituée sous la forme d'une association régie par la loi du 1er juillet 1901, l'association relève de l'économie sociale et solidaire au sens du 1° du II de l'article 1er de la loi n° 2014-856 du 31 juillet 2014. Elle s'engage à en respecter les principes énoncés au I du même article :"
+  ],
+  [
+   "ul",
+   [
+    "Un but poursuivi autre que le seul partage des bénéfices ;",
+    "Une gouvernance démocratique, définie et organisée par les présents statuts, fondée sur le principe « un membre = une voix » et prévoyant l'information et la participation des membres, des salariés et des parties prenantes ;",
+    "Une gestion consacrant les excédents au maintien et au développement de l'activité, avec des réserves impartageables."
+   ]
+  ],
+  [
+   "p",
+   "Elle peut solliciter l'agrément « entreprise solidaire d'utilité sociale » dans les conditions de l'article L. 3332-17-1 du code du travail, ou de toute disposition qui s'y substituerait."
   ],
   [
    "h3",
@@ -539,11 +611,15 @@ const DOC27 = {
   ],
   [
    "p",
-   "Les formalités de déclaration en préfecture et de publication au JOAFE sont accomplies par le Président, ou par un membre du Bureau expressément et spécialement mandaté par lui par écrit. Toute déclaration modificative portant sur la composition du Bureau ou du Conseil d'Administration est accompagnée du procès-verbal de l'organe compétent, certifié conforme par le Président et le Trésorier. Conformément à l'article 5 de la loi du 1er juillet 1901, les modifications statutaires et les changements survenus dans l'administration sont déclarés dans les trois mois ; ils ne sont opposables aux tiers qu'à compter de leur déclaration."
+   "Les formalités de déclaration au greffe des associations et de publication au Journal Officiel des Associations et Fondations d'Entreprises (JOAFE) requises par la loi sont accomplies par le Président, ou par un membre du Bureau expressément et spécialement mandaté par lui par écrit. Toute déclaration modificative portant sur la composition du Bureau ou du Conseil d'Administration est accompagnée du procès-verbal de l'organe compétent, certifié conforme par le Président et le Trésorier."
   ],
   [
    "p",
-   "Les présents statuts ont été adoptés à l'unanimité par l'Assemblée Générale Constitutive réunie à Gennevilliers le 11 juillet 2026, et modifiés par l'Assemblée Générale Extraordinaire du ___/___/2026."
+   "Conformément à l'article 5 de la loi du 1er juillet 1901, les modifications statutaires et les changements survenus dans l'administration sont déclarés dans les trois mois ; ils ne sont opposables aux tiers qu'à compter de leur déclaration."
+  ],
+  [
+   "p",
+   "Les présents statuts ont été adoptés à l'unanimité par l'Assemblée Générale Constitutive réunie à Gennevilliers, le **11 juillet 2026**, et modifiés par l'Assemblée Générale Extraordinaire du ___/___/2026."
   ],
   [
    "h3",
