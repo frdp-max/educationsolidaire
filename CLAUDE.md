@@ -68,7 +68,7 @@
 │   ├── app.js                   # App Express : CSP, routes API, liste blanche des fichiers publics (PUBLIC_FILES)
 │   ├── validation.js            # Validation des entrées (signalements d'urgence), comparaison sûre
 │   ├── helloasso.js             # Client API HelloAsso v5 (auth token, signature & relecture des webhooks)
-│   ├── emergency.js             # Gestionnaire des signalements et alertes d'urgence
+│   ├── emergency.js             # Gestionnaire des signalements (data/emergency_alerts.json) ; purge RGPD automatique > 6 mois (au démarrage + chaque jour, EMERGENCY_RETENTION_DAYS ≤ 180)
 │   └── notify.js                # Notifications d'astreinte : email Brevo + webhook Discord/Slack
 ├── test/                        # Tests node:test (validation, routes, fichiers non exposés)
 └── package.json                 # Dépendances et scripts npm
