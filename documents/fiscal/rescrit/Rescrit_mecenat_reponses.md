@@ -282,11 +282,11 @@ Critère retenu : part du budget prévisionnel consacrée à chaque activité.
 
 | Poste | Montant | Détail |
 |---|---:|---|
-| Mobilité solidaire | 11 100 € | Véhicule 7 places d'occasion révisé (8 000 €), carte grise, mise en service et marquage (600 €), assurance transport de personnes 12 mois (1 000 €), carburant (1 000 €) et entretien (500 €) 1re année |
-| Fonds de premier secours | 4 000 € | Mise à l'abri de 5 familles × 5 jours à 110 €/jour (chambre 85 €, repas et hygiène 25 €), marge pour délais de relais 115/CCAS, kits hygiène et puériculture |
+| Mobilité solidaire | 11 400 € | Véhicule 7 places d'occasion essence Crit'Air 1, révisé (8 000 €), carte grise, mise en service et marquage (600 €), assurance transport de personnes 12 mois (1 300 €), carburant (1 000 €) et entretien (500 €) 1re année |
+| Fonds de premier secours | 4 000 € | Mise à l'abri de 5 familles × 5 jours à 120 €/jour (chambre 85 €, repas et hygiène 35 €), marge pour délais de relais 115/CCAS, kits hygiène et puériculture |
 | Équipe d'intervention | 1 140 € | Formation de 4 bénévoles (PSC1, médiation de crise), tenues et badges |
 | Liaison, sécurité et assurance | 1 330 € | Téléphone de l'équipe et forfait 12 mois, tablette, radios, trousse de secours, lampes (980 €) ; assurance RC multirisque et protection juridique de l'association 12 mois (350 €) |
-| **Total charges** | **17 570 €** | arrondi à 18 000 € |
+| **Total charges** | **17 870 €** | arrondi à 18 000 € |
 
 | Ressources prévues | Montant |
 |---|---:|
