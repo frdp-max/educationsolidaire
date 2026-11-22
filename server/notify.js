@@ -42,7 +42,7 @@ export function buildEmergencyEmail(alert) {
 
   const htmlRows = rows.map(([label, value]) => `
         <tr>
-          <td style="padding:6px 12px 6px 0;color:#6b1d9e;font-weight:700;white-space:nowrap;vertical-align:top">${label}</td>
+          <td style="padding:6px 12px 6px 0;color:#4F0D70;font-weight:700;white-space:nowrap;vertical-align:top">${label}</td>
           <td style="padding:6px 0">${escapeHtml(value)}</td>
         </tr>`).join('');
 
@@ -51,19 +51,19 @@ export function buildEmergencyEmail(alert) {
   return {
     subject: `🚨 Urgence sociale ${alert.id} — ${alert.emergencyType} (${alert.location})`.slice(0, 250),
     htmlContent: `<!DOCTYPE html>
-<html lang="fr"><body style="margin:0;padding:24px;background:#faf5ff;font-family:'Atkinson Hyperlegible Next',Arial,sans-serif;color:#1f2937">
-  <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #f3e8ff">
+<html lang="fr"><body style="margin:0;padding:24px;background:#F7F3FD;font-family:'Atkinson Hyperlegible Next',Arial,sans-serif;color:#1f2937">
+  <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #EDE4FB">
     <div style="background:#d92d20;color:#fff;padding:16px 24px;font-family:Montserrat,Arial,sans-serif;font-weight:800;font-size:18px">
       Nouveau signalement d'urgence sociale
     </div>
     <div style="padding:20px 24px">
       <table style="border-collapse:collapse;font-size:15px">${htmlRows}
       </table>
-      <p style="margin:18px 0 6px;color:#6b1d9e;font-weight:700">Situation décrite</p>
-      <p style="margin:0;white-space:pre-wrap;background:#faf5ff;border-radius:8px;padding:12px">${escapeHtml(alert.message)}</p>
-      ${phoneHref ? `<p style="margin:20px 0 0"><a href="tel:${phoneHref}" style="display:inline-block;background:#350b52;color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:700">Rappeler le ${escapeHtml(alert.phone)}</a></p>` : ''}
+      <p style="margin:18px 0 6px;color:#4F0D70;font-weight:700">Situation décrite</p>
+      <p style="margin:0;white-space:pre-wrap;background:#F7F3FD;border-radius:8px;padding:12px">${escapeHtml(alert.message)}</p>
+      ${phoneHref ? `<p style="margin:20px 0 0"><a href="tel:${phoneHref}" style="display:inline-block;background:#4F0D70;color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:700">Rappeler le ${escapeHtml(alert.phone)}</a></p>` : ''}
     </div>
-    <div style="padding:12px 24px;background:#f3e8ff;font-size:12px;color:#350b52">
+    <div style="padding:12px 24px;background:#EDE4FB;font-size:12px;color:#4F0D70">
       UNISSON — Association Éducation Solidaire · Données confidentielles : ne pas transférer hors de l'équipe d'astreinte.
     </div>
   </div>
